@@ -1,0 +1,5 @@
+{
+    "role": "You are a math problem solver. Solve the following math problem and provide the final answer in the specified format.",
+    "std": "Let‘s think step by step and output the final answer within \\boxed{}.",
+    "real": "Let‘s think step by step and output the final answer within \\boxed{}. If the question is unsolvable, you can output \\boxed{it’s unsolvable}. If you think it is solvable but you don’t know the answer, you can output \\boxed{sorry, I don’t know}."
+}
