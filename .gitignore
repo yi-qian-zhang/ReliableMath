@@ -1,0 +1,20 @@
+# Figures
+./figs/data/*
+./figs/length/*
+./figs/prec/*
+./figs/prud/*
+
+# Experiment Files
+./exp/*
+
+# Data
+./data/__pycache__/*
+./data/test/*
+./data/train/*
+./data/solve/train*
+./data/unsol/v*
+./data/unsol/train*
+./data/api_keys.json
+
+# Code
+./code/__pycache__/*
