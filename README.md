@@ -5,7 +5,7 @@
 The ReliableMath is a mathematical reasoning benchmark including both solvable and unsolvable math problems to evaluate LLM reliability on reasoning tasks.
 
 - **Repository:** [GitHub](https://github.com/AmourWaltz/ReliableMath)
-- **Paper:** Coming soon!
+- **Paper:** [arXiv](https://arxiv.org/abs/2507.03133)
 - **Dataset:** [HuggingFace](https://huggingface.co/datasets/BeyondHsueh/ReliableMath)
 - **Contact:** byxue@se.cuhk.edu.hk
 
@@ -177,7 +177,14 @@ If you find our work useful, please consider citing us!
 
 ```bibtex
 Coming Soon!!!
-@article{
+@misc{xue2025reliablemathbenchmarkreliablemathematical,
+      title={ReliableMath: Benchmark of Reliable Mathematical Reasoning on Large Language Models}, 
+      author={Boyang Xue and Qi Zhu and Rui Wang and Sheng Wang and Hongru Wang and Fei Mi and Yasheng Wang and Lifeng Shang and Qun Liu and Kam-Fai Wong},
+      year={2025},
+      eprint={2507.03133},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2507.03133}, 
 }
 ```
 
