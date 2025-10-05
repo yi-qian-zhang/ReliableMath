@@ -1,0 +1,8 @@
+Please rewrite the following math question by contradicting a key condition (i.e., replace a key condition by its opposite).
+
+Original question:
+{original_math_question}
+Original answer:
+{original_answer}
+
+Output only the rewritten question.

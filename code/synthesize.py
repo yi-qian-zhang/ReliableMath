@@ -15,7 +15,7 @@ from sklearn.preprocessing import LabelEncoder
 
 parser = argparse.ArgumentParser(description="Hallucination Generation")
 
-parser.add_argument("--model", default="deepseek_r1", help="model name")
+parser.add_argument("--model", default="gpt-4o", help="model name")
 parser.add_argument("--data_dir", default="./data/solve", help="output file path")
 parser.add_argument("--output_dir", default="./data/unsol", help="output file path")
 parser.add_argument("--prompt_dir", default="./prompt/{}/rewrite", help="rewrite prompt file path")
@@ -98,22 +98,14 @@ def get_response_openai(input_prompt, persona, model, temperature=0.0):
             )
             response = completion.choices[0].message.content
             break
-        except openai.error.RateLimitError:
-            print('openai.error.RateLimitError\nRetrying...')
+        except openai.RateLimitError:
+            print('RateLimitError: Retrying in 60 seconds...')
             time.sleep(60)
-        except openai.error.ServiceUnavailableError:
-            print('openai.error.ServiceUnavailableError\nRetrying...')
+        except Exception as e:
+            print(f'Error: {e}\nRetrying in 20 seconds...')
             time.sleep(20)
-        except openai.error.Timeout:
-            print('openai.error.Timeout\nRetrying...')
-            time.sleep(20)
-        except openai.error.APIError:
-            print('openai.error.APIError\nRetrying...')
-            time.sleep(20)
-        except openai.error.APIConnectionError:
-            print('openai.error.APIConnectionError\nRetrying...')
-            time.sleep(20)
-    
+
+    print(f"Model Response:\n{response}")
     return response
 
 
@@ -138,6 +130,7 @@ def data_generate():
                     original_math_question=data["question"],
                     original_answer=data["ground_truth"]
                 )
+                print(f"Generated Prompt:\n{input_prompt}")
                 generation = get_response_openai(input_prompt, persona="You are a good mathematical question rewriter.")
                 data[rewrite_type] = generation
                 t.set_postfix()
@@ -157,10 +150,11 @@ def data_exist(data, path):
 
 
 def extract_condition(dataset, extract_path):
+    total_len = len(dataset)  # Ensure total_len is always initialized
+
     if os.path.exists(extract_path):
         try:
             logging.info(f"Continue from the last generation, and the output file is {extract_path}")
-            total_len = len(dataset)
             data_saved = read_jsonl(extract_path)
             saved_ids = {item['id'] for item in data_saved}
             dataset = [item for item in dataset if item['id'] not in saved_ids]
@@ -180,7 +174,7 @@ def extract_condition(dataset, extract_path):
             input_prompt = extract_prompt.format(
                 original_math_question=data["question"]
             )
-            extracted_condition = get_response_openai(input_prompt, persona="You are an excellent extractor.", model="deepseek_v3")
+            extracted_condition = get_response_openai(input_prompt, persona="You are an excellent extractor.", model=args.model)
 
             data["extracted_condition"] = extracted_condition
             t.set_postfix()
@@ -222,12 +216,11 @@ def condition_process(extract_path):
 
 
 def condition_analysis(dataset, analysis_path):
-    # import pdb; pdb.set_trace()
+    total_len = len(dataset)  # Ensure total_len is always initialized
+
     if os.path.exists(analysis_path):
         try:
             logging.info(f"Continue from the last generation, and the output file is {analysis_path}")
-            total_len = len(dataset)
-            # import pdb; pdb.set_trace()
             if args.dataset == "train":
                 if args.split_id > 0:
                     dataset = dataset[100*(args.split_id-1):100*(args.split_id)]
@@ -241,7 +234,6 @@ def condition_analysis(dataset, analysis_path):
 
     with tqdm(total=len(dataset)*len(UNS_TYPE)) as t:
         for data in dataset:
-            # import pdb; pdb.set_trace()
             if args.dataset == "train":
                 extracted_condition = random.sample(data["extracted_condition"], 1)
                 data["extracted_condition"] = extracted_condition
@@ -259,7 +251,7 @@ def condition_analysis(dataset, analysis_path):
                             original_answer=data["ground_truth"],
                             extracted_condition=condition
                         )
-                        generation = get_response_openai(input_prompt, persona="You are a good mathematical question rewriter.", model="deepseek_r1")
+                        generation = get_response_openai(input_prompt, persona="You are a good mathematical question rewriter.", model=args.model)
                         generations.append(generation)
                     data[rewrite_type + "_analysis"] = generations
                 else:
@@ -268,7 +260,7 @@ def condition_analysis(dataset, analysis_path):
                         original_answer=data["ground_truth"],
                         extracted_condition=data["extracted_condition"]
                     )
-                    generation = get_response_openai(input_prompt, persona="You are a good mathematical question rewriter.", model="deepseek_v3")
+                    generation = get_response_openai(input_prompt, persona="You are a good mathematical question rewriter.", model=args.model)
                     data[rewrite_type + "_analysis"] = generation
 
                 t.set_postfix()
@@ -303,11 +295,11 @@ def analysis_process(analysis_path):
 
 
 def condition_rewrite(dataset, rewrite_path):
+    total_len = len(dataset)  # Ensure total_len is always initialized
+
     if os.path.exists(rewrite_path):
         try:
             logging.info(f"Continue from the last generation, and the output file is {rewrite_path}")
-            total_len = len(dataset)
-            # import pdb; pdb.set_trace()
             if args.dataset == "train":
                 if args.split_id > 0:
                     print(f"Processing data from {dataset[100*(args.split_id-1)]['id']} to {dataset[100*(args.split_id)-1]['id']}")
@@ -322,12 +314,11 @@ def condition_rewrite(dataset, rewrite_path):
 
     with tqdm(total=len(dataset)*len(UNS_TYPE)) as t:
         for data in dataset:
-            # import pdb; pdb.set_trace()
             for rewrite_type in UNS_TYPE:
                 prompt_path = os.path.join(args.prompt_dir.format(args.prompt), f"{rewrite_type}_rewrite.txt")
                 with open(prompt_path, "r", encoding="utf-8") as f:
                     rewrite_prompt = f.read()
-                
+
                 if args.prompt == "v4-comp":
                     generations = []
                     for condition, analysis in zip(data["extracted_condition"], data[rewrite_type + "_analysis"]):
@@ -341,9 +332,14 @@ def condition_rewrite(dataset, rewrite_path):
                             extracted_condition=condition,
                             analysis=analysis
                         )
-                        generation = get_response_openai(input_prompt, persona="You are a good mathematical question rewriter.", model="deepseek_r1")
+                        generation = get_response_openai(input_prompt, persona="You are a good mathematical question rewriter.", model=args.model)
+
+                        if "### Rewritten Mathematical Question ###" not in generation:
+                            print("Model did not return a rewritten question.")
+                            continue
+                        
                         generations.append(generation)
-                    data[rewrite_type] = generations
+                    data[rewrite_type.replace("remove", "remove_rewrite_question")] = generations
                 else:
                     input_prompt = rewrite_prompt.format(
                         original_math_question=data["question"],
@@ -351,8 +347,9 @@ def condition_rewrite(dataset, rewrite_path):
                         extracted_condition=data["extracted_condition"],
                         analysis=data[rewrite_type + "_analysis"]
                     )
-                    generation = get_response_openai(input_prompt, persona="You are a good mathematical question rewriter.", model="deepseek_v3")
-                    data[rewrite_type] = generation
+                    generation = get_response_openai(input_prompt, persona="You are a good mathematical question rewriter.", model=args.model)
+                    data[rewrite_type.replace("remove", "remove_rewrite_question")] = generation
+
                 t.set_postfix()
                 t.update(1)
             dump_jsonl(data, rewrite_path, append=True)
@@ -369,6 +366,8 @@ def rewrite_process(rewrite_path):
     # import pdb; pdb.set_trace()
     for data in dataset:
         for rewrite_type in UNS_TYPE:
+            # Ensure rewrite_type uses the updated field name
+            rewrite_type = rewrite_type.replace("remove", "remove_rewrite_question")
             rewrite = data[rewrite_type]
             if args.prompt == "v4-comp":
                 cleaned_rewrite = []
@@ -380,7 +379,7 @@ def rewrite_process(rewrite_path):
                     score = f1_exact_match(data["question"], rew)
                     cleaned_rewrite.append(rew)
                     f1_scores.append(score)
-                    
+
                 data[rewrite_type] = cleaned_rewrite
                 data[rewrite_type + "_f1"] = score
                 # print(f"F1 score: {score}")
@@ -402,32 +401,28 @@ def construction_workflow():
     if extract_condition(dataset, extract_path):
         print("Condition extraction file is prepared.")
         condition_process(extract_path)
-    # else:
-    #     print("Condition extraction file is not prepared.")
-    #     return
     print("Condition extraction completed.")
 
     print("Start condition analysis.")
     dataset = read_json(extract_path)
-    # analysis_path = os.path.join(output_dir, f"{args.dataset}_analysis.json")
-    analysis_path = os.path.join(output_dir, f"{args.dataset}_analysis.json") # v1 means analyzed using instruct model 
+    analysis_path = os.path.join(output_dir, f"{args.dataset}_analysis.json")
     # If condition_analysis file is already prepared, then skip condition_analysis
     if condition_analysis(dataset, analysis_path):
         print("Condition analysis file is prepared.")
         analysis_process(analysis_path)
-    #     print("Condition analysis completed.")
-    # else:
-    #     print("Condition analysis file is not prepared.")
-    #     return
     print("Condition analysis completed.")
-
     print("Start condition rewrite.")
     dataset = read_json(analysis_path)
     rewrite_path = os.path.join(output_dir, f"{args.dataset}_rewrite.json")
     if condition_rewrite(dataset, rewrite_path):
-        print("Condition analysis file is prepared.")
+        print("Condition rewrite file is prepared.")
         rewrite_process(rewrite_path)
-    
+    # Output the saved file paths
+    print(f"All files saved in directory: {output_dir}")
+    print(f"Extract file: {extract_path}")
+    print(f"Analysis file: {analysis_path}")
+    print(f"Rewrite file: {rewrite_path}")
 
 if __name__ == "__main__":
+    construction_workflow()
     construction_workflow()

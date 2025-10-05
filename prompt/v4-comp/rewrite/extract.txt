@@ -1,0 +1,9 @@
+You are an excellent extractor.
+
+Your objective is to extract one to three key mathematical conditions or premises from the given question
+### Mathematical Question ###. Directly output the mathematical conditions or premises after
+### Extracted Condition ###. The number of conditions or premises to be extracted should be ad-
+justed by the length or practical number of conditions of the questions. Each condition is separated by \n\n.
+
+### Mathematical Question ###: <original_math_question>
+### Extracted Condition ###:

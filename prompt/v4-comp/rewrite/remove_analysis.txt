@@ -1,0 +1,22 @@
+You are an excellent verifier.
+
+Given a mathematical question ### Original Mathematical Question ###, the answer to the question is
+### Original Answer ###.
+Your objective is to determine whether the ### Rewritten Mathematical Question ### has removed
+some key conditions from ### Original Mathematical Question ###, thereby making ### Rewritten Mathematical Question ###
+unsolvable.
+
+### Original Mathematical Question ###: <original_math_question>
+### Original Answer ###: <original_answer>
+### Rewritten Mathematical Question ###: <rewritten_math_question>
+
+Think step by step to analyze if ### Rewritten Mathematical Question ### is unsolvable. Explain
+your reason and directly output after ### Unsolvable Analysis ###. Summarize and simplify your output.
+
+### Unsolvable Analysis ###: <analysis>
+
+Based on your analysis, you only need to directly output your judgement (“True” or “False”) after ###
+Your judgement (True or False) ### about if the ### Rewritten Mathematical Question ### is
+unsolvable.
+
+### Your judgement (True or False) ###:
