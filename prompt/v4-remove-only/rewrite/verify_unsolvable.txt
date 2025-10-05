@@ -1,0 +1,24 @@
+You are a math problem-solving expert.
+
+Determine whether the following math problem cannot be solved due to missing key information.
+
+Math Problem ###: {rewritten_math_question}
+Original Answer Reference ###: {original_answer}
+
+Analysis Steps:
+
+Attempt to solve the problem.
+
+Identify which necessary information is missing during the solution process.
+
+Determine whether multiple possible answers exist or a unique answer cannot be identified.
+
+Notes:
+
+If the problem has a uniquely determined answer, then it is solvable.
+
+If the problem lacks key information leading to a non-unique answer or an indeterminate answer, then it is unsolvable.
+
+Output only the final judgment: "True" (unsolvable) or "False" (solvable)
+
+Judgment Result ###:

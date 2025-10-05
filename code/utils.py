@@ -16,7 +16,8 @@ import pytz
 import torch
 
 
-UNS_TYPE = ["remove", "contradict"]
+# UNS_TYPE = ["remove", "contradict"]
+UNS_TYPE = ["remove"]
 
 tokenizer_dict = {
     "deepseek_r1": "deepseek-ai/DeepSeek-R1",
