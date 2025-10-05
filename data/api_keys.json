@@ -1,0 +1,16 @@
+{
+	"gpt-4o": [
+		[
+			"gpt-4o",
+			"sk-HLA9kBx3vUpL6QVJE17b313aD1B34e53B9E660E932620a43",
+			"https://api.ai-gaochao.cn/v1"
+		]
+	],
+	"deepseek_r1": [
+		[
+			"deepseek_r1",
+			"sk-HLA9kBx3vUpL6QVJE17b313aD1B34e53B9E660E932620a43",
+			"https://api.ai-gaochao.cn/v1"
+		]
+	]
+}

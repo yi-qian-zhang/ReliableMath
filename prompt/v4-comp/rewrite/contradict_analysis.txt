@@ -1,0 +1,12 @@
+### Analysis ###:
+
+Analyze the extracted condition: "{extracted_condition}" from the original math problem. Explain how this condition constrains the problem and what would happen if this condition were contradicted (i.e., replaced by an opposing statement). Discuss whether a contradicted condition leads to an impossible scenario, a different solution, or a valid but altered problem.
+
+Original question:
+{original_math_question}
+Original answer:
+{original_answer}
+
+### Rewritten Mathematical Question ###:
+
+(Include below a short candidate rewrite if relevant.)
