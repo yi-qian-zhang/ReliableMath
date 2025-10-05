@@ -31,8 +31,8 @@
         "solution": "",
         "difficulty": "6/8",
         "extracted_condition": [
-            "The length of the rectangle is twice its width.",
-            "The perimeter of the rectangle is 36 units."
+            "Length = 2 * Width",
+            "Perimeter = 36 units"
         ]
     },
     {
@@ -55,8 +55,8 @@
         "solution": "",
         "difficulty": "1/8",
         "extracted_condition": [
-            "The length of the rectangle is twice its width.",
-            "The perimeter of the rectangle is 36 units."
+            "Length = 2 * Width",
+            "Perimeter = 36 units"
         ]
     },
     {
@@ -67,8 +67,8 @@
         "solution": "",
         "difficulty": "1/8",
         "extracted_condition": [
-            "The triangle has sides of lengths 5, 12, and 13.",
-            "Check if the square of the longest side equals the sum of the squares of the other two sides."
+            "Length = 2 * Width",
+            "Perimeter = 36 units"
         ]
     },
     {
@@ -79,8 +79,8 @@
         "solution": "",
         "difficulty": "3/8",
         "extracted_condition": [
-            "Length = 2 * Width",
-            "Perimeter = 36 units"
+            "The triangle has sides of lengths 5, 12, and 13.",
+            "Check if the square of the longest side equals the sum of the squares of the other two sides."
         ]
     },
     {
@@ -91,8 +91,8 @@
         "solution": "",
         "difficulty": "4/8",
         "extracted_condition": [
-            "The length of the rectangle is twice its width.",
-            "The perimeter of the rectangle is 36 units."
+            "Length = 2 * Width",
+            "Perimeter = 36 units"
         ]
     },
     {
@@ -103,8 +103,8 @@
         "solution": "",
         "difficulty": "7/8",
         "extracted_condition": [
-            "The length of the rectangle is twice its width.",
-            "The perimeter of the rectangle is 36 units."
+            "Length = 2 * Width",
+            "Perimeter = 36 units"
         ]
     },
     {
@@ -139,8 +139,8 @@
         "solution": "",
         "difficulty": "4/8",
         "extracted_condition": [
-            "The length of the rectangle is twice its width.",
-            "The perimeter of the rectangle is 36 units."
+            "The triangle has sides of lengths 5, 12, and 13.",
+            "Check if \\(5^2 + 12^2 = 13^2\\)."
         ]
     },
     {
@@ -151,8 +151,8 @@
         "solution": "",
         "difficulty": "2/8",
         "extracted_condition": [
-            "The length of the rectangle is twice its width.",
-            "The perimeter of the rectangle is 36 units."
+            "Length = 2 * Width",
+            "Perimeter = 36 units"
         ]
     },
     {
@@ -175,8 +175,8 @@
         "solution": "",
         "difficulty": "4/8",
         "extracted_condition": [
-            "The length of the rectangle is twice its width.",
-            "The perimeter of the rectangle is 36 units."
+            "Length = 2 * Width",
+            "Perimeter = 36 units"
         ]
     },
     {
@@ -187,8 +187,8 @@
         "solution": "",
         "difficulty": "4/8",
         "extracted_condition": [
-            "The length of the rectangle is twice its width.",
-            "The perimeter of the rectangle is 36 units."
+            "The triangle has sides of lengths 5, 12, and 13.",
+            "Check if \\(5^2 + 12^2 = 13^2\\)."
         ]
     },
     {
@@ -199,8 +199,8 @@
         "solution": "",
         "difficulty": "4/8",
         "extracted_condition": [
-            "The length of the rectangle is twice its width.",
-            "The perimeter of the rectangle is 36 units."
+            "Length = 2 * Width",
+            "Perimeter = 36 units"
         ]
     },
     {
@@ -211,8 +211,8 @@
         "solution": "",
         "difficulty": "1/8",
         "extracted_condition": [
-            "The length of the rectangle is twice its width.",
-            "The perimeter of the rectangle is 36 units."
+            "Length = 2 * Width",
+            "Perimeter = 36 units"
         ]
     },
     {
@@ -223,8 +223,8 @@
         "solution": "",
         "difficulty": "3/8",
         "extracted_condition": [
-            "The length of the rectangle is twice its width.",
-            "The perimeter of the rectangle is 36 units."
+            "Length = 2 * Width",
+            "Perimeter = 36 units"
         ]
     },
     {
@@ -235,8 +235,8 @@
         "solution": "",
         "difficulty": "6/8",
         "extracted_condition": [
-            "- The length of the rectangle is twice its width.",
-            "- The perimeter of the rectangle is 36 units."
+            "The length of the rectangle is twice its width.",
+            "The perimeter of the rectangle is 36 units."
         ]
     }
 ]
