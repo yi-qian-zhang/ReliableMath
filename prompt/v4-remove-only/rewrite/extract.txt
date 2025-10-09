@@ -1,9 +1,13 @@
-You are an excellent extractor.
 
-Your objective is to extract one to three key mathematical conditions or premises from the given question
-### Mathematical Question ###. Directly output the mathematical conditions or premises after
-### Extracted Condition ###. The number of conditions or premises to be extracted should be ad-
-justed by the length or practical number of conditions of the questions. Each condition is separated by \n\n.
+Extract 1-3 key mathematical conditions from the following problem.
 
-### Mathematical Question ###: <original_math_question>
-### Extracted Condition ###:
+Problem: {original_math_question}
+
+Instructions:
+- Extract only the essential conditions that, if removed, would make the problem unsolvable
+- For word problems: extract numerical values, constraints, or goals
+- For proofs: extract given geometric/algebraic conditions, definitions, or relationships
+- Output each condition on a separate line
+- Do not include numbering or bullet points
+
+Extracted conditions:

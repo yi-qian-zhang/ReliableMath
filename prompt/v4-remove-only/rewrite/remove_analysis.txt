@@ -1,22 +1,14 @@
-You are an excellent verifier.
+You are analyzing a mathematical problem to understand the impact of removing a key condition.
 
-Given a mathematical question ### Original Mathematical Question ###, the answer to the question is
-### Original Answer ###.
-Your objective is to determine whether the ### Rewritten Mathematical Question ### has removed
-some key conditions from ### Original Mathematical Question ###, thereby making ### Rewritten Mathematical Question ###
-unsolvable.
+Original problem: {original_math_question}
+Original answer: {original_answer}
+Condition to analyze: {extracted_condition}
 
-### Original Mathematical Question ###: <original_math_question>
-### Original Answer ###: <original_answer>
-### Rewritten Mathematical Question ###: <rewritten_math_question>
+Analyze step by step:
+1. What role does this condition play in solving the problem?
+2. What critical information would be missing without this condition?
+3. Why would the problem become unsolvable without this information?
 
-Think step by step to analyze if ### Rewritten Mathematical Question ### is unsolvable. Explain
-your reason and directly output after ### Unsolvable Analysis ###. Summarize and simplify your output.
+Provide a clear, concise analysis:
 
-### Unsolvable Analysis ###: <analysis>
-
-Based on your analysis, you only need to directly output your judgement (“True” or “False”) after ###
-Your judgement (True or False) ### about if the ### Rewritten Mathematical Question ### is
-unsolvable.
-
-### Your judgement (True or False) ###:
+Analysis:
