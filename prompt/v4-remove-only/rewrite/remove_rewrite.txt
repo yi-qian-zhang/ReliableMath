@@ -1,31 +1,16 @@
-You are a good mathematical question rewriter.
+Rewrite the mathematical problem by removing the specified condition.
 
-Given a mathematical question ### Original Mathematical Question ###, the answer to the question is
-### Original Answer ###, and ### Extracted Condition ### is a key mathematical condition extracted
-from the question.
-Your objective is to draw inspiration from the ### Original Mathematical Question ### and ###
-Original Answer ### to rewrite a new math question ### Rewritten Mathematical Question ### with
-the following two requirements.
+Original problem: {original_math_question}
+Original answer: {original_answer}
+Condition to remove: {extracted_condition}
+Analysis: {analysis}
 
-1) The new mathematical question ### Rewritten Mathematical Question ### need to remove the
-key condition ### Extracted Condition ### from
-the ### Original Mathematical Question ###. Maintain the rest of the conditions of ### Original
-Mathematical Question ### unchanged.
-2) After removing the key condition ###
-Extracted Condition ###, the new mathematical question ### Rewritten Mathematical Question ###
-should be unsolvable.
+Requirements:
+1. Completely remove the specified condition without leaving any traces or hints
+2. Keep all other conditions exactly the same
+3. Maintain the problem's language style and structure
+4. Ensure the problem becomes unsolvable due to missing critical information
 
-### Original Mathematical Question ###: <original_math_question>
-### Original Answer ###: <original_answer>
-### Extracted Condition ###: <extracted_condition>
+Output only the rewritten problem without any explanation:
 
-Think step by step to explain how you make the problem unsolvable after removing the condition. You only need to directly output your analysis after ### Analysis
-###. Simplify your output as much as possible.
-
-### Analysis ###: <analysis>
-
-Given your analysis in ### Analysis ### about how you make the problem unsolvable after removing
-the condition, you only need to directly output your new
-mathematical question after ### Rewritten Mathematical Question ###.
-
-### Rewritten Mathematical Question ###:
+Rewritten problem:

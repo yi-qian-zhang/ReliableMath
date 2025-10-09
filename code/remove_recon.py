@@ -12,7 +12,7 @@ import requests
 # 设置logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-parser = argparse.ArgumentParser(description="数学问题数据集改造")
+parser = argparse.ArgumentParser(description="POLARIS数据集改造")
 
 parser.add_argument("--model", default="deepseek_v3", help="模型名称")
 parser.add_argument("--data_dir", default="./data/solve", help="输入文件路径")

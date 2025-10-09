@@ -1,19 +1,14 @@
-You are a precise verifier.
+Verify whether the specified condition was successfully removed from the rewritten problem.
 
-Compare the original question with the rewritten question and determine whether the specified condition has been successfully removed.
+Original problem: {original_math_question}
+Condition to remove: {extracted_condition}
+Rewritten problem: {rewritten_math_question}
 
-Original Math Question ###: {original_math_question}
-Condition to Remove ###: {extracted_condition}
-Rewritten Question ###: {rewritten_math_question}
+Check:
+1. Is the specified condition completely absent from the rewritten problem?
+2. Are there no hints or implicit references to the removed condition?
+3. Are all other conditions preserved unchanged?
 
-Validation points:
+Output only "True" if successfully removed or "False" if not:
 
-Check whether the specified condition is completely absent from the rewritten question.
-
-Confirm that no related information or implication remains.
-
-Confirm that all other conditions remain unchanged.
-
-Output only the judgment result: "True" (successfully removed) or "False" (not successfully removed)
-
-Judgment Result ###:
+Result:

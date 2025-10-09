@@ -7,9 +7,9 @@
     "solution": "",
     "difficulty": "7/8",
     "extracted_condition": [
-      "### Mathematical Question ###: A rectangle has a length that is twice its width. If the perimeter of the rectangle is 36 units, what are the dimensions of the rectangle?\n### Extracted Condition ###:",
-      "The length of the rectangle is twice its width.",
-      "The perimeter of the rectangle is 36 units."
+      "The front tires wear out after 25,000 km.",
+      "The rear tires wear out after 15,000 km.",
+      "The tires should be swapped so that they wear out at the same time."
     ]
   },
   {
@@ -20,9 +20,9 @@
     "solution": "",
     "difficulty": "5/8",
     "extracted_condition": [
-      "### Mathematical Question ###: A rectangle has a length that is twice its width. If the perimeter of the rectangle is 36 units, what are the dimensions of the rectangle?",
-      "### Extracted Condition ###:\nLength = 2 * Width",
-      "Perimeter = 36 units"
+      "The edges of tetrahedron $ABCD$ are $AB=c$, $BC=a$, $CA=b$, $DA=a_{1}$, $DB=b_{1}$, and $DC=c_{1}$.",
+      "$h$ is the length of the median line from vertex $D$.",
+      "The formula to prove is $h^{2}=\\frac{1}{3}\\left(a_{1}^{2}+b_{1}^{2}+c_{1}^{2}\\right)-\\frac{1}{9}\\left(a^{2}+b^{2}+c^{2}\\right)$."
     ]
   }
 ]

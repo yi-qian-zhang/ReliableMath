@@ -1,24 +1,17 @@
-You are a math problem-solving expert.
+Determine whether this mathematical problem is unsolvable due to missing critical information.
 
-Determine whether the following math problem cannot be solved due to missing key information.
+Problem: {rewritten_math_question}
+Original answer reference: {original_answer}
 
-Math Problem ###: {rewritten_math_question}
-Original Answer Reference ###: {original_answer}
+Analysis steps:
+1. Attempt to solve the problem
+2. Identify what necessary information is missing
+3. Determine if there are multiple possible answers or if no unique answer exists
 
-Analysis Steps:
+Note:
+- If the problem has a unique determinable answer, it is solvable
+- If the problem lacks critical information leading to non-unique or indeterminate answers, it is unsolvable
 
-Attempt to solve the problem.
+Output only "True" if unsolvable or "False" if solvable:
 
-Identify which necessary information is missing during the solution process.
-
-Determine whether multiple possible answers exist or a unique answer cannot be identified.
-
-Notes:
-
-If the problem has a uniquely determined answer, then it is solvable.
-
-If the problem lacks key information leading to a non-unique answer or an indeterminate answer, then it is unsolvable.
-
-Output only the final judgment: "True" (unsolvable) or "False" (solvable)
-
-Judgment Result ###:
+Result:
