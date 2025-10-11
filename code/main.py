@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Dataset Construction Pipeline - Fixed Version with Better Error Handling
+Dataset Construction Pipeline
 Removes key conditions from mathematical problems to create unsolvable variants
 """
 
