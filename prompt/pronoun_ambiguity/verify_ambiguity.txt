@@ -1,0 +1,88 @@
+Verify that the pronoun creates genuine ambiguity making the problem unsolvable.
+
+Rewritten Problem: {rewritten_question}
+Entities: {entities}
+Original Answer: {ground_truth}
+
+**Ambiguity Analysis**:
+
+1. **Multiple Interpretations** (Weight 30%):
+   - What pronoun was used?
+   - Which entities could this pronoun refer to?
+   - List all possible interpretations
+   - For each interpretation, what would the answer be?
+   - Score: 0.0-1.0 (1.0 = clearly 2+ different interpretations with different answers)
+
+2. **Genuine Ambiguity** (Weight 30%):
+   - Is it truly impossible to determine which entity is meant from context?
+   - Could context clues (recency, grammar, semantics) resolve the ambiguity?
+   - Is the ambiguity fundamental or just superficial?
+   - Score: 0.0-1.0 (1.0 = fundamentally ambiguous, no way to resolve)
+
+3. **Naturalness of Ambiguity** (Weight 20%):
+   - Does the pronoun usage sound natural?
+   - Would a native speaker write this?
+   - Is the ambiguity accidental-seeming (good) or forced (bad)?
+   - Score: 0.0-1.0
+
+4. **Deceptiveness** (Weight 20%):
+   - Would someone initially try to answer before noticing the ambiguity?
+   - Does it look like a solvable problem at first glance?
+   - Score: 0.0-1.0
+
+5. **Overall Assessment**:
+   - Weighted average of above scores
+   - Recommendation: "accept" if overall >= 0.70, "reject" otherwise
+
+**IMPORTANT Guideline**:
+- Having TOO MANY possible referents (3+) is GOOD, not bad
+- "The pronoun could refer to A, B, or C" → HIGH score (very ambiguous)
+- Context that DOESN'T resolve ambiguity → HIGH score
+- If you're unsure which entity is meant → HIGH score (that's the goal!)
+
+**Example of GOOD Ambiguity (High Score)**:
+
+Problem: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did he buy?"
+
+Analysis:
+- Pronoun "he" could refer to:
+  * Jason → answer: 1
+  * Mike → answer: 2
+- No context clues to determine which person
+- Multiple interpretations: YES (score: 0.95)
+- Genuine ambiguity: YES (score: 0.90)
+- Naturalness: Very natural (score: 0.85)
+- Deceptiveness: Looks solvable (score: 0.80)
+- Overall: 0.88 → ACCEPT
+
+**Example of WEAK Ambiguity (Low Score)**:
+
+Problem: "Jason is a teacher, Mike is a student. How many classes does he teach?"
+
+Analysis:
+- Pronoun "he" theoretically could refer to Jason or Mike
+- BUT context strongly suggests Jason (only teachers teach classes)
+- Multiple interpretations: Weak (score: 0.40)
+- Genuine ambiguity: NO - context resolves it (score: 0.30)
+- Overall: 0.35 → REJECT
+
+**CRITICAL**: Output ONLY valid JSON, nothing else.
+
+Output as JSON:
+{{
+  "pronoun_used": "he",
+  "possible_referents": ["Jason", "Mike"],
+  "interpretations": [
+    {{"referent": "Jason", "answer": "1"}},
+    {{"referent": "Mike", "answer": "2"}}
+  ],
+  "multiple_interpretations_score": 0.95,
+  "genuine_ambiguity_score": 0.90,
+  "naturalness_score": 0.85,
+  "deceptiveness_score": 0.80,
+  "explanation": "The pronoun 'he' could refer to either Jason or Mike with no context clues to distinguish between them. Different referents lead to different answers (1 vs 2).",
+  "overall": 0.88,
+  "recommendation": "accept"
+}}
+
+Verification Result:

@@ -1,0 +1,67 @@
+Verify that the rewrite preserved all conditions and only changed the question.
+
+Original Problem: {original_question}
+Original Conditions: {original_conditions}
+Original Question: {original_question_part}
+Rewritten Problem: {rewritten_question}
+
+**Verification Checklist**:
+
+1. **Conditions Preservation** (CRITICAL - Weight 50%):
+   - Are ALL conditions from the original problem present unchanged?
+   - Are ALL numerical values exactly the same?
+   - Are ALL entity names still present in conditions?
+   - Score: 0.0-1.0 (1.0 = perfect preservation, 0.0 = conditions changed)
+
+2. **Question Changed to Pronoun** (Weight 30%):
+   - Was a specific entity reference replaced with a pronoun?
+   - Is the pronoun grammatically correct?
+   - Does the question structure remain otherwise the same?
+   - Score: 0.0-1.0
+
+3. **Natural Language** (Weight 20%):
+   - Is the rewritten problem grammatically correct?
+   - Does the pronoun sound natural?
+   - Is it realistic English?
+   - Score: 0.0-1.0
+
+4. **Overall Quality**:
+   - Weighted average: (Conditions × 0.5) + (Question × 0.3) + (Natural × 0.2)
+   - Recommendation: "accept" if overall >= 0.75, "reject" otherwise
+
+**IMPORTANT**: 
+- If conditions preservation < 1.0, overall score should be low
+- If any numerical values changed, overall = 0.0
+- Pronoun ambiguity itself is NOT a problem here - we only check if conditions are preserved
+
+**Examples**:
+
+Example 1 - Accept:
+Original: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+Rewritten: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did he buy?"
+- Conditions: Perfect (1.0) - all numbers and names present
+- Question: Good (0.9) - "Jason" → "he"
+- Natural: Perfect (1.0) - sounds natural
+- Overall: 0.97 → ACCEPT
+
+Example 2 - Reject:
+Original: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+Rewritten: "Two people bought pencils. How many did he buy?"
+- Conditions: Failed (0.0) - names and numbers removed
+- Overall: 0.0 → REJECT
+
+**CRITICAL**: Output ONLY valid JSON, nothing else.
+
+Output as JSON:
+{{
+  "conditions_preservation": 0.95,
+  "question_changed": 0.90,
+  "natural_language": 0.95,
+  "overall": 0.93,
+  "recommendation": "accept",
+  "pronoun_used": "he",
+  "original_reference": "Jason",
+  "issues": []
+}}
+
+Verification Result:

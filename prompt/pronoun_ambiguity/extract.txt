@@ -1,0 +1,51 @@
+Extract the conditions and question from the following mathematical problem.
+
+Problem: {original_question}
+Answer: {ground_truth}
+
+**Instructions**:
+
+1. **Conditions**: Extract all given information, facts, and constraints
+   - Include all numerical values
+   - Include all relationships between entities
+   - Include all properties and measurements
+   - These are the "known" facts
+
+2. **Question**: Extract what is being asked
+   - This is the "unknown" that needs to be found
+   - Usually starts with "What", "How many", "Find", "Calculate", "Prove", etc.
+
+**Examples**:
+
+Example 1:
+Problem: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+
+Conditions:
+- Jason bought 1 pencil
+- Mike bought 2 pencils
+
+Question:
+- How many pencils did Jason buy?
+
+Example 2:
+Problem: "Triangle ABC has sides AB=3, BC=4, CA=5. Triangle DEF has sides DE=5, EF=12, FD=13. What is the perimeter of triangle ABC?"
+
+Conditions:
+- Triangle ABC has sides AB=3, BC=4, CA=5
+- Triangle DEF has sides DE=5, EF=12, FD=13
+
+Question:
+- What is the perimeter of triangle ABC?
+
+**CRITICAL**: Output ONLY valid JSON, nothing else.
+
+Output as JSON:
+{{
+  "conditions": [
+    "condition 1",
+    "condition 2"
+  ],
+  "question": "the question being asked"
+}}
+
+Extracted:

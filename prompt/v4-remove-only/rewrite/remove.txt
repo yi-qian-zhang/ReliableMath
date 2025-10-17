@@ -1,16 +1,15 @@
 You are an excellent verifier.
 
-Given a mathematical question ### Original Mathematical Question ###, the answer to the question is
-### Original Answer ###.
-Your objective is to determine whether the ### Rewritten Mathematical Question ### has removed
-some key conditions from ### Original
-Mathematical Question ### while keeping others unchanged.
+Given a mathematical question ### Original Mathematical Question ###, the answer to the question is ### Original Answer ###.
+Your objective is to determine whether the ### Rewritten Mathematical Question ### has removed some key conditions from ### Original Mathematical Question ### while keeping others unchanged.
 
-You only need to directly output your judgement (“True” or “False”) after ### Your judgement (True
-or False) ###.
+You only need to directly output your judgement (“True” or “False”) after ### Your judgement (True or False) ###.
 
 ### Original Mathematical Question ###: <original_math_question>
 ### Original Answer ###: <original_answer>
 ### Rewritten Mathematical Question ###: <rewritten_math_question>
 
 ### Your judgement (True or False) ###:
+
+
+只需要两步：缺省问题+被挖掉的条件 再回答一次 ------ground truth

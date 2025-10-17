@@ -1,0 +1,81 @@
+Identify entities in the problem and determine if pronoun ambiguity is applicable.
+
+Original Problem: {original_question}
+Conditions: {conditions}
+Question: {question}
+
+**Task**: Identify all entities and determine if we can create pronoun ambiguity.
+
+**Entity Types to Identify**:
+
+1. **People**: Names of individuals
+   - Examples: Jason, Mike, Alice, Bob, the driver, the teacher
+
+2. **Objects**: Specific items or things
+   - Examples: triangle ABC, triangle DEF, the front tires, the rear tires
+
+3. **Variables**: Mathematical variables
+   - Examples: x, y, variable a, variable b
+
+4. **Groups**: Collections or sets
+   - Examples: Class A, Class B, the first team, the second team
+
+**Pronoun Ambiguity Applicability**:
+
+Pronoun ambiguity is applicable when ALL of these are true:
+1. There are 2+ entities of the same type (2+ people, 2+ objects, 2+ variables)
+2. The question refers to ONE specific entity
+3. We can replace the specific reference with a pronoun that could refer to multiple entities
+4. The entities are similar enough that a pronoun could naturally refer to any of them
+
+**Examples**:
+
+Example 1 - Applicable:
+Problem: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+- Entities: Jason, Mike (both are people)
+- Question references: Jason
+- Can replace with: "he" (could mean Jason or Mike)
+- Applicable: YES
+
+Example 2 - Applicable:
+Problem: "Triangle ABC has perimeter 12, Triangle DEF has perimeter 30. What is the perimeter of triangle ABC?"
+- Entities: Triangle ABC, Triangle DEF
+- Question references: Triangle ABC
+- Can replace with: "it" or "this triangle" (could mean ABC or DEF)
+- Applicable: YES
+
+Example 3 - Not Applicable:
+Problem: "A basket has 5 apples. How many apples are in the basket?"
+- Entities: Only one basket
+- No multiple similar entities to create confusion
+- Applicable: NO
+
+Example 4 - Not Applicable:
+Problem: "Prove that x² + y² ≥ 2xy"
+- This is a proof problem, not asking about a specific entity
+- Applicable: NO
+
+**Analysis**:
+
+1. List all entities in the problem
+2. Group entities by type (people, objects, variables, etc.)
+3. Does the question reference a specific entity?
+4. Can we replace it with a pronoun that creates ambiguity?
+5. What pronouns would be appropriate?
+
+**CRITICAL**: Output ONLY valid JSON, nothing else.
+
+Output as JSON:
+{{
+  "entities": [
+    {{"name": "Jason", "type": "person"}},
+    {{"name": "Mike", "type": "person"}}
+  ],
+  "pronoun_applicable": true,
+  "reason": "why it is or isn't applicable",
+  "question_references": "which entity the question asks about",
+  "ambiguatable_entities": ["Jason", "Mike"],
+  "suggested_pronouns": ["he", "they", "one of them"]
+}}
+
+Analysis:
