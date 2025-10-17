@@ -1,0 +1,45 @@
+Verify that the domain mismatch makes the problem genuinely unsolvable.
+
+Rewritten Problem: {rewritten_question}
+Original Domain: {original_domain}
+Original Answer: {ground_truth}
+
+**Mismatch Analysis**:
+
+1. **Domain Incompatibility**:
+   - What domain does the question ask about?
+   - What domain do the conditions provide information for?
+   - Are these domains fundamentally incompatible?
+   - Score: 0.0-1.0 (1.0 = completely incompatible)
+
+2. **Impossibility to Answer**:
+   - Can the question be answered using ONLY the given conditions?
+   - What type of information would be needed to answer the question?
+   - Why is this information missing?
+   - Score: 0.0-1.0 (1.0 = definitely impossible)
+
+3. **Deceptiveness**:
+   - Would someone initially think this is a standard problem?
+   - Do all the numbers and conditions look relevant?
+   - Would someone try to calculate before realizing it's unanswerable?
+   - Score: 0.0-1.0 (1.0 = very deceptive)
+
+4. **Clear Explanation**:
+   - Explain clearly why the mathematical conditions cannot answer the qualitative question
+   - Example: "The conditions tell us quantities (5 apples, 3 apples) but the question asks about taste quality, which requires sensory information not provided"
+
+5. **Overall Assessment**:
+   - Is this a valid domain mismatch problem?
+   - Recommendation: "accept" or "reject"
+
+Output as JSON:
+{{
+  "domain_incompatibility": 0.90,
+  "impossibility": 0.85,
+  "deceptiveness": 0.80,
+  "explanation": "The conditions provide quantitative data (numbers, distances, times) but the question asks about subjective experience (tiredness, stress, beauty) which cannot be determined from numbers alone.",
+  "overall": 0.85,
+  "recommendation": "accept"
+}}
+
+Verification Result:

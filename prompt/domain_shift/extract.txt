@@ -1,0 +1,51 @@
+Extract the conditions and question from the following mathematical problem.
+
+Problem: {original_question}
+Answer: {ground_truth}
+
+**Instructions**:
+
+1. **Conditions**: Extract all given information, facts, and constraints
+   - Include all numerical values
+   - Include all relationships between entities
+   - Include all properties and measurements
+   - These are the "known" facts
+
+2. **Question**: Extract what is being asked
+   - This is the "unknown" that needs to be found
+   - Usually starts with "What", "How many", "Find", "Calculate", "Prove", etc.
+
+**Examples**:
+
+Example 1:
+Problem: "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?"
+
+Conditions:
+- The front tires wear out after 25,000 km
+- The rear tires wear out after 15,000 km
+- Tires can be swapped between front and rear
+
+Question:
+- When should the tires be swapped so that they wear out at the same time?
+
+Example 2:
+Problem: "A basket has 5 red apples and 3 green apples. How many apples are in the basket?"
+
+Conditions:
+- A basket has 5 red apples
+- The basket has 3 green apples
+
+Question:
+- How many apples are in the basket?
+
+Output as JSON:
+{{
+  "conditions": [
+    "condition 1",
+    "condition 2",
+    ...
+  ],
+  "question": "the question being asked"
+}}
+
+Extracted:

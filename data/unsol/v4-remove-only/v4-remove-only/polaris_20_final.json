@@ -1,0 +1,1223 @@
+[
+  {
+    "data_source": "polaris",
+    "id": 0,
+    "question": "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
+    "ground_truth": "9375",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      160,
+      160,
+      157,
+      160,
+      261,
+      250,
+      252,
+      187,
+      184,
+      191,
+      169,
+      169,
+      173
+    ],
+    "completion_lengths": [
+      42,
+      397,
+      411,
+      357,
+      32,
+      32,
+      36,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "The front tires of a car wear out after 25,000 km",
+      "The rear tires wear out after 15,000 km",
+      "The tires should be swapped so that they wear out at the same time"
+    ],
+    "remove_analysis": [
+      "**\nThe condition \"The front tires of a car wear out after 25,000 km\" is crucial because it provides the wear rate of the front tires, which is necessary to establish a relationship with the rear tire wear rate. This relationship allows us to calculate the optimal swap point so that both sets of tires wear out at the same time. Without this condition, the problem lacks sufficient information to determine when the tires should be swapped, rendering it unsolvable.",
+      "**\nThe condition that the rear tires wear out after 15,000 km is crucial for solving the problem because it provides the wear rate needed to balance the wear on both sets of tires. Without this information, we cannot determine the optimal swap point, making the problem unsolvable. The condition allows us to set up the necessary equations to find when the tires should be swapped to ensure they wear out at the same time.",
+      "**\nThe condition that the tires should be swapped so that they wear out at the same time is fundamental to solving the problem. It provides the objective of equalizing tire wear, which is necessary to determine the optimal swapping point. Without this condition, the problem lacks a clear goal, making it impossible to calculate when the tires should be swapped. The condition is essential for establishing the criteria needed to solve the problem effectively."
+    ],
+    "remove": [
+      "The rear tires of a car wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
+      "The front tires of a car wear out after 25,000 km. When should the tires be swapped so that they wear out at the same time?",
+      "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped?"
+    ],
+    "removal_verified": [
+      "False",
+      "True",
+      "True"
+    ],
+    "unsolvable_verified": [
+      "True",
+      "False",
+      "True"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 1,
+    "question": "The edges of tetrahedron $ABCD$ are given as $AB=c$, $BC=a$, $CA=b$, $DA=a_{1}$, $DB=b_{1}$, and $DC=c_{1}$. Let $h$ be the length of the median line from vertex $D$. Prove that\n\n$$\nh^{2}=\\frac{1}{3}\\left(a_{1}^{2}+b_{1}^{2}+c_{1}^{2}\\right)-\\frac{1}{9}\\left(a^{2}+b^{2}+c^{2}\\right)\n$$",
+    "ground_truth": "^2=\\frac{1}{3}(a_1^2+b_1^2+c_1^2)-\\frac{1}{9}(^2+b^2+^2)",
+    "solution": "",
+    "difficulty": "5/8",
+    "prompt_lengths": [
+      240,
+      308,
+      278,
+      321,
+      765,
+      752,
+      790,
+      329,
+      345,
+      343,
+      237,
+      283,
+      238
+    ],
+    "completion_lengths": [
+      122,
+      502,
+      466,
+      461,
+      62,
+      108,
+      63,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "The edges of tetrahedron $ABCD$ are given as $AB=c$, $BC=a$, $CA=b$, $DA=a_{1}$, $DB=b_{1}$, and $DC=c_{1}$.",
+      "$h$ is the length of the median line from vertex $D$.",
+      "Prove that $h^{2}=\\frac{1}{3}\\left(a_{1}^{2}+b_{1}^{2}+c_{1}^{2}\\right)-\\frac{1}{9}\\left(a^{2}+b^{2}+c^{2}\\right)$."
+    ],
+    "remove_analysis": [
+      "1. **Role of the Condition:**\n   - The condition provides the specific lengths of the edges of the tetrahedron \\(ABCD\\). These lengths are crucial for calculating the median length \\(h\\) from vertex \\(D\\) to the centroid of the opposite face \\(ABC\\).\n   - The formula for \\(h^2\\) involves the edge lengths \\(a_1, b_1, c_1\\) (edges from vertex \\(D\\)) and \\(a, b, c\\) (edges forming the face \\(ABC\\)). These lengths are used to determine the spatial configuration of the tetrahedron and the position of the centroid of face \\(ABC\\.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the specific edge lengths, we lose the ability to calculate the distances between vertices, which are essential for determining the centroid of face \\(ABC\\) and subsequently the median length \\(h\\).\n   - The formula for \\(h^2\\) is derived based on the geometric properties of the tetrahedron, which are directly influenced by the edge lengths. Without these lengths, the formula becomes meaningless as it relies on these specific values.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - The problem requires a precise calculation of the median length \\(h\\), which is dependent on the spatial arrangement of the tetrahedron defined by its edge lengths.\n   - Removing the condition means we no longer have a defined tetrahedron, making it impossible to apply the formula for \\(h^2\\) since the formula is derived from the properties of a specific tetrahedron configuration.\n   - The relationship between the edge lengths and the median is a result of geometric principles that assume a fixed tetrahedron structure. Without the edge lengths, we cannot establish these geometric relationships, rendering the problem unsolvable.\n\n### Conclusion:\nThe condition specifying the edge lengths of tetrahedron \\(ABCD\\) is fundamental to solving the problem. It provides the necessary geometric framework to derive and apply the formula for the median length \\(h\\). Without this condition, the problem lacks the critical information needed to define the tetrahedron and calculate \\(h\\), making it unsolvable.",
+      "To analyze the impact of removing the condition that $h$ is the length of the median line from vertex $D$, let's break down the problem and understand the role of this condition.\n\n### 1. Role of the Condition\n\nThe condition that $h$ is the length of the median line from vertex $D$ is crucial because it defines $h$ as the distance from vertex $D$ to the centroid of the triangle $ABC$. The centroid of a triangle divides each median into a ratio of 2:1, with the longer segment being from the vertex to the centroid. This geometric property is essential for deriving the formula for $h^2$ in terms of the given edge lengths.\n\n### 2. Critical Information Missing Without the Condition\n\nWithout the condition that $h$ is the length of the median, we lose the specific geometric relationship that allows us to express $h^2$ in terms of the edge lengths of the tetrahedron. The formula provided in the problem relies on the fact that $h$ is a median, which involves specific properties of medians in triangles and their relation to the centroid. Without this, we cannot establish the relationship between $h^2$ and the edge lengths $a_1$, $b_1$, $c_1$, $a$, $b$, and $c$.\n\n### 3. Why the Problem Becomes Unsolvable Without This Information\n\nIf $h$ is not defined as the length of the median, we have no basis for the formula given in the problem. The derivation of the formula involves using the properties of medians and centroids, which are specific to the median line. Without this condition, $h$ could represent any arbitrary line from $D$, and there would be no reason to expect the given formula to hold. The problem becomes unsolvable because the relationship between $h^2$ and the edge lengths is no longer valid without the median condition.\n\n### Conclusion\n\nThe condition that $h$ is the length of the median line from vertex $D$ is essential for establishing the geometric relationships needed to derive the formula for $h^2$. Without this condition, the problem lacks the necessary structure and becomes unsolvable, as the specific properties of medians and centroids are no longer applicable.",
+      "To analyze the impact of removing the condition that needs to be proven, let's break down the problem and understand the role of the given condition.\n\n### 1. Role of the Condition\n\nThe condition to be proven is a formula for the square of the length of the median line from vertex \\( D \\) in a tetrahedron. This formula relates the lengths of the edges of the tetrahedron to the median length. The condition provides a specific relationship between these lengths, which is crucial for calculating the median.\n\n### 2. Critical Information Missing Without the Condition\n\nWithout this condition, we lack a direct formula to calculate the median length \\( h \\) in terms of the edge lengths of the tetrahedron. The condition essentially encapsulates the geometric properties and symmetries of the tetrahedron, allowing us to express \\( h^2 \\) in terms of the given edge lengths. Without it, we would not have a straightforward way to relate the median to the edges, making it difficult to solve for \\( h \\) without additional geometric or algebraic tools.\n\n### 3. Why the Problem Becomes Unsolvable Without This Information\n\nWithout the condition, the problem becomes unsolvable because:\n\n- **Lack of Direct Formula**: The condition provides a direct formula for \\( h^2 \\), which is not immediately obvious from the basic properties of a tetrahedron. Without it, deriving \\( h^2 \\) would require a more complex geometric or algebraic approach, potentially involving coordinate geometry or vector analysis.\n  \n- **Complexity of Tetrahedron Geometry**: The geometry of a tetrahedron is more complex than that of simpler shapes like triangles or quadrilaterals. The median line in a tetrahedron does not have a simple relationship with the edges unless specific conditions or formulas are provided.\n\n- **Dependence on Symmetry and Balance**: The formula reflects a balance between the edge lengths of the tetrahedron, which is not trivial to deduce without the condition. The symmetry and balance captured by the formula are essential for understanding the geometric properties of the median.\n\nIn summary, the condition provides a necessary and non-trivial relationship that simplifies the problem significantly. Without it, the problem would require a deeper exploration of tetrahedral geometry, making it much more challenging to solve."
+    ],
+    "remove": [
+      "Prove that\n\n$$\nh^{2}=\\frac{1}{3}\\left(a_{1}^{2}+b_{1}^{2}+c_{1}^{2}\\right)-\\frac{1}{9}\\left(a^{2}+b^{2}+c^{2}\\right)\n$$",
+      "The edges of tetrahedron $ABCD$ are given as $AB=c$, $BC=a$, $CA=b$, $DA=a_{1}$, $DB=b_{1}$, and $DC=c_{1}$. Prove that\n\n$$\nh^{2}=\\frac{1}{3}\\left(a_{1}^{2}+b_{1}^{2}+c_{1}^{2}\\right)-\\frac{1}{9}\\left(a^{2}+b^{2}+c^{2}\\right)\n$$",
+      "The edges of tetrahedron $ABCD$ are given as $AB=c$, $BC=a$, $CA=b$, $DA=a_{1}$, $DB=b_{1}$, and $DC=c_{1}$. Let $h$ be the length of the median line from vertex $D$."
+    ],
+    "removal_verified": [
+      "False",
+      "False",
+      "False"
+    ],
+    "unsolvable_verified": [
+      "True",
+      "True",
+      "True"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 2,
+    "question": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:",
+    "ground_truth": "392",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      147,
+      137,
+      144,
+      135,
+      510,
+      581,
+      224,
+      162,
+      157,
+      162,
+      165,
+      153,
+      167
+    ],
+    "completion_lengths": [
+      24,
+      365,
+      429,
+      414,
+      29,
+      17,
+      31,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "The largest three-digit number",
+      "Quotient rounded to one decimal place is 2.5",
+      "Smallest divisor"
+    ],
+    "remove_analysis": [
+      "To analyze the impact of removing the condition \"the largest three-digit number\" from the problem, let's break down the problem-solving process and understand the role of this condition.\n\n1. **Role of the Condition:**\n   - The condition \"the largest three-digit number\" specifies the dividend in the division operation. The largest three-digit number is 999. This condition is crucial because it sets a fixed value for the dividend, which is necessary to determine the divisor that results in a quotient of 2.5 when rounded to one decimal place.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the condition specifying the largest three-digit number, the dividend becomes undefined. This means we no longer have a specific number to divide by the integer (divisor) to achieve the quotient of 2.5. The problem would lack a starting point for calculations, as the dividend could be any number, not just 999.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - If the dividend is not specified, the problem becomes open-ended. The quotient of 2.5 could be achieved with an infinite number of dividend-divisor pairs. Without a specific dividend, there is no way to determine a unique smallest divisor. The problem relies on the fixed value of 999 to calculate the divisor that results in a quotient of 2.5, rounded to one decimal place. Without this fixed value, the problem lacks the constraints necessary to find a unique solution.\n\nIn summary, the condition \"the largest three-digit number\" is essential because it provides a specific dividend, allowing for the calculation of a unique smallest divisor that results in the desired quotient. Removing this condition would make the problem unsolvable, as it would lack the necessary constraints to determine a specific solution.",
+      "To analyze the impact of removing the condition \"the quotient rounded to one decimal place is 2.5,\" let's break down the problem and understand the role of this condition:\n\n1. **Role of the Condition:**\n   - The condition specifies that when the largest three-digit number (999) is divided by an integer \\( d \\), the quotient, when rounded to one decimal place, should be 2.5. This condition is crucial because it directly determines the possible values of \\( d \\).\n   - Mathematically, this means that the exact quotient \\( \\frac{999}{d} \\) must lie within the range that rounds to 2.5. The range for rounding to 2.5 is from 2.45 to 2.55 (exclusive of 2.55).\n\n2. **Critical Information Missing Without the Condition:**\n   - Without this condition, there is no specific target for the quotient, meaning any integer \\( d \\) could potentially be a divisor of 999. The problem would lack a specific criterion to determine the smallest divisor that meets a particular requirement.\n   - The condition narrows down the possible values of \\( d \\) to those that make the quotient approximately 2.5, which is essential for finding the smallest such divisor.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - Without the condition, the problem becomes open-ended. There is no longer a specific quotient to achieve, so the task of finding the smallest divisor becomes undefined. The problem would simply ask for the smallest divisor of 999, which is 3, but this does not align with the original problem's intent.\n   - The condition provides a specific mathematical constraint that guides the solution process. Without it, the problem lacks direction and purpose, making it unsolvable in the context of the original question.\n\nIn summary, the condition \"the quotient rounded to one decimal place is 2.5\" is essential for defining the problem's constraints and guiding the solution process. Without it, the problem loses its specificity and becomes unsolvable in its intended form.",
+      "**\nThe condition \"smallest divisor\" is essential for providing a unique and specific solution to the problem. It ensures that the problem is well-defined and solvable by narrowing down the possible divisors to a single, smallest value. Without this condition, the problem becomes ambiguous and lacks a clear solution path, as multiple divisors could satisfy the quotient condition, leading to an infinite number of potential answers."
+    ],
+    "remove": [
+      "The number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:",
+      "The largest three-digit number divided by an integer will have the smallest divisor as:",
+      "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the divisor as:"
+    ],
+    "removal_verified": [
+      "True",
+      "False",
+      "False"
+    ],
+    "unsolvable_verified": [
+      "True",
+      "True",
+      "False"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 3,
+    "question": "Mr. Lee V. Soon starts his morning commute at 7:00 AM to arrive at work by 8:00 AM. If he drives at an average speed of 30 miles per hour, he is late by 5 minutes, and if he drives at an average speed of 70 miles per hour, he is early by 4 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM.",
+    "ground_truth": "32.5",
+    "solution": "",
+    "difficulty": "1/8",
+    "prompt_lengths": [
+      205,
+      215,
+      206,
+      206,
+      561,
+      315,
+      685,
+      290,
+      267,
+      267,
+      219,
+      205,
+      205
+    ],
+    "completion_lengths": [
+      57,
+      337,
+      484,
+      471,
+      81,
+      67,
+      67,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "Mr. Lee V. Soon starts his commute at 7:00 AM to arrive by 8:00 AM.",
+      "At 30 miles per hour, he is late by 5 minutes.",
+      "At 70 miles per hour, he is early by 4 minutes."
+    ],
+    "remove_analysis": [
+      "1. **Role of the Condition:**\n   - The condition that Mr. Lee V. Soon starts his commute at 7:00 AM to arrive by 8:00 AM establishes the total time available for the commute, which is 1 hour. This is crucial for determining the relationship between time, speed, and distance, as it sets the time constraint within which he must complete his journey.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the specified start and end times, we lose the fixed duration of the commute (1 hour). This duration is essential for calculating the distance to work, which is derived from the speeds and the time deviations (late by 5 minutes or early by 4 minutes). Without knowing the total time, we cannot accurately determine the distance or the required speed to arrive exactly at 8:00 AM.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - The problem relies on the relationship between speed, time, and distance. Without the 1-hour time frame, we cannot establish the distance to work, which is a key variable needed to solve for the exact speed. The deviations in arrival time (late or early) are relative to the 1-hour commute, and without this reference, the deviations become meaningless, making it impossible to calculate the precise speed needed to arrive on time.\n\nIn summary, the condition of starting at 7:00 AM and aiming to arrive by 8:00 AM provides the necessary time constraint to calculate the distance and solve for the exact speed required. Removing this condition eliminates the ability to determine the distance, rendering the problem unsolvable.",
+      "**\nThe condition \"At 30 miles per hour, he is late by 5 minutes\" is essential for determining the distance of Mr. Lee's commute. This distance is necessary to calculate the exact speed required for an on-time arrival. Without this condition, the problem lacks sufficient information to establish the relationship between speed, time, and distance, rendering it unsolvable. The condition provides a critical reference point that, along with the 70 mph condition, allows us to solve for the desired speed.",
+      "To analyze the impact of removing the condition \"At 70 miles per hour, he is early by 4 minutes,\" we need to understand the original problem-solving process and the role this condition plays:\n\n1. **Role of This Condition**:\n   - This condition provides an additional data point about Mr. Lee V. Soon's commute. Specifically, it gives us a reference for calculating the distance of his commute. With this critical piece of information, we can establish an equation relating speed and time, allowing us to determine the exact commuting distance and subsequently the precise speed required for Mr. Lee V. Soon to arrive at work exactly at 8:00 AM.\n\n2. **Critical Information Provided**:\n   - The condition helps establish the distance of the trip. By calculating the time taken at 70 miles per hour and knowing this results in him being 4 minutes early, we can work out the precise time the journey should take. Specifically, traveling at 70 miles per hour for slightly less than an hour (since he's early by 4 minutes meaning he travels for 56 minutes) allows us to calculate the distance as 70*(56/60) miles. This distance is crucial to then solve for the constant speed needed to cover the same distance in exactly one hour.\n\n3. **Impact of Removing the Condition**:\n   - Without this condition, we lose the ability to determine the total commuting distance directly. The problem effectively becomes under-constrained — knowing only that he drives at 30 miles per hour and is late by 5 minutes does not uniquely determine the required speed to arrive perfectly on time. We would still know the time difference created by traveling at 30 miles per hour results in being 5 minutes late, indicating a requirement for a higher speed, but we wouldn't know explicitly what distance the intended one hour should cover.\n\n**Conclusion**:\nThe condition that Mr. Lee is 4 minutes early when traveling at 70 miles per hour is essential for defining the problem fully. It provides the second equation needed to solve for commutable distance, combined with the other speed condition (being late by 5 minutes at 30 mph). Without it, we cannot find the intended traveling speed because the problem lacks sufficient information to calculate the precise commuting distance. Thus, the problem becomes unsolvable due to an incomplete system of equations."
+    ],
+    "remove": [
+      "Mr. Lee V. Soon needs to arrive at work by 8:00 AM. If he drives at an average speed of 30 miles per hour, he is late by 5 minutes, and if he drives at an average speed of 70 miles per hour, he is early by 4 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM.",
+      "Mr. Lee V. Soon starts his morning commute at 7:00 AM to arrive at work by 8:00 AM. If he drives at an average speed of 70 miles per hour, he is early by 4 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM.",
+      "Mr. Lee V. Soon starts his morning commute at 7:00 AM to arrive at work by 8:00 AM. If he drives at an average speed of 30 miles per hour, he is late by 5 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM."
+    ],
+    "removal_verified": [
+      "True",
+      "True",
+      "True"
+    ],
+    "unsolvable_verified": [
+      "False",
+      "False",
+      "False"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 4,
+    "question": "Suppose convex hexagon  $ \\text{HEXAGN}$  has  $ 120^\\circ$ -rotational symmetry about a point  $ P$ —that is, if you rotate it  $ 120^\\circ$  about  $ P$ , it doesn't change. If  $ PX\\equal{}1$ , find the area of triangle  $ \\triangle{GHX}$ .",
+    "ground_truth": "\\frac{\\sqrt{3}}{4}",
+    "solution": "",
+    "difficulty": "1/8",
+    "prompt_lengths": [
+      198,
+      208,
+      198,
+      674,
+      628,
+      239,
+      255,
+      185,
+      211
+    ],
+    "completion_lengths": [
+      36,
+      458,
+      422,
+      43,
+      69,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "Convex hexagon HEXAGN has 120°-rotational symmetry about a point P.",
+      "Find the area of triangle △GHX."
+    ],
+    "remove_analysis": [
+      "To analyze the impact of removing the condition of 120°-rotational symmetry about a point \\( P \\) in the problem, let's break down the role this condition plays and the consequences of its absence.\n\n1. **Role of the Condition:**\n   - The 120°-rotational symmetry implies that the hexagon is equilateral and equiangular, meaning all sides are equal, and all internal angles are 120°.\n   - This symmetry ensures that the hexagon can be divided into six equilateral triangles, each with a vertex at point \\( P \\).\n   - The symmetry also implies that any point \\( X \\) on the hexagon, when rotated by 120° about \\( P \\), will map to another vertex of the hexagon, maintaining the structure and properties of the hexagon.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the 120°-rotational symmetry, we lose the guarantee that the hexagon is regular (all sides and angles equal).\n   - The specific relationship between the vertices and point \\( P \\) would be undefined, making it impossible to determine consistent distances and angles.\n   - The property that allows us to calculate the area of triangle \\( \\triangle{GHX} \\) using the known side length \\( PX = 1 \\) and the symmetry would be lost.\n\n3. **Why the Problem Becomes Unsolvable:**\n   - Without the symmetry, the hexagon could be any arbitrary convex shape, making it impossible to determine the positions of points \\( G \\), \\( H \\), and \\( X \\) relative to each other and to \\( P \\).\n   - The lack of symmetry means we cannot assume the presence of equilateral triangles or any specific geometric properties that would allow for straightforward area calculation.\n   - The problem relies on the symmetry to simplify the geometry into manageable, predictable components. Without it, there is insufficient information to uniquely determine the area of \\( \\triangle{GHX} \\).\n\nIn summary, the 120°-rotational symmetry is crucial for defining the geometric properties of the hexagon and its relationship with point \\( P \\). Removing this condition leaves the problem without a clear structure, making it unsolvable with the given information.",
+      "To analyze the impact of removing the condition \"Find the area of triangle \\( \\triangle{GHX} \\)\" from the problem, let's break down the problem-solving process and understand the role of this condition.\n\n1. **Role of the Condition:**\n   - The condition \"Find the area of triangle \\( \\triangle{GHX} \\)\" specifies the exact requirement of the problem. It directs the solver to focus on calculating the area of a specific triangle within the hexagon, which is crucial for determining the final answer.\n   - This condition helps in narrowing down the problem to a specific geometric calculation, which involves understanding the properties of the hexagon and its symmetry.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without this condition, the problem becomes vague because it lacks a clear objective. The hexagon has rotational symmetry, and there are multiple triangles that could be formed within it. Without specifying which triangle's area needs to be calculated, the problem does not provide a clear path to a solution.\n   - The condition also implicitly suggests that the triangle \\( \\triangle{GHX} \\) is related to the symmetry and the given point \\( P \\), which is crucial for leveraging the rotational symmetry to simplify calculations.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - Without knowing which triangle's area to find, the problem lacks direction. The hexagon's symmetry could be used to find various properties or areas, but without a specific target, the problem becomes open-ended and lacks a definitive solution.\n   - The rotational symmetry implies that certain geometric properties are preserved, but without the condition, there is no way to apply these properties to a specific calculation, making it impossible to arrive at a unique answer.\n\nIn summary, the condition \"Find the area of triangle \\( \\triangle{GHX} \\)\" is essential because it provides a clear goal and allows the solver to apply the hexagon's rotational symmetry effectively. Without this condition, the problem lacks focus and becomes unsolvable due to the absence of a specific target for the calculation."
+    ],
+    "remove": [
+      "Suppose hexagon \\( \\text{HEXAGN} \\) has a point \\( P \\). If \\( PX = 1 \\), find the area of triangle \\( \\triangle{GHX} \\).",
+      "Suppose convex hexagon \\( \\text{HEXAGN} \\) has \\( 120^\\circ \\)-rotational symmetry about a point \\( P \\) — that is, if you rotate it \\( 120^\\circ \\) about \\( P \\), it doesn't change. If \\( PX = 1 \\), determine the result."
+    ],
+    "removal_verified": [
+      "False",
+      "False"
+    ],
+    "unsolvable_verified": [
+      "True",
+      "True"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 5,
+    "question": "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$. One second after the flight began, it exploded into two unequal parts, with their mass ratio being $1:2$. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$. Find the speed (in m/s) of the second fragment immediately after the explosion. Assume the acceleration due to gravity is $10 \\, \\mathrm{m/s}^2$.",
+    "ground_truth": "17\\,",
+    "solution": "",
+    "difficulty": "1/8",
+    "prompt_lengths": [
+      225,
+      232,
+      235,
+      230,
+      603,
+      565,
+      645,
+      313,
+      329,
+      311,
+      223,
+      236,
+      223
+    ],
+    "completion_lengths": [
+      70,
+      362,
+      321,
+      407,
+      86,
+      99,
+      86,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "The firecracker was thrown vertically upward with a speed of \\(20 \\, \\mathrm{m/s}\\).",
+      "One second after the flight began, it exploded into two unequal parts, with their mass ratio being \\(1:2\\).",
+      "The smaller fragment flew horizontally with a speed of \\(16 \\, \\mathrm{m/s}\\)."
+    ],
+    "remove_analysis": [
+      "1. **Role of the Condition:**\n   The condition that the firecracker was thrown vertically upward with a speed of \\(20 \\, \\mathrm{m/s}\\) establishes the initial vertical motion of the firecracker. This initial velocity is crucial for determining the vertical position and velocity of the firecracker at the moment of explosion, which occurs one second after the launch. The initial vertical speed allows us to calculate the vertical velocity of the firecracker just before the explosion, which is necessary for applying the conservation of momentum in the vertical direction.\n\n2. **Critical Information Missing Without the Condition:**\n   Without the initial vertical speed of \\(20 \\, \\mathrm{m/s}\\), we would lack the information needed to determine the vertical velocity of the firecracker at the time of the explosion. This vertical velocity is essential for calculating the vertical component of the momentum of the system (firecracker) just before the explosion. Without this, we cannot apply the conservation of momentum to find the vertical component of the velocity of the second fragment after the explosion.\n\n3. **Why the Problem Becomes Unsolvable:**\n   The problem becomes unsolvable without the initial vertical speed because the conservation of momentum in the vertical direction cannot be applied. The explosion divides the firecracker into two parts, and to find the speed of the second fragment, we need to know both the horizontal and vertical components of its velocity. The horizontal component is given for the smaller fragment, but the vertical component for both fragments depends on the initial vertical velocity of the firecracker. Without knowing this initial condition, we cannot determine the vertical momentum before the explosion, making it impossible to solve for the speed of the second fragment using momentum conservation principles. Thus, the initial vertical speed is a critical piece of information for solving the problem.",
+      "1. **Role of the Condition:**\n   The condition that the firecracker explodes into two unequal parts with a mass ratio of \\(1:2\\) is crucial for applying the conservation of momentum. This condition allows us to determine the masses of the two fragments relative to each other. Knowing the mass ratio is essential for calculating the velocities of the fragments after the explosion, as the momentum before and after the explosion must be conserved.\n\n2. **Critical Information Missing Without the Condition:**\n   Without the mass ratio, we would not be able to assign specific relative masses to the two fragments. This would make it impossible to apply the conservation of momentum effectively, as we need to know how the total mass of the firecracker is distributed between the two fragments. The mass ratio directly influences the distribution of momentum between the fragments, which is necessary to find the velocity of the second fragment.\n\n3. **Why the Problem Becomes Unsolvable:**\n   Without the mass ratio, we lack the necessary information to set up the equations for conservation of momentum. The problem involves two unknowns: the velocity of the second fragment and the distribution of mass between the fragments. Without the mass ratio, we have an underdetermined system with more unknowns than equations. This makes it impossible to uniquely determine the velocity of the second fragment, as there would be infinitely many solutions depending on the assumed mass distribution.\n\nIn summary, the mass ratio condition is essential for applying the conservation of momentum to solve for the velocity of the second fragment. Without it, the problem lacks sufficient information to be solvable.",
+      "To analyze the impact of removing the condition that \"the smaller fragment flew horizontally with a speed of \\(16 \\, \\mathrm{m/s}\\)\", let's break down the problem and understand the role of this condition.\n\n### 1. Role of the Condition\n\nThe condition specifies the horizontal velocity of the smaller fragment immediately after the explosion. This information is crucial because it allows us to determine the horizontal component of the momentum for the smaller fragment. Since the explosion occurs in a closed system, the conservation of momentum must be applied. The condition provides a specific value for the horizontal velocity, which is necessary to calculate the momentum of the smaller fragment and, consequently, the momentum of the larger fragment.\n\n### 2. Critical Information Missing Without the Condition\n\nWithout this condition, we would lack the specific horizontal velocity of the smaller fragment. This would leave us with an indeterminate system because:\n\n- We would not be able to calculate the horizontal component of the momentum for the smaller fragment.\n- Consequently, we would not be able to apply the conservation of momentum in the horizontal direction to find the horizontal velocity of the larger fragment.\n\n### 3. Why the Problem Becomes Unsolvable\n\nWithout knowing the horizontal velocity of the smaller fragment, we cannot determine the horizontal momentum distribution between the two fragments. The conservation of momentum in the horizontal direction is essential to solve for the velocity of the second fragment. Without this information, the problem becomes unsolvable because:\n\n- We cannot establish a relationship between the velocities of the two fragments.\n- The system of equations needed to solve for the unknown velocities would be incomplete.\n\n### Conclusion\n\nThe condition that the smaller fragment flew horizontally with a speed of \\(16 \\, \\mathrm{m/s}\\) is critical for applying the conservation of momentum in the horizontal direction. Without it, we lack the necessary information to determine the velocity of the second fragment, making the problem unsolvable. This condition provides a specific value that anchors the momentum calculations, allowing us to solve for the unknowns in the system."
+    ],
+    "remove": [
+      "A firecracker exploded into two unequal parts, with their mass ratio being \\(1:2\\). One second after the flight began, the smaller fragment flew horizontally with a speed of \\(16 \\, \\mathrm{m/s}\\). Find the speed (in m/s) of the second fragment immediately after the explosion. Assume the acceleration due to gravity is \\(10 \\, \\mathrm{m/s}^2\\).",
+      "A firecracker was thrown vertically upward with a speed of \\(20 \\, \\mathrm{m/s}\\). One second after the flight began, it exploded into two parts. Immediately after the explosion, the smaller fragment flew horizontally with a speed of \\(16 \\, \\mathrm{m/s}\\). Find the speed (in m/s) of the second fragment immediately after the explosion. Assume the acceleration due to gravity is \\(10 \\, \\mathrm{m/s}^2\\).",
+      "A firecracker was thrown vertically upward with a speed of \\(20 \\, \\mathrm{m/s}\\). One second after the flight began, it exploded into two unequal parts, with their mass ratio being \\(1:2\\). Find the speed (in m/s) of the second fragment immediately after the explosion. Assume the acceleration due to gravity is \\(10 \\, \\mathrm{m/s}^2\\)."
+    ],
+    "removal_verified": [
+      "True",
+      "False",
+      "True"
+    ],
+    "unsolvable_verified": [
+      "False",
+      "True",
+      "False"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 6,
+    "question": "In rectangle $PQRS$, $PQ=8$ and $QR=6$. Points $A$ and $B$ lie on $\\overline{PQ}$, points $C$ and $D$ lie on $\\overline{QR}$, points $E$ and $F$ lie on $\\overline{RS}$, and points $G$ and $H$ lie on $\\overline{SP}$ so that $AP=BQ<4$ and the convex octagon $ABCDEFGH$ is equilateral. The length of a side of this octagon can be expressed in the form $k+m\\sqrt{n}$, where $k$, $m$, and $n$ are integers and $n$ is not divisible by the square of any prime. What is $k+m+n$?",
+    "ground_truth": "7",
+    "solution": "",
+    "difficulty": "3/8",
+    "prompt_lengths": [
+      282,
+      276,
+      274,
+      277,
+      799,
+      796,
+      708,
+      453,
+      450,
+      448,
+      317,
+      316,
+      311
+    ],
+    "completion_lengths": [
+      29,
+      515,
+      562,
+      422,
+      181,
+      180,
+      175,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "PQ = 8 and QR = 6",
+      "AP = BQ < 4",
+      "The octagon ABCDEFGH is equilateral"
+    ],
+    "remove_analysis": [
+      "To analyze the impact of removing the condition \"PQ = 8 and QR = 6\" from the original problem, we need to understand how this condition influences the solution process and the problem's solvability.\n\n1. **Role of the Condition:**\n   - The condition \"PQ = 8 and QR = 6\" specifies the dimensions of rectangle \\(PQRS\\). This is crucial because it defines the lengths of the sides of the rectangle, which in turn determines the positions of points \\(A, B, C, D, E, F, G,\\) and \\(H\\) on the respective sides.\n   - Knowing the dimensions of the rectangle allows us to calculate the possible positions of these points such that the octagon \\(ABCDEFGH\\) is equilateral. The side lengths of the rectangle directly influence the geometry and symmetry required for the octagon to be equilateral.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the specific dimensions of the rectangle, we lose the ability to determine the exact positions of points \\(A, B, C, D, E, F, G,\\) and \\(H\\) that satisfy the condition \\(AP = BQ < 4\\) and form an equilateral octagon.\n   - The side length of the equilateral octagon, expressed as \\(k + m\\sqrt{n}\\), is derived from the geometric properties of the rectangle. Without knowing \\(PQ\\) and \\(QR\\), we cannot calculate the side length of the octagon accurately.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - The problem requires a specific geometric configuration to ensure the octagon is equilateral. Without fixed dimensions for the rectangle, there is no reference framework to determine the necessary distances and angles.\n   - The expression for the side length of the octagon, \\(k + m\\sqrt{n}\\), is dependent on the rectangle's dimensions. Without these, the problem lacks sufficient constraints to derive a unique solution for \\(k, m,\\) and \\(n\\).\n\nIn summary, the condition \"PQ = 8 and QR = 6\" is essential for defining the geometric setup of the problem. It provides the necessary constraints to position the points correctly and calculate the side length of the equilateral octagon. Removing this condition would leave the problem without a clear framework, making it impossible to solve for the specific values of \\(k, m,\\) and \\(n\\) that lead to the original answer of 7.",
+      "1. **Role of the Condition \\( AP = BQ < 4 \\):**\n   - The condition \\( AP = BQ < 4 \\) ensures that points \\( A \\) and \\( B \\) are symmetrically placed on segment \\( \\overline{PQ} \\) such that the octagon \\( ABCDEFGH \\) remains equilateral. This symmetry is crucial for maintaining equal side lengths across the octagon.\n   - The inequality \\( AP = BQ < 4 \\) restricts the placement of points \\( A \\) and \\( B \\) to ensure that the octagon does not extend beyond the boundaries of the rectangle, which would violate the requirement for the octagon to be convex.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the condition \\( AP = BQ < 4 \\), there is no specific constraint on the placement of points \\( A \\) and \\( B \\) along \\( \\overline{PQ} \\). This lack of constraint would lead to multiple possible configurations for the octagon, making it impossible to determine a unique side length.\n   - The equilateral nature of the octagon relies on the symmetry and specific placement of points \\( A \\) and \\( B \\). Without this condition, the symmetry is lost, and the octagon may not be equilateral.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - The problem requires finding the side length of an equilateral octagon, which is expressed in the form \\( k + m\\sqrt{n} \\). Without the condition \\( AP = BQ < 4 \\), the side length cannot be uniquely determined because the positions of \\( A \\) and \\( B \\) are ambiguous.\n   - The absence of this condition introduces an infinite number of possible configurations for the octagon, each potentially leading to different side lengths. This ambiguity prevents the derivation of a single, definitive expression for the side length, making the problem unsolvable in its original form.\n\n### Conclusion:\n\nThe condition \\( AP = BQ < 4 \\) is essential for ensuring the symmetry and equilateral nature of the octagon \\( ABCDEFGH \\). It provides a necessary constraint that allows for a unique solution to the problem. Without this condition, the problem becomes unsolvable due to the lack of a definitive configuration for the octagon, leading to multiple possible side lengths. Thus, the condition is critical for maintaining the integrity and solvability of the problem.",
+      "1. **Role of the Condition:**\n   The condition that the octagon \\(ABCDEFGH\\) is equilateral is crucial because it imposes a strict geometric constraint on the placement of points \\(A, B, C, D, E, F, G,\\) and \\(H\\) on the sides of rectangle \\(PQRS\\). Specifically, it ensures that all sides of the octagon are of equal length, which directly influences the calculation of the side length of the octagon. This condition allows us to derive relationships between the coordinates of these points and the dimensions of the rectangle.\n\n2. **Critical Information Missing Without the Condition:**\n   Without the condition that the octagon is equilateral, we lose the uniformity of side lengths, which is essential for determining the specific placement of points on the rectangle's sides. The equilateral nature of the octagon provides a unique solution for the side length, expressed in the form \\(k + m\\sqrt{n}\\). Without this condition, there would be infinitely many ways to place the points such that they form a convex octagon, but none would guarantee equal side lengths, making it impossible to determine a unique expression for the side length.\n\n3. **Why the Problem Becomes Unsolvable:**\n   The problem becomes unsolvable without the equilateral condition because the side length of the octagon is no longer uniquely defined. The equilateral condition is what allows us to derive a specific mathematical expression for the side length, which is necessary to find the values of \\(k\\), \\(m\\), and \\(n\\). Without this condition, the problem lacks sufficient constraints to determine a single solution, as the points could be placed in numerous configurations that do not result in equal side lengths, leading to ambiguity in the calculation of \\(k + m\\sqrt{n}\\).\n\nIn summary, the equilateral condition is essential for ensuring a unique and solvable configuration of the octagon, allowing for the calculation of a specific side length expression. Without it, the problem lacks the necessary constraints to arrive at a definitive solution."
+    ],
+    "remove": [
+      "In rectangle \\(PQRS\\), points \\(A\\) and \\(B\\) lie on \\(\\overline{PQ}\\), points \\(C\\) and \\(D\\) lie on \\(\\overline{QR}\\), points \\(E\\) and \\(F\\) lie on \\(\\overline{RS}\\), and points \\(G\\) and \\(H\\) lie on \\(\\overline{SP}\\) so that \\(AP = BQ < 4\\) and the convex octagon \\(ABCDEFGH\\) is equilateral. The length of a side of this octagon can be expressed in the form \\(k + m\\sqrt{n}\\), where \\(k\\), \\(m\\), and \\(n\\) are integers and \\(n\\) is not divisible by the square of any prime. What is \\(k + m + n\\)?",
+      "In rectangle \\(PQRS\\), \\(PQ=8\\) and \\(QR=6\\). Points \\(A\\) and \\(B\\) lie on \\(\\overline{PQ}\\), points \\(C\\) and \\(D\\) lie on \\(\\overline{QR}\\), points \\(E\\) and \\(F\\) lie on \\(\\overline{RS}\\), and points \\(G\\) and \\(H\\) lie on \\(\\overline{SP}\\) so that the convex octagon \\(ABCDEFGH\\) is equilateral. The length of a side of this octagon can be expressed in the form \\(k+m\\sqrt{n}\\), where \\(k\\), \\(m\\), and \\(n\\) are integers and \\(n\\) is not divisible by the square of any prime. What is \\(k+m+n\\)?",
+      "In rectangle \\(PQRS\\), \\(PQ=8\\) and \\(QR=6\\). Points \\(A\\) and \\(B\\) lie on \\(\\overline{PQ}\\), points \\(C\\) and \\(D\\) lie on \\(\\overline{QR}\\), points \\(E\\) and \\(F\\) lie on \\(\\overline{RS}\\), and points \\(G\\) and \\(H\\) lie on \\(\\overline{SP}\\) so that \\(AP=BQ<4\\). The length of a side of this octagon can be expressed in the form \\(k+m\\sqrt{n}\\), where \\(k\\), \\(m\\), and \\(n\\) are integers and \\(n\\) is not divisible by the square of any prime. What is \\(k+m+n\\)?"
+    ],
+    "removal_verified": [
+      "True",
+      "False",
+      "True"
+    ],
+    "unsolvable_verified": [
+      "True",
+      "True",
+      "True"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 7,
+    "question": "The integer 119 is a multiple of which number?",
+    "ground_truth": "7",
+    "solution": "",
+    "difficulty": "4/8",
+    "prompt_lengths": [
+      127,
+      117,
+      120,
+      438,
+      414,
+      125,
+      127,
+      148,
+      147
+    ],
+    "completion_lengths": [
+      13,
+      312,
+      285,
+      12,
+      11,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "119 is an integer",
+      "119 is a multiple of a number"
+    ],
+    "remove_analysis": [
+      "1. **Role of the Condition:**\n   The condition that 119 is an integer is crucial because it ensures that we are dealing with whole numbers. This is important when determining factors or multiples, as these concepts are typically defined within the set of integers. The problem asks for a number that 119 is a multiple of, which inherently assumes integer arithmetic.\n\n2. **Critical Information Missing Without the Condition:**\n   Without the condition that 119 is an integer, we lose the assurance that we are working within the realm of integers. This could lead to ambiguity in the problem, as the concept of a \"multiple\" is not well-defined for non-integers. If 119 were not specified as an integer, it could be interpreted as a real number, and the notion of it being a multiple of another number would not make sense in the traditional integer context.\n\n3. **Why the Problem Becomes Unsolvable:**\n   Without the integer condition, the problem becomes unsolvable because the concept of a number being a multiple of another is not applicable to non-integers. Multiples are defined in terms of integer multiplication, where one integer is a multiple of another if it can be expressed as the product of that integer and some other integer. If 119 were not an integer, we could not apply this definition, and the problem would lack a clear mathematical framework to determine a solution. Thus, the condition that 119 is an integer is essential for the problem to be meaningful and solvable within the context of integer arithmetic.",
+      "1. **Role of the Condition:**\n   The condition \"119 is a multiple of a number\" is crucial because it sets the framework for the problem. It implies that there exists at least one integer \\( n \\) such that \\( 119 = n \\times k \\), where \\( k \\) is the number we are trying to find. This condition directs us to look for divisors of 119, which are the potential values of \\( k \\).\n\n2. **Critical Information Missing Without the Condition:**\n   Without the condition that 119 is a multiple of a number, we lack the directive to find a divisor of 119. The problem would become open-ended, as there would be no specific task to determine which numbers divide 119. We would not know that we are supposed to find a number \\( k \\) such that \\( 119 \\mod k = 0 \\).\n\n3. **Why the Problem Becomes Unsolvable:**\n   Without the condition, the problem loses its specificity and becomes unsolvable in its original context. The task of identifying a divisor of 119 is no longer clear, and there is no basis for determining which numbers are relevant to the problem. The absence of this condition removes the focus on divisibility, leaving us without a clear mathematical operation or goal to pursue. The problem would then require additional information or a new condition to be solvable."
+    ],
+    "remove": [
+      "The number 119 is a multiple of which number?",
+      "The integer 119 is related to which number?"
+    ],
+    "removal_verified": [
+      "False",
+      "False"
+    ],
+    "unsolvable_verified": [
+      "False",
+      "True"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 8,
+    "question": "Given the function \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\), if the minimum value of \\( f(x) \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right] \\) is \\(-1\\), find the value of \\( a \\).",
+    "ground_truth": "-1",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      192,
+      204,
+      214,
+      639,
+      581,
+      245,
+      248,
+      181,
+      174
+    ],
+    "completion_lengths": [
+      68,
+      427,
+      358,
+      45,
+      38,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "The function \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\)",
+      "The minimum value of \\( f(x) \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right] \\) is \\(-1\\)"
+    ],
+    "remove_analysis": [
+      "To analyze the impact of removing the condition \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\) from the problem, let's break down the steps:\n\n1. **Role of the Condition:**\n   - The condition provides the explicit form of the function \\( f(x) \\) that we are analyzing. It specifies how \\( f(x) \\) is constructed using trigonometric functions and the parameter \\( a \\).\n   - This form is crucial for determining the behavior of \\( f(x) \\) over the given interval \\(\\left[ 0, \\frac{\\pi}{2} \\right]\\), particularly for finding its minimum value.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the explicit form of \\( f(x) \\), we lack the necessary information to compute the function's values at any point within the interval. This makes it impossible to analyze the function's behavior or determine its minimum value.\n   - The specific combination of trigonometric terms and the parameter \\( a \\) is essential for setting up the equation that leads to finding the minimum value of the function.\n\n3. **Why the Problem Becomes Unsolvable:**\n   - Without knowing the exact form of \\( f(x) \\), we cannot apply calculus or algebraic techniques to find critical points or evaluate the function's minimum value.\n   - The problem's requirement to find the value of \\( a \\) such that the minimum value of \\( f(x) \\) is \\(-1\\) is directly tied to the function's structure. Without this structure, there is no basis for determining how \\( a \\) influences the function's minimum value.\n\nIn summary, the condition \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\) is fundamental to solving the problem. It defines the function whose minimum value we need to analyze, and without it, the problem lacks the necessary framework to determine the value of \\( a \\) that results in the specified minimum value.",
+      "1. **Role of the Condition:**\n   The condition that the minimum value of \\( f(x) \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right] \\) is \\(-1\\) is crucial for determining the value of the parameter \\( a \\). This condition provides a specific target value for the minimum of the function, which allows us to set up an equation to solve for \\( a \\). Without this condition, we would not have a specific criterion to adjust \\( a \\) to achieve a particular minimum value.\n\n2. **Critical Information Missing Without the Condition:**\n   Without the condition specifying the minimum value, we lack a reference point to determine \\( a \\). The function \\( f(x) = \\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\) involves trigonometric terms whose behavior depends on \\( x \\). The condition ties the behavior of these terms to a specific outcome, \\(-1\\), which is necessary to isolate and solve for \\( a \\).\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   Without knowing the desired minimum value, we cannot establish a relationship between the trigonometric components of \\( f(x) \\) and the parameter \\( a \\). The problem becomes open-ended because \\( a \\) could take on any value, leading to different minimum values of \\( f(x) \\). The condition provides a boundary that allows us to uniquely determine \\( a \\) by ensuring that the minimum value of the function matches the specified target. Without it, there is no way to uniquely solve for \\( a \\), as the problem lacks a definitive goal or constraint to guide the solution process."
+    ],
+    "remove": [
+      "Given a function, if the minimum value on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right] \\) is \\(-1\\), find the value of \\( a \\).",
+      "Given the function \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\), find the value of \\( a \\)."
+    ],
+    "removal_verified": [
+      "False",
+      "False"
+    ],
+    "unsolvable_verified": [
+      "True",
+      "True"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 9,
+    "question": "Find all functions  $f : \\mathbb{N} \\to \\mathbb{N}$  such that for any positive integers  $m, n$  the number  $$ (f(m))^2+ 2mf(n) + f(n^2) $$  is the square of an integer.\n\n*Proposed by Fedir Yudin*",
+    "ground_truth": "f(n)=n",
+    "solution": "",
+    "difficulty": "2/8",
+    "prompt_lengths": [
+      191,
+      193,
+      212,
+      790,
+      699,
+      238,
+      229,
+      189,
+      161
+    ],
+    "completion_lengths": [
+      52,
+      589,
+      479,
+      51,
+      23,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "f : \\mathbb{N} \\to \\mathbb{N}",
+      "For any positive integers m, n, the number (f(m))^2 + 2mf(n) + f(n^2) is the square of an integer."
+    ],
+    "remove_analysis": [
+      "To analyze the impact of removing the condition \\( f : \\mathbb{N} \\to \\mathbb{N} \\) from the problem, let's break down the role this condition plays and the consequences of its absence.\n\n### 1. Role of the Condition \\( f : \\mathbb{N} \\to \\mathbb{N} \\)\n\n- **Domain and Codomain Specification**: The condition specifies that the function \\( f \\) maps natural numbers to natural numbers. This means both the input and output of the function are restricted to positive integers.\n- **Ensures Non-negativity**: Since \\( \\mathbb{N} \\) typically includes positive integers (sometimes including zero, but here likely positive integers), this condition ensures that \\( f(n) \\) is always a positive integer for any positive integer \\( n \\).\n- **Constrains Function Behavior**: The condition limits the types of functions that can be considered, ruling out functions that might map to negative integers, zero, or non-integers.\n\n### 2. Critical Information Missing Without the Condition\n\n- **Range of \\( f \\)**: Without the condition, \\( f(n) \\) could potentially be any real number, including negative numbers, zero, or even non-integers. This drastically increases the complexity of the problem.\n- **Interpretation of the Problem**: The problem involves expressions like \\( (f(m))^2 + 2mf(n) + f(n^2) \\). Without knowing that \\( f(n) \\) is a natural number, it becomes unclear how to interpret these expressions in the context of being a perfect square.\n- **Solution Set Expansion**: The set of possible solutions expands significantly without the natural number restriction, making it difficult to find a comprehensive solution.\n\n### 3. Why the Problem Becomes Unsolvable Without This Information\n\n- **Infinite Possibilities**: Allowing \\( f(n) \\) to be any real number introduces infinitely many possibilities for \\( f \\), making it practically impossible to determine all functions that satisfy the condition.\n- **Loss of Structure**: The problem relies on the structure provided by natural numbers, such as divisibility and positivity, to derive solutions. Without this structure, the problem loses its mathematical coherence.\n- **Complexity in Verification**: Verifying whether the expression is a perfect square becomes more complex without the natural number constraint, as it involves checking a broader range of values.\n\n### Conclusion\n\nThe condition \\( f : \\mathbb{N} \\to \\mathbb{N} \\) is crucial for maintaining the problem's tractability and ensuring that the solutions are meaningful within the context of natural numbers. Removing this condition would lead to an unmanageable increase in complexity and ambiguity, making the problem unsolvable in a practical sense. The condition provides necessary boundaries that allow for a focused and structured approach to finding solutions.",
+      "To analyze the impact of removing the key condition from the problem, let's break down the role it plays and the consequences of its absence.\n\n1. **Role of the Condition:**\n   - The condition that \\((f(m))^2 + 2mf(n) + f(n^2)\\) is the square of an integer for any positive integers \\(m, n\\) is crucial because it imposes a specific algebraic structure on the function \\(f\\). This condition essentially requires that the expression forms a perfect square, which is a strong constraint that guides the form of \\(f\\).\n   - It helps in narrowing down the possible forms of \\(f\\) by ensuring that the expression behaves in a particular way for all positive integer inputs. This often leads to identifying specific functional forms, such as linear or polynomial functions, that satisfy the condition.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without this condition, there is no requirement for the expression \\((f(m))^2 + 2mf(n) + f(n^2)\\) to have any particular algebraic property. This means that \\(f\\) could potentially be any function from \\(\\mathbb{N}\\) to \\(\\mathbb{N}\\), as there are no constraints to restrict its form.\n   - The condition acts as a filter that eliminates many possible functions that do not satisfy the perfect square requirement. Without it, there is no mechanism to determine which functions are valid solutions.\n\n3. **Why the Problem Becomes Unsolvable Without the Condition:**\n   - The problem becomes unsolvable in the sense that it no longer has a unique or meaningful solution. Without the condition, the problem is essentially asking for any function from \\(\\mathbb{N}\\) to \\(\\mathbb{N}\\), which is an infinite set of possibilities.\n   - The original problem's goal is to find specific functions that satisfy a particular property. Removing the condition removes the property that defines the problem, leaving it without a clear objective or solution path.\n\nIn summary, the condition that \\((f(m))^2 + 2mf(n) + f(n^2)\\) is a perfect square is essential for defining the problem's constraints and guiding the solution process. Without it, the problem loses its structure and becomes too broad to solve meaningfully."
+    ],
+    "remove": [
+      "Find all functions \\( f \\) such that for any positive integers \\( m, n \\) the number \n\\[ (f(m))^2 + 2mf(n) + f(n^2) \\]\nis the square of an integer.",
+      "Find all functions \\( f : \\mathbb{N} \\to \\mathbb{N} \\)."
+    ],
+    "removal_verified": [
+      "True",
+      "False"
+    ],
+    "unsolvable_verified": [
+      "False",
+      "True"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 10,
+    "question": "Define the function \\( f \\) on positive integers such that \n\n\\[ f(1) = 1, \\quad f(3) = 3 \\]\n\nand \n\n\\[ \n\\begin{aligned}\nf(2n) &= f(n), \\\\\nf(4n+1) &= 2f(2n+1) - f(n), \\\\\nf(4n+3) &= 3f(2n+1) - 2f(n)\n\\end{aligned}\n\\]\n\nfor every positive integer \\( n \\).\n\nDetermine the number of integers \\( n \\) satisfying \\( 1 \\leq n \\leq 1988 \\) for which \\( f(n) = n \\).",
+    "ground_truth": "92",
+    "solution": "",
+    "difficulty": "1/8",
+    "prompt_lengths": [
+      265,
+      259,
+      259,
+      261,
+      273,
+      275,
+      264,
+      257,
+      984,
+      853,
+      1051,
+      848,
+      827,
+      729,
+      723,
+      395,
+      395,
+      396,
+      396,
+      396,
+      394,
+      393,
+      276,
+      276,
+      275,
+      263,
+      261,
+      270,
+      276
+    ],
+    "completion_lengths": [
+      112,
+      717,
+      586,
+      782,
+      632,
+      544,
+      457,
+      458,
+      140,
+      140,
+      139,
+      127,
+      125,
+      134,
+      140,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      454,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "\\( f(1) = 1 \\)",
+      "\\( f(3) = 3 \\)",
+      "\\( f(2n) = f(n) \\)",
+      "\\( f(4n+1) = 2f(2n+1) - f(n) \\)",
+      "\\( f(4n+3) = 3f(2n+1) - 2f(n) \\)",
+      "\\( 1 \\leq n \\leq 1988 \\)",
+      "\\( f(n) = n \\)"
+    ],
+    "remove_analysis": [
+      "To analyze the impact of removing the condition \\( f(1) = 1 \\) from the problem, let's break down the role this condition plays in solving the problem and the consequences of its absence.\n\n### 1. Role of the Condition \\( f(1) = 1 \\)\n\nThe condition \\( f(1) = 1 \\) serves as a base case for the recursive definition of the function \\( f \\). It is crucial for the following reasons:\n\n- **Base Case for Recursion**: The function \\( f \\) is defined recursively, meaning that the value of \\( f(n) \\) for larger \\( n \\) depends on the values of \\( f \\) at smaller integers. Specifically, the recursive rules \\( f(2n) = f(n) \\), \\( f(4n+1) = 2f(2n+1) - f(n) \\), and \\( f(4n+3) = 3f(2n+1) - 2f(n) \\) all eventually reduce to needing the value of \\( f(1) \\) to compute \\( f(n) \\) for any \\( n \\).\n\n- **Consistency and Uniqueness**: The condition ensures that the function is well-defined and consistent across all positive integers. Without a base case, the recursive rules could lead to multiple possible values for \\( f(n) \\), making the function ambiguous or undefined.\n\n### 2. Critical Information Missing Without \\( f(1) = 1 \\)\n\nWithout the condition \\( f(1) = 1 \\), the following critical information would be missing:\n\n- **Initial Value**: The initial value of the function is unknown, which means the entire sequence of values generated by the recursive rules is indeterminate. The function could potentially take on any value at \\( n = 1 \\), leading to different sequences of values for \\( f(n) \\).\n\n- **Propagation of Values**: Since the recursive rules depend on smaller values of \\( n \\), not knowing \\( f(1) \\) means that \\( f(2) = f(1) \\), \\( f(3) = 3 \\), and \\( f(4) = f(2) = f(1) \\) are also indeterminate. This uncertainty propagates through the entire set of positive integers.\n\n### 3. Why the Problem Becomes Unsolvable Without \\( f(1) = 1 \\)\n\nWithout the condition \\( f(1) = 1 \\), the problem becomes unsolvable for the following reasons:\n\n- **Ambiguity in Function Definition**: The recursive nature of the function relies on a known starting point to ensure that each subsequent value is well-defined. Without \\( f(1) = 1 \\), there is no fixed starting point, leading to multiple possible interpretations of the function.\n\n- **Inability to Determine \\( f(n) = n \\)**: The task is to find integers \\( n \\) such that \\( f(n) = n \\). Without a known value for \\( f(1) \\), it is impossible to determine the values of \\( f(n) \\) accurately, and thus, it is impossible to verify when \\( f(n) = n \\).\n\nIn summary, the condition \\( f(1) = 1 \\) is essential for defining the function \\( f \\) consistently and uniquely. Its absence would lead to an indeterminate function, making it impossible to solve the problem as intended.",
+      "To analyze the impact of removing the condition \\( f(3) = 3 \\) from the problem, let's break down the role this condition plays in solving the problem and the consequences of its absence.\n\n### 1. Role of the Condition \\( f(3) = 3 \\)\n\nThe condition \\( f(3) = 3 \\) is crucial for determining the behavior of the function \\( f \\) for numbers that are not powers of 2. Specifically, it provides a base case for the recursive definitions involving odd numbers, particularly those of the form \\( 4n+3 \\).\n\n### 2. Critical Information Provided by the Condition\n\n- **Base Case for Recursion**: The condition \\( f(3) = 3 \\) serves as a base case for the recursive formula \\( f(4n+3) = 3f(2n+1) - 2f(n) \\). Without knowing \\( f(3) \\), we cannot compute \\( f(7) \\), \\( f(11) \\), and so on, because these computations rely on knowing \\( f(3) \\).\n  \n- **Consistency Check**: The condition ensures that the function \\( f \\) behaves consistently with the identity function \\( f(n) = n \\) for certain values of \\( n \\). This consistency is crucial for identifying which integers satisfy \\( f(n) = n \\).\n\n### 3. Consequences of Removing the Condition\n\n- **Indeterminacy**: Without \\( f(3) = 3 \\), the recursive formulas become indeterminate for sequences involving \\( 4n+3 \\). We would lack a starting point to apply the recursive rules, leading to multiple possible values for \\( f(n) \\) for these sequences.\n\n- **Loss of Structure**: The function \\( f \\) could potentially take on many different forms without the constraint \\( f(3) = 3 \\). This would make it impossible to determine a unique solution or to count the number of integers \\( n \\) for which \\( f(n) = n \\).\n\n- **Unsolvability**: The problem becomes unsolvable in its original form because the recursive definitions cannot be applied consistently without a known value for \\( f(3) \\). The lack of this condition would mean that the function \\( f \\) is not well-defined for a significant portion of the integers, particularly those that are not powers of 2.\n\n### Conclusion\n\nThe condition \\( f(3) = 3 \\) is essential for the recursive structure of the function \\( f \\). It provides a necessary base case that allows the recursive definitions to be applied consistently and ensures that the function can be evaluated for all positive integers. Without this condition, the problem loses its structure and becomes unsolvable, as the function \\( f \\) would not be well-defined for many integers.",
+      "To analyze the impact of removing the condition \\( f(2n) = f(n) \\), let's break down the role this condition plays in solving the problem and the consequences of its absence.\n\n### 1. Role of the Condition \\( f(2n) = f(n) \\)\n\n- **Simplification of Function Values**: The condition \\( f(2n) = f(n) \\) allows us to simplify the function values for even integers. It effectively reduces the problem of finding \\( f(n) \\) for any even integer \\( n \\) to finding \\( f(n) \\) for its odd counterpart. This is crucial because it means that the function value for any even number is the same as that for its half, which is a smaller number and potentially easier to compute.\n\n- **Recursive Structure**: This condition is part of a recursive structure that helps define \\( f(n) \\) for all positive integers. It ensures that the function is well-defined and consistent across all integers by linking the values of \\( f \\) at different scales (powers of 2).\n\n- **Reduction to Base Cases**: By repeatedly applying \\( f(2n) = f(n) \\), any integer can be reduced to an odd integer, which can then be further reduced using the other conditions. This reduction is essential for determining the function values based on the given base cases \\( f(1) = 1 \\) and \\( f(3) = 3 \\).\n\n### 2. Critical Information Missing Without the Condition\n\n- **Loss of Simplification**: Without \\( f(2n) = f(n) \\), we lose the ability to simplify the function for even numbers. This means that for every even integer, we would need a separate rule or additional information to determine \\( f(n) \\), which is not provided in the problem.\n\n- **Breakdown of Recursive Definition**: The recursive nature of the function definition would be incomplete. The conditions for \\( f(4n+1) \\) and \\( f(4n+3) \\) rely on knowing \\( f(2n+1) \\) and \\( f(n) \\), but without \\( f(2n) = f(n) \\), the recursive chain is broken, and we cannot consistently determine \\( f(n) \\) for all integers.\n\n- **Inability to Use Base Cases Effectively**: The base cases \\( f(1) = 1 \\) and \\( f(3) = 3 \\) are crucial for determining other values of \\( f(n) \\). Without the ability to reduce even numbers to these base cases or their odd counterparts, the base cases become less useful.\n\n### 3. Why the Problem Becomes Unsolvable\n\n- **Undefined Values for Even Integers**: Without the condition, there is no clear method to determine \\( f(n) \\) for even integers, making the problem unsolvable for a large subset of positive integers.\n\n- **Inconsistency in Function Definition**: The function \\( f \\) would lack a consistent and complete definition, leading to ambiguity and multiple possible values for the same input, which contradicts the nature of a well-defined function.\n\n- **Inability to Count Solutions**: The original problem asks for the number of integers \\( n \\) such that \\( f(n) = n \\). Without a complete definition of \\( f \\), it is impossible to accurately count these integers, as we cannot determine \\( f(n) \\) for all \\( n \\).\n\nIn summary, the condition \\( f(2n) = f(n) \\) is essential for simplifying the problem, maintaining a consistent recursive structure, and ensuring the function is well-defined across all positive integers. Its removal would lead to an incomplete and ambiguous problem, making it unsolvable with the given information.",
+      "1. **Role of the Condition \\( f(4n+1) = 2f(2n+1) - f(n) \\):**\n   - This condition is part of the recursive definition of the function \\( f \\). It specifically determines the value of \\( f \\) at numbers of the form \\( 4n+1 \\).\n   - The condition provides a way to compute \\( f(4n+1) \\) using previously computed values \\( f(2n+1) \\) and \\( f(n) \\). This is crucial for building the function \\( f \\) iteratively from known values.\n\n2. **Critical Information Missing Without This Condition:**\n   - Without this condition, we lose the ability to compute \\( f \\) for numbers of the form \\( 4n+1 \\). This creates a gap in the recursive structure, as we can no longer determine \\( f \\) for all integers based on the initial values and other recursive conditions.\n   - The recursive nature of the problem relies on being able to compute \\( f \\) for all integers up to a certain limit, using the given rules. Removing one of these rules disrupts the entire process.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - The problem requires determining the number of integers \\( n \\) such that \\( f(n) = n \\) for \\( 1 \\leq n \\leq 1988 \\). Without the condition \\( f(4n+1) = 2f(2n+1) - f(n) \\), we cannot compute \\( f(n) \\) for all \\( n \\) in this range.\n   - The recursive conditions are interdependent. Each condition helps to build the function \\( f \\) for different forms of integers (e.g., \\( 2n \\), \\( 4n+1 \\), \\( 4n+3 \\)). Removing one condition breaks the chain of dependencies, making it impossible to determine \\( f(n) \\) for all required values.\n   - The original problem's solution relies on the complete recursive structure to identify when \\( f(n) = n \\). Without the condition for \\( 4n+1 \\), we cannot verify this equality for all relevant \\( n \\).\n\n### Conclusion:\n\nThe condition \\( f(4n+1) = 2f(2n+1) - f(n) \\) is essential for the recursive definition of \\( f \\). Removing it disrupts the ability to compute \\( f(n) \\) for all integers, making the problem unsolvable as it stands. The recursive structure is crucial for determining when \\( f(n) = n \\), and without complete information, the problem cannot be resolved.",
+      "To analyze the impact of removing the condition \\( f(4n+3) = 3f(2n+1) - 2f(n) \\), let's break down the role of this condition in the context of the problem and the consequences of its absence.\n\n### 1. Role of the Condition\n\nThe condition \\( f(4n+3) = 3f(2n+1) - 2f(n) \\) is crucial for determining the value of the function \\( f \\) at arguments of the form \\( 4n+3 \\). This condition, along with the others, helps define the recursive structure of the function \\( f \\) over all positive integers. Specifically, it provides a way to compute \\( f \\) for numbers that are congruent to 3 modulo 4, using previously computed values of \\( f \\).\n\n### 2. Critical Information Provided\n\nWithout this condition, we lose the ability to compute \\( f(n) \\) for numbers of the form \\( 4n+3 \\). The recursive definition of \\( f \\) relies on breaking down the problem into smaller subproblems, and each condition handles a specific case based on the congruence of \\( n \\) modulo 4. The condition \\( f(4n+3) = 3f(2n+1) - 2f(n) \\) is essential for ensuring that the function is well-defined and consistent across all positive integers.\n\n### 3. Consequences of Missing the Condition\n\nWithout the condition \\( f(4n+3) = 3f(2n+1) - 2f(n) \\), the function \\( f \\) becomes undefined for numbers of the form \\( 4n+3 \\). This would create gaps in the definition of \\( f \\), making it impossible to determine \\( f(n) \\) for all positive integers. Consequently, the problem of finding integers \\( n \\) such that \\( f(n) = n \\) would become unsolvable, as we would lack the necessary information to compute \\( f(n) \\) for a significant subset of integers.\n\n### Conclusion\n\nThe condition \\( f(4n+3) = 3f(2n+1) - 2f(n) \\) is indispensable for the recursive definition of the function \\( f \\). It ensures that \\( f \\) is fully defined and consistent across all positive integers, allowing us to solve the problem as intended. Without it, the problem becomes incomplete and unsolvable due to the inability to compute \\( f(n) \\) for numbers of the form \\( 4n+3 \\).",
+      "The condition \\( 1 \\leq n \\leq 1988 \\) plays a crucial role in solving the problem by defining the range of integers for which we need to determine if \\( f(n) = n \\). Let's analyze the impact of this condition step by step:\n\n1. **Role of the Condition:**\n   - The condition \\( 1 \\leq n \\leq 1988 \\) specifies the domain of integers we are interested in. It limits the scope of the problem to a finite set of integers, making it feasible to compute or analyze the function \\( f \\) for each integer within this range.\n   - Without this condition, the problem would be open-ended, potentially requiring analysis over an infinite set of positive integers, which is impractical for direct computation or enumeration.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the condition, we lose the ability to determine a specific count of integers for which \\( f(n) = n \\). The problem would no longer have a finite answer, as the function \\( f \\) could be evaluated for infinitely many integers.\n   - The condition provides a boundary that allows us to apply the recursive definitions of \\( f \\) systematically and check each integer within the specified range.\n\n3. **Why the Problem Becomes Unsolvable Without the Condition:**\n   - The recursive nature of the function \\( f \\) means that its behavior can be complex and dependent on the specific values of \\( n \\). Without a bounded range, the problem becomes a theoretical exploration of the function's behavior over all positive integers, which is not feasible for determining a specific count.\n   - The absence of a range would require a different approach, possibly involving a deeper theoretical analysis of the function's properties, which might not yield a straightforward numerical answer.\n\nIn summary, the condition \\( 1 \\leq n \\leq 1988 \\) is essential for providing a finite, manageable scope for the problem, allowing us to compute or analyze the function \\( f \\) for each integer within this range and determine the count of integers satisfying \\( f(n) = n \\). Without this condition, the problem loses its practical solvability and becomes an abstract exploration without a clear numerical answer.",
+      "To analyze the impact of removing the condition \\( f(n) = n \\) from the problem, let's break down the role this condition plays in solving the problem and what would happen if it were absent.\n\n### 1. Role of the Condition \\( f(n) = n \\)\n\nThe condition \\( f(n) = n \\) is crucial because it defines the specific set of integers for which the function \\( f \\) behaves as the identity function. The problem asks us to find how many integers \\( n \\) within a given range satisfy this condition. This condition is essentially the goal of the problem: identifying when the function \\( f \\) outputs the same value as its input.\n\n### 2. Critical Information Provided by the Condition\n\nWithout the condition \\( f(n) = n \\), we lose the specific criterion that determines the subset of integers we are interested in. The function \\( f \\) is defined recursively, and without knowing when \\( f(n) \\) equals \\( n \\), we cannot determine which integers meet this criterion. The condition provides a target or a filter to apply to the set of integers, allowing us to count only those that satisfy the identity property.\n\n### 3. Impact of Removing the Condition\n\nIf the condition \\( f(n) = n \\) were removed, the problem would become unsolvable in its current form because:\n\n- **Lack of Objective**: The problem would no longer have a clear objective. We would have a recursive function definition without a specific property to investigate or count.\n- **Undefined Goal**: Without the condition, there is no clear goal or endpoint for the analysis. The problem would merely describe a function without asking for any particular property or result.\n- **No Basis for Counting**: The original problem asks for a count of integers satisfying a specific property. Without the condition, there is no basis for counting or determining which integers are of interest.\n\nIn summary, the condition \\( f(n) = n \\) is essential because it defines the specific property we are investigating. It provides the problem with a clear objective and allows us to apply the recursive function rules to identify and count the integers that satisfy this property. Without it, the problem lacks direction and becomes unsolvable in terms of finding a meaningful result."
+    ],
+    "remove": [
+      "Define the function \\( f \\) on positive integers such that \n\n\\[ f(3) = 3 \\]\n\nand \n\n\\[ \n\\begin{aligned}\nf(2n) &= f(n), \\\\\nf(4n+1) &= 2f(2n+1) - f(n), \\\\\nf(4n+3) &= 3f(2n+1) - 2f(n)\n\\end{aligned}\n\\]\n\nfor every positive integer \\( n \\).\n\nDetermine the number of integers \\( n \\) satisfying \\( 1 \\leq n \\leq 1988 \\) for which \\( f(n) = n \\).",
+      "Define the function \\( f \\) on positive integers such that \n\n\\[ f(1) = 1 \\]\n\nand \n\n\\[ \n\\begin{aligned}\nf(2n) &= f(n), \\\\\nf(4n+1) &= 2f(2n+1) - f(n), \\\\\nf(4n+3) &= 3f(2n+1) - 2f(n)\n\\end{aligned}\n\\]\n\nfor every positive integer \\( n \\).\n\nDetermine the number of integers \\( n \\) satisfying \\( 1 \\leq n \\leq 1988 \\) for which \\( f(n) = n \\).",
+      "Define the function \\( f \\) on positive integers such that \n\n\\[ f(1) = 1, \\quad f(3) = 3 \\]\n\nand \n\n\\[ \n\\begin{aligned}\nf(4n+1) &= 2f(2n+1) - f(n), \\\\\nf(4n+3) &= 3f(2n+1) - 2f(n)\n\\end{aligned}\n\\]\n\nfor every positive integer \\( n \\).\n\nDetermine the number of integers \\( n \\) satisfying \\( 1 \\leq n \\leq 1988 \\) for which \\( f(n) = n \\).",
+      "Define the function \\( f \\) on positive integers such that \n\n\\[ f(1) = 1, \\quad f(3) = 3 \\]\n\nand \n\n\\[ \n\\begin{aligned}\nf(2n) &= f(n), \\\\\nf(4n+3) &= 3f(2n+1) - 2f(n)\n\\end{aligned}\n\\]\n\nfor every positive integer \\( n \\).\n\nDetermine the number of integers \\( n \\) satisfying \\( 1 \\leq n \\leq 1988 \\) for which \\( f(n) = n \\).",
+      "Define the function \\( f \\) on positive integers such that \n\n\\[ f(1) = 1, \\quad f(3) = 3 \\]\n\nand \n\n\\[ \n\\begin{aligned}\nf(2n) &= f(n), \\\\\nf(4n+1) &= 2f(2n+1) - f(n)\n\\end{aligned}\n\\]\n\nfor every positive integer \\( n \\).\n\nDetermine the number of integers \\( n \\) satisfying \\( 1 \\leq n \\leq 1988 \\) for which \\( f(n) = n \\).",
+      "Define the function \\( f \\) on positive integers such that \n\n\\[ f(1) = 1, \\quad f(3) = 3 \\]\n\nand \n\n\\[ \n\\begin{aligned}\nf(2n) &= f(n), \\\\\nf(4n+1) &= 2f(2n+1) - f(n), \\\\\nf(4n+3) &= 3f(2n+1) - 2f(n)\n\\end{aligned}\n\\]\n\nfor every positive integer \\( n \\).\n\nDetermine the number of integers \\( n \\) for which \\( f(n) = n \\).",
+      "Define the function \\( f \\) on positive integers such that \n\n\\[ f(1) = 1, \\quad f(3) = 3 \\]\n\nand \n\n\\[ \n\\begin{aligned}\nf(2n) &= f(n), \\\\\nf(4n+1) &= 2f(2n+1) - f(n), \\\\\nf(4n+3) &= 3f(2n+1) - 2f(n)\n\\end{aligned}\n\\]\n\nfor every positive integer \\( n \\).\n\nDetermine the number of integers \\( n \\) satisfying \\( 1 \\leq n \\leq 1988 \\)."
+    ],
+    "removal_verified": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "False"
+    ],
+    "unsolvable_verified": [
+      "False",
+      "False",
+      "False",
+      "False",
+      "False",
+      "False",
+      "False"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 11,
+    "question": "A convex pentagon  $P=ABCDE$  is inscribed in a circle of radius  $1$ . Find the maximum area of  $P$  subject to the condition that the chords  $AC$  and  $BD$  are perpendicular.",
+    "ground_truth": "1 + \\frac{3\\sqrt{3}}{4}",
+    "solution": "",
+    "difficulty": "4/8",
+    "prompt_lengths": [
+      171,
+      190,
+      181,
+      176,
+      751,
+      639,
+      296,
+      209,
+      199,
+      194,
+      183,
+      182,
+      182
+    ],
+    "completion_lengths": [
+      49,
+      553,
+      450,
+      448,
+      35,
+      34,
+      34,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "The pentagon \\( P = ABCDE \\) is inscribed in a circle of radius \\( 1 \\).",
+      "The chords \\( AC \\) and \\( BD \\) are perpendicular.",
+      "Find the maximum area of \\( P \\)."
+    ],
+    "remove_analysis": [
+      "To analyze the impact of removing the condition that the pentagon \\( P = ABCDE \\) is inscribed in a circle of radius \\( 1 \\), let's break down the problem and understand the role of this condition:\n\n1. **Role of the Condition:**\n   - The condition that the pentagon is inscribed in a circle of radius \\( 1 \\) implies that all vertices of the pentagon lie on the circumference of a circle with a fixed radius. This imposes a geometric constraint on the possible configurations of the pentagon.\n   - The circle's radius being \\( 1 \\) provides a specific scale for the problem, allowing us to use trigonometric identities and properties of cyclic polygons to calculate lengths and angles.\n   - The condition ensures that the pentagon is cyclic, which means that opposite angles of the pentagon sum to \\( 180^\\circ \\). This property is crucial for leveraging geometric theorems and simplifying calculations.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the condition that the pentagon is inscribed in a circle, we lose the cyclic nature of the pentagon. This means we cannot assume the sum of opposite angles is \\( 180^\\circ \\), which is a key property used in solving the problem.\n   - The fixed radius provides a standard measure for calculating the lengths of chords and the area of the pentagon. Without this, the problem becomes scale-invariant, and we cannot determine a maximum area without additional constraints.\n   - The perpendicularity condition of chords \\( AC \\) and \\( BD \\) is easier to handle with the circle's properties, as it allows the use of right triangle trigonometry and Ptolemy's theorem.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - Without the circle, the problem lacks a fixed geometric framework, making it impossible to determine a unique maximum area. The pentagon could be any shape, and its area could be arbitrarily large or small depending on the configuration.\n   - The absence of a fixed radius means that the problem is not well-defined in terms of scale, leading to an infinite number of possible solutions without a clear maximum.\n   - The perpendicularity condition alone is insufficient to determine the pentagon's configuration, as it does not provide enough constraints to uniquely determine the shape or size of the pentagon.\n\nIn summary, the condition that the pentagon is inscribed in a circle of radius \\( 1 \\) is crucial for providing a fixed geometric framework, enabling the use of cyclic properties, and allowing for a well-defined solution to the problem. Without it, the problem becomes too open-ended and lacks the necessary constraints to find a maximum area.",
+      "To analyze the impact of removing the condition that the chords \\( AC \\) and \\( BD \\) are perpendicular, let's break down the problem and understand the role of this condition.\n\n1. **Role of the Condition:**\n   - The condition that \\( AC \\) and \\( BD \\) are perpendicular is crucial because it provides a specific geometric constraint that simplifies the problem. In a circle, if two chords are perpendicular, they intersect at a right angle, which can be used to apply trigonometric identities and geometric properties to find relationships between the sides and angles of the pentagon.\n   - This condition allows us to use the properties of cyclic quadrilaterals and right triangles to calculate the area of the pentagon more easily. Specifically, it helps in determining the lengths of the chords and the angles between them, which are essential for calculating the area.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the perpendicularity condition, we lose a key geometric relationship that helps in determining the configuration of the pentagon. The perpendicularity provides a fixed relationship between the chords, which reduces the degrees of freedom in the problem.\n   - Without this condition, the problem becomes underdetermined. There are infinitely many ways to inscribe a pentagon in a circle without any specific constraints on the chords, making it difficult to find a unique or maximum area.\n\n3. **Why the Problem Becomes Unsolvable:**\n   - Without the perpendicularity condition, the problem lacks sufficient constraints to determine a unique solution. The maximum area of a pentagon inscribed in a circle without additional conditions is not well-defined because there are infinitely many possible configurations of the pentagon.\n   - The condition provides a way to apply specific geometric theorems and calculations, such as using the Pythagorean theorem or properties of cyclic quadrilaterals, which are not possible without knowing the relationship between the chords.\n\nIn summary, the condition that \\( AC \\) and \\( BD \\) are perpendicular is essential for providing a specific geometric framework that allows for the calculation of the maximum area of the pentagon. Without this condition, the problem becomes too open-ended and lacks the necessary constraints to find a unique or optimal solution.",
+      "**\nThe condition that the chords \\( AC \\) and \\( BD \\) are perpendicular is crucial because it provides a specific geometric constraint that simplifies the problem. It allows for a systematic approach to determine the configuration of the pentagon that maximizes the area. Without this condition, the problem becomes significantly more complex, as it lacks a clear method to determine the optimal configuration among the infinitely many possible pentagons inscribed in the circle. The condition effectively reduces the problem's complexity by fixing certain angles and positions, making it solvable with a clear strategy."
+    ],
+    "remove": [
+      "A convex pentagon \\( P=ABCDE \\) has chords \\( AC \\) and \\( BD \\) that are perpendicular. Find the maximum area of \\( P \\).",
+      "A convex pentagon \\( P = ABCDE \\) is inscribed in a circle of radius \\( 1 \\). Find the maximum area of \\( P \\).",
+      "A convex pentagon \\( P = ABCDE \\) is inscribed in a circle of radius \\( 1 \\). Find the maximum area of \\( P \\)."
+    ],
+    "removal_verified": [
+      "False",
+      "True",
+      "False"
+    ],
+    "unsolvable_verified": [
+      "False",
+      "False",
+      "False"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 12,
+    "question": "A square with an integer side length was cut into 2020 smaller squares. It is known that the areas of 2019 of these squares are 1, while the area of the 2020th square is not equal to 1. Find all possible values that the area of the 2020th square can take. Provide the smallest of these possible area values in the answer.",
+    "ground_truth": "112225",
+    "solution": "",
+    "difficulty": "2/8",
+    "prompt_lengths": [
+      195,
+      196,
+      193,
+      196,
+      699,
+      657,
+      608,
+      266,
+      254,
+      254,
+      212,
+      203,
+      200
+    ],
+    "completion_lengths": [
+      48,
+      495,
+      456,
+      404,
+      75,
+      66,
+      63,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "A square with an integer side length was cut into 2020 smaller squares.",
+      "The areas of 2019 of these squares are 1.",
+      "The area of the 2020th square is not equal to 1."
+    ],
+    "remove_analysis": [
+      "To analyze the impact of removing the condition \"A square with an integer side length was cut into 2020 smaller squares,\" let's break down the problem and understand the role of this condition:\n\n1. **Role of the Condition:**\n   - The condition specifies that the original shape is a square with an integer side length. This implies that the total area of the original square is a perfect square, say \\( n^2 \\), where \\( n \\) is an integer.\n   - The problem involves dividing this square into 2020 smaller squares, 2019 of which have an area of 1. This means the side length of each of these 2019 squares is 1, contributing a total area of 2019 to the original square.\n   - The remaining area, which is the area of the 2020th square, must also be a perfect square because it is part of the original square, which is a perfect square.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the condition that the original shape is a square with an integer side length, we lose the constraint that the total area is a perfect square. This is crucial because it directly affects the possible values for the area of the 2020th square.\n   - The integer side length ensures that the total area is an integer, which is necessary for the problem to have a meaningful solution in terms of integer areas for the smaller squares.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - If the original shape is not constrained to be a square with an integer side length, the total area could be any positive real number, not necessarily a perfect square. This would make it impossible to determine specific integer values for the area of the 2020th square.\n   - The problem relies on the fact that the sum of the areas of the smaller squares equals the area of the original square, which is a perfect square. Without this, the relationship between the areas of the smaller squares and the original square is lost, making it impossible to solve for specific integer values.\n\nIn conclusion, the condition that the original shape is a square with an integer side length is essential for ensuring that the total area is a perfect square, which in turn allows us to determine the possible integer values for the area of the 2020th square. Without this condition, the problem lacks the necessary constraints to arrive at a specific solution.",
+      "To analyze the impact of removing the condition that 2019 of the smaller squares have an area of 1, let's break down the problem and understand the role of this condition.\n\n1. **Role of the Condition:**\n   - The condition that 2019 of the smaller squares have an area of 1 implies that these squares are unit squares (1x1). This provides a significant simplification because it fixes a large portion of the configuration of the smaller squares within the larger square.\n   - With 2019 unit squares, the total area occupied by these squares is 2019. This leaves the remaining area of the original square to be occupied by the 2020th square.\n\n2. **Critical Information Provided by the Condition:**\n   - The condition allows us to determine the side length of the original square. Since the original square has an integer side length \\( n \\), its area is \\( n^2 \\). The equation \\( n^2 = 2019 \\times 1 + \\text{area of the 2020th square} \\) must hold.\n   - This condition directly leads to the equation \\( n^2 = 2019 + \\text{area of the 2020th square} \\), which is crucial for finding the possible values of the area of the 2020th square.\n\n3. **Impact of Removing the Condition:**\n   - Without the condition, we lose the fixed configuration of 2019 unit squares. This means the problem becomes much more open-ended, as there are infinitely many ways to partition a square into smaller squares without the restriction on the number of unit squares.\n   - The problem becomes unsolvable in its original form because we no longer have a specific equation to determine the side length of the original square or the area of the 2020th square. The problem would require additional constraints or information to be solvable.\n\n**Conclusion:**\nThe condition that 2019 of the smaller squares have an area of 1 is crucial for determining the specific configuration of the squares and for deriving the equation that leads to the solution. Without this condition, the problem lacks the necessary constraints to find a unique or finite set of solutions, making it unsolvable in its original context.",
+      "To analyze the impact of removing the condition that the area of the 2020th square is not equal to 1, let's break down the problem and understand the role of this condition.\n\n1. **Role of the Condition:**\n   - The condition that the area of the 2020th square is not equal to 1 is crucial because it distinguishes the 2020th square from the other 2019 squares. Without this condition, the problem would allow for the possibility that all 2020 squares have the same area, which would not be consistent with the problem's requirement of having exactly 2019 squares with an area of 1.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the condition, we lose the constraint that forces the 2020th square to have a different area. This would mean that the problem could potentially have multiple trivial solutions where all squares are of area 1, which contradicts the setup of having exactly 2019 squares of area 1 and one square of a different area.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - If the condition is removed, the problem becomes ambiguous because it no longer specifies a unique configuration of squares. The problem could be interpreted as allowing any configuration where the total number of squares is 2020, without any distinction in their areas. This would make it impossible to determine a specific set of possible values for the area of the 2020th square, as the problem would not have a unique or constrained solution.\n\nIn summary, the condition that the area of the 2020th square is not equal to 1 is essential for ensuring that the problem has a well-defined and non-trivial solution. It provides the necessary constraint to differentiate the 2020th square from the others, allowing us to calculate specific possible values for its area. Without this condition, the problem loses its structure and becomes unsolvable in the context of finding distinct area values."
+    ],
+    "remove": [
+      "A shape was cut into 2020 smaller squares. It is known that the areas of 2019 of these squares are 1, while the area of the 2020th square is not equal to 1. Find all possible values that the area of the 2020th square can take. Provide the smallest of these possible area values in the answer.",
+      "A square with an integer side length was cut into 2020 smaller squares. It is known that the area of the 2020th square is not equal to 1. Find all possible values that the area of the 2020th square can take. Provide the smallest of these possible area values in the answer.",
+      "A square with an integer side length was cut into 2020 smaller squares. It is known that the areas of 2019 of these squares are 1. Find all possible values that the area of the 2020th square can take. Provide the smallest of these possible area values in the answer."
+    ],
+    "removal_verified": [
+      "False",
+      "True",
+      "True"
+    ],
+    "unsolvable_verified": [
+      "False",
+      "True",
+      "False"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 13,
+    "question": "Find the smallest natural number \\( n \\) such that in a simple graph with 10 vertices and \\( n \\) edges that is 2-colored, there always exists a monochromatic triangle or a monochromatic quadrilateral.",
+    "ground_truth": "31",
+    "solution": "",
+    "difficulty": "4/8",
+    "prompt_lengths": [
+      161,
+      159,
+      152,
+      158,
+      685,
+      624,
+      599,
+      188,
+      185,
+      186,
+      169,
+      173,
+      168
+    ],
+    "completion_lengths": [
+      37,
+      518,
+      464,
+      484,
+      33,
+      37,
+      32,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "A simple graph with 10 vertices and \\( n \\) edges.",
+      "The graph is 2-colored.",
+      "There exists a monochromatic triangle or a monochromatic quadrilateral."
+    ],
+    "remove_analysis": [
+      "To analyze the impact of removing the condition \"a simple graph with 10 vertices and \\( n \\) edges,\" let's break down the problem and understand the role of this condition:\n\n1. **Role of the Condition:**\n   - The condition specifies the structure of the graph: it is a simple graph with 10 vertices and \\( n \\) edges. This sets the stage for the problem by defining the size and type of the graph we are working with.\n   - The number of vertices (10) is crucial because it limits the possible configurations of edges and colors. It also directly influences the potential for forming triangles and quadrilaterals.\n   - The number of edges (\\( n \\)) is the variable we are trying to determine. It is the key parameter that affects whether a monochromatic triangle or quadrilateral can be guaranteed.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without specifying the number of vertices, we lose the framework within which the problem operates. The number of vertices is essential for calculating the maximum number of edges and understanding the graph's potential complexity.\n   - The concept of a \"simple graph\" implies no loops or multiple edges between the same pair of vertices. Removing this condition would allow for more complex structures, making it difficult to apply standard graph theory results.\n   - Without knowing the number of vertices, we cannot apply known results from Ramsey theory, which are often used to determine the existence of monochromatic subgraphs in edge-colored graphs.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - The problem relies on specific graph theory results that depend on the number of vertices. For example, Ramsey numbers, which are used to determine the existence of monochromatic subgraphs, are defined for specific numbers of vertices.\n   - Without a fixed number of vertices, the problem becomes too open-ended. The relationship between the number of edges and the formation of monochromatic triangles or quadrilaterals is undefined without knowing the graph's size.\n   - The absence of a vertex count means we cannot determine the threshold number of edges needed to ensure a monochromatic triangle or quadrilateral, as this threshold is inherently linked to the graph's size.\n\nIn summary, the condition of having a simple graph with 10 vertices and \\( n \\) edges is fundamental to solving the problem. It provides the necessary constraints and context to apply graph theory principles and determine the smallest \\( n \\) that guarantees a monochromatic triangle or quadrilateral. Without this condition, the problem lacks the structure needed for a meaningful solution.",
+      "To analyze the impact of removing the condition that the graph is 2-colored, let's break down the problem and understand the role of this condition:\n\n1. **Role of the Condition:**\n   - The condition that the graph is 2-colored means that each edge of the graph is assigned one of two colors. This is a typical setup for problems involving Ramsey theory, where we are interested in finding monochromatic subgraphs (subgraphs where all edges are the same color).\n   - In this problem, the goal is to find the smallest number of edges \\( n \\) such that any 2-coloring of the edges of a graph with 10 vertices will necessarily contain a monochromatic triangle (a cycle of 3 edges) or a monochromatic quadrilateral (a cycle of 4 edges).\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the 2-coloring condition, the problem loses its focus on color-induced substructures. The concept of \"monochromatic\" becomes irrelevant because there is no coloring to consider.\n   - The problem would then reduce to a purely combinatorial one about the existence of triangles or quadrilaterals in a graph with a given number of edges, without any reference to color. This is a fundamentally different problem.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - The original problem is a specific instance of a Ramsey-type problem, which inherently relies on the concept of edge coloring to determine the existence of monochromatic subgraphs.\n   - Without the 2-coloring condition, the problem no longer fits within the framework of Ramsey theory. Instead, it becomes a question about the minimum number of edges required to guarantee the presence of a triangle or quadrilateral in any simple graph with 10 vertices, regardless of edge coloring.\n   - This shifts the problem to a different domain, potentially involving Turán's theorem or other extremal graph theory results, which are not directly related to the original problem's context.\n\nIn summary, the 2-coloring condition is crucial because it defines the problem within the realm of Ramsey theory, focusing on the existence of monochromatic subgraphs. Removing this condition changes the nature of the problem entirely, making it unrelated to the original question and unsolvable in the intended context.",
+      "1. **Role of the Condition:**\n   - The condition \"there exists a monochromatic triangle or a monochromatic quadrilateral\" is a Ramsey-type condition. In Ramsey theory, we are often interested in finding the minimum number of edges (or other parameters) required to guarantee a certain structure (like a monochromatic triangle or quadrilateral) in a graph, regardless of how the edges are colored.\n   - In this problem, the condition specifies the structures (monochromatic triangle or quadrilateral) that must appear in any 2-coloring of the edges of the graph. This guides us in determining the minimum number of edges needed to ensure that at least one of these structures is unavoidable.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without this condition, we lose the specific target structures (monochromatic triangle or quadrilateral) that we are trying to force in the graph. The problem becomes ill-defined because we no longer have a clear goal or endpoint to achieve with the edge coloring.\n   - The condition provides a clear criterion for success: the presence of a monochromatic triangle or quadrilateral. Without it, we lack a measure to determine whether a given number of edges is sufficient or not.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - Without the condition, the problem lacks a specific objective, making it impossible to determine the smallest \\( n \\) that guarantees the presence of a particular structure. The problem would become open-ended, as there would be no defined structure to aim for.\n   - The absence of a target structure means we cannot apply Ramsey theory or related combinatorial principles to find a solution. The problem would no longer be about finding a threshold for a specific graph property, but rather an undefined exploration of edge colorings without a clear goal.\n\n### Conclusion:\n\nThe condition \"there exists a monochromatic triangle or a monochromatic quadrilateral\" is essential for defining the problem's objective and applying combinatorial techniques to find the smallest \\( n \\). Without it, the problem loses its structure and becomes unsolvable because there is no specific outcome to achieve or verify."
+    ],
+    "remove": [
+      "Find the smallest natural number \\( n \\) such that in a 2-colored graph, there always exists a monochromatic triangle or a monochromatic quadrilateral.",
+      "Find the smallest natural number \\( n \\) such that in a simple graph with 10 vertices and \\( n \\) edges, there always exists a triangle or a quadrilateral.",
+      "Find the smallest natural number \\( n \\) such that in a simple graph with 10 vertices and \\( n \\) edges that is 2-colored."
+    ],
+    "removal_verified": [
+      "False",
+      "False",
+      "False"
+    ],
+    "unsolvable_verified": [
+      "False",
+      "False",
+      "True"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 14,
+    "question": "Given vectors $\\overrightarrow{a}, \\overrightarrow{b}$ satisfy $\\overrightarrow{a}=(1, \\sqrt {3}), |\\overrightarrow{b}|=1, |\\overrightarrow{a}+ \\overrightarrow{b}|= \\sqrt {3}$, then the angle between $\\overrightarrow{a}$ and $\\overrightarrow{b}$ is ______.",
+    "ground_truth": "\\frac{2\\pi}{3}",
+    "solution": "",
+    "difficulty": "4/8",
+    "prompt_lengths": [
+      193,
+      201,
+      196,
+      205,
+      774,
+      716,
+      760,
+      263,
+      255,
+      262,
+      214,
+      211,
+      209
+    ],
+    "completion_lengths": [
+      54,
+      565,
+      512,
+      547,
+      72,
+      69,
+      67,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "\\(\\overrightarrow{a} = (1, \\sqrt{3})\\)",
+      "\\(|\\overrightarrow{b}| = 1\\)",
+      "\\(|\\overrightarrow{a} + \\overrightarrow{b}| = \\sqrt{3}\\)"
+    ],
+    "remove_analysis": [
+      "To analyze the impact of removing the condition \\(\\overrightarrow{a} = (1, \\sqrt{3})\\), let's break down the problem and understand the role of this condition in solving it.\n\n1. **Role of the Condition:**\n   - The condition \\(\\overrightarrow{a} = (1, \\sqrt{3})\\) provides a specific vector \\(\\overrightarrow{a}\\) with known components. This allows us to calculate the magnitude of \\(\\overrightarrow{a}\\) and use it in further calculations.\n   - The magnitude of \\(\\overrightarrow{a}\\) is \\(|\\overrightarrow{a}| = \\sqrt{1^2 + (\\sqrt{3})^2} = \\sqrt{4} = 2\\).\n   - Knowing \\(\\overrightarrow{a}\\) allows us to use the vector addition formula and the given conditions to find the angle between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\).\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the specific vector \\(\\overrightarrow{a}\\), we lose the ability to calculate its magnitude directly.\n   - We also lose the ability to compute the dot product \\(\\overrightarrow{a} \\cdot \\overrightarrow{b}\\) accurately, which is crucial for finding the angle between the vectors using the formula \\(\\overrightarrow{a} \\cdot \\overrightarrow{b} = |\\overrightarrow{a}||\\overrightarrow{b}|\\cos\\theta\\).\n\n3. **Why the Problem Becomes Unsolvable:**\n   - Without knowing \\(\\overrightarrow{a}\\), we cannot determine the exact relationship between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\) in terms of their magnitudes and directions.\n   - The condition \\(|\\overrightarrow{a} + \\overrightarrow{b}| = \\sqrt{3}\\) alone is insufficient to determine the angle, as it depends on both the magnitudes and the specific directions of \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\).\n   - The problem requires the specific vector \\(\\overrightarrow{a}\\) to set up the equation involving the dot product and solve for the angle \\(\\theta\\).\n\nIn summary, the condition \\(\\overrightarrow{a} = (1, \\sqrt{3})\\) is essential because it provides the necessary information to calculate the magnitude and direction of \\(\\overrightarrow{a}\\), which are critical for determining the angle between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\). Without this condition, the problem lacks sufficient information to be solved uniquely.",
+      "To analyze the impact of removing the condition \\(|\\overrightarrow{b}| = 1\\), let's go through the problem step by step:\n\n1. **Role of the Condition \\(|\\overrightarrow{b}| = 1\\):**\n   - The condition \\(|\\overrightarrow{b}| = 1\\) specifies that \\(\\overrightarrow{b}\\) is a unit vector. This simplifies calculations involving the vector, particularly when using the dot product to find angles.\n   - It allows us to use the identity \\(|\\overrightarrow{b}|^2 = 1\\) in calculations, which simplifies the expression for the magnitude of the sum of vectors \\(|\\overrightarrow{a} + \\overrightarrow{b}|\\).\n\n2. **Critical Information Missing Without the Condition:**\n   - Without knowing \\(|\\overrightarrow{b}|\\), we lose a key piece of information that directly affects the calculation of the angle between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\).\n   - The magnitude of \\(\\overrightarrow{b}\\) is crucial for determining the dot product \\(\\overrightarrow{a} \\cdot \\overrightarrow{b}\\), which is used to find the cosine of the angle between the vectors.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - Without \\(|\\overrightarrow{b}| = 1\\), we cannot uniquely determine the angle between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\) because the magnitude of \\(\\overrightarrow{b}\\) would be an unknown variable.\n   - The equation \\(|\\overrightarrow{a} + \\overrightarrow{b}| = \\sqrt{3}\\) would not be sufficient to solve for the angle, as it would involve two unknowns: the magnitude of \\(\\overrightarrow{b}\\) and the angle between the vectors.\n   - The problem would have infinitely many solutions corresponding to different magnitudes of \\(\\overrightarrow{b}\\), each leading to a different angle.\n\nIn summary, the condition \\(|\\overrightarrow{b}| = 1\\) is essential for uniquely determining the angle between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\). Without it, the problem lacks sufficient constraints to be solvable, as the magnitude of \\(\\overrightarrow{b}\\) becomes an additional unknown, leading to multiple possible solutions.",
+      "To analyze the impact of removing the condition \\(|\\overrightarrow{a} + \\overrightarrow{b}| = \\sqrt{3}\\), let's break down the problem and understand the role of each condition.\n\n1. **Role of the Condition \\(|\\overrightarrow{a} + \\overrightarrow{b}| = \\sqrt{3}\\):**\n\n   This condition provides a critical piece of information about the relationship between the vectors \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\). Specifically, it allows us to use the formula for the magnitude of the sum of two vectors:\n   \\[\n   |\\overrightarrow{a} + \\overrightarrow{b}| = \\sqrt{|\\overrightarrow{a}|^2 + |\\overrightarrow{b}|^2 + 2|\\overrightarrow{a}||\\overrightarrow{b}|\\cos\\theta}\n   \\]\n   where \\(\\theta\\) is the angle between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\). Given \\(|\\overrightarrow{a}| = 2\\) and \\(|\\overrightarrow{b}| = 1\\), this condition allows us to solve for \\(\\cos\\theta\\).\n\n2. **Critical Information Missing Without This Condition:**\n\n   Without the condition \\(|\\overrightarrow{a} + \\overrightarrow{b}| = \\sqrt{3}\\), we lose the specific relationship between the magnitudes of \\(\\overrightarrow{a}\\), \\(\\overrightarrow{b}\\), and their resultant vector \\(\\overrightarrow{a} + \\overrightarrow{b}\\). This relationship is essential to determine the angle \\(\\theta\\) between the vectors.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n\n   Without the magnitude of the resultant vector, we cannot uniquely determine the angle \\(\\theta\\). The problem would have infinitely many solutions because there are infinitely many vectors \\(\\overrightarrow{b}\\) of magnitude 1 that can form different angles with \\(\\overrightarrow{a}\\) while still satisfying \\(|\\overrightarrow{b}| = 1\\). The condition \\(|\\overrightarrow{a} + \\overrightarrow{b}| = \\sqrt{3}\\) is what constrains the problem to a unique solution by providing a specific geometric configuration.\n\nIn summary, the condition \\(|\\overrightarrow{a} + \\overrightarrow{b}| = \\sqrt{3}\\) is crucial for determining the angle between the vectors. Without it, the problem lacks sufficient constraints to find a unique solution for the angle \\(\\theta\\)."
+    ],
+    "remove": [
+      "Given vectors \\(\\overrightarrow{a}, \\overrightarrow{b}\\) satisfy \\(|\\overrightarrow{b}|=1, |\\overrightarrow{a}+ \\overrightarrow{b}|= \\sqrt {3}\\), then the angle between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\) is ______.",
+      "Given vectors $\\overrightarrow{a}, \\overrightarrow{b}$ satisfy $\\overrightarrow{a}=(1, \\sqrt {3}), |\\overrightarrow{a}+ \\overrightarrow{b}|= \\sqrt {3}$, then the angle between $\\overrightarrow{a}$ and $\\overrightarrow{b}$ is ______.",
+      "Given vectors \\(\\overrightarrow{a}, \\overrightarrow{b}\\) satisfy \\(\\overrightarrow{a}=(1, \\sqrt{3}), |\\overrightarrow{b}|=1\\), then the angle between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\) is ______."
+    ],
+    "removal_verified": [
+      "True",
+      "True",
+      "True"
+    ],
+    "unsolvable_verified": [
+      "False",
+      "False",
+      "True"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 15,
+    "question": "Given two non-zero vectors $\\overrightarrow {a}$ and $\\overrightarrow {b}$ that satisfy $| \\overrightarrow {a} + \\overrightarrow {b} | = | \\overrightarrow {a} - \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |$, find the angle between vector $\\overrightarrow {b}$ and $\\overrightarrow {a} + \\overrightarrow {b}$.",
+    "ground_truth": "\\frac{\\pi}{4}",
+    "solution": "",
+    "difficulty": "4/8",
+    "prompt_lengths": [
+      209,
+      228,
+      228,
+      955,
+      921,
+      298,
+      298,
+      218,
+      218
+    ],
+    "completion_lengths": [
+      63,
+      719,
+      685,
+      78,
+      78,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "$| \\overrightarrow {a} + \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |$",
+      "$| \\overrightarrow {a} - \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |$"
+    ],
+    "remove_analysis": [
+      "To analyze the impact of removing the condition \\( | \\overrightarrow{a} + \\overrightarrow{b} | = \\sqrt{2} | \\overrightarrow{a} | \\), let's break down the problem and understand the role of this condition.\n\n1. **Role of the Condition:**\n   - The condition \\( | \\overrightarrow{a} + \\overrightarrow{b} | = \\sqrt{2} | \\overrightarrow{a} | \\) provides a specific geometric relationship between the vectors \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\). It implies that the magnitude of the vector sum \\(\\overrightarrow{a} + \\overrightarrow{b}\\) is \\(\\sqrt{2}\\) times the magnitude of \\(\\overrightarrow{a}\\).\n   - This condition, along with \\( | \\overrightarrow{a} - \\overrightarrow{b} | = \\sqrt{2} | \\overrightarrow{a} | \\), suggests that \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\) are perpendicular. This is because the only way for both the sum and difference of two vectors to have the same magnitude is if they are orthogonal.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the condition \\( | \\overrightarrow{a} + \\overrightarrow{b} | = \\sqrt{2} | \\overrightarrow{a} | \\), we lose the specific information that \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\) are perpendicular. This orthogonality is crucial for determining the angle between \\(\\overrightarrow{b}\\) and \\(\\overrightarrow{a} + \\overrightarrow{b}\\).\n   - The condition helps establish that the angle between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\) is \\(\\frac{\\pi}{2}\\), which simplifies the problem significantly.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - Without knowing that \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\) are perpendicular, we cannot directly determine the angle between \\(\\overrightarrow{b}\\) and \\(\\overrightarrow{a} + \\overrightarrow{b}\\). The problem becomes underdetermined because there are infinitely many configurations of \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\) that could satisfy the remaining condition \\( | \\overrightarrow{a} - \\overrightarrow{b} | = \\sqrt{2} | \\overrightarrow{a} | \\) without the orthogonality constraint.\n   - The angle between \\(\\overrightarrow{b}\\) and \\(\\overrightarrow{a} + \\overrightarrow{b}\\) depends on the specific geometric configuration of the vectors, which is not uniquely defined without the orthogonality condition.\n\nIn summary, the condition \\( | \\overrightarrow{a} + \\overrightarrow{b} | = \\sqrt{2} | \\overrightarrow{a} | \\) is essential for establishing the orthogonality of \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\), which in turn allows us to solve for the angle between \\(\\overrightarrow{b}\\) and \\(\\overrightarrow{a} + \\overrightarrow{b}\\). Without it, the problem lacks sufficient constraints to yield a unique solution.",
+      "To analyze the impact of removing the condition $| \\overrightarrow {a} - \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |$, let's break down the problem step by step:\n\n1. **Role of the Condition:**\n   - The condition $| \\overrightarrow {a} - \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |$ is crucial in establishing a specific geometric relationship between the vectors $\\overrightarrow{a}$ and $\\overrightarrow{b}$.\n   - It implies that the magnitude of the vector difference $\\overrightarrow{a} - \\overrightarrow{b}$ is equal to $\\sqrt{2}$ times the magnitude of $\\overrightarrow{a}$.\n   - This condition, combined with $| \\overrightarrow {a} + \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |$, suggests that $\\overrightarrow{b}$ is orthogonal to $\\overrightarrow{a}$, forming a right triangle with $\\overrightarrow{a}$ as one leg and $\\overrightarrow{b}$ as the other leg.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the condition $| \\overrightarrow {a} - \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |$, we lose the information that $\\overrightarrow{b}$ is orthogonal to $\\overrightarrow{a}$.\n   - The problem relies on the fact that both the sum and difference of the vectors have the same magnitude, which is only possible if $\\overrightarrow{a}$ and $\\overrightarrow{b}$ are perpendicular.\n   - Without this orthogonality, the relationship between the vectors becomes ambiguous, and we cannot definitively determine the angle between $\\overrightarrow{b}$ and $\\overrightarrow{a} + \\overrightarrow{b}$.\n\n3. **Why the Problem Becomes Unsolvable:**\n   - The problem becomes unsolvable because the orthogonality condition is essential to determine the angle between $\\overrightarrow{b}$ and $\\overrightarrow{a} + \\overrightarrow{b}$.\n   - The angle $\\frac{\\pi}{4}$ is derived from the fact that $\\overrightarrow{b}$ is perpendicular to $\\overrightarrow{a}$, making the angle between $\\overrightarrow{b}$ and the resultant vector $\\overrightarrow{a} + \\overrightarrow{b}$ precisely $\\frac{\\pi}{4}$.\n   - Without the orthogonality condition, there is no unique solution for the angle, as $\\overrightarrow{b}$ could be at any angle relative to $\\overrightarrow{a}$, leading to multiple possible values for the angle between $\\overrightarrow{b}$ and $\\overrightarrow{a} + \\overrightarrow{b}$.\n\nIn summary, the condition $| \\overrightarrow {a} - \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |$ is essential for establishing the orthogonality between $\\overrightarrow{a}$ and $\\overrightarrow{b}$, which is critical for determining the unique angle of $\\frac{\\pi}{4}$. Without this condition, the problem lacks sufficient information to be solved uniquely."
+    ],
+    "remove": [
+      "Given two non-zero vectors $\\overrightarrow {a}$ and $\\overrightarrow {b}$ that satisfy $| \\overrightarrow {a} - \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |$, find the angle between vector $\\overrightarrow {b}$ and $\\overrightarrow {a} + \\overrightarrow {b}$.",
+      "Given two non-zero vectors $\\overrightarrow {a}$ and $\\overrightarrow {b}$ that satisfy $| \\overrightarrow {a} + \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |$, find the angle between vector $\\overrightarrow {b}$ and $\\overrightarrow {a} + \\overrightarrow {b}$."
+    ],
+    "removal_verified": [
+      "True",
+      "True"
+    ],
+    "unsolvable_verified": [
+      "False",
+      "False"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 16,
+    "question": "Determine all positive integers $n$ for which the equation $$x^{n}+(2+x)^{n}+(2-x)^{n}=0$$ has an integer as a solution.",
+    "ground_truth": "n=1",
+    "solution": "",
+    "difficulty": "4/8",
+    "prompt_lengths": [
+      155,
+      171,
+      149,
+      604,
+      688,
+      204,
+      184,
+      175,
+      177
+    ],
+    "completion_lengths": [
+      42,
+      424,
+      531,
+      38,
+      40,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "The equation \\(x^{n}+(2+x)^{n}+(2-x)^{n}=0\\) has an integer as a solution.",
+      "\\(n\\) is a positive integer."
+    ],
+    "remove_analysis": [
+      "1. **Role of the Condition:**\n   The condition that the equation \\(x^{n}+(2+x)^{n}+(2-x)^{n}=0\\) has an integer as a solution is crucial because it restricts the possible values of \\(x\\) that need to be considered. This condition implies that we are only interested in integer solutions for \\(x\\), which significantly narrows down the search space. Without this condition, \\(x\\) could be any real or complex number, making the problem much more complex and less tractable.\n\n2. **Critical Information Missing Without the Condition:**\n   Without the condition that \\(x\\) must be an integer, we lose the ability to apply specific techniques and insights that are applicable to integer solutions. For instance, integer solutions often allow the use of divisibility arguments, modular arithmetic, and other number-theoretic tools that are not applicable to non-integer solutions. Additionally, the symmetry and specific properties of integers can lead to simplifications that are not possible in the broader set of real or complex numbers.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   Without the integer solution condition, the problem becomes unsolvable in the sense that it becomes too broad and lacks a clear direction. The equation \\(x^{n}+(2+x)^{n}+(2-x)^{n}=0\\) could potentially have solutions for any real or complex \\(x\\), depending on the value of \\(n\\). This would require analyzing the behavior of the function for all possible \\(x\\), which is a much more difficult and open-ended task. The problem would no longer have a finite, discrete set of potential solutions to check, and it would be challenging to derive meaningful conclusions without additional constraints or information.\n\nIn summary, the condition that the equation has an integer solution is essential for focusing the problem on a manageable and well-defined set of possibilities, allowing for a structured approach to finding solutions. Without it, the problem becomes too general and lacks the specificity needed for a clear solution path.",
+      "To analyze the impact of removing the condition that \\( n \\) is a positive integer, let's examine the problem step by step:\n\n1. **Role of the Condition:**\n   - The condition that \\( n \\) is a positive integer is crucial because it defines the nature of the exponent in the equation \\( x^n + (2+x)^n + (2-x)^n = 0 \\). Positive integer exponents ensure that the terms are well-defined for all integer values of \\( x \\) and that the equation is a polynomial equation in \\( x \\).\n   - Positive integer exponents also imply certain symmetry and behavior of the polynomial, such as the degree of the polynomial and the parity (odd or even) of the terms, which are essential in determining the nature of the solutions.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the condition that \\( n \\) is a positive integer, \\( n \\) could be any real number, including negative integers, zero, or even non-integers. This would drastically change the nature of the equation.\n   - For non-positive or non-integer values of \\( n \\), the terms \\( x^n \\), \\( (2+x)^n \\), and \\( (2-x)^n \\) may not be well-defined for all integer \\( x \\). For example, negative or fractional exponents could lead to non-real or undefined values for certain \\( x \\).\n   - The polynomial nature of the equation would be lost, making it difficult to apply standard techniques for finding integer solutions.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - If \\( n \\) is not restricted to positive integers, the equation could become a transcendental equation or involve complex numbers, which are not typically solvable using elementary methods for integer solutions.\n   - The lack of a clear structure (such as polynomial form) would make it challenging to determine the conditions under which integer solutions exist, as the behavior of the equation could vary widely depending on the value of \\( n \\).\n   - The problem would lose its constraints, leading to an infinite number of potential cases to consider, many of which may not have meaningful or interpretable solutions in the context of integer solutions.\n\nIn summary, the condition that \\( n \\) is a positive integer is essential for maintaining the polynomial structure of the equation, ensuring that the terms are well-defined for integer \\( x \\), and allowing the use of algebraic techniques to find integer solutions. Without this condition, the problem becomes ill-defined and unsolvable in the context of finding integer solutions."
+    ],
+    "remove": [
+      "Determine all positive integers \\(n\\) for which the equation $$x^{n}+(2+x)^{n}+(2-x)^{n}=0$$ has a solution.",
+      "Determine all integers \\( n \\) for which the equation $$x^{n}+(2+x)^{n}+(2-x)^{n}=0$$ has an integer as a solution."
+    ],
+    "removal_verified": [
+      "False",
+      "True"
+    ],
+    "unsolvable_verified": [
+      "False",
+      "False"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 17,
+    "question": "Before the soccer match between the \"North\" and \"South\" teams, five predictions were made:\n\na) There will be no draw;\n\nb) \"South\" will concede goals;\n\nc) \"North\" will win;\n\nd) \"North\" will not lose;\n\ne) Exactly 3 goals will be scored in the match.\n\nAfter the match, it was found that exactly three predictions were correct. What was the final score of the match?",
+    "ground_truth": "2-1",
+    "solution": "",
+    "difficulty": "1/8",
+    "prompt_lengths": [
+      206,
+      198,
+      528,
+      269,
+      215
+    ],
+    "completion_lengths": [
+      7,
+      358,
+      77,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "Exactly three predictions were correct."
+    ],
+    "remove_analysis": [
+      "1. **Role of the Condition:**\n   - The condition \"Exactly three predictions were correct\" is crucial because it allows us to determine which specific predictions are true and which are false. This condition acts as a constraint that helps us eliminate inconsistent scenarios and narrow down the possible outcomes of the match.\n\n2. **Critical Information Provided by the Condition:**\n   - Without this condition, we would not know how many of the predictions are true. This would leave us with multiple possible combinations of true and false predictions, making it difficult to pinpoint the exact outcome of the match.\n   - The condition helps us systematically test combinations of predictions to find the one that satisfies exactly three true statements, leading us to the correct final score.\n\n3. **Why the Problem Becomes Unsolvable Without This Condition:**\n   - Without knowing that exactly three predictions are correct, we would have no basis for determining which predictions to accept or reject. This would result in numerous possible outcomes, as each prediction could independently be true or false.\n   - The problem would become a matter of guesswork rather than logical deduction, as there would be no definitive way to verify the correctness of any particular combination of predictions.\n\n### Conclusion:\n\nThe condition \"Exactly three predictions were correct\" is essential for solving the problem because it provides a specific constraint that guides the logical deduction process. It allows us to systematically evaluate each prediction and determine the correct combination that leads to the final score of 2-1. Without this condition, the problem lacks the necessary structure to arrive at a unique solution, rendering it unsolvable through logical analysis."
+    ],
+    "remove": [
+      "Before the soccer match between the \"North\" and \"South\" teams, five predictions were made:\n\na) There will be no draw;\n\nb) \"South\" will concede goals;\n\nc) \"North\" will win;\n\nd) \"North\" will not lose;\n\ne) Exactly 3 goals will be scored in the match.\n\nWhat was the final score of the match?"
+    ],
+    "removal_verified": [
+      "False"
+    ],
+    "unsolvable_verified": [
+      "False"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 18,
+    "question": "Let  $ n > 1, n \\in \\mathbb{Z}$  and  $ B \\equal{}\\{1,2,\\ldots, 2^n\\}.$  A subset  $ A$  of  $ B$  is called weird if it contains exactly one of the distinct elements  $ x,y \\in B$  such that the sum of  $ x$  and  $ y$  is a power of two. How many weird subsets does  $ B$  have?",
+    "ground_truth": "2^{n+1}",
+    "solution": "",
+    "difficulty": "3/8",
+    "prompt_lengths": [
+      225,
+      224,
+      227,
+      244,
+      817,
+      848,
+      646,
+      303,
+      301,
+      288,
+      227,
+      222,
+      192
+    ],
+    "completion_lengths": [
+      58,
+      585,
+      613,
+      434,
+      87,
+      82,
+      52,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "n > 1, n ∈ ℤ",
+      "B = {1, 2, ..., 2^n}",
+      "A is a subset of B that contains exactly one of the distinct elements x, y ∈ B such that x + y is a power of two."
+    ],
+    "remove_analysis": [
+      "To analyze the impact of removing the condition \\( n > 1, n \\in \\mathbb{Z} \\) from the problem, let's break down the role of this condition and its implications:\n\n1. **Role of the Condition \\( n > 1, n \\in \\mathbb{Z} \\):**\n   - The condition \\( n > 1 \\) ensures that the set \\( B = \\{1, 2, \\ldots, 2^n\\} \\) contains more than two elements. This is crucial because the problem involves finding subsets \\( A \\) that contain exactly one of the distinct elements \\( x, y \\in B \\) such that \\( x + y \\) is a power of two. If \\( n = 1 \\), then \\( B = \\{1, 2\\} \\), and the only pair \\( (x, y) \\) is \\( (1, 2) \\), where \\( 1 + 2 = 3 \\), which is not a power of two. Thus, no such subset \\( A \\) can exist, making the problem trivial or unsolvable for \\( n = 1 \\).\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the condition \\( n > 1 \\), the problem could be misinterpreted or become trivial for \\( n = 1 \\). The set \\( B \\) would not have enough elements to form pairs \\( (x, y) \\) such that their sum is a power of two. The condition \\( n \\in \\mathbb{Z} \\) ensures that \\( n \\) is an integer, which is necessary for defining the set \\( B \\) as a set of consecutive integers starting from 1.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - If \\( n \\leq 1 \\), the set \\( B \\) would either be too small or not well-defined (e.g., \\( n = 0 \\) would imply \\( B = \\{1\\} \\), which cannot form any pairs). The problem relies on the ability to form pairs \\( (x, y) \\) such that \\( x + y \\) is a power of two, which requires a sufficiently large set \\( B \\). Without \\( n > 1 \\), the problem lacks the necessary structure to have any \"weird\" subsets, as defined.\n\nIn conclusion, the condition \\( n > 1, n \\in \\mathbb{Z} \\) is essential for ensuring that the set \\( B \\) is large enough to contain pairs of elements whose sum is a power of two, thus allowing for the existence of \"weird\" subsets. Removing this condition would either make the problem trivial or unsolvable due to the lack of eligible pairs.",
+      "To analyze the impact of removing the condition \\( B = \\{1, 2, \\ldots, 2^n\\} \\) from the problem, let's break down the role this condition plays in solving the problem and the consequences of its absence.\n\n### 1. Role of the Condition\n\nThe condition \\( B = \\{1, 2, \\ldots, 2^n\\} \\) defines the set of integers from which the subset \\( A \\) is to be formed. This specific choice of \\( B \\) is crucial because:\n\n- **Range of Elements**: The elements in \\( B \\) are consecutive integers starting from 1 up to \\( 2^n \\). This ensures that every integer within this range is considered for forming pairs whose sum is a power of two.\n- **Powers of Two**: The upper limit \\( 2^n \\) is significant because it aligns with the powers of two that can be formed by summing two distinct elements from \\( B \\). For example, the largest power of two that can be formed by summing two elements from \\( B \\) is \\( 2^{n+1} \\).\n\n### 2. Critical Information Missing Without the Condition\n\nWithout the condition \\( B = \\{1, 2, \\ldots, 2^n\\} \\), the following critical information would be missing:\n\n- **Bounded Element Set**: The specific range of elements is lost, which means we no longer have a clear set of numbers to consider for forming pairs. This would make it impossible to determine which pairs can sum to a power of two.\n- **Pair Formation**: The ability to systematically form pairs \\( (x, y) \\) such that \\( x + y \\) is a power of two relies on knowing the exact elements in \\( B \\). Without this, identifying such pairs becomes arbitrary and undefined.\n\n### 3. Why the Problem Becomes Unsolvable\n\nWithout the condition \\( B = \\{1, 2, \\ldots, 2^n\\} \\), the problem becomes unsolvable because:\n\n- **Undefined Set**: The set \\( B \\) could be any arbitrary set of integers, which means the problem loses its structure. The specific property of powers of two being formed by sums of elements is no longer guaranteed.\n- **Inability to Count Weird Subsets**: The counting of weird subsets relies on the systematic pairing of elements to form sums that are powers of two. Without a defined set \\( B \\), this systematic approach is lost, and the concept of a \"weird subset\" becomes meaningless.\n\nIn conclusion, the condition \\( B = \\{1, 2, \\ldots, 2^n\\} \\) is essential for defining the problem's structure and ensuring that the task of counting weird subsets is well-defined and solvable. Without it, the problem lacks the necessary framework to identify and count the subsets in question.",
+      "1. **Role of the Condition:**\n   - The condition specifies that a subset \\( A \\) of \\( B \\) is considered \"weird\" if it contains exactly one of the distinct elements \\( x, y \\in B \\) such that \\( x + y \\) is a power of two.\n   - This condition is crucial because it defines the criteria for a subset to be classified as \"weird.\" Without this condition, the definition of a \"weird\" subset would be ambiguous or undefined.\n\n2. **Critical Information Provided by the Condition:**\n   - The condition provides a specific rule for selecting elements into the subset \\( A \\). It ensures that for every pair \\( (x, y) \\) where \\( x + y \\) is a power of two, exactly one of \\( x \\) or \\( y \\) is included in \\( A \\).\n   - This rule is essential for calculating the number of such subsets because it restricts the choices for subset formation based on the sum property.\n\n3. **Impact of Removing the Condition:**\n   - Without this condition, the problem loses its structure. The concept of a \"weird\" subset becomes undefined, as there is no longer a criterion to determine which subsets qualify as \"weird.\"\n   - The problem becomes unsolvable in its original form because the condition is what allows us to count the subsets systematically. Without it, we cannot determine how many subsets meet the criteria because there are no criteria to meet.\n\n### Conclusion:\n\nThe condition is fundamental to the problem because it defines the nature of the subsets we are counting. Removing it would mean that the problem no longer has a clear objective or method for determining the number of subsets, rendering it unsolvable in its intended form. The condition provides the necessary structure and rules for subset formation, which are essential for solving the problem and arriving at the original answer of \\( 2^{n+1} \\)."
+    ],
+    "remove": [
+      "Let \\( B = \\{1, 2, \\ldots, 2^n\\} \\). A subset \\( A \\) of \\( B \\) is called weird if it contains exactly one of the distinct elements \\( x, y \\in B \\) such that the sum of \\( x \\) and \\( y \\) is a power of two. How many weird subsets does \\( B \\) have?",
+      "Let \\( n > 1, n \\in \\mathbb{Z} \\). A subset \\( A \\) of \\( B \\) is called weird if it contains exactly one of the distinct elements \\( x, y \\in B \\) such that the sum of \\( x \\) and \\( y \\) is a power of two. How many weird subsets does \\( B \\) have?",
+      "Let \\( n > 1, n \\in \\mathbb{Z} \\) and \\( B = \\{1, 2, \\ldots, 2^n\\} \\). How many subsets does \\( B \\) have?"
+    ],
+    "removal_verified": [
+      "True",
+      "False",
+      "False"
+    ],
+    "unsolvable_verified": [
+      "False",
+      "True",
+      "False"
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 19,
+    "question": "Investigate the stability of the equilibrium point $x=0, y=0$ for the system\n\n$$\n\\left\\{\\begin{array}{l}\n\\frac{d x}{d t}=y^{3}+x^{5} \\\\\n\\frac{d y}{d t}=x^{3}+y^{5}\n\\end{array}\\right.\n$$",
+    "ground_truth": "Unstable",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      194,
+      187,
+      190,
+      190,
+      195,
+      705,
+      688,
+      696,
+      536,
+      208,
+      247,
+      246,
+      253,
+      161,
+      197,
+      196,
+      198
+    ],
+    "completion_lengths": [
+      51,
+      554,
+      555,
+      565,
+      332,
+      24,
+      60,
+      59,
+      61,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "extracted_condition": [
+      "The system of differential equations is given by:",
+      "dx/dt = y^3 + x^5",
+      "dy/dt = x^3 + y^5",
+      "Investigate the stability of the equilibrium point (x=0, y=0)."
+    ],
+    "remove_analysis": [
+      "1. **Role of the Condition:**\n   - The condition specifies the system of differential equations that we are analyzing. It provides the mathematical framework necessary to investigate the stability of the equilibrium point at \\(x=0, y=0\\).\n   - The given system of equations is:\n     \\[\n     \\left\\{\\begin{array}{l}\n     \\frac{d x}{d t}=y^{3}+x^{5} \\\\\n     \\frac{d y}{d t}=x^{3}+y^{5}\n     \\end{array}\\right.\n     \\]\n   - This system defines how the variables \\(x\\) and \\(y\\) evolve over time, which is crucial for analyzing the behavior near the equilibrium point.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the specific system of differential equations, we lack the necessary information to determine how perturbations around the equilibrium point evolve.\n   - The stability analysis typically involves linearizing the system around the equilibrium point and examining the eigenvalues of the resulting Jacobian matrix. Without the equations, we cannot perform this linearization.\n   - The nonlinear terms \\(y^3\\), \\(x^5\\), \\(x^3\\), and \\(y^5\\) are essential in determining the nature of the equilibrium point, especially since they dictate the higher-order behavior that affects stability.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - Stability analysis relies on understanding the dynamics dictated by the differential equations. Without the equations, we cannot derive the Jacobian matrix or analyze the system's behavior near the equilibrium.\n   - The specific form of the equations (cubic and quintic terms) is crucial for determining the type of stability (e.g., asymptotic, stable, unstable) and the nature of the equilibrium (e.g., node, saddle, spiral).\n   - Without the system, we cannot apply any mathematical tools or theorems (such as Lyapunov's direct method or linearization) to assess stability.\n\n### Conclusion:\n\nThe condition specifying the system of differential equations is fundamental to solving the problem. It provides the necessary structure to analyze the stability of the equilibrium point. Without this condition, the problem becomes unsolvable because we lack the essential information to apply mathematical techniques for stability analysis. The original answer of \"Unstable\" is derived from the specific dynamics described by the given system, highlighting the critical role of the condition in the problem-solving process.",
+      "1. **Role of the Condition:**\n   - The condition \\( \\frac{dx}{dt} = y^3 + x^5 \\) is one of the two differential equations that define the dynamical system. It describes how the variable \\( x \\) evolves over time based on the current values of \\( x \\) and \\( y \\).\n   - Together with the second equation \\( \\frac{dy}{dt} = x^3 + y^5 \\), it forms a coupled system of differential equations. The behavior of the system, including the stability of equilibrium points, is determined by the interaction between these two equations.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the equation \\( \\frac{dx}{dt} = y^3 + x^5 \\), we lose the description of how \\( x \\) changes over time. This means we cannot fully describe the trajectory of the system in the phase space.\n   - The stability analysis of an equilibrium point involves examining the behavior of trajectories in the vicinity of that point. Without the evolution equation for \\( x \\), we cannot determine how perturbations in \\( x \\) affect the system's return to or divergence from the equilibrium.\n\n3. **Why the Problem Becomes Unsolvable:**\n   - Stability analysis typically involves linearizing the system around the equilibrium point and examining the eigenvalues of the resulting Jacobian matrix. The Jacobian matrix is derived from the partial derivatives of both equations with respect to \\( x \\) and \\( y \\).\n   - Without the first equation, we cannot compute the partial derivatives with respect to \\( x \\), and thus cannot construct the full Jacobian matrix. This makes it impossible to perform a linear stability analysis.\n   - Additionally, the dynamics of the system are inherently coupled. The behavior of \\( y \\) is influenced by \\( x \\) and vice versa. Removing the equation for \\( x \\) disrupts this coupling, leading to an incomplete and unsolvable system.\n\n### Conclusion:\n\nThe condition \\( \\frac{dx}{dt} = y^3 + x^5 \\) is essential for defining the complete dynamical system. It provides critical information about the evolution of \\( x \\), which is necessary for analyzing the stability of the equilibrium point. Without this condition, the problem becomes unsolvable because we cannot fully describe the system's dynamics or perform a proper stability analysis.",
+      "1. **Role of the Condition:**\n   - The condition \\( \\frac{d y}{d t} = x^3 + y^5 \\) is part of the system of differential equations that describes the dynamics of the system. It provides the evolution of the variable \\( y \\) over time, which is crucial for understanding how the system behaves near the equilibrium point.\n   - Together with \\( \\frac{d x}{d t} = y^3 + x^5 \\), it forms a coupled system of equations. The interaction between \\( x \\) and \\( y \\) through these equations determines the trajectory of the system in the phase space.\n\n2. **Critical Information Missing Without the Condition:**\n   - Without the equation for \\( \\frac{d y}{d t} \\), we lose the ability to track changes in \\( y \\) over time. This means we cannot fully describe the system's dynamics or predict how perturbations in \\( y \\) will evolve.\n   - The stability analysis of an equilibrium point requires understanding how small deviations in both \\( x \\) and \\( y \\) behave. Without the \\( \\frac{d y}{d t} \\) equation, we cannot assess the response of \\( y \\) to perturbations, which is essential for determining stability.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   - Stability analysis typically involves linearizing the system around the equilibrium point and examining the eigenvalues of the resulting Jacobian matrix. The Jacobian is derived from both equations in the system. Without \\( \\frac{d y}{d t} \\), the Jacobian is incomplete, and we cannot perform this analysis.\n   - The system's behavior is inherently two-dimensional, involving interactions between \\( x \\) and \\( y \\). Removing one equation reduces the system to a single equation, which does not capture the full dynamics and interactions necessary for a comprehensive stability analysis.\n\n### Conclusion:\n\nThe condition \\( \\frac{d y}{d t} = x^3 + y^5 \\) is essential for analyzing the stability of the equilibrium point because it provides the necessary information about the evolution of \\( y \\). Without it, the system is incomplete, and we cannot determine how perturbations in \\( y \\) affect the system's stability. Thus, the problem becomes unsolvable in its original context, as we lack the full description of the system's dynamics.",
+      "1. **Role of the Condition:**\n   The condition specifies the point of interest, $(x=0, y=0)$, which is the equilibrium point of the given dynamical system. An equilibrium point is where the system does not change, meaning $\\frac{dx}{dt} = 0$ and $\\frac{dy}{dt} = 0$. This condition is crucial because it defines the specific location in the phase space where we need to analyze the stability. Without this condition, we would not know which point's stability to investigate.\n\n2. **Critical Information Missing Without the Condition:**\n   Without the condition specifying the equilibrium point, we would lack a target for our stability analysis. The system could have multiple equilibrium points, each with potentially different stability characteristics. The condition narrows down the focus to a specific point, allowing us to apply linearization techniques or other methods to determine stability. Without knowing the point of interest, we cannot proceed with these analyses.\n\n3. **Why the Problem Becomes Unsolvable Without This Information:**\n   Stability analysis typically involves examining the behavior of trajectories near an equilibrium point. This often requires linearizing the system around the equilibrium point and analyzing the eigenvalues of the resulting Jacobian matrix. Without knowing which equilibrium point to analyze, we cannot perform this linearization. Additionally, the nature of the system's behavior (e.g., whether it is a source, sink, or saddle point) is inherently tied to the specific equilibrium point. Thus, without the condition, we cannot determine the stability characteristics of the system at any particular point, rendering the problem unsolvable in its intended context."
+    ],
+    "remove": [
+      "Investigate the stability of the equilibrium point \\(x=0, y=0\\).\n\nOriginal answer: Unstable",
+      "Investigate the stability of the equilibrium point \\(x=0, y=0\\) for the system\n\n$$\n\\left\\{\\begin{array}{l}\n\\frac{d y}{d t}=x^{3}+y^{5}\n\\end{array}\\right.\n$$",
+      "Investigate the stability of the equilibrium point $x=0, y=0$ for the system\n\n$$\n\\left\\{\\begin{array}{l}\n\\frac{d x}{d t}=y^{3}+x^{5}\n\\end{array}\\right.\n$$",
+      "Analyze the system\n\n$$\n\\left\\{\\begin{array}{l}\n\\frac{d x}{d t}=y^{3}+x^{5} \\\\\n\\frac{d y}{d t}=x^{3}+y^{5}\n\\end{array}\\right.\n$$"
+    ],
+    "removal_verified": [
+      "False",
+      "False",
+      "True",
+      "True"
+    ],
+    "unsolvable_verified": [
+      "True",
+      "True",
+      "True",
+      "False"
+    ]
+  }
+]

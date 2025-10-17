@@ -1,0 +1,53 @@
+Rewrite the problem by replacing a specific entity reference with an ambiguous pronoun.
+
+Original Problem: {original_question}
+Conditions: {conditions}
+Original Question: {question}
+Entities: {entities}
+Suggested Pronouns: {suggested_pronouns}
+
+**CRITICAL RULES**:
+1. Keep ALL conditions EXACTLY as written - DO NOT change conditions
+2. ONLY modify the question part to use an ambiguous pronoun
+3. The pronoun must genuinely refer to 2+ possible entities
+4. The ambiguity must make it impossible to determine which entity is meant
+
+**Pronoun Replacement Examples**:
+
+Example 1:
+Original: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+Rewritten: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did he buy?"
+(Ambiguity: "he" could be Jason or Mike)
+
+Example 2:
+Original: "Triangle ABC has sides 3, 4, 5. Triangle DEF has sides 5, 12, 13. What is the perimeter of triangle ABC?"
+Rewritten: "Triangle ABC has sides 3, 4, 5. Triangle DEF has sides 5, 12, 13. What is its perimeter?"
+(Ambiguity: "its" could refer to ABC or DEF)
+
+Example 3:
+Original: "Alice has 5 apples, Bob has 3 apples. How many apples does Alice have?"
+Rewritten: "Alice has 5 apples, Bob has 3 apples. How many apples does she have?"
+(Ambiguity: "she" could be Alice, but if Bob were Betty, it could be either)
+
+Example 4:
+Original: "The front tires wear out after 25,000 km, the rear tires wear out after 15,000 km. When should the front tires be swapped?"
+Rewritten: "The front tires wear out after 25,000 km, the rear tires wear out after 15,000 km. When should they be swapped?"
+(Ambiguity: "they" could refer to front tires, rear tires, or all tires)
+
+**CRITICAL OUTPUT FORMAT**:
+
+Output ONLY the complete rewritten problem as plain text. DO NOT include:
+- "Conditions:" prefix or label
+- "Rewritten Problem:" prefix or label
+- "Rewritten Question:" prefix or label
+- "Problem:" prefix
+- "Question:" prefix
+- Any JSON formatting
+- Any explanatory text
+- Any markdown formatting
+
+Just output the problem directly, like this:
+
+Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did he buy?
+
+Rewritten Problem:

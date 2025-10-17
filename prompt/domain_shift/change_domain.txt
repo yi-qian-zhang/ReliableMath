@@ -1,0 +1,46 @@
+Rewrite the problem by changing ONLY the question to a different domain.
+
+Original Problem: {original_question}
+Conditions: {conditions}
+Original Question: {question}
+Current Domain: {current_domain}
+Possible Target Domains: {possible_domains}
+
+**CRITICAL RULES**:
+1. Keep ALL conditions EXACTLY as written - WORD FOR WORD, NUMBER FOR NUMBER
+2. Change ONLY the question to ask about a different domain
+3. The new question must be impossible to answer using the given mathematical conditions
+
+**Domain Change Strategy**:
+
+From Mathematical → To Qualitative:
+- "How many apples?" → "Which apple is the sweetest?"
+- "What is the distance?" → "Is the journey tiring?"
+- "Calculate the area" → "Is the shape beautiful?"
+- "Find the speed" → "Is the car going too fast?" (subjective feeling)
+
+From Mathematical → To Subjective:
+- "Which class has more students?" → "Which class is more difficult?"
+- "What is the total cost?" → "Is it expensive?"
+- "How long will it take?" → "Will you be bored during the wait?"
+
+From Mathematical → To Emotional:
+- "When will the water boil?" → "Are you anxious while waiting?"
+- "How many tasks remain?" → "Do you feel stressed?"
+
+From Mathematical → To Physical Sensation:
+- "What is the temperature?" → "Does it feel hot or cold?"
+- "How loud is the sound?" → "Does it hurt your ears?"
+
+**Important**:
+- The new question should ask about properties that CANNOT be determined from numbers alone
+- Keep all entities, objects, and context from the original
+- Only change what is being asked about them
+
+**Format**:
+
+Rewrite the problem keeping ALL conditions identical, but change the question to the target domain.
+
+Output the complete rewritten problem:
+
+Rewritten Problem:

@@ -1,0 +1,49 @@
+Identify the domain of the question and determine if domain shift is applicable.
+
+Original Problem: {original_question}
+Conditions: {conditions}
+Question: {question}
+
+**Task**: Analyze the question domain and determine if we can shift it to a different domain.
+
+**Current Domain Types**:
+1. **Mathematical/Quantitative**: Asking for numbers, calculations, measurements
+   - Examples: "How many?", "What is the distance?", "Calculate the area", "Find the value"
+   
+2. **Logical/Proof**: Asking to prove or demonstrate something
+   - Examples: "Prove that...", "Show that...", "Demonstrate..."
+
+**Target Domain Types** (for shift):
+1. **Qualitative/Sensory**: taste, beauty, comfort, appearance
+   - Examples: "Which tastes better?", "Is it beautiful?", "Which is more comfortable?"
+   
+2. **Subjective/Opinion**: preferences, feelings, opinions
+   - Examples: "Which do you prefer?", "What do you think?", "Which is better?"
+   
+3. **Emotional/Psychological**: emotions, mental states
+   - Examples: "Is the person happy?", "Are they tired?", "Is it stressful?"
+   
+4. **Physical Sensation** (non-quantitative): temperature feeling, loudness perception
+   - Examples: "Does it feel hot?", "Is it loud?", "Does it hurt?"
+
+**Domain Shift Applicability**:
+- **Applicable**: If the question asks for a mathematical/quantitative answer AND the conditions provide quantitative data
+- **Not Applicable**: If the question already asks for qualitative/subjective answers, or if it's a proof problem
+
+**Analysis**:
+
+1. What is the current domain of the question?
+2. What type of answer does the question expect? (number, proof, explanation)
+3. Can we shift this question to a qualitative/subjective domain?
+4. If yes, what target domains would be appropriate?
+
+Output as JSON:
+{{
+  "current_domain": "mathematical|logical|other",
+  "expected_answer_type": "numerical|proof|explanation",
+  "domain_shiftable": true/false,
+  "reason": "why it is or isn't shiftable",
+  "possible_target_domains": ["qualitative", "subjective", "emotional", "physical_sensation"]
+}}
+
+Analysis:

@@ -1,0 +1,53 @@
+Verify that the rewrite preserved all conditions and only changed the question domain.
+
+Original Problem: {original_question}
+Original Conditions: {original_conditions}
+Original Question: {original_question_part}
+Rewritten Problem: {rewritten_question}
+
+**Verification Checklist**:
+
+1. **Conditions Preservation** (CRITICAL):
+   - Are ALL conditions from the original problem present in the rewritten version?
+   - Are ALL numbers exactly the same?
+   - Are ALL entities and relationships preserved?
+   - Score: 0.0-1.0 (1.0 = perfect preservation, 0.0 = conditions changed)
+
+2. **Data Integrity**:
+   - Extract all numbers from original: [list them]
+   - Extract all numbers from rewritten: [list them]
+   - Do they match exactly? Yes/No
+   - Score: 1.0 if yes, 0.0 if no
+
+3. **Question Domain Changed**:
+   - Is the question now asking about a different domain?
+   - Has the question changed from quantitative to qualitative/subjective?
+   - Score: 0.0-1.0 (1.0 = clear domain change)
+
+4. **Natural Language**:
+   - Is the rewritten problem grammatically correct?
+   - Does it sound natural and realistic?
+   - Score: 0.0-1.0
+
+5. **Overall Quality**:
+   - Average of above scores
+   - Is this a valid domain shift transformation?
+   - Recommendation: "accept" or "reject"
+
+**Critical**: If conditions are not perfectly preserved OR numbers don't match, this MUST be rejected.
+
+Output as JSON:
+{{
+  "conditions_preservation": 0.95,
+  "data_integrity": 1.0,
+  "question_domain_changed": 0.90,
+  "natural_language": 0.95,
+  "overall": 0.95,
+  "recommendation": "accept",
+  "original_numbers": ["25000", "15000"],
+  "rewritten_numbers": ["25000", "15000"],
+  "numbers_match": true,
+  "issues": []
+}}
+
+Verification Result:
