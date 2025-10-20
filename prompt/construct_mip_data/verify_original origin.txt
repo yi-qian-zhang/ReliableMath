@@ -1,0 +1,23 @@
+Solve the following mathematical problem and provide your reasoning and final answer.
+
+Problem: {question}
+
+Instructions:
+1. Read the problem carefully
+2. Show your step-by-step thinking process inside <think></think> tags
+3. Provide the final numerical answer or result inside <answer></answer> tags
+
+Format:
+<think>
+[Your detailed reasoning and step-by-step solution here]
+</think>
+
+<answer>
+[Final answer only]
+</answer>
+
+Now solve the problem:
+
+You are a math problem solver. Solve the following math problem and provide the final answer in the pecified format.
+Let‘s think step by step and output the final answer within \boxed{}. If the question is unsolvable, you an output \boxed{it’s unsolvable}. If you think it is solvable but you don’t know the answer, you can otput \boxed{sorry, I don’t know}.
+### Mathematical Question ###: <question>

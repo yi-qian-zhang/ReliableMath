@@ -2,6 +2,9 @@
 """
 MIP (Missing Information Problem) Construction Pipeline
 移除关键条件使数学问题不可解
+# 1.确认original question可解出groundtruth
+# 2.remove --》改写后的缺省问题  + 缺省条件
+# 3.直接给缺省问题+ 缺省条件 让模型回答 如果与groundtruth一样就保留 (turbo)
 """
 
 import os
@@ -19,13 +22,13 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 parser = argparse.ArgumentParser(description="MIP Dataset Construction")
 parser.add_argument("--model", default="gpt-4o", help="Model for extraction/rewrite")
-parser.add_argument("--verify_model", default="gpt-4o", help="Model for verification (cheaper)")
+parser.add_argument("--verify_model", default="gpt-4o", help="Model for verification")
 parser.add_argument("--data_dir", default="data/solve", help="Input directory")
 parser.add_argument("--output_dir", default="data/construct_mip_data", help="Output directory")
 parser.add_argument("--prompt_dir", default="prompt/construct_mip_data", help="Prompt directory")
 parser.add_argument("--dataset", default="polaris_easy_20", help="Dataset name")
 parser.add_argument("--temperature", default=0.0, type=float, help="Temperature")
-parser.add_argument("--test_mode", action='store_true', help="Test mode - process only first 2 items")
+parser.add_argument("--test_mode", action='store_true', help="Test mode - process only first 5 items")
 parser.add_argument("--force", action='store_true', help="Force reprocess all items")
 args = parser.parse_args()
 
@@ -130,65 +133,33 @@ def get_response_openai(input_prompt, persona="", model=None, temperature=0.0):
     return "", 0, 0
 
 def parse_json_response(response, fallback=None):
+    """简化的 JSON 解析"""
     try:
-        # 尝试找到 JSON 部分
-        start = response.find('{')
-        end = response.rfind('}') + 1
-        if start >= 0 and end > start:
-            json_str = response[start:end]
-            return json.loads(json_str)
-        
-        # 尝试找到 JSON 数组
+        # 尝试找到 JSON 数组（优先）
         start = response.find('[')
         end = response.rfind(']') + 1
         if start >= 0 and end > start:
             json_str = response[start:end]
             return json.loads(json_str)
+        
+        # 尝试找到 JSON 对象
+        start = response.find('{')
+        end = response.rfind('}') + 1
+        if start >= 0 and end > start:
+            json_str = response[start:end]
+            return json.loads(json_str)
+            
     except Exception as e:
         logging.error(f"JSON parsing failed: {e}")
-        logging.error(f"Response was: {response[:500]}")
+        if len(response) > 1000:
+            logging.error(f"Response (first 500 chars): {response[:500]}")
+            logging.error(f"Response (last 500 chars): {response[-500:]}")
+        else:
+            logging.error(f"Full response: {response}")
     
     return fallback if fallback is not None else {}
 
-def normalize_answer(answer):
-    """标准化答案用于比较"""
-    if not answer:
-        return ""
-    
-    answer = str(answer).strip().lower()
-    
-    # 移除常见的前缀
-    prefixes = ["answer:", "the answer is", "答案是", "答案:", "final answer:", "solution:", "result:"]
-    for prefix in prefixes:
-        if answer.startswith(prefix):
-            answer = answer[len(prefix):].strip()
-    
-    # 移除标点符号
-    import string
-    answer = answer.translate(str.maketrans('', '', string.punctuation))
-    
-    # 移除空格
-    answer = answer.replace(" ", "")
-    
-    return answer
-
-def answers_match(answer1, answer2):
-    """比较两个答案是否匹配"""
-    norm1 = normalize_answer(answer1)
-    norm2 = normalize_answer(answer2)
-    
-    # 精确匹配
-    if norm1 == norm2:
-        return True
-    
-    # 检查是否一个答案包含另一个
-    if norm1 and norm2:
-        if norm1 in norm2 or norm2 in norm1:
-            return True
-    
-    return False
-
-# ============= Step 1: Verify Original Solvability =============
+# ============= Answer Processing =============
 
 def extract_answer_tag(response):
     """从响应中提取 <answer> 标签内容"""
@@ -242,8 +213,10 @@ def judge_answer_equivalence(question, model_answer, ground_truth):
     else:
         return False
 
+# ============= Step 0: Verify Original Solvability =============
+
 def verify_original_solvable(data):
-    """Step 1: 验证原始问题模型能否解出ground_truth（改进版）"""
+    """Step 0: 验证原始问题模型能否解出ground_truth"""
     prompt_path = os.path.join(args.prompt_dir, "verify_original.txt")
     
     if not os.path.exists(prompt_path):
@@ -296,12 +269,15 @@ def verify_original_solvable(data):
         data["prompt_lengths"].append(judge_tokens)
         data["completion_lengths"].append(10)  # judge 响应很短
     
+    # 在顶层添加 answer 字段，方便查看
+    data["answer"] = model_answer if model_answer else "N/A"
+    
     data["original_verification"] = {
         "model_answer": model_answer if model_answer else "N/A",
         "ground_truth": ground_truth,
         "judge_result": judge_result,
         "is_solvable": is_solvable,
-        "full_response": response[:500] if len(response) > 500 else response  # 保存前500字符用于调试
+        "full_response": response[:500] if len(response) > 500 else response
     }
     data["original_solvable"] = is_solvable
     
@@ -309,13 +285,14 @@ def verify_original_solvable(data):
         data["skip_reason"] = "original_unsolvable"
         logging.info(f"ID {data['id']}: SKIP - Original problem unsolvable (judge: {judge_result})")
     else:
-        logging.info(f"ID {data['id']}: Original problem solvable ✓")
+        logging.info(f"ID {data['id']}: Original problem solvable ✓ (answer: {model_answer[:50]}...)")
     
     return data
-# ============= Step 2: Extract and Generate Variants =============
+
+# ============= Step 1: Extract and Generate Variants =============
 
 def extract_and_generate_variants(data):
-    """Step 2: 一次性提取条件并生成所有移除变体"""
+    """Step 1: 一次性提取条件并生成所有移除变体"""
     # 如果原始问题不可解，跳过
     if not data.get("original_solvable", False):
         data["removal_variants"] = []
@@ -384,19 +361,20 @@ def extract_and_generate_variants(data):
     
     data["removal_variants"] = removal_variants
     
-    logging.info(f"ID {data['id']}: Generated {len(removal_variants)} removal variants in one call")
+    logging.info(f"ID {data['id']}: Generated {len(removal_variants)} removal variants")
     
     return data
 
-# ============= Step 3: Verify Incomplete Questions =============
+# ============= Step 2: Verify Incomplete Questions =============
 
 def verify_incomplete_questions(data):
-    """Step 3: 验证每个缺省问题是否不可解"""
+    """Step 2: 验证"缺省问题 + 移除的条件"能否解出 ground_truth"""
     # 如果原始问题不可解，跳过
     if not data.get("original_solvable", False):
         return data
     
-    prompt_path = os.path.join(args.prompt_dir, "solve_problem.txt")
+    # 使用 verify_with_condition.txt
+    prompt_path = os.path.join(args.prompt_dir, "verify_with_condition.txt")
     
     if not os.path.exists(prompt_path):
         logging.error(f"Prompt file not found: {prompt_path}")
@@ -408,11 +386,13 @@ def verify_incomplete_questions(data):
     ground_truth = str(data.get("ground_truth", "")).strip()
     
     for variant in data.get("removal_variants", []):
-        # 构造输入：缺省问题
         incomplete_question = variant["incomplete_question"]
+        removed_condition = variant["removed_condition"]
         
+        # 构造输入：缺省问题 + 移除的条件
         input_prompt = prompt_template.format(
-            question=incomplete_question
+            incomplete_question=incomplete_question,
+            removed_condition=removed_condition
         )
         
         response, prompt_tokens, completion_tokens = get_response_openai(
@@ -425,24 +405,44 @@ def verify_incomplete_questions(data):
         data["prompt_lengths"].append(prompt_tokens)
         data["completion_lengths"].append(completion_tokens)
         
-        # 提取答案
-        model_answer = response.strip()
+        # 提取 <answer> 标签
+        model_answer = extract_answer_tag(response)
         
-        # 比较答案
-        is_same = answers_match(model_answer, ground_truth)
+        # 在变体中添加 answer 字段
+        variant["answer"] = model_answer if model_answer else "N/A"
         
-        # CRITICAL: 验证逻辑
-        # 答案 = ground_truth → 丢弃（条件非必要）
-        # 答案 ≠ ground_truth → 保留（条件必要）
+        # 如果提取不到答案，认为无效
+        if model_answer is None:
+            is_correct = False
+            judge_result = "no_answer_tag"
+        else:
+            # 使用 LLM-as-Judge 判断是否等价于 ground_truth
+            is_correct = judge_answer_equivalence(
+                incomplete_question + " [With condition: " + removed_condition + "]",
+                model_answer,
+                ground_truth
+            )
+            judge_result = "equivalent" if is_correct else "not_equivalent"
+            
+            # 记录 judge token
+            judge_tokens = count_tokens(incomplete_question + removed_condition + model_answer + ground_truth)
+            data["prompt_lengths"].append(judge_tokens)
+            data["completion_lengths"].append(10)
+        
+        # CRITICAL 验证逻辑：
+        # 给回条件后，答案 = ground_truth → 说明条件是关键的 → 保留
+        # 给回条件后，答案 ≠ ground_truth → 说明条件不重要 → 丢弃
         variant["verification"] = {
-            "model_answer": model_answer,
+            "model_answer": model_answer if model_answer else "N/A",
             "ground_truth": ground_truth,
-            "answers_match": is_same,
-            "is_valid": not is_same  # 答案不匹配才是有效的
+            "judge_result": judge_result,
+            "answers_match": is_correct,
+            "is_valid": is_correct  # 答案正确才是有效的
         }
         
-        status = "INVALID (still solvable)" if is_same else "VALID (now unsolvable)"
-        logging.info(f"ID {variant['variant_id']}: {status}")
+        status = "VALID ✓" if is_correct else "INVALID ✗"
+        answer_preview = model_answer[:30] if model_answer else "N/A"
+        logging.info(f"ID {variant['variant_id']}: {status} (answer: {answer_preview}...)")
     
     return data
 
@@ -517,7 +517,7 @@ def filter_valid_data(final_path):
             
             verification = variant.get("verification", {})
             
-            # 只保留有效的缺省问题（模型无法正确回答的）
+            # 只保留有效的 pair（加回条件后能解出 ground_truth）
             if verification.get("is_valid", False):
                 valid_item = {
                     "id": variant["variant_id"],
@@ -525,11 +525,13 @@ def filter_valid_data(final_path):
                     "difficulty": data.get("difficulty", ""),
                     "transformation_type": "condition_removal",
                     "original_question": data["question"],
+                    "original_answer": data.get("answer", "N/A"),  # 原始问题的答案
                     "ground_truth": data.get("ground_truth", ""),
                     "removed_condition": variant["removed_condition"],
                     "removed_condition_index": variant["removed_condition_index"],
                     "remaining_conditions": variant["remaining_conditions"],
                     "incomplete_question": variant["incomplete_question"],
+                    "answer_with_condition": variant.get("answer", "N/A"),  # 加回条件后的答案
                     "verification": verification,
                     "original_id": data["id"]
                 }
@@ -603,8 +605,8 @@ def construction_workflow():
     dataset = read_json(input_path)
     
     if args.test_mode:
-        dataset = dataset[:2]
-        logging.info("TEST MODE: First 2 items")
+        dataset = dataset[:5]
+        logging.info("TEST MODE: First 5 items")
     
     os.makedirs(output_dir, exist_ok=True)
     
@@ -634,22 +636,22 @@ def construction_workflow():
         print(f"Mode: FORCE (reprocessing all)")
     print("="*70)
     
-    # Step 1: Verify Original Solvability
+    # Step 0: Verify Original Solvability
     print("\n[0/3] Verifying original problem solvability")
     verify_path = os.path.join(output_dir, f"{args.dataset}_verify_original.json")
     process_with_jsonl(dataset, verify_path, verify_original_solvable, "Verifying original")
     
-    # Step 2: Extract and Generate Variants
+    # Step 1: Extract and Generate Variants
     print("\n[1/3] Extracting conditions and generating removal variants")
     dataset = read_json(verify_path)
     extract_path = os.path.join(output_dir, f"{args.dataset}_variants.json")
     process_with_jsonl(dataset, extract_path, extract_and_generate_variants, "Generating variants")
     
-    # Step 3: Verify Incomplete Questions
-    print("\n[2/3] Verifying incomplete questions")
+    # Step 2: Verify Incomplete Questions
+    print("\n[2/3] Verifying incomplete questions with conditions")
     dataset = read_json(extract_path)
     final_path = os.path.join(output_dir, f"{args.dataset}_final.json")
-    process_with_jsonl(dataset, final_path, verify_incomplete_questions, "Verifying incomplete")
+    process_with_jsonl(dataset, final_path, verify_incomplete_questions, "Verifying with condition")
     
     # Filter
     print("\n[3/3] Filtering valid data")
