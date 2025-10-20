@@ -1,102 +1,162 @@
 [
   {
-    "problem": "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
-    "answer": "9375",
-    "difficulty": "7/8"
-  },
-  {
-    "problem": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:",
-    "answer": "392",
+    "data_source": "polaris",
+    "id": 0,
+    "question": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:",
+    "ground_truth": "392",
+    "solution": "",
     "difficulty": "6/8"
   },
   {
-    "problem": "Given the function \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\), if the minimum value of \\( f(x) \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right] \\) is \\(-1\\), find the value of \\( a \\).",
-    "answer": "-1",
-    "difficulty": "7/8"
-  },
-  {
-    "problem": "Investigate the stability of the equilibrium point $x=0, y=0$ for the system\n\n$$\n\\left\\{\\begin{array}{l}\n\\frac{d x}{d t}=y^{3}+x^{5} \\\\\n\\frac{d y}{d t}=x^{3}+y^{5}\n\\end{array}\\right.\n$$",
-    "answer": "Unstable",
+    "data_source": "polaris",
+    "id": 1,
+    "question": "Investigate the stability of the equilibrium point $x=0, y=0$ for the system\n\n$$\n\\left\\{\\begin{array}{l}\n\\frac{d x}{d t}=y^{3}+x^{5} \\\\\n\\frac{d y}{d t}=x^{3}+y^{5}\n\\end{array}\\right.\n$$",
+    "ground_truth": "Unstable",
+    "solution": "",
     "difficulty": "6/8"
   },
   {
-    "problem": "From the vertex of the right angle of triangle \\(ABC\\), the median \\(CM\\) is drawn. The circle inscribed in triangle \\(CAM\\) touches \\(CM\\) at its midpoint. Find the angle \\(BAC\\).",
-    "answer": "60",
-    "difficulty": "7/8"
-  },
-  {
-    "problem": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?",
-    "answer": "300",
-    "difficulty": "7/8"
-  },
-  {
-    "problem": "An electronic clock always displays the date as an eight-digit number. For example, January 1, 2011, is displayed as 20110101. What is the last day of 2011 that can be evenly divided by 101? The date is displayed as $\\overline{2011 \\mathrm{ABCD}}$. What is $\\overline{\\mathrm{ABCD}}$?",
-    "answer": "1221",
-    "difficulty": "7/8"
-  },
-  {
-    "problem": "A cube with a side length of 1 meter was cut into smaller cubes with a side length of 1 centimeter and arranged in a straight line. What is the length of the resulting line?",
-    "answer": "10000",
-    "difficulty": "7/8"
-  },
-  {
-    "problem": "In a right-angled triangle, let \\( s_{a} \\) and \\( s_{b} \\) be the medians to the legs, and \\( s_{c} \\) be the median to the hypotenuse. Determine the maximum value of the expression \\( \\frac{s_{a} + s_{b}}{s_{c}} \\).",
-    "answer": "\\sqrt{10}",
-    "difficulty": "7/8"
-  },
-  {
-    "problem": "Given the function $f(x) = x^2 - 2\\cos{\\theta}x + 1$, where $x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]$.\n\n(1) When $\\theta = \\frac{\\pi}{3}$, find the maximum and minimum values of $f(x)$.\n\n(2) If $f(x)$ is a monotonous function on $x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]$ and $\\theta \\in [0, 2\\pi)$, find the range of $\\theta$.\n\n(3) If $\\sin{\\alpha}$ and $\\cos{\\alpha}$ are the two real roots of the equation $f(x) = \\frac{1}{4} + \\cos{\\theta}$, find the value of $\\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}$.",
-    "answer": "\\frac{16 + 4\\sqrt{11}}{5}",
-    "difficulty": "7/8"
-  },
-  {
-    "problem": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even. Find $|a-b|.$\n",
-    "answer": "25",
-    "difficulty": "7/8"
-  },
-  {
-    "problem": "Determine the largest value of \\( x \\) for which\n\\[ \\left|x^{2}-4x-39601\\right| \\geq \\left|x^{2}+4x-39601\\right| \\]",
-    "answer": "199",
-    "difficulty": "7/8"
-  },
-  {
-    "problem": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.  Which of the following options are valid parameterizations?\n\n(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$\n\n(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$\n\n(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$\n\n(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$\n\n(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$\n\nEnter the letters of the correct options, separated by commas.",
-    "answer": "\\text{A,C}",
+    "data_source": "polaris",
+    "id": 2,
+    "question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.  Which of the following options are valid parameterizations?\n\n(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$\n\n(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$\n\n(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$\n\n(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$\n\n(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$\n\nEnter the letters of the correct options, separated by commas.",
+    "ground_truth": "\\text{A,C}",
+    "solution": "",
     "difficulty": "6/8"
   },
   {
-    "problem": "Triangle $ABC$ has $AB = 13, BC = 14$, and $AC = 15$. The points $D, E$, and $F$ are the midpoints of $\\overline{AB}, \\overline{BC}$, and $\\overline{AC}$ respectively. Let $X \\neq E$ be the intersection of the circumcircles of $\\triangle BDE$ and $\\triangle CEF$. What is $XA + XB + XC$?",
-    "answer": "\\frac{195}{8}",
-    "difficulty": "7/8"
-  },
-  {
-    "problem": "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$, and let side $BC$ be extended through $C$, to meet in point $E.$ Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$, then:",
-    "answer": "1",
-    "difficulty": "7/8"
-  },
-  {
-    "problem": "Find the distance between the foci of the ellipse \n\\[\\frac{x^2}{36} + \\frac{y^2}{16} = 8.\\]",
-    "answer": "8\\sqrt{10}",
-    "difficulty": "7/8"
-  },
-  {
-    "problem": "In the 2013 Zhejiang College Entrance Examination, arrange the six letters A, B, C, D, E, F in a row, with both A and B on the same side of C. How many different arrangements are there? (Answer with a number.)",
-    "answer": "480",
+    "data_source": "polaris",
+    "id": 3,
+    "question": "In the 2013 Zhejiang College Entrance Examination, arrange the six letters A, B, C, D, E, F in a row, with both A and B on the same side of C. How many different arrangements are there? (Answer with a number.)",
+    "ground_truth": "480",
+    "solution": "",
     "difficulty": "6/8"
   },
   {
-    "problem": "All the complex roots of $(z + 1)^4 = 16z^4,$ when plotted in the complex plane, lie on a circle. Find the radius of this circle.",
-    "answer": "\\frac{2}{3}",
+    "data_source": "polaris",
+    "id": 4,
+    "question": "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print.\n\nSasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?",
+    "ground_truth": "28",
+    "solution": "",
+    "difficulty": "6/8"
+  },
+  {
+    "data_source": "polaris",
+    "id": 5,
+    "question": "In an acute-angled triangle \\( ABC \\), the angle bisector \\( AN \\), the altitude \\( BH \\), and the line perpendicular to side \\( AB \\) passing through its midpoint intersect at a single point. Find angle \\( BAC \\).",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "6/8"
+  },
+  {
+    "data_source": "polaris",
+    "id": 6,
+    "question": "Person A and person B start from locations A and B respectively, walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously. They meet after 10 minutes. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?",
+    "ground_truth": "50",
+    "solution": "",
+    "difficulty": "6/8"
+  },
+  {
+    "data_source": "polaris",
+    "id": 7,
+    "question": "Six chairs sit in a row.  Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.  There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.  The probability that this will **not** happen is given by  $\\frac{m}{n}$  where  $m$  and  $n$  are relatively prime positive integers. Find  $m+n$ .",
+    "ground_truth": "1106",
+    "solution": "",
+    "difficulty": "6/8"
+  },
+  {
+    "data_source": "polaris",
+    "id": 8,
+    "question": "In a two-story house that is inhabited in both floors as well as on the ground floor, 35 people live above someone and 45 people live below someone. One third of all the people living in the house live on the first floor.\n\nHow many people live in the house in total?",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "6/8"
+  },
+  {
+    "data_source": "polaris",
+    "id": 9,
+    "question": "Given a square with four vertices and its center, find the probability that the distance between any two of these five points is less than the side length of the square.",
+    "ground_truth": "\\frac{2}{5}",
+    "solution": "",
+    "difficulty": "6/8"
+  },
+  {
+    "data_source": "polaris",
+    "id": 10,
+    "question": "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
+    "ground_truth": "9375",
+    "solution": "",
     "difficulty": "7/8"
   },
   {
-    "problem": "For the polynomial \\(\\left(x^{2}-x+1\\right)^{100}\\), find the sum of the coefficients of the even powers of \\(x\\).",
-    "answer": "\\frac{1+3^{100}}{2}",
+    "data_source": "polaris",
+    "id": 11,
+    "question": "Given the function \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\), if the minimum value of \\( f(x) \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right] \\) is \\(-1\\), find the value of \\( a \\).",
+    "ground_truth": "-1",
+    "solution": "",
     "difficulty": "7/8"
   },
   {
-    "problem": "Sierpinski's triangle is formed by taking a triangle, and drawing an upside down triangle inside each upright triangle that appears. A snake sees the fractal, but decides that the triangles need circles inside them. Therefore, she draws a circle inscribed in every upside down triangle she sees (assume that the snake can do an infinite amount of work). If the original triangle had side length  $1$ , what is the total area of all the individual circles?\n\n*2015 CCA Math Bonanza Lightning Round #4.4*",
-    "answer": "\\frac{\\pi}{12}",
+    "data_source": "polaris",
+    "id": 12,
+    "question": "From the vertex of the right angle of triangle \\(ABC\\), the median \\(CM\\) is drawn. The circle inscribed in triangle \\(CAM\\) touches \\(CM\\) at its midpoint. Find the angle \\(BAC\\).",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "7/8"
+  },
+  {
+    "data_source": "polaris",
+    "id": 13,
+    "question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?",
+    "ground_truth": "300",
+    "solution": "",
+    "difficulty": "7/8"
+  },
+  {
+    "data_source": "polaris",
+    "id": 14,
+    "question": "An electronic clock always displays the date as an eight-digit number. For example, January 1, 2011, is displayed as 20110101. What is the last day of 2011 that can be evenly divided by 101? The date is displayed as $\\overline{2011 \\mathrm{ABCD}}$. What is $\\overline{\\mathrm{ABCD}}$?",
+    "ground_truth": "1221",
+    "solution": "",
+    "difficulty": "7/8"
+  },
+  {
+    "data_source": "polaris",
+    "id": 15,
+    "question": "A cube with a side length of 1 meter was cut into smaller cubes with a side length of 1 centimeter and arranged in a straight line. What is the length of the resulting line?",
+    "ground_truth": "10000",
+    "solution": "",
+    "difficulty": "7/8"
+  },
+  {
+    "data_source": "polaris",
+    "id": 16,
+    "question": "In a right-angled triangle, let \\( s_{a} \\) and \\( s_{b} \\) be the medians to the legs, and \\( s_{c} \\) be the median to the hypotenuse. Determine the maximum value of the expression \\( \\frac{s_{a} + s_{b}}{s_{c}} \\).",
+    "ground_truth": "\\sqrt{10}",
+    "solution": "",
+    "difficulty": "7/8"
+  },
+  {
+    "data_source": "polaris",
+    "id": 17,
+    "question": "Given the function $f(x) = x^2 - 2\\cos{\\theta}x + 1$, where $x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]$.\n\n(1) When $\\theta = \\frac{\\pi}{3}$, find the maximum and minimum values of $f(x)$.\n\n(2) If $f(x)$ is a monotonous function on $x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]$ and $\\theta \\in [0, 2\\pi)$, find the range of $\\theta$.\n\n(3) If $\\sin{\\alpha}$ and $\\cos{\\alpha}$ are the two real roots of the equation $f(x) = \\frac{1}{4} + \\cos{\\theta}$, find the value of $\\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}$.",
+    "ground_truth": "\\frac{16 + 4\\sqrt{11}}{5}",
+    "solution": "",
+    "difficulty": "7/8"
+  },
+  {
+    "data_source": "polaris",
+    "id": 18,
+    "question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even. Find $|a-b|.$\n",
+    "ground_truth": "25",
+    "solution": "",
+    "difficulty": "7/8"
+  },
+  {
+    "data_source": "polaris",
+    "id": 19,
+    "question": "Determine the largest value of \\( x \\) for which\n\\[ \\left|x^{2}-4x-39601\\right| \\geq \\left|x^{2}+4x-39601\\right| \\]",
+    "ground_truth": "199",
+    "solution": "",
     "difficulty": "7/8"
   }
 ]

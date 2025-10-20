@@ -1,0 +1,518 @@
+[
+  {
+    "data_source": "polaris",
+    "id": 0,
+    "question": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:",
+    "ground_truth": "392",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      143,
+      33
+    ],
+    "completion_lengths": [
+      457,
+      10
+    ],
+    "answer": "393",
+    "original_verification": {
+      "model_answer": "393",
+      "ground_truth": "392",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to find the smallest integer divisor \\( d \\) such that when the largest three-digit number, 999, is divided by \\( d \\), the quotient rounded to one decimal place is 2.5.\n\n1. **Identify the largest three-digit number**: The largest three-digit number is 999.\n\n2. **Set up the equation**: We need the quotient \\( \\frac{999}{d} \\) to be approximately 2.5 when rounded to one decimal place. This means:\n   \\[\n   2.45 \\leq \\frac{999}{d} < 2.55\n   \\]\n\n3. **Solve the "
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 1,
+    "question": "Investigate the stability of the equilibrium point $x=0, y=0$ for the system\n\n$$\n\\left\\{\\begin{array}{l}\n\\frac{d x}{d t}=y^{3}+x^{5} \\\\\n\\frac{d y}{d t}=x^{3}+y^{5}\n\\end{array}\\right.\n$$",
+    "ground_truth": "Unstable",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      190,
+      100
+    ],
+    "completion_lengths": [
+      875,
+      10
+    ],
+    "answer": "The equilibrium point \\((0, 0)\\) is stable, but not asymptotically stable.",
+    "original_verification": {
+      "model_answer": "The equilibrium point \\((0, 0)\\) is stable, but not asymptotically stable.",
+      "ground_truth": "Unstable",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo investigate the stability of the equilibrium point \\((x, y) = (0, 0)\\) for the given system, we need to analyze the behavior of the system near this point. The system is given by:\n\n\\[\n\\begin{cases}\n\\frac{d x}{d t} = y^3 + x^5 \\\\\n\\frac{d y}{d t} = x^3 + y^5\n\\end{cases}\n\\]\n\nFirst, we check if \\((0, 0)\\) is indeed an equilibrium point. Substituting \\(x = 0\\) and \\(y = 0\\) into the equations, we get:\n\n\\[\n\\frac{d x}{d t} = 0^3 + 0^5 = 0\n\\]\n\\[\n\\frac{d y}{d t} = 0^3 + 0^5 = 0\n\\]\n\nThus, \\((0,"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 2,
+    "question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.  Which of the following options are valid parameterizations?\n\n(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$\n\n(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$\n\n(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$\n\n(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$\n\n(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$\n\nEnter the letters of the correct options, separated by commas.",
+    "ground_truth": "\\text{A,C}",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      449,
+      343
+    ],
+    "completion_lengths": [
+      1169,
+      10
+    ],
+    "answer": "A",
+    "original_verification": {
+      "model_answer": "A",
+      "ground_truth": "\\text{A,C}",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo parameterize the line given by the equation \\( y = \\frac{5}{3}x - \\frac{17}{3} \\), we need a point on the line and a direction vector parallel to the line.\n\n1. **Direction Vector:**\n   The slope of the line is \\(\\frac{5}{3}\\), which means a direction vector parallel to the line can be \\(\\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}\\). This vector represents a change in \\(x\\) of 3 units and a corresponding change in \\(y\\) of 5 units.\n\n2. **Point on the Line:**\n   We can find a point on the line"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 3,
+    "question": "In the 2013 Zhejiang College Entrance Examination, arrange the six letters A, B, C, D, E, F in a row, with both A and B on the same side of C. How many different arrangements are there? (Answer with a number.)",
+    "ground_truth": "480",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      166,
+      56
+    ],
+    "completion_lengths": [
+      1043,
+      10
+    ],
+    "answer": "456",
+    "original_verification": {
+      "model_answer": "456",
+      "ground_truth": "480",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to count the number of arrangements of the letters A, B, C, D, E, F such that both A and B are on the same side of C. This means that A and B must either both be to the left of C or both be to the right of C.\n\n1. **Total Arrangements**: First, calculate the total number of arrangements of the six letters without any restrictions. This is simply the factorial of 6, which is \\(6! = 720\\).\n\n2. **Arrangements with A and B on the Same Side of C**: \n   - Consider"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 4,
+    "question": "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print.\n\nSasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?",
+    "ground_truth": "28",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      182,
+      72
+    ],
+    "completion_lengths": [
+      468,
+      10
+    ],
+    "answer": "21",
+    "original_verification": {
+      "model_answer": "21",
+      "ground_truth": "28",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to determine how many 8-digit numbers, when typed with a malfunctioning '1' key, result in the number 202020 being printed.\n\n1. **Understanding the Problem:**\n   - Sasha types an 8-digit number.\n   - The printed result is 202020, which is a 6-digit number.\n   - This means that the original 8-digit number must have included two '1's that were not printed.\n\n2. **Structure of the Printed Number:**\n   - The printed number is 202020.\n   - This number has the str"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 5,
+    "question": "In an acute-angled triangle \\( ABC \\), the angle bisector \\( AN \\), the altitude \\( BH \\), and the line perpendicular to side \\( AB \\) passing through its midpoint intersect at a single point. Find angle \\( BAC \\).",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      162,
+      52
+    ],
+    "completion_lengths": [
+      438,
+      10
+    ],
+    "answer": "60",
+    "original_verification": {
+      "model_answer": "60",
+      "ground_truth": "60",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nTo solve this problem, we need to analyze the given conditions and use properties of triangles and their special lines.\n\n1. **Understanding the Problem:**\n   - We have an acute-angled triangle \\( ABC \\).\n   - The angle bisector \\( AN \\) of angle \\( BAC \\).\n   - The altitude \\( BH \\) from vertex \\( B \\) to side \\( AC \\).\n   - A line perpendicular to side \\( AB \\) passing through its midpoint.\n\n2. **Intersection of Lines:**\n   - These three lines intersect at a single point, which suggests"
+    },
+    "original_solvable": true
+  },
+  {
+    "data_source": "polaris",
+    "id": 6,
+    "question": "Person A and person B start from locations A and B respectively, walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously. They meet after 10 minutes. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?",
+    "ground_truth": "50",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      183,
+      79
+    ],
+    "completion_lengths": [
+      452,
+      10
+    ],
+    "answer": "1200 meters, 50 meters",
+    "original_verification": {
+      "model_answer": "1200 meters, 50 meters",
+      "ground_truth": "50",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to determine the total distance between locations A and B, as well as the distance of the meeting point from the midpoint between A and B.\n\n1. **Calculate the total distance between A and B:**\n\n   - Person A walks at a speed of 65 meters per minute.\n   - Person B walks at a speed of 55 meters per minute.\n   - They meet after 10 minutes.\n\n   The total distance covered by both persons together in 10 minutes is the sum of the distances each person covers in th"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 7,
+    "question": "Six chairs sit in a row.  Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.  There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.  The probability that this will **not** happen is given by  $\\frac{m}{n}$  where  $m$  and  $n$  are relatively prime positive integers. Find  $m+n$ .",
+    "ground_truth": "1106",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      245,
+      136
+    ],
+    "completion_lengths": [
+      695,
+      10
+    ],
+    "answer": "847",
+    "original_verification": {
+      "model_answer": "847",
+      "ground_truth": "1106",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to calculate the probability that no two adjacent people have conflicting leg positions, where the person on the right crosses their legs to the left and the person on the left crosses their legs to the right.\n\nFirst, let's consider the total number of ways the six people can choose their leg positions. Each person has 3 choices: feet on the floor (F), cross legs to the right (R), or cross legs to the left (L). Therefore, the total number of configurations "
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 8,
+    "question": "In a two-story house that is inhabited in both floors as well as on the ground floor, 35 people live above someone and 45 people live below someone. One third of all the people living in the house live on the first floor.\n\nHow many people live in the house in total?",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      171,
+      61
+    ],
+    "completion_lengths": [
+      718,
+      10
+    ],
+    "answer": "60",
+    "original_verification": {
+      "model_answer": "60",
+      "ground_truth": "60",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nLet's denote the number of people living on the ground floor as \\( G \\), on the first floor as \\( F \\), and on the second floor as \\( S \\).\n\n1. **Understanding the problem:**\n   - 35 people live above someone. This means these 35 people are on the first and second floors.\n   - 45 people live below someone. This means these 45 people are on the ground and first floors.\n   - One third of all the people live on the first floor.\n\n2. **Setting up equations:**\n   - From the information that 35"
+    },
+    "original_solvable": true
+  },
+  {
+    "data_source": "polaris",
+    "id": 9,
+    "question": "Given a square with four vertices and its center, find the probability that the distance between any two of these five points is less than the side length of the square.",
+    "ground_truth": "\\frac{2}{5}",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      145,
+      41
+    ],
+    "completion_lengths": [
+      465,
+      10
+    ],
+    "answer": "0",
+    "original_verification": {
+      "model_answer": "0",
+      "ground_truth": "\\frac{2}{5}",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to consider a square with vertices \\( A, B, C, \\) and \\( D \\) and its center \\( O \\). We are tasked with finding the probability that the distance between any two of these five points is less than the side length of the square.\n\n1. **Understanding the Geometry:**\n   - Let the side length of the square be \\( s \\).\n   - The vertices \\( A, B, C, \\) and \\( D \\) are at the corners of the square.\n   - The center \\( O \\) of the square is equidistant from all four "
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 10,
+    "question": "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
+    "ground_truth": "9375",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      156,
+      47
+    ],
+    "completion_lengths": [
+      711,
+      10
+    ],
+    "answer": "9375",
+    "original_verification": {
+      "model_answer": "9375",
+      "ground_truth": "9375",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nTo solve this problem, we need to determine when to swap the front and rear tires so that they all wear out at the same time.\n\n1. **Understand the wear rates:**\n   - Front tires wear out after 25,000 km.\n   - Rear tires wear out after 15,000 km.\n\n2. **Define variables:**\n   - Let \\( x \\) be the distance driven before the first swap.\n   - After \\( x \\) km, the front tires have \\( \\frac{x}{25000} \\) of their life used, and the rear tires have \\( \\frac{x}{15000} \\) of their life used.\n\n3. *"
+    },
+    "original_solvable": true
+  },
+  {
+    "data_source": "polaris",
+    "id": 11,
+    "question": "Given the function \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\), if the minimum value of \\( f(x) \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right] \\) is \\(-1\\), find the value of \\( a \\).",
+    "ground_truth": "-1",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      188,
+      79
+    ],
+    "completion_lengths": [
+      610,
+      10
+    ],
+    "answer": "0",
+    "original_verification": {
+      "model_answer": "0",
+      "ground_truth": "-1",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo find the value of \\( a \\) such that the minimum value of the function \\( f(x) = \\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right]\\) is \\(-1\\), we need to analyze the function and determine its minimum value.\n\nFirst, let's rewrite the function using trigonometric identities:\n- We know that \\(\\sin 2x = 2 \\sin x \\cos x\\).\n- Also, \\(\\cos^2 x = \\frac{1 + \\cos 2x}{2}\\).\n\nSubstituting these into the function, we have:\n\\[ f(x) = \\sqrt{3} (2 \\sin x \\cos x) "
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 12,
+    "question": "From the vertex of the right angle of triangle \\(ABC\\), the median \\(CM\\) is drawn. The circle inscribed in triangle \\(CAM\\) touches \\(CM\\) at its midpoint. Find the angle \\(BAC\\).",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      160,
+      52
+    ],
+    "completion_lengths": [
+      477,
+      10
+    ],
+    "answer": "45^\\circ",
+    "original_verification": {
+      "model_answer": "45^\\circ",
+      "ground_truth": "60",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to analyze the given conditions and use properties of triangles and circles.\n\n1. **Understanding the Problem:**\n   - We have a right triangle \\(ABC\\) with the right angle at \\(C\\).\n   - \\(CM\\) is the median from \\(C\\) to the hypotenuse \\(AB\\).\n   - The circle inscribed in triangle \\(CAM\\) touches \\(CM\\) at its midpoint.\n\n2. **Properties of the Median:**\n   - In a right triangle, the median to the hypotenuse is half the length of the hypotenuse. Therefore, \\"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 13,
+    "question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?",
+    "ground_truth": "300",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      162,
+      52
+    ],
+    "completion_lengths": [
+      431,
+      10
+    ],
+    "answer": "360",
+    "original_verification": {
+      "model_answer": "360",
+      "ground_truth": "300",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to form a six-digit number using the digits 0, 1, 2, 3, 4, and 5 without repeating any digit, and ensure that the unit digit is less than the ten's digit.\n\n1. **Total number of permutations**: First, calculate the total number of six-digit numbers that can be formed using these digits. Since we have 6 distinct digits, the total number of permutations is \\(6!\\).\n\n   \\[\n   6! = 720\n   \\]\n\n2. **Condition on unit and ten's digit**: We need to count only those p"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 14,
+    "question": "An electronic clock always displays the date as an eight-digit number. For example, January 1, 2011, is displayed as 20110101. What is the last day of 2011 that can be evenly divided by 101? The date is displayed as $\\overline{2011 \\mathrm{ABCD}}$. What is $\\overline{\\mathrm{ABCD}}$?",
+    "ground_truth": "1221",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      193,
+      84
+    ],
+    "completion_lengths": [
+      329,
+      10
+    ],
+    "answer": "1230",
+    "original_verification": {
+      "model_answer": "1230",
+      "ground_truth": "1221",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to find the last day of the year 2011 that can be evenly divided by 101. The date is displayed in the format 2011ABCD, where ABCD represents the month and day.\n\n1. The date format is 2011MMDD, where MM is the month and DD is the day. The last day of the year is December 31, 2011, which is represented as 20111231.\n\n2. We need to find the largest possible value of 2011MMDD that is divisible by 101.\n\n3. Start by checking the divisibility of 20111231 by 101. Pe"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 15,
+    "question": "A cube with a side length of 1 meter was cut into smaller cubes with a side length of 1 centimeter and arranged in a straight line. What is the length of the resulting line?",
+    "ground_truth": "10000",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      151,
+      44
+    ],
+    "completion_lengths": [
+      403,
+      10
+    ],
+    "answer": "10,000",
+    "original_verification": {
+      "model_answer": "10,000",
+      "ground_truth": "10000",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nTo solve this problem, we need to determine how many smaller cubes are created when a larger cube is cut, and then calculate the total length when these smaller cubes are arranged in a straight line.\n\n1. **Understanding the dimensions:**\n   - The original cube has a side length of 1 meter.\n   - 1 meter is equivalent to 100 centimeters.\n\n2. **Calculating the number of smaller cubes:**\n   - Each smaller cube has a side length of 1 centimeter.\n   - The volume of the original cube is \\(1 \\te"
+    },
+    "original_solvable": true
+  },
+  {
+    "data_source": "polaris",
+    "id": 16,
+    "question": "In a right-angled triangle, let \\( s_{a} \\) and \\( s_{b} \\) be the medians to the legs, and \\( s_{c} \\) be the median to the hypotenuse. Determine the maximum value of the expression \\( \\frac{s_{a} + s_{b}}{s_{c}} \\).",
+    "ground_truth": "\\sqrt{10}",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      186,
+      84
+    ],
+    "completion_lengths": [
+      839,
+      10
+    ],
+    "answer": "2\\sqrt{2}",
+    "original_verification": {
+      "model_answer": "2\\sqrt{2}",
+      "ground_truth": "\\sqrt{10}",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to understand the properties of medians in a right-angled triangle. Let's denote the sides of the right-angled triangle as \\( a \\), \\( b \\), and \\( c \\), where \\( c \\) is the hypotenuse.\n\nThe medians \\( s_a \\), \\( s_b \\), and \\( s_c \\) are given by the formulas:\n- \\( s_a = \\frac{1}{2} \\sqrt{2b^2 + 2c^2 - a^2} \\)\n- \\( s_b = \\frac{1}{2} \\sqrt{2a^2 + 2c^2 - b^2} \\)\n- \\( s_c = \\frac{1}{2} \\sqrt{2a^2 + 2b^2 - c^2} \\)\n\nIn a right-angled triangle, by the Pythagore"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 17,
+    "question": "Given the function $f(x) = x^2 - 2\\cos{\\theta}x + 1$, where $x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]$.\n\n(1) When $\\theta = \\frac{\\pi}{3}$, find the maximum and minimum values of $f(x)$.\n\n(2) If $f(x)$ is a monotonous function on $x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]$ and $\\theta \\in [0, 2\\pi)$, find the range of $\\theta$.\n\n(3) If $\\sin{\\alpha}$ and $\\cos{\\alpha}$ are the two real roots of the equation $f(x) = \\frac{1}{4} + \\cos{\\theta}$, find the value of $\\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}$.",
+    "ground_truth": "\\frac{16 + 4\\sqrt{11}}{5}",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      321,
+      350
+    ],
+    "completion_lengths": [
+      1641,
+      10
+    ],
+    "answer": "(1) Minimum value: \\(\\frac{3}{4}\\), Maximum value: \\(\\frac{7}{4} + \\frac{\\sqrt{3}}{2}\\)\n\n(2) \\(\\theta \\in \\left[0, \\frac{\\pi}{3}\\right] \\cup \\left[\\frac{5\\pi}{3}, 2\\pi\\right] \\cup \\left[\\frac{5\\pi}{6}, \\frac{7\\pi}{6}\\right]\\)\n\n(3) \\(\\frac{1}{\\frac{3}{4} - \\cos{\\theta}}\\)",
+    "original_verification": {
+      "model_answer": "(1) Minimum value: \\(\\frac{3}{4}\\), Maximum value: \\(\\frac{7}{4} + \\frac{\\sqrt{3}}{2}\\)\n\n(2) \\(\\theta \\in \\left[0, \\frac{\\pi}{3}\\right] \\cup \\left[\\frac{5\\pi}{3}, 2\\pi\\right] \\cup \\left[\\frac{5\\pi}{6}, \\frac{7\\pi}{6}\\right]\\)\n\n(3) \\(\\frac{1}{\\frac{3}{4} - \\cos{\\theta}}\\)",
+      "ground_truth": "\\frac{16 + 4\\sqrt{11}}{5}",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve the given problem, we will address each part separately.\n\n(1) **Finding the maximum and minimum values of \\( f(x) \\) when \\( \\theta = \\frac{\\pi}{3} \\):**\n\nThe function is given by:\n\\[ f(x) = x^2 - 2\\cos{\\theta}x + 1 \\]\n\nWhen \\( \\theta = \\frac{\\pi}{3} \\), we have:\n\\[ \\cos{\\theta} = \\cos{\\frac{\\pi}{3}} = \\frac{1}{2} \\]\n\nThus, the function becomes:\n\\[ f(x) = x^2 - 2\\left(\\frac{1}{2}\\right)x + 1 = x^2 - x + 1 \\]\n\nTo find the maximum and minimum values of \\( f(x) \\) on the interval \\"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 18,
+    "question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even. Find $|a-b|.$\n",
+    "ground_truth": "25",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      253,
+      142
+    ],
+    "completion_lengths": [
+      512,
+      10
+    ],
+    "answer": "0",
+    "original_verification": {
+      "model_answer": "0",
+      "ground_truth": "25",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to determine when the sum \\( S(n) = \\tau(1) + \\tau(2) + \\cdots + \\tau(n) \\) is odd or even for \\( n \\leq 2005 \\).\n\nFirst, let's understand when \\(\\tau(n)\\) is odd. The number of divisors \\(\\tau(n)\\) is odd if and only if \\( n \\) is a perfect square. This is because divisors usually come in pairs, except when \\( n \\) is a perfect square, where the square root is counted only once.\n\nNow, consider the parity of \\( S(n) \\). The parity of \\( S(n) \\) depends on t"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 19,
+    "question": "Determine the largest value of \\( x \\) for which\n\\[ \\left|x^{2}-4x-39601\\right| \\geq \\left|x^{2}+4x-39601\\right| \\]",
+    "ground_truth": "199",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      160,
+      50
+    ],
+    "completion_lengths": [
+      494,
+      10
+    ],
+    "answer": "0",
+    "original_verification": {
+      "model_answer": "0",
+      "ground_truth": "199",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve the inequality \\(\\left|x^{2}-4x-39601\\right| \\geq \\left|x^{2}+4x-39601\\right|\\), we need to analyze the expressions inside the absolute values.\n\nLet's define:\n\\[ f(x) = x^2 - 4x - 39601 \\]\n\\[ g(x) = x^2 + 4x - 39601 \\]\n\nThe inequality becomes:\n\\[ |f(x)| \\geq |g(x)| \\]\n\nThis can be split into two cases based on the properties of absolute values:\n\n**Case 1:** \\( f(x) \\geq g(x) \\)\n\nThis simplifies to:\n\\[ x^2 - 4x - 39601 \\geq x^2 + 4x - 39601 \\]\n\\[ -4x \\geq 4x \\]\n\\[ -8x \\geq 0 \\]\n\\"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  }
+]

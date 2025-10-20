@@ -1,0 +1,22 @@
+Solve the following mathematical problem with the additional condition provided.
+
+Incomplete Question: {incomplete_question}
+
+Additional Condition: {removed_condition}
+
+**Instructions**:
+1. Read both the incomplete question and the additional condition
+2. Use the additional condition to help solve the problem
+3. Show your step-by-step thinking inside <think></think> tags
+4. Provide the final answer inside <answer></answer> tags
+
+**Format**:
+<think>
+[Your detailed reasoning here, explaining how you use the additional condition]
+</think>
+
+<answer>
+[Final answer only]
+</answer>
+
+Now solve the problem:

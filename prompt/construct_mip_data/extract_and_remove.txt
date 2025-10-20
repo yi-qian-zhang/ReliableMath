@@ -3,19 +3,23 @@ Analyze the following mathematical problem and generate removal variants.
 Original Problem: {original_question}
 Ground Truth Answer: {ground_truth}
 
-Task:
+**Task**:
+
 1. Identify ALL conditions in the problem
 2. For EACH condition, create a variant where that condition is removed
 3. Rewrite the problem without that specific condition
 
-Instructions:
+**Instructions**:
+
 - A condition is any piece of information that could help solve the problem
 - Each variant should remove exactly ONE condition
 - The rewritten problem should be natural and grammatically correct
 - Keep all other conditions unchanged in each variant
 
-Example:
+**Example**:
+
 Original Problem: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+
 Conditions identified:
 1. Jason bought 1 pencil
 2. Mike bought 2 pencils
@@ -32,7 +36,8 @@ Variant 2 (remove condition 2):
 - Remaining: ["Jason bought 1 pencil"]
 - Incomplete Question: "Jason bought 1 pencil. How many pencils did Jason buy?"
 
-OUTPUT FORMAT:
+**OUTPUT FORMAT**:
+
 CRITICAL: Output ONLY a raw JSON array. DO NOT use markdown code blocks, backticks, or any formatting.
 
 Required format - output this EXACTLY:

@@ -1,0 +1,38 @@
+**Incomplete Problem (missing information)**:
+{incomplete_question}
+
+**Missing Condition (key information to complete the problem)**:
+{removed_condition}
+
+**Instructions**:
+1. First, understand the incomplete problem
+2. Then, integrate the missing condition into the problem to form a complete, solvable problem
+3. Solve the complete problem step by step
+4. Provide your reasoning in <think></think> tags
+5. Provide ONLY the final answer in <answer></answer> tags
+
+**CRITICAL**: The missing condition is essential to solve the problem. Make sure to use it to reconstruct the complete problem before solving.
+
+**Example**:
+
+Incomplete Problem: "Mike bought some pencils. How many pencils did Jason buy?"
+Missing Condition: "Jason bought 1 pencil"
+
+Complete Problem (after integration): "Jason bought 1 pencil. Mike bought some pencils. How many pencils did Jason buy?"
+Answer: 1
+
+---
+
+Now solve the problem:
+
+<think>
+Step 1: Integrate the missing condition into the incomplete problem
+Complete problem: [Write out the complete problem here]
+
+Step 2: Solve the complete problem
+[Your step-by-step solution]
+</think>
+
+<answer>
+[Final answer only]
+</answer>

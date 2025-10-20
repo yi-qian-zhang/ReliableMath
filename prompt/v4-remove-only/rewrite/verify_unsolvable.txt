@@ -1,7 +1,6 @@
-# 0.确认original question可解出groundtruth
-# 1.remove --》改写后的缺省问题  + 缺省条件
-# 2.直接给缺省问题+ 缺省条件 让模型回答 如果与groundtruth一样就保留 (turbo)
-
+# 1.确认original question可解出groundtruth
+# 2.remove --》改写后的缺省问题  + 缺省条件
+# 3.直接给缺省问题+ 缺省条件 让模型回答 如果与groundtruth一样就保留 (turbo)
 # 蒋博意见：拆分问题+余下内容组成pair,一轮直接出改写结果和被提取内容，便于后续的模块增删
 
 Determine whether this mathematical problem is unsolvable due to missing critical information.
