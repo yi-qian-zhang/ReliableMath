@@ -1,0 +1,217 @@
+[
+  {
+    "id": "0_remove_0",
+    "data_source": "polaris",
+    "difficulty": "7/8",
+    "transformation_type": "condition_removal",
+    "original_question": "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
+    "ground_truth": "9375",
+    "removed_condition": "The front tires of a car wear out after 25,000 km",
+    "removed_condition_index": 0,
+    "remaining_conditions": [
+      "The rear tires wear out after 15,000 km"
+    ],
+    "incomplete_question": "The rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
+    "verification": {
+      "model_answer": "7,500 km",
+      "ground_truth": "9375",
+      "answers_match": false,
+      "is_valid": true
+    },
+    "original_id": 0
+  },
+  {
+    "id": "0_remove_1",
+    "data_source": "polaris",
+    "difficulty": "7/8",
+    "transformation_type": "condition_removal",
+    "original_question": "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
+    "ground_truth": "9375",
+    "removed_condition": "The rear tires wear out after 15,000 km",
+    "removed_condition_index": 1,
+    "remaining_conditions": [
+      "The front tires of a car wear out after 25,000 km"
+    ],
+    "incomplete_question": "The front tires of a car wear out after 25,000 km. When should the tires be swapped so that they wear out at the same time?",
+    "verification": {
+      "model_answer": "12,500 km",
+      "ground_truth": "9375",
+      "answers_match": false,
+      "is_valid": true
+    },
+    "original_id": 0
+  },
+  {
+    "id": "4_remove_0",
+    "data_source": "polaris",
+    "difficulty": "1/8",
+    "transformation_type": "condition_removal",
+    "original_question": "Suppose convex hexagon  $ \\text{HEXAGN}$  has  $ 120^\\circ$ -rotational symmetry about a point  $ P$ —that is, if you rotate it  $ 120^\\circ$  about  $ P$ , it doesn't change. If  $ PX\\equal{}1$ , find the area of triangle  $ \\triangle{GHX}$ .",
+    "ground_truth": "\\frac{\\sqrt{3}}{4}",
+    "removed_condition": "Suppose convex hexagon $ \\text{HEXAGN}$ has $ 120^\\circ$ -rotational symmetry about a point $ P$",
+    "removed_condition_index": 0,
+    "remaining_conditions": [
+      "If $ PX=1$",
+      "find the area of triangle $ \\triangle{GHX}$"
+    ],
+    "incomplete_question": "If $ PX=1$, find the area of triangle $ \\triangle{GHX}$.",
+    "verification": {
+      "model_answer": "The problem statement is incomplete, and without additional information or context about the triangle \\( \\triangle{GHX} \\), such as its vertices' coordinates, side lengths, or other relevant geometric properties, it is impossible to determine the area of the triangle. Please provide more details or clarify the problem.",
+      "ground_truth": "\\frac{\\sqrt{3}}{4}",
+      "answers_match": false,
+      "is_valid": true
+    },
+    "original_id": 4
+  },
+  {
+    "id": "4_remove_2",
+    "data_source": "polaris",
+    "difficulty": "1/8",
+    "transformation_type": "condition_removal",
+    "original_question": "Suppose convex hexagon  $ \\text{HEXAGN}$  has  $ 120^\\circ$ -rotational symmetry about a point  $ P$ —that is, if you rotate it  $ 120^\\circ$  about  $ P$ , it doesn't change. If  $ PX\\equal{}1$ , find the area of triangle  $ \\triangle{GHX}$ .",
+    "ground_truth": "\\frac{\\sqrt{3}}{4}",
+    "removed_condition": "If $ PX=1$",
+    "removed_condition_index": 2,
+    "remaining_conditions": [
+      "Suppose convex hexagon $ \\text{HEXAGN}$ has $ 120^\\circ$ -rotational symmetry about a point $ P$",
+      "If you rotate it $ 120^\\circ$ about $ P$, it doesn't change",
+      "find the area of triangle $ \\triangle{GHX}$"
+    ],
+    "incomplete_question": "Suppose convex hexagon $ \\text{HEXAGN}$ has $ 120^\\circ$ -rotational symmetry about a point $ P$ —that is, if you rotate it $ 120^\\circ$ about $ P$, it doesn't change. Find the area of triangle $ \\triangle{GHX}$.",
+    "verification": {
+      "model_answer": "The area of triangle \\( \\triangle{GHX} \\) is \\(\\frac{1}{3}\\) of the area of hexagon \\( \\text{HEXAGN} \\).",
+      "ground_truth": "\\frac{\\sqrt{3}}{4}",
+      "answers_match": false,
+      "is_valid": true
+    },
+    "original_id": 4
+  },
+  {
+    "id": "7_remove_0",
+    "data_source": "polaris",
+    "difficulty": "4/8",
+    "transformation_type": "condition_removal",
+    "original_question": "The integer 119 is a multiple of which number?",
+    "ground_truth": "7",
+    "removed_condition": "The integer 119",
+    "removed_condition_index": 0,
+    "remaining_conditions": [
+      "is a multiple of which number?"
+    ],
+    "incomplete_question": "Is a multiple of which number?",
+    "verification": {
+      "model_answer": "The problem statement is incomplete. Please provide the full mathematical problem for me to solve.",
+      "ground_truth": "7",
+      "answers_match": false,
+      "is_valid": true
+    },
+    "original_id": 7
+  },
+  {
+    "id": "7_remove_1",
+    "data_source": "polaris",
+    "difficulty": "4/8",
+    "transformation_type": "condition_removal",
+    "original_question": "The integer 119 is a multiple of which number?",
+    "ground_truth": "7",
+    "removed_condition": "is a multiple of which number?",
+    "removed_condition_index": 1,
+    "remaining_conditions": [
+      "The integer 119"
+    ],
+    "incomplete_question": "The integer 119.",
+    "verification": {
+      "model_answer": "119",
+      "ground_truth": "7",
+      "answers_match": false,
+      "is_valid": true
+    },
+    "original_id": 7
+  },
+  {
+    "id": "9_remove_0",
+    "data_source": "polaris",
+    "difficulty": "2/8",
+    "transformation_type": "condition_removal",
+    "original_question": "Find all functions  $f : \\mathbb{N} \\to \\mathbb{N}$  such that for any positive integers  $m, n$  the number  $$ (f(m))^2+ 2mf(n) + f(n^2) $$  is the square of an integer.\n\n*Proposed by Fedir Yudin*",
+    "ground_truth": "f(n)=n",
+    "removed_condition": "f : \\mathbb{N} \\to \\mathbb{N}",
+    "removed_condition_index": 0,
+    "remaining_conditions": [
+      "for any positive integers m, n the number (f(m))^2 + 2mf(n) + f(n^2) is the square of an integer"
+    ],
+    "incomplete_question": "Find all functions such that for any positive integers m, n the number (f(m))^2 + 2mf(n) + f(n^2) is the square of an integer.",
+    "verification": {
+      "model_answer": "f(x) = 0 for all x.",
+      "ground_truth": "f(n)=n",
+      "answers_match": false,
+      "is_valid": true
+    },
+    "original_id": 9
+  },
+  {
+    "id": "9_remove_1",
+    "data_source": "polaris",
+    "difficulty": "2/8",
+    "transformation_type": "condition_removal",
+    "original_question": "Find all functions  $f : \\mathbb{N} \\to \\mathbb{N}$  such that for any positive integers  $m, n$  the number  $$ (f(m))^2+ 2mf(n) + f(n^2) $$  is the square of an integer.\n\n*Proposed by Fedir Yudin*",
+    "ground_truth": "f(n)=n",
+    "removed_condition": "for any positive integers m, n",
+    "removed_condition_index": 1,
+    "remaining_conditions": [
+      "f : \\mathbb{N} \\to \\mathbb{N}",
+      "(f(m))^2 + 2mf(n) + f(n^2) is the square of an integer"
+    ],
+    "incomplete_question": "Find all functions f : \\mathbb{N} \\to \\mathbb{N} such that the number (f(m))^2 + 2mf(n) + f(n^2) is the square of an integer.",
+    "verification": {
+      "model_answer": "f(n) = 0 for all n ∈ ℕ",
+      "ground_truth": "f(n)=n",
+      "answers_match": false,
+      "is_valid": true
+    },
+    "original_id": 9
+  },
+  {
+    "id": "9_remove_2",
+    "data_source": "polaris",
+    "difficulty": "2/8",
+    "transformation_type": "condition_removal",
+    "original_question": "Find all functions  $f : \\mathbb{N} \\to \\mathbb{N}$  such that for any positive integers  $m, n$  the number  $$ (f(m))^2+ 2mf(n) + f(n^2) $$  is the square of an integer.\n\n*Proposed by Fedir Yudin*",
+    "ground_truth": "f(n)=n",
+    "removed_condition": "(f(m))^2 + 2mf(n) + f(n^2) is the square of an integer",
+    "removed_condition_index": 2,
+    "remaining_conditions": [
+      "f : \\mathbb{N} \\to \\mathbb{N}",
+      "for any positive integers m, n"
+    ],
+    "incomplete_question": "Find all functions f : \\mathbb{N} \\to \\mathbb{N} such that for any positive integers m, n.",
+    "verification": {
+      "model_answer": "The problem statement seems incomplete. Please provide the full problem statement for a complete solution.",
+      "ground_truth": "f(n)=n",
+      "answers_match": false,
+      "is_valid": true
+    },
+    "original_id": 9
+  },
+  {
+    "id": "16_remove_1",
+    "data_source": "polaris",
+    "difficulty": "4/8",
+    "transformation_type": "condition_removal",
+    "original_question": "Determine all positive integers $n$ for which the equation $$x^{n}+(2+x)^{n}+(2-x)^{n}=0$$ has an integer as a solution.",
+    "ground_truth": "n=1",
+    "removed_condition": "the equation x^n + (2+x)^n + (2-x)^n = 0 has an integer as a solution",
+    "removed_condition_index": 1,
+    "remaining_conditions": [
+      "positive integers n"
+    ],
+    "incomplete_question": "Determine all positive integers n for which the equation x^n + (2+x)^n + (2-x)^n = 0.",
+    "verification": {
+      "model_answer": "There are no positive integers \\( n \\) that satisfy the equation.",
+      "ground_truth": "n=1",
+      "answers_match": false,
+      "is_valid": true
+    },
+    "original_id": 16
+  }
+]

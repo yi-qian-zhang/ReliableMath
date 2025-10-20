@@ -1,0 +1,19 @@
+Solve the following mathematical problem and provide your reasoning and final answer.
+
+Problem: {question}
+
+Instructions:
+1. Read the problem carefully
+2. Show your step-by-step thinking process inside <think></think> tags
+3. Provide the final numerical answer or result inside <answer></answer> tags
+
+Format:
+<think>
+[Your detailed reasoning and step-by-step solution here]
+</think>
+
+<answer>
+[Final answer only]
+</answer>
+
+Now solve the problem:
