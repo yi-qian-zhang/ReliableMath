@@ -111,7 +111,7 @@ def get_response_openai(input_prompt, persona="", model=None, temperature=0.0):
                 model=model_name,
                 messages=messages,
                 temperature=temperature,
-                max_tokens=4000,
+                max_tokens=8192,
                 stream=False
             )
             
@@ -151,11 +151,7 @@ def parse_json_response(response, fallback=None):
             
     except Exception as e:
         logging.error(f"JSON parsing failed: {e}")
-        if len(response) > 1000:
-            logging.error(f"Response (first 500 chars): {response[:500]}")
-            logging.error(f"Response (last 500 chars): {response[-500:]}")
-        else:
-            logging.error(f"Full response: {response}")
+        logging.error(f"Full response: {response}")
     
     return fallback if fallback is not None else {}
 
@@ -277,7 +273,7 @@ def verify_original_solvable(data):
         "ground_truth": ground_truth,
         "judge_result": judge_result,
         "is_solvable": is_solvable,
-        "full_response": response[:500] if len(response) > 500 else response
+        "full_response": response
     }
     data["original_solvable"] = is_solvable
     
