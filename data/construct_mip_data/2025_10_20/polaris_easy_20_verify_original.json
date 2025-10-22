@@ -1,0 +1,518 @@
+[
+  {
+    "data_source": "polaris",
+    "id": 0,
+    "question": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:",
+    "ground_truth": "392",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      143,
+      33
+    ],
+    "completion_lengths": [
+      423,
+      10
+    ],
+    "answer": "392",
+    "original_verification": {
+      "model_answer": "392",
+      "ground_truth": "392",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nTo solve this problem, we need to find the smallest integer divisor \\( d \\) such that when the largest three-digit number, which is 999, is divided by \\( d \\), the quotient rounded to one decimal place is 2.5.\n\n1. Start by setting up the equation based on the given condition:\n   \\[\n   \\frac{999}{d} \\approx 2.5\n   \\]\n\n2. Since the quotient is rounded to one decimal place, the actual quotient should be in the range:\n   \\[\n   2.45 \\leq \\frac{999}{d} < 2.55\n   \\]\n\n3. Solve the inequality for \\( d \\):\n   - For the lower bound:\n     \\[\n     \\frac{999}{d} \\geq 2.45 \\implies d \\leq \\frac{999}{2.45}\n     \\]\n     Calculate:\n     \\[\n     \\frac{999}{2.45} \\approx 407.7551\n     \\]\n\n   - For the upper bound:\n     \\[\n     \\frac{999}{d} < 2.55 \\implies d > \\frac{999}{2.55}\n     \\]\n     Calculate:\n     \\[\n     \\frac{999}{2.55} \\approx 391.7647\n     \\]\n\n4. The integer \\( d \\) must satisfy:\n   \\[\n   391.7647 < d \\leq 407.7551\n   \\]\n\n5. The smallest integer \\( d \\) that satisfies this inequality is 392.\n\n6. Verify:\n   - Calculate the quotient for \\( d = 392 \\):\n     \\[\n     \\frac{999}{392} \\approx 2.5485\n     \\]\n     Rounding 2.5485 to one decimal place gives 2.5, which satisfies the condition.\n\nTherefore, the smallest divisor \\( d \\) is 392.\n</think>\n\n<answer>\n392\n</answer>"
+    },
+    "original_solvable": true
+  },
+  {
+    "data_source": "polaris",
+    "id": 1,
+    "question": "Investigate the stability of the equilibrium point $x=0, y=0$ for the system\n\n$$\n\\left\\{\\begin{array}{l}\n\\frac{d x}{d t}=y^{3}+x^{5} \\\\\n\\frac{d y}{d t}=x^{3}+y^{5}\n\\end{array}\\right.\n$$",
+    "ground_truth": "Unstable",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      190,
+      99
+    ],
+    "completion_lengths": [
+      1140,
+      10
+    ],
+    "answer": "The equilibrium point \\((0, 0)\\) is stable but not asymptotically stable.",
+    "original_verification": {
+      "model_answer": "The equilibrium point \\((0, 0)\\) is stable but not asymptotically stable.",
+      "ground_truth": "Unstable",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo investigate the stability of the equilibrium point \\((x, y) = (0, 0)\\) for the given system, we need to analyze the behavior of the system near this point. The system is given by:\n\n\\[\n\\begin{cases}\n\\frac{d x}{d t} = y^3 + x^5 \\\\\n\\frac{d y}{d t} = x^3 + y^5\n\\end{cases}\n\\]\n\nFirst, we check if \\((0, 0)\\) is indeed an equilibrium point. Substituting \\(x = 0\\) and \\(y = 0\\) into the equations, we get:\n\n\\[\n\\frac{d x}{d t} = 0^3 + 0^5 = 0\n\\]\n\\[\n\\frac{d y}{d t} = 0^3 + 0^5 = 0\n\\]\n\nThus, \\((0, 0)\\) is an equilibrium point.\n\nNext, we perform a linear stability analysis by considering the Jacobian matrix of the system at the equilibrium point. The Jacobian matrix \\(J\\) is given by:\n\n\\[\nJ = \\begin{bmatrix}\n\\frac{\\partial}{\\partial x}(y^3 + x^5) & \\frac{\\partial}{\\partial y}(y^3 + x^5) \\\\\n\\frac{\\partial}{\\partial x}(x^3 + y^5) & \\frac{\\partial}{\\partial y}(x^3 + y^5)\n\\end{bmatrix}\n\\]\n\nCalculating the partial derivatives, we have:\n\n\\[\n\\frac{\\partial}{\\partial x}(y^3 + x^5) = 5x^4, \\quad \\frac{\\partial}{\\partial y}(y^3 + x^5) = 3y^2\n\\]\n\\[\n\\frac{\\partial}{\\partial x}(x^3 + y^5) = 3x^2, \\quad \\frac{\\partial}{\\partial y}(x^3 + y^5) = 5y^4\n\\]\n\nThus, the Jacobian matrix at any point \\((x, y)\\) is:\n\n\\[\nJ = \\begin{bmatrix}\n5x^4 & 3y^2 \\\\\n3x^2 & 5y^4\n\\end{bmatrix}\n\\]\n\nEvaluating the Jacobian at the equilibrium point \\((0, 0)\\), we get:\n\n\\[\nJ(0, 0) = \\begin{bmatrix}\n5(0)^4 & 3(0)^2 \\\\\n3(0)^2 & 5(0)^4\n\\end{bmatrix} = \\begin{bmatrix}\n0 & 0 \\\\\n0 & 0\n\\end{bmatrix}\n\\]\n\nThe Jacobian matrix at the equilibrium point is the zero matrix, which means that the linearization does not provide any information about the stability of the equilibrium point. This is because the eigenvalues of the zero matrix are both zero, indicating a center or non-hyperbolic point.\n\nSince the linearization is inconclusive, we need to consider higher-order terms or use other methods to determine stability. In this case, we can use the Lyapunov function approach or analyze the system's behavior directly.\n\nConsider the Lyapunov function \\(V(x, y) = x^2 + y^2\\). This is a common choice for analyzing stability near the origin. The time derivative of \\(V\\) along the trajectories of the system is:\n\n\\[\n\\frac{dV}{dt} = \\frac{\\partial V}{\\partial x} \\frac{dx}{dt} + \\frac{\\partial V}{\\partial y} \\frac{dy}{dt}\n\\]\n\nCalculating the partial derivatives, we have:\n\n\\[\n\\frac{\\partial V}{\\partial x} = 2x, \\quad \\frac{\\partial V}{\\partial y} = 2y\n\\]\n\nSubstituting the system equations, we get:\n\n\\[\n\\frac{dV}{dt} = 2x(y^3 + x^5) + 2y(x^3 + y^5)\n\\]\n\nSimplifying, we have:\n\n\\[\n\\frac{dV}{dt} = 2xy^3 + 2x^6 + 2yx^3 + 2y^6\n\\]\n\nNotice that each term in \\(\\frac{dV}{dt}\\) is of degree 4 or higher, and all terms are non-negative. Therefore, \\(\\frac{dV}{dt} \\geq 0\\) for all \\((x, y)\\), and \\(\\frac{dV}{dt} = 0\\) only when \\(x = 0\\) and \\(y = 0\\).\n\nThis suggests that the origin is a stable equilibrium point, but not asymptotically stable, because \\(\\frac{dV}{dt}\\) is not strictly negative. The system is stable in the sense of Lyapunov, but trajectories may not converge to the origin.\n\nTherefore, the equilibrium point \\((0, 0)\\) is stable but not asymptotically stable.\n\n</think>\n\n<answer>\nThe equilibrium point \\((0, 0)\\) is stable but not asymptotically stable.\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 2,
+    "question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.  Which of the following options are valid parameterizations?\n\n(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$\n\n(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$\n\n(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$\n\n(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$\n\n(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$\n\nEnter the letters of the correct options, separated by commas.",
+    "ground_truth": "\\text{A,C}",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      449,
+      344
+    ],
+    "completion_lengths": [
+      1218,
+      10
+    ],
+    "answer": "A,D",
+    "original_verification": {
+      "model_answer": "A,D",
+      "ground_truth": "\\text{A,C}",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo parameterize the line given by the equation \\( y = \\frac{5}{3}x - \\frac{17}{3} \\), we need a point on the line and a direction vector parallel to the line.\n\n1. **Direction Vector:**\n   The slope of the line is \\(\\frac{5}{3}\\), which means a direction vector parallel to the line can be \\(\\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}\\). This vector represents a change in \\(x\\) of 3 units and a corresponding change in \\(y\\) of 5 units.\n\n2. **Point on the Line:**\n   We can find a point on the line by substituting a value for \\(x\\) into the line equation. For example, if \\(x = 0\\), then:\n   \\[\n   y = \\frac{5}{3}(0) - \\frac{17}{3} = -\\frac{17}{3}\n   \\]\n   So, \\(\\begin{pmatrix} 0 \\\\ -\\frac{17}{3} \\end{pmatrix}\\) is a point on the line.\n\nNow, let's check each option to see if it represents a valid parameterization of the line.\n\n(A) \\(\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}\\)\n\n- The direction vector is \\(\\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}\\), which is a scalar multiple of \\(\\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}\\) (specifically, \\(-1\\) times). Thus, it is parallel to the line.\n- Check if \\(\\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix}\\) is on the line:\n  \\[\n  y = \\frac{5}{3}(4) - \\frac{17}{3} = \\frac{20}{3} - \\frac{17}{3} = 1\n  \\]\n  The point \\(\\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix}\\) is on the line.\n\n(B) \\(\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}\\)\n\n- The direction vector is \\(\\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}\\), which is \\(2\\) times \\(\\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}\\). Thus, it is parallel to the line.\n- Check if \\(\\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix}\\) is on the line:\n  \\[\n  y = \\frac{5}{3}(17) - \\frac{17}{3} = \\frac{85}{3} - \\frac{17}{3} = \\frac{68}{3} \\neq 5\n  \\]\n  The point \\(\\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix}\\) is not on the line.\n\n(C) \\(\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}\\)\n\n- The direction vector is \\(\\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}\\), which is not a scalar multiple of \\(\\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}\\). Thus, it is not parallel to the line.\n\n(D) \\(\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}\\)\n\n- The direction vector is \\(\\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}\\), which is \\(\\frac{1}{3}\\) times \\(\\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}\\). Thus, it is parallel to the line.\n- Check if \\(\\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix}\\) is on the line:\n  \\[\n  y = \\frac{5}{3}\\left(\\frac{14}{5}\\right) - \\frac{17}{3} = \\frac{14}{3} - \\frac{17}{3} = -1\n  \\]\n  The point \\(\\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix}\\) is on the line.\n\n(E) \\(\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}\\)\n\n- The direction vector is \\(\\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}\\), which is not a scalar multiple of \\(\\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}\\). Thus, it is not parallel to the line.\n\nThe valid parameterizations are (A) and (D).\n</think>\n\n<answer>\nA,D\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 3,
+    "question": "In the 2013 Zhejiang College Entrance Examination, arrange the six letters A, B, C, D, E, F in a row, with both A and B on the same side of C. How many different arrangements are there? (Answer with a number.)",
+    "ground_truth": "480",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      166,
+      56
+    ],
+    "completion_lengths": [
+      534,
+      10
+    ],
+    "answer": "96",
+    "original_verification": {
+      "model_answer": "96",
+      "ground_truth": "480",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to count the number of arrangements of the letters A, B, C, D, E, F such that both A and B are on the same side of C. This means that A and B must either both be to the left of C or both be to the right of C.\n\n1. **Total Arrangements**: First, calculate the total number of arrangements of the six letters without any restrictions. This is simply the factorial of 6, which is \\(6! = 720\\).\n\n2. **Arrangements with A and B on the Same Side of C**: \n   - Consider the two cases separately: A and B both to the left of C, and A and B both to the right of C.\n\n3. **Case 1: A and B to the Left of C**:\n   - If A and B are to the left of C, then the sequence can be represented as: (A, B) - C - (D, E, F).\n   - The number of ways to arrange A and B to the left of C is \\(2!\\) (since A and B can be in any order).\n   - The number of ways to arrange the remaining four letters (C, D, E, F) is \\(4!\\).\n\n4. **Case 2: A and B to the Right of C**:\n   - If A and B are to the right of C, then the sequence can be represented as: (D, E, F) - C - (A, B).\n   - Similarly, the number of ways to arrange A and B to the right of C is \\(2!\\).\n   - The number of ways to arrange the remaining four letters (D, E, F, C) is \\(4!\\).\n\n5. **Total Arrangements for Both Cases**:\n   - For each case, the number of arrangements is \\(2! \\times 4!\\).\n   - Since there are two cases (A and B to the left or right of C), the total number of arrangements is \\(2 \\times (2! \\times 4!)\\).\n\n6. **Calculate the Total**:\n   - \\(2! = 2\\)\n   - \\(4! = 24\\)\n   - Therefore, the total number of arrangements is \\(2 \\times (2 \\times 24) = 2 \\times 48 = 96\\).\n\nThus, there are 96 different arrangements where A and B are on the same side of C.\n\n</think>\n\n<answer>\n96\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 4,
+    "question": "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print.\n\nSasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?",
+    "ground_truth": "28",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      182,
+      72
+    ],
+    "completion_lengths": [
+      463,
+      10
+    ],
+    "answer": "21",
+    "original_verification": {
+      "model_answer": "21",
+      "ground_truth": "28",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to determine how many 8-digit numbers, when typed with a malfunctioning '1' key, result in the number 202020 being printed.\n\n1. **Understanding the Output**: The number 202020 is a 6-digit number. This means that the 8-digit number Sasha typed must have had two '1's that were not printed.\n\n2. **Structure of the Typed Number**: The printed number 202020 consists of alternating 2s and 0s. Therefore, the original 8-digit number must have been structured such that the '1's were inserted in between these digits.\n\n3. **Placement of '1's**: We need to determine where the two '1's could be placed in the sequence of the printed number 202020 to form an 8-digit number. The possible positions for inserting '1's are:\n   - Before the first digit\n   - Between any two consecutive digits\n   - After the last digit\n\n   For the number 202020, the possible positions for inserting '1's are:\n   - Before the first 2\n   - Between the first 2 and the first 0\n   - Between the first 0 and the second 2\n   - Between the second 2 and the second 0\n   - Between the second 0 and the third 2\n   - Between the third 2 and the third 0\n   - After the last 0\n\n   This gives us 7 possible positions to insert '1's.\n\n4. **Choosing Positions for '1's**: We need to choose 2 positions out of these 7 to insert the '1's. The number of ways to choose 2 positions from 7 is given by the combination formula \\( \\binom{7}{2} \\).\n\n5. **Calculating the Combinations**: \n   \\[\n   \\binom{7}{2} = \\frac{7 \\times 6}{2 \\times 1} = 21\n   \\]\n\nTherefore, there are 21 different 8-digit numbers that Sasha could have typed to result in the printed number 202020.\n</think>\n\n<answer>\n21\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 5,
+    "question": "In an acute-angled triangle \\( ABC \\), the angle bisector \\( AN \\), the altitude \\( BH \\), and the line perpendicular to side \\( AB \\) passing through its midpoint intersect at a single point. Find angle \\( BAC \\).",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      162,
+      52
+    ],
+    "completion_lengths": [
+      421,
+      10
+    ],
+    "answer": "60",
+    "original_verification": {
+      "model_answer": "60",
+      "ground_truth": "60",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nTo solve this problem, we need to analyze the given conditions and use properties of triangle geometry.\n\n1. **Understanding the Problem:**\n   - We have an acute-angled triangle \\( ABC \\).\n   - The angle bisector \\( AN \\) of angle \\( BAC \\).\n   - The altitude \\( BH \\) from \\( B \\) to \\( AC \\).\n   - A line perpendicular to \\( AB \\) passing through its midpoint.\n\n2. **Intersection of Lines:**\n   - These three lines intersect at a single point, which suggests a special configuration.\n   - The intersection of the angle bisector, altitude, and a perpendicular from the midpoint of a side is a characteristic of the orthocenter in certain configurations.\n\n3. **Analyzing the Configuration:**\n   - The line perpendicular to \\( AB \\) through its midpoint is the perpendicular bisector of \\( AB \\).\n   - The intersection of the angle bisector, altitude, and perpendicular bisector at a single point suggests that this point is the orthocenter of the triangle.\n\n4. **Special Triangle Configuration:**\n   - For the orthocenter to lie on the angle bisector, the triangle must be isosceles with \\( AB = AC \\).\n   - In an isosceles triangle, the angle bisector of the vertex angle is also the altitude and the median.\n   - Therefore, \\( AN \\) is the altitude, and \\( BH \\) is also an altitude, which means \\( BH \\) is the same as \\( AN \\).\n\n5. **Conclusion:**\n   - Since \\( AN \\) is both the angle bisector and the altitude, triangle \\( ABC \\) must be isosceles with \\( AB = AC \\).\n   - In an isosceles triangle with the orthocenter on the angle bisector, the vertex angle \\( \\angle BAC \\) is \\( 60^\\circ \\).\n\nThus, the angle \\( BAC \\) is \\( 60^\\circ \\).\n\n</think>\n\n<answer>\n60\n</answer>"
+    },
+    "original_solvable": true
+  },
+  {
+    "data_source": "polaris",
+    "id": 6,
+    "question": "Person A and person B start from locations A and B respectively, walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously. They meet after 10 minutes. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?",
+    "ground_truth": "50",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      183,
+      79
+    ],
+    "completion_lengths": [
+      435,
+      10
+    ],
+    "answer": "1200 meters, 50 meters",
+    "original_verification": {
+      "model_answer": "1200 meters, 50 meters",
+      "ground_truth": "50",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to determine the total distance between locations A and B, as well as the distance of the meeting point from the midpoint between A and B.\n\n1. **Calculate the total distance between A and B:**\n\n   - Person A walks at a speed of 65 meters per minute.\n   - Person B walks at a speed of 55 meters per minute.\n   - They meet after 10 minutes.\n\n   The total distance covered by both persons together in 10 minutes is the sum of the distances each person covers.\n\n   - Distance covered by Person A in 10 minutes = Speed of A × Time = 65 meters/minute × 10 minutes = 650 meters.\n   - Distance covered by Person B in 10 minutes = Speed of B × Time = 55 meters/minute × 10 minutes = 550 meters.\n\n   Therefore, the total distance between A and B is the sum of these two distances:\n\n   \\[\n   \\text{Total distance} = 650 \\text{ meters} + 550 \\text{ meters} = 1200 \\text{ meters}\n   \\]\n\n2. **Calculate the distance of the meeting point from the midpoint between A and B:**\n\n   - The midpoint between A and B is at half the total distance, which is \\( \\frac{1200}{2} = 600 \\) meters from either A or B.\n\n   - The meeting point is 650 meters from A (since Person A covers 650 meters to meet Person B).\n\n   - The distance from the midpoint to the meeting point is the absolute difference between the distance from A to the meeting point and the distance from A to the midpoint:\n\n   \\[\n   \\text{Distance from midpoint to meeting point} = |650 \\text{ meters} - 600 \\text{ meters}| = 50 \\text{ meters}\n   \\]\n\nThus, the distance between A and B is 1200 meters, and the distance of the meeting point from the midpoint is 50 meters.\n</think>\n\n<answer>\n1200 meters, 50 meters\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 7,
+    "question": "Six chairs sit in a row.  Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.  There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.  The probability that this will **not** happen is given by  $\\frac{m}{n}$  where  $m$  and  $n$  are relatively prime positive integers. Find  $m+n$ .",
+    "ground_truth": "1106",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      245,
+      136
+    ],
+    "completion_lengths": [
+      712,
+      10
+    ],
+    "answer": "1069",
+    "original_verification": {
+      "model_answer": "1069",
+      "ground_truth": "1106",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to calculate the probability that no two adjacent people have conflicting leg positions, where a conflict occurs if the person on the right crosses their legs to the left and the person on the left crosses their legs to the right.\n\nFirst, let's determine the total number of ways the six people can choose their leg positions. Each person has 3 choices: feet on the floor (F), cross legs to the right (R), or cross legs to the left (L). Therefore, the total number of configurations is \\(3^6\\).\n\nNext, we need to count the number of configurations where no two adjacent people have conflicting leg positions. A conflict occurs with the pattern (R, L) between two adjacent people.\n\nTo count the non-conflicting configurations, we can use a recursive approach or dynamic programming. Let's define \\(a_n\\) as the number of valid configurations for \\(n\\) people.\n\nConsider the first person:\n- If the first person chooses F, the remaining \\(n-1\\) people can be arranged in any valid configuration, which is \\(a_{n-1}\\).\n- If the first person chooses R, the second person cannot choose L. Thus, the second person can choose F or R, and the remaining \\(n-2\\) people can be arranged in any valid configuration. This gives us \\(2a_{n-2}\\).\n- If the first person chooses L, the second person cannot choose R. Thus, the second person can choose F or L, and the remaining \\(n-2\\) people can be arranged in any valid configuration. This also gives us \\(2a_{n-2}\\).\n\nThe recurrence relation is:\n\\[ a_n = a_{n-1} + 2a_{n-2} + 2a_{n-2} = a_{n-1} + 4a_{n-2} \\]\n\nBase cases:\n- \\(a_1 = 3\\) (F, R, L)\n- \\(a_2 = 8\\) (FF, FR, FL, RF, RR, LF, LL, LR)\n\nNow, we compute \\(a_6\\) using the recurrence relation:\n- \\(a_3 = a_2 + 4a_1 = 8 + 4 \\times 3 = 20\\)\n- \\(a_4 = a_3 + 4a_2 = 20 + 4 \\times 8 = 52\\)\n- \\(a_5 = a_4 + 4a_3 = 52 + 4 \\times 20 = 132\\)\n- \\(a_6 = a_5 + 4a_4 = 132 + 4 \\times 52 = 340\\)\n\nThe probability that no conflict occurs is the number of valid configurations divided by the total number of configurations:\n\\[ \\text{Probability} = \\frac{a_6}{3^6} = \\frac{340}{729} \\]\n\nWe need to simplify \\(\\frac{340}{729}\\) to its lowest terms. Since 340 and 729 have no common factors other than 1, the fraction is already in its simplest form.\n\nThus, \\(m = 340\\) and \\(n = 729\\), and \\(m+n = 340 + 729 = 1069\\).\n\n</think>\n\n<answer>\n1069\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 8,
+    "question": "In a two-story house that is inhabited in both floors as well as on the ground floor, 35 people live above someone and 45 people live below someone. One third of all the people living in the house live on the first floor.\n\nHow many people live in the house in total?",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      171,
+      61
+    ],
+    "completion_lengths": [
+      537,
+      10
+    ],
+    "answer": "60",
+    "original_verification": {
+      "model_answer": "60",
+      "ground_truth": "60",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nLet's denote the number of people living on the ground floor as \\( G \\), the number of people living on the first floor as \\( F \\), and the number of people living on the second floor as \\( S \\).\n\nFrom the problem, we know:\n1. 35 people live above someone.\n2. 45 people live below someone.\n3. One third of all the people live on the first floor.\n\nLet's analyze the conditions:\n\n- People living above someone are those on the first and second floors. Therefore, \\( F + S = 35 \\).\n- People living below someone are those on the ground and first floors. Therefore, \\( G + F = 45 \\).\n\nWe also know that one third of all the people live on the first floor, so:\n\\[ F = \\frac{G + F + S}{3} \\]\n\nLet's solve these equations step by step:\n\n1. From \\( F + S = 35 \\), we can express \\( S \\) in terms of \\( F \\):\n   \\[ S = 35 - F \\]\n\n2. From \\( G + F = 45 \\), we can express \\( G \\) in terms of \\( F \\):\n   \\[ G = 45 - F \\]\n\n3. Substitute \\( S = 35 - F \\) and \\( G = 45 - F \\) into the equation \\( F = \\frac{G + F + S}{3} \\):\n   \\[ F = \\frac{(45 - F) + F + (35 - F)}{3} \\]\n\n4. Simplify the equation:\n   \\[ F = \\frac{80 - F}{3} \\]\n\n5. Multiply both sides by 3 to eliminate the fraction:\n   \\[ 3F = 80 - F \\]\n\n6. Add \\( F \\) to both sides:\n   \\[ 4F = 80 \\]\n\n7. Divide by 4 to solve for \\( F \\):\n   \\[ F = 20 \\]\n\nNow that we have \\( F = 20 \\), we can find \\( G \\) and \\( S \\):\n\n- From \\( G = 45 - F \\):\n  \\[ G = 45 - 20 = 25 \\]\n\n- From \\( S = 35 - F \\):\n  \\[ S = 35 - 20 = 15 \\]\n\nFinally, the total number of people in the house is:\n\\[ G + F + S = 25 + 20 + 15 = 60 \\]\n</think>\n\n<answer>\n60\n</answer>"
+    },
+    "original_solvable": true
+  },
+  {
+    "data_source": "polaris",
+    "id": 9,
+    "question": "Given a square with four vertices and its center, find the probability that the distance between any two of these five points is less than the side length of the square.",
+    "ground_truth": "\\frac{2}{5}",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      145,
+      41
+    ],
+    "completion_lengths": [
+      521,
+      10
+    ],
+    "answer": "0",
+    "original_verification": {
+      "model_answer": "0",
+      "ground_truth": "\\frac{2}{5}",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to consider a square with vertices \\( A, B, C, \\) and \\( D \\) and its center \\( O \\). We are tasked with finding the probability that the distance between any two of these five points is less than the side length of the square.\n\n1. **Identify the Points:**\n   - Let the side length of the square be \\( s \\).\n   - The vertices of the square are \\( A, B, C, \\) and \\( D \\).\n   - The center of the square is \\( O \\).\n\n2. **Calculate Distances:**\n   - The distance between any two adjacent vertices (e.g., \\( AB, BC, CD, DA \\)) is \\( s \\).\n   - The distance between any two opposite vertices (e.g., \\( AC, BD \\)) is the diagonal of the square, which is \\( s\\sqrt{2} \\).\n   - The distance from the center \\( O \\) to any vertex (e.g., \\( OA, OB, OC, OD \\)) is half the diagonal, which is \\( \\frac{s\\sqrt{2}}{2} \\).\n\n3. **Evaluate Conditions:**\n   - For the distance between any two points to be less than \\( s \\), the following must hold:\n     - The distance between any two adjacent vertices is exactly \\( s \\), so it does not satisfy the condition of being less than \\( s \\).\n     - The distance between opposite vertices is \\( s\\sqrt{2} \\), which is greater than \\( s \\).\n     - The distance from the center to any vertex is \\( \\frac{s\\sqrt{2}}{2} \\), which is less than \\( s \\).\n\n4. **Conclusion:**\n   - The only distances that are less than \\( s \\) are those from the center \\( O \\) to each vertex.\n   - However, since the problem asks for the probability that the distance between any two of these five points is less than \\( s \\), and we have distances equal to or greater than \\( s \\) (e.g., between adjacent vertices and opposite vertices), the condition is not satisfied for all pairs.\n\n5. **Final Probability:**\n   - Since there are pairs of points (adjacent vertices and opposite vertices) where the distance is not less than \\( s \\), the probability that the distance between any two of these five points is less than \\( s \\) is 0.\n\n</think>\n\n<answer>\n0\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 10,
+    "question": "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
+    "ground_truth": "9375",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      156,
+      47
+    ],
+    "completion_lengths": [
+      627,
+      10
+    ],
+    "answer": "10000",
+    "original_verification": {
+      "model_answer": "10000",
+      "ground_truth": "9375",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to determine when to swap the front and rear tires so that they all wear out at the same time.\n\n1. **Understand the wear rates:**\n   - Front tires wear out after 25,000 km.\n   - Rear tires wear out after 15,000 km.\n\n2. **Define the problem:**\n   - We want to find a point at which both sets of tires have worn out completely at the same time.\n\n3. **Set up the equations:**\n   - Let \\( x \\) be the distance driven before the first swap.\n   - After \\( x \\) km, the front tires have \\( \\frac{x}{25000} \\) of their life used, and the rear tires have \\( \\frac{x}{15000} \\) of their life used.\n\n4. **Determine the remaining life after the swap:**\n   - After the swap, the front tires (now at the rear) have \\( 1 - \\frac{x}{25000} \\) of their life remaining.\n   - The rear tires (now at the front) have \\( 1 - \\frac{x}{15000} \\) of their life remaining.\n\n5. **Calculate the total distance until they wear out:**\n   - The front tires (now at the rear) will last an additional \\( 25000 \\times (1 - \\frac{x}{25000}) \\) km.\n   - The rear tires (now at the front) will last an additional \\( 15000 \\times (1 - \\frac{x}{15000}) \\) km.\n\n6. **Set the total distances equal:**\n   - We want the total distance driven to be the same for both sets of tires:\n     \\[\n     x + 25000 \\times (1 - \\frac{x}{25000}) = x + 15000 \\times (1 - \\frac{x}{15000})\n     \\]\n\n7. **Simplify the equation:**\n   - Simplifying both sides:\n     \\[\n     x + 25000 - x = x + 15000 - \\frac{15000x}{15000}\n     \\]\n     \\[\n     25000 = 15000 + \\frac{10000x}{15000}\n     \\]\n\n8. **Solve for \\( x \\):**\n   - Rearrange and solve:\n     \\[\n     25000 - 15000 = \\frac{10000x}{15000}\n     \\]\n     \\[\n     10000 = \\frac{10000x}{15000}\n     \\]\n     \\[\n     x = \\frac{10000 \\times 15000}{10000}\n     \\]\n     \\[\n     x = 15000\n     \\]\n\n9. **Conclusion:**\n   - The tires should be swapped after 10,000 km so that they all wear out at the same time.\n\nTherefore, the tires should be swapped after 10,000 km.\n</think>\n\n<answer>\n10000\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 11,
+    "question": "Given the function \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\), if the minimum value of \\( f(x) \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right] \\) is \\(-1\\), find the value of \\( a \\).",
+    "ground_truth": "-1",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      188,
+      79
+    ],
+    "completion_lengths": [
+      653,
+      10
+    ],
+    "answer": "0",
+    "original_verification": {
+      "model_answer": "0",
+      "ground_truth": "-1",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo find the value of \\( a \\) such that the minimum value of \\( f(x) = \\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right]\\) is \\(-1\\), we first need to analyze the function and look for its minimum value within the specified domain.\n\nLet's break the function down:\n\n1. **Simplifying \\( \\cos^2 x \\):**  \n   Recall the identity \\(\\cos^2 x = \\frac{1 + \\cos 2x}{2}\\).  \n   Thus, the term \\( 2 \\cos^2 x \\) becomes \\( (1 + \\cos 2x) \\).\n\nTherefore,\n\\[ f(x) = \\sqrt{3} \\sin 2x + 1 + \\cos 2x + a \\]\n\n2. **Analyzing Trigonometric Part:**  \n   Combine the trigonometric terms:\n   \\[ f(x) = \\sqrt{3} \\sin 2x + \\cos 2x + 1 + a \\]\n\n3. **Using Trigonometric Form** \\\\( r \\sin(2x + \\phi): \\\\)  \n   We recognize that \\(\\sqrt{3} \\sin 2x + \\cos 2x\\) can be expressed in a single cosine or sine term:\n   - \\( r = \\sqrt{(\\sqrt{3})^2 + 1^2} = \\sqrt{3 + 1} = 2 \\)\n   - \\(\\tan \\phi = \\frac{\\sqrt{3}}{1} = \\sqrt{3} \\Rightarrow \\phi = \\frac{\\pi}{3}\\) (since \\(\\tan \\frac{\\pi}{3} = \\sqrt{3}\\))\n\nThus, the expression \\(\\sqrt{3} \\sin 2x + \\cos 2x = 2 \\cos(2x - \\frac{\\pi}{3})\\).\n\nNow the function simplifies to:\n\\[ f(x) = 2 \\cos (2x - \\frac{\\pi}{3}) + 1 + a \\]\n\n4. **Finding Minimum Value Within Domain:**  \n   Since cosine ranges from \\(-1\\) to \\(1\\), the minimum value occurs when \\(\\cos(2x - \\frac{\\pi}{3}) = -1\\). The minimum value of \\(2 \\cos(2x - \\frac{\\pi}{3})\\) is \\(-2\\).\n\n   Therefore, the minimum value of the complete expression:\n   \\[ f(x) = -2 + 1 + a = -1 \\]\n\n5. **Solving for \\( a \\):**\n   \\[ -2 + 1 + a = -1 \\]\n   \\[ -1 + a = -1 \\]\n   \\[ a = 0 \\]\n\nTherefore, the value of \\( a \\) that satisfies the given condition is \\( a = 0 \\).\n\n</think>\n\n<answer>\n0\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 12,
+    "question": "From the vertex of the right angle of triangle \\(ABC\\), the median \\(CM\\) is drawn. The circle inscribed in triangle \\(CAM\\) touches \\(CM\\) at its midpoint. Find the angle \\(BAC\\).",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      160,
+      50
+    ],
+    "completion_lengths": [
+      589,
+      10
+    ],
+    "answer": "45",
+    "original_verification": {
+      "model_answer": "45",
+      "ground_truth": "60",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to analyze the given conditions and use properties of triangles and circles.\n\n1. **Understanding the Problem:**\n   - We have a right triangle \\(ABC\\) with the right angle at \\(C\\).\n   - \\(CM\\) is the median from \\(C\\) to the hypotenuse \\(AB\\).\n   - The circle inscribed in triangle \\(CAM\\) touches \\(CM\\) at its midpoint.\n\n2. **Properties of the Median:**\n   - In a right triangle, the median to the hypotenuse is half the length of the hypotenuse. This is a key property that will help us.\n\n3. **Properties of the Incircle:**\n   - The incircle of a triangle touches each side at a point such that the distances from the vertices to the points of tangency are equal.\n\n4. **Analyzing the Condition:**\n   - The incircle of \\(\\triangle CAM\\) touches \\(CM\\) at its midpoint. This implies that the distance from \\(C\\) to the point of tangency is equal to the distance from \\(M\\) to the point of tangency.\n\n5. **Geometric Implication:**\n   - If the incircle touches \\(CM\\) at its midpoint, then \\(\\triangle CAM\\) must be isosceles with \\(CA = AM\\).\n\n6. **Conclusion:**\n   - Since \\(CM\\) is the median and also the altitude (because it is perpendicular to \\(AB\\) in the right triangle), and \\(CA = AM\\), \\(\\triangle CAM\\) is isosceles with \\(CA = AM\\).\n   - This implies that \\(\\angle CAM = \\angle ACM\\).\n\n7. **Finding \\(\\angle BAC\\):**\n   - In \\(\\triangle ABC\\), since \\(CM\\) is the median to the hypotenuse, \\(\\angle BAC\\) is half of \\(\\angle CAM\\).\n   - Since \\(\\angle CAM = \\angle ACM\\), and \\(\\angle CAM + \\angle ACM = 90^\\circ\\) (because \\(\\angle ACB = 90^\\circ\\)), each of these angles is \\(45^\\circ\\).\n   - Therefore, \\(\\angle BAC = \\frac{1}{2} \\times 45^\\circ = 22.5^\\circ\\).\n\nHowever, upon re-evaluation, the correct approach is to realize that the condition of the incircle touching the median at its midpoint implies a special configuration. The only configuration where this happens is when \\(\\angle BAC = 90^\\circ\\), making \\(\\triangle ABC\\) an isosceles right triangle.\n\nThus, the correct angle \\(\\angle BAC\\) is \\(45^\\circ\\).\n\n</think>\n\n<answer>\n45\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 13,
+    "question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?",
+    "ground_truth": "300",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      162,
+      52
+    ],
+    "completion_lengths": [
+      468,
+      10
+    ],
+    "answer": "360",
+    "original_verification": {
+      "model_answer": "360",
+      "ground_truth": "300",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to form a six-digit number using the digits 0, 1, 2, 3, 4, and 5 without repeating any digit, and ensure that the unit digit is less than the ten's digit.\n\n1. **Total Arrangements**: First, calculate the total number of six-digit numbers that can be formed using these six digits. Since we are using all six digits, the number of permutations is \\(6!\\).\n\n   \\[\n   6! = 720\n   \\]\n\n2. **Condition on Unit and Ten's Digit**: We need to count only those permutations where the unit digit is less than the ten's digit. Let's denote the unit digit as \\(u\\) and the ten's digit as \\(t\\). We need \\(u < t\\).\n\n3. **Choosing Unit and Ten's Digit**: For each pair of digits, we can choose one to be the unit digit and the other to be the ten's digit. The number of ways to choose two digits from the set \\{0, 1, 2, 3, 4, 5\\} is \\(\\binom{6}{2}\\).\n\n   \\[\n   \\binom{6}{2} = 15\n   \\]\n\n   For each pair, there is exactly one way to assign the smaller digit to the unit place and the larger digit to the ten's place.\n\n4. **Arranging Remaining Digits**: After choosing and placing the unit and ten's digits, we have 4 remaining digits to arrange in the other four positions (hundreds, thousands, ten-thousands, hundred-thousands). The number of ways to arrange these 4 digits is \\(4!\\).\n\n   \\[\n   4! = 24\n   \\]\n\n5. **Total Valid Numbers**: For each of the 15 pairs of unit and ten's digits, there are 24 ways to arrange the remaining digits. Therefore, the total number of valid six-digit numbers is:\n\n   \\[\n   15 \\times 24 = 360\n   \\]\n\nThus, there are 360 six-digit numbers that can be formed under the given conditions.\n</think>\n\n<answer>\n360\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 14,
+    "question": "An electronic clock always displays the date as an eight-digit number. For example, January 1, 2011, is displayed as 20110101. What is the last day of 2011 that can be evenly divided by 101? The date is displayed as $\\overline{2011 \\mathrm{ABCD}}$. What is $\\overline{\\mathrm{ABCD}}$?",
+    "ground_truth": "1221",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      193,
+      84
+    ],
+    "completion_lengths": [
+      241,
+      10
+    ],
+    "answer": "1231",
+    "original_verification": {
+      "model_answer": "1231",
+      "ground_truth": "1221",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to find the last day of the year 2011 that can be evenly divided by 101. The date is displayed in the format 2011ABCD, where ABCD represents the month and day.\n\n1. The date format is 2011ABCD, where ABCD is a four-digit number representing the month and day. The maximum value for ABCD is 1231, representing December 31.\n\n2. We need to find the largest value of ABCD such that 2011ABCD is divisible by 101.\n\n3. We start by checking the divisibility of 20111231 by 101. If it is not divisible, we decrement the date and check again.\n\n4. Calculate 20111231 modulo 101:\n   - 20111231 divided by 101 gives a remainder of 0, meaning it is divisible by 101.\n\n5. Since 20111231 is divisible by 101, it is the last day of 2011 that satisfies the condition.\n\n6. Therefore, the value of ABCD is 1231.\n\n</think>\n\n<answer>\n1231\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 15,
+    "question": "A cube with a side length of 1 meter was cut into smaller cubes with a side length of 1 centimeter and arranged in a straight line. What is the length of the resulting line?",
+    "ground_truth": "10000",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      151,
+      44
+    ],
+    "completion_lengths": [
+      407,
+      10
+    ],
+    "answer": "10,000",
+    "original_verification": {
+      "model_answer": "10,000",
+      "ground_truth": "10000",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nTo solve this problem, we need to determine how many smaller cubes are created when a larger cube is cut, and then calculate the total length when these smaller cubes are arranged in a straight line.\n\n1. **Understanding the dimensions:**\n   - The original cube has a side length of 1 meter.\n   - The smaller cubes have a side length of 1 centimeter.\n\n2. **Conversion of units:**\n   - 1 meter is equivalent to 100 centimeters.\n\n3. **Calculating the number of smaller cubes:**\n   - Since the original cube is 1 meter (or 100 centimeters) on each side, we can determine how many 1 cm cubes fit along one edge of the original cube. This is simply 100 cubes per edge.\n   - The total number of smaller cubes is the cube of the number of cubes along one edge, which is \\(100 \\times 100 \\times 100 = 1,000,000\\) smaller cubes.\n\n4. **Arranging the smaller cubes in a straight line:**\n   - Each smaller cube has a side length of 1 centimeter.\n   - If we arrange all 1,000,000 smaller cubes in a straight line, the total length of the line is the number of cubes multiplied by the side length of each cube.\n   - Therefore, the total length of the line is \\(1,000,000 \\times 1 \\text{ cm} = 1,000,000 \\text{ cm}\\).\n\n5. **Converting the length back to meters:**\n   - Since 1 meter is 100 centimeters, we convert the total length from centimeters to meters by dividing by 100.\n   - Thus, the length of the line in meters is \\(\\frac{1,000,000}{100} = 10,000\\) meters.\n\nTherefore, the length of the resulting line is 10,000 meters.\n</think>\n\n<answer>\n10,000\n</answer>"
+    },
+    "original_solvable": true
+  },
+  {
+    "data_source": "polaris",
+    "id": 16,
+    "question": "In a right-angled triangle, let \\( s_{a} \\) and \\( s_{b} \\) be the medians to the legs, and \\( s_{c} \\) be the median to the hypotenuse. Determine the maximum value of the expression \\( \\frac{s_{a} + s_{b}}{s_{c}} \\).",
+    "ground_truth": "\\sqrt{10}",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      186,
+      84
+    ],
+    "completion_lengths": [
+      846,
+      10
+    ],
+    "answer": "2\\sqrt{2}",
+    "original_verification": {
+      "model_answer": "2\\sqrt{2}",
+      "ground_truth": "\\sqrt{10}",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve this problem, we need to understand the properties of medians in a right-angled triangle. Let's denote the sides of the right-angled triangle as \\( a \\), \\( b \\), and \\( c \\), where \\( c \\) is the hypotenuse.\n\nThe medians \\( s_a \\), \\( s_b \\), and \\( s_c \\) are given by the formulas:\n- \\( s_a = \\frac{1}{2} \\sqrt{2b^2 + 2c^2 - a^2} \\)\n- \\( s_b = \\frac{1}{2} \\sqrt{2a^2 + 2c^2 - b^2} \\)\n- \\( s_c = \\frac{1}{2} \\sqrt{2a^2 + 2b^2 - c^2} \\)\n\nIn a right-angled triangle, by the Pythagorean theorem, we have \\( c^2 = a^2 + b^2 \\).\n\nSubstituting \\( c^2 = a^2 + b^2 \\) into the formula for \\( s_c \\), we get:\n\\[ s_c = \\frac{1}{2} \\sqrt{2a^2 + 2b^2 - (a^2 + b^2)} = \\frac{1}{2} \\sqrt{a^2 + b^2} = \\frac{c}{2} \\]\n\nNow, let's substitute \\( c^2 = a^2 + b^2 \\) into the formulas for \\( s_a \\) and \\( s_b \\):\n- \\( s_a = \\frac{1}{2} \\sqrt{2b^2 + 2(a^2 + b^2) - a^2} = \\frac{1}{2} \\sqrt{3b^2 + a^2} \\)\n- \\( s_b = \\frac{1}{2} \\sqrt{2a^2 + 2(a^2 + b^2) - b^2} = \\frac{1}{2} \\sqrt{3a^2 + b^2} \\)\n\nWe need to find the maximum value of the expression:\n\\[ \\frac{s_a + s_b}{s_c} = \\frac{\\frac{1}{2} \\sqrt{3b^2 + a^2} + \\frac{1}{2} \\sqrt{3a^2 + b^2}}{\\frac{c}{2}} = \\frac{\\sqrt{3b^2 + a^2} + \\sqrt{3a^2 + b^2}}{c} \\]\n\nTo maximize this expression, we can use the fact that the maximum occurs when the triangle is isosceles, i.e., \\( a = b \\). In this case, the triangle is a 45-45-90 triangle, and \\( c = \\sqrt{2}a \\).\n\nSubstituting \\( a = b \\) and \\( c = \\sqrt{2}a \\) into the expression, we get:\n- \\( s_a = s_b = \\frac{1}{2} \\sqrt{3a^2 + a^2} = \\frac{1}{2} \\sqrt{4a^2} = a \\)\n- \\( s_c = \\frac{c}{2} = \\frac{\\sqrt{2}a}{2} \\)\n\nThus, the expression becomes:\n\\[ \\frac{s_a + s_b}{s_c} = \\frac{a + a}{\\frac{\\sqrt{2}a}{2}} = \\frac{2a}{\\frac{\\sqrt{2}a}{2}} = \\frac{2a \\cdot 2}{\\sqrt{2}a} = \\frac{4}{\\sqrt{2}} = 2\\sqrt{2} \\]\n\nTherefore, the maximum value of the expression is \\( 2\\sqrt{2} \\).\n</think>\n\n<answer>\n2\\sqrt{2}\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 17,
+    "question": "Given the function $f(x) = x^2 - 2\\cos{\\theta}x + 1$, where $x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]$.\n\n(1) When $\\theta = \\frac{\\pi}{3}$, find the maximum and minimum values of $f(x)$.\n\n(2) If $f(x)$ is a monotonous function on $x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]$ and $\\theta \\in [0, 2\\pi)$, find the range of $\\theta$.\n\n(3) If $\\sin{\\alpha}$ and $\\cos{\\alpha}$ are the two real roots of the equation $f(x) = \\frac{1}{4} + \\cos{\\theta}$, find the value of $\\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}$.",
+    "ground_truth": "\\frac{16 + 4\\sqrt{11}}{5}",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      321,
+      224
+    ],
+    "completion_lengths": [
+      1065,
+      10
+    ],
+    "answer": "2",
+    "original_verification": {
+      "model_answer": "2",
+      "ground_truth": "\\frac{16 + 4\\sqrt{11}}{5}",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve the given problem, we will address each part separately.\n\n(1) **Finding the maximum and minimum values of \\( f(x) \\) when \\( \\theta = \\frac{\\pi}{3} \\):**\n\nFirst, substitute \\(\\theta = \\frac{\\pi}{3}\\) into the function:\n\\[\nf(x) = x^2 - 2\\cos\\left(\\frac{\\pi}{3}\\right)x + 1\n\\]\nSince \\(\\cos\\left(\\frac{\\pi}{3}\\right) = \\frac{1}{2}\\), the function becomes:\n\\[\nf(x) = x^2 - x + 1\n\\]\n\nTo find the extrema, we calculate the derivative:\n\\[\nf'(x) = 2x - 1\n\\]\nSet the derivative to zero to find critical points:\n\\[\n2x - 1 = 0 \\implies x = \\frac{1}{2}\n\\]\n\nCheck the endpoints of the interval \\(x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]\\) and the critical point:\n- \\(f\\left(-\\frac{\\sqrt{3}}{2}\\right) = \\left(-\\frac{\\sqrt{3}}{2}\\right)^2 - \\left(-\\frac{\\sqrt{3}}{2}\\right) + 1 = \\frac{3}{4} + \\frac{\\sqrt{3}}{2} + 1\\)\n- \\(f\\left(\\frac{1}{2}\\right) = \\left(\\frac{1}{2}\\right)^2 - \\frac{1}{2} + 1 = \\frac{1}{4} - \\frac{1}{2} + 1 = \\frac{3}{4}\\)\n\nComparing these values, the maximum value is at \\(x = -\\frac{\\sqrt{3}}{2}\\) and the minimum value is at \\(x = \\frac{1}{2}\\).\n\n(2) **Finding the range of \\(\\theta\\) for which \\(f(x)\\) is monotonous:**\n\nThe function \\(f(x) = x^2 - 2\\cos{\\theta}x + 1\\) is a quadratic in \\(x\\). For \\(f(x)\\) to be monotonous, the discriminant of the quadratic must be non-positive:\n\\[\nb^2 - 4ac = (2\\cos{\\theta})^2 - 4 \\cdot 1 \\cdot 1 \\leq 0\n\\]\n\\[\n4\\cos^2{\\theta} - 4 \\leq 0 \\implies \\cos^2{\\theta} \\leq 1\n\\]\nThis inequality is always true for any \\(\\theta\\), so the function is always monotonous for any \\(\\theta \\in [0, 2\\pi)\\).\n\n(3) **Finding the value of \\(\\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}\\):**\n\nGiven that \\(\\sin{\\alpha}\\) and \\(\\cos{\\alpha}\\) are roots of the equation:\n\\[\nf(x) = \\frac{1}{4} + \\cos{\\theta}\n\\]\nSubstitute into the function:\n\\[\nx^2 - 2\\cos{\\theta}x + 1 = \\frac{1}{4} + \\cos{\\theta}\n\\]\n\\[\nx^2 - 2\\cos{\\theta}x + 1 - \\frac{1}{4} - \\cos{\\theta} = 0\n\\]\n\\[\nx^2 - 2\\cos{\\theta}x + \\left(\\frac{3}{4} - \\cos{\\theta}\\right) = 0\n\\]\n\nThe sum of the roots \\(\\sin{\\alpha} + \\cos{\\alpha} = 2\\cos{\\theta}\\) and the product \\(\\sin{\\alpha}\\cos{\\alpha} = \\frac{3}{4} - \\cos{\\theta}\\).\n\nUsing the identity \\(\\tan^2{\\alpha} + 1 = \\sec^2{\\alpha}\\), we have:\n\\[\n\\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}} = \\frac{\\sec^2{\\alpha}}{\\tan{\\alpha}} = \\frac{1}{\\sin{\\alpha}\\cos{\\alpha}}\n\\]\n\\[\n= \\frac{1}{\\frac{3}{4} - \\cos{\\theta}}\n\\]\n\nSince \\(\\sin{\\alpha}\\) and \\(\\cos{\\alpha}\\) are roots, \\(\\alpha = \\frac{\\pi}{4}\\) gives \\(\\sin{\\alpha} = \\cos{\\alpha} = \\frac{\\sqrt{2}}{2}\\), and \\(\\tan{\\alpha} = 1\\).\n\nThus, \\(\\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}} = 2\\).\n\n</think>\n\n<answer>\n2\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 18,
+    "question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even. Find $|a-b|.$\n",
+    "ground_truth": "25",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      253,
+      142
+    ],
+    "completion_lengths": [
+      751,
+      10
+    ],
+    "answer": "1",
+    "original_verification": {
+      "model_answer": "1",
+      "ground_truth": "25",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nThe key to solving this problem is understanding the parity of \\(\\tau(n)\\), the number of divisors of \\(n\\). \n\nFirstly, \\(\\tau(n)\\) is odd if and only if \\(n\\) is a perfect square. This is because the divisors of a non-square number can be paired up as \\((d, \\frac{n}{d})\\) where \\(d\\) and \\(\\frac{n}{d}\\) are distinct, making an even count, whereas for a perfect square, the middle divisor is repeated (e.g., for \\(n=k^2\\), we have \\(d=k\\) as its own pair), resulting in an odd count.\n\nNext, consider the sequence \\( S(n) = \\tau(1) + \\tau(2) + \\cdots + \\tau(n) \\). Our task is to identify when \\(S(n)\\) is odd or even. \n\nEvery time we encounter a perfect square number \\(k^2\\) for some integer \\(k\\), the value of \\(\\tau(k^2)\\) is odd. So, each perfect square alters the parity of \\(S(n)\\). \n\nWe need to find the number of such integers \\(n \\leq 2005\\) for which \\(S(n)\\) is odd (let's call this count \\(a\\)) and those for which \\(S(n)\\) is even (let's call this count \\(b\\)) and then find \\(|a-b|\\).\n\n1. Count the number of perfect squares \\(\\leq 2005\\).\n   \\[\n   \\text{largest integer } k \\text{ such that } k^2 \\leq 2005 = \\lfloor \\sqrt{2005} \\rfloor \n   \\]\n   Calculating:\n   \\[\n   \\sqrt{2005} \\approx 44.7\n   \\]\n   So, \\(\\lfloor \\sqrt{2005} \\rfloor = 44\\).\n\n   Thus, there are 44 perfect square numbers up to 2005.\n   \n2. Given there are 44 perfect squares, \\(S(n)\\) switches parity 44 times from 1 to 2005 due to each perfect square.\n\n   - From 1 to the first perfect square (1) within this range, \\(S(n)\\) starts odd and stays odd.\n   - Every time a perfect square is reached, \\(S(n)\\) changes its parity.\n\n   Calculate: How often does \\(S(n)\\) end up in each state?\n   \n   If \\(k\\) is an odd number, frequently alternating starting from an initial count (beginning from 1 for \\(S(1)\\)), \\(a\\) (when \\(S(n)\\) is odd) and \\(b\\) (when it is even) depend on whether \\(k+1\\) (our final count for max range) is odd or even.\n\n   Here, we have:\n   - Even number of total switches (44 remaining).\n   - Initially, \\(S\\) is odd for \\(1\\).\n\n   For a sequence of 44, alternating sequence starting odd ends even, we have:\n   - Half values \\(+1 \\subseteq\\) are odd, thus \\(a = 1003.\\) \n   - The rest \\(in \\bulit\\) are even, \\(b = 1002.\\)\n\nFinally, calculate \\(|a-b|\\):\n\\[\n|a-b| = |1003 - 1002| = 1\n\\]\n</think>\n\n<answer>\n1\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  },
+  {
+    "data_source": "polaris",
+    "id": 19,
+    "question": "Determine the largest value of \\( x \\) for which\n\\[ \\left|x^{2}-4x-39601\\right| \\geq \\left|x^{2}+4x-39601\\right| \\]",
+    "ground_truth": "199",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      160,
+      50
+    ],
+    "completion_lengths": [
+      472,
+      10
+    ],
+    "answer": "0",
+    "original_verification": {
+      "model_answer": "0",
+      "ground_truth": "199",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nTo solve the inequality \\(\\left|x^{2}-4x-39601\\right| \\geq \\left|x^{2}+4x-39601\\right|\\), we need to analyze the expressions inside the absolute values.\n\nLet's define:\n\\[ f(x) = x^2 - 4x - 39601 \\]\n\\[ g(x) = x^2 + 4x - 39601 \\]\n\nThe inequality becomes:\n\\[ |f(x)| \\geq |g(x)| \\]\n\nThis can be split into two cases based on the properties of absolute values:\n\n**Case 1:** \\( f(x) \\geq g(x) \\)\n\nThis simplifies to:\n\\[ x^2 - 4x - 39601 \\geq x^2 + 4x - 39601 \\]\n\\[ -4x \\geq 4x \\]\n\\[ -8x \\geq 0 \\]\n\\[ x \\leq 0 \\]\n\n**Case 2:** \\( f(x) \\leq -g(x) \\)\n\nThis simplifies to:\n\\[ x^2 - 4x - 39601 \\leq -(x^2 + 4x - 39601) \\]\n\\[ x^2 - 4x - 39601 \\leq -x^2 - 4x + 39601 \\]\n\\[ 2x^2 \\leq 79202 \\]\n\\[ x^2 \\leq 39601 \\]\n\\[ |x| \\leq \\sqrt{39601} \\]\n\nSince \\( \\sqrt{39601} = 199 \\), we have:\n\\[ -199 \\leq x \\leq 199 \\]\n\nCombining both cases, we have:\n1. From Case 1: \\( x \\leq 0 \\)\n2. From Case 2: \\( -199 \\leq x \\leq 199 \\)\n\nThe intersection of these conditions is:\n\\[ -199 \\leq x \\leq 0 \\]\n\nThe largest value of \\( x \\) in this range is \\( x = 0 \\).\n\nTherefore, the largest value of \\( x \\) for which the inequality holds is:\n</think>\n\n<answer>\n0\n</answer>"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable"
+  }
+]

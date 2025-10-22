@@ -1,4 +1,4 @@
-Solve the following mathematical problem and provide your reasoning and final answer.
+Please reason step by step, and put your final answer within \boxed{}.
 
 Problem: {question}
 

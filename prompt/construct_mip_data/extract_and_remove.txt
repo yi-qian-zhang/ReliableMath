@@ -1,4 +1,6 @@
-Analyze the following mathematical problem and generate removal variants.
+You are an excellent extractor.
+Your objective is to extract one to three key mathematical conditions or premises from the given question.
+Then Analyze the following mathematical problem and generate removal variants.
 
 Original Problem: {original_question}
 Ground Truth Answer: {ground_truth}
