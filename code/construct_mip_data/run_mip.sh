@@ -18,3 +18,10 @@ python code/construct_mip_data/construct_mip.py \
   --force
 
 python code/construct_mip_data/construct_mip.py --force
+
+CUDA_VISIBLE_DEVICES=7 vllm serve /shared/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
+    --served-model-name DeepSeek-R1-Distill-Qwen-7B \
+    --max-model-len 4096 \
+    --tensor_parallel_size 1 \
+    --gpu_memory_utilization 0.9 \
+    --port 8715

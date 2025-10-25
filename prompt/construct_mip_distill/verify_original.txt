@@ -1,0 +1,18 @@
+Solve the following mathematical problem step by step.
+
+Problem: {question}
+
+**Instructions**:
+1. Think through the problem carefully
+2. Show your reasoning process
+3. Provide the final answer inside <answer></answer> tags
+
+**Format**:
+First, work through your solution step by step.
+Then, provide only the final answer in <answer></answer> tags.
+
+<answer>
+[Final answer only - number, expression, or short phrase]
+</answer>
+
+Now solve the problem above.

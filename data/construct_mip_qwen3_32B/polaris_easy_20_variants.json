@@ -1,0 +1,1276 @@
+[
+  {
+    "data_source": "polaris",
+    "id": 0,
+    "question": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:",
+    "ground_truth": "392",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      151,
+      33,
+      459
+    ],
+    "completion_lengths": [
+      5124,
+      10,
+      330
+    ],
+    "answer": "392",
+    "original_verification": {
+      "model_answer": "392",
+      "ground_truth": "392",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, let's try to figure out this problem. The question is about finding the smallest divisor of the largest three-digit number when divided by some integer, such that the quotient rounded to one decimal place is 2.5. Hmm, that sounds a bit complex, but let's break it down step by step.\n\nFirst, let me restate the problem in my own words. We have the largest three-digit number, which is obviously 999. This number is divided by an integer, let's call it x. When we do this division, 999 ÷ x, the result is a quotient that, when rounded to one decimal place, equals 2.5. Our task is to find the smallest divisor (which I think refers to the smallest possible x that satisfies this condition) and then determine what that x is. Wait, actually, the problem says \"will have the smallest divisor as:\" So maybe once we find that x, the answer is x itself? Or is there another step? Let me read again.\n\nThe problem says: \"The largest three-digit number divided by an integer, with the quotient ro"
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "0_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The largest three-digit number",
+        "remaining_conditions": [
+          "divided by an integer",
+          "with the quotient rounded to one decimal place being 2.5",
+          "will have the smallest divisor as"
+        ],
+        "incomplete_question": "A number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:"
+      },
+      {
+        "variant_id": "0_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "divided by an integer",
+        "remaining_conditions": [
+          "The largest three-digit number",
+          "with the quotient rounded to one decimal place being 2.5",
+          "will have the smallest divisor as"
+        ],
+        "incomplete_question": "The largest three-digit number, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:"
+      },
+      {
+        "variant_id": "0_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "with the quotient rounded to one decimal place being 2.5",
+        "remaining_conditions": [
+          "The largest three-digit number",
+          "divided by an integer",
+          "will have the smallest divisor as"
+        ],
+        "incomplete_question": "The largest three-digit number divided by an integer will have the smallest divisor as:"
+      },
+      {
+        "variant_id": "0_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "will have the smallest divisor as",
+        "remaining_conditions": [
+          "The largest three-digit number",
+          "divided by an integer",
+          "with the quotient rounded to one decimal place being 2.5"
+        ],
+        "incomplete_question": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5:"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 1,
+    "question": "Investigate the stability of the equilibrium point $x=0, y=0$ for the system\n\n$$\n\\left\\{\\begin{array}{l}\n\\frac{d x}{d t}=y^{3}+x^{5} \\\\\n\\frac{d y}{d t}=x^{3}+y^{5}\n\\end{array}\\right.\n$$",
+    "ground_truth": "Unstable",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      199,
+      79,
+      506
+    ],
+    "completion_lengths": [
+      6116,
+      10,
+      518
+    ],
+    "answer": "$$",
+    "original_verification": {
+      "model_answer": "$$",
+      "ground_truth": "Unstable",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, so I need to figure out the stability of the equilibrium point at (0,0) for this system of differential equations. Let me start by recalling what I know about stability analysis for nonlinear systems. \n\nFirst, the equilibrium point is where dx/dt and dy/dt are both zero. Here, plugging x=0 and y=0 into the equations gives 0 on both sides, so that checks out. Now, to analyze stability, one common method is to linearize the system around the equilibrium point and check the eigenvalues of the Jacobian matrix. If all eigenvalues have negative real parts, the equilibrium is asymptotically stable. If any eigenvalue has a positive real part, it's unstable. If eigenvalues have zero real parts, then the linearization doesn't tell us, and we need another method.\n\nSo let me compute the Jacobian matrix for this system. The Jacobian J is a 2x2 matrix where each entry J_ij is the partial derivative of the i-th equation with respect to the j-th variable.\n\nGiven the system:\ndx/dt = y³ + "
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "1_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Investigate the stability of the equilibrium point",
+        "remaining_conditions": [
+          "$x=0, y=0$ for the system",
+          "$\\frac{d x}{d t}=y^{3}+x^{5}$",
+          "$\\frac{d y}{d t}=x^{3}+y^{5}$"
+        ],
+        "incomplete_question": "For the system $\\frac{d x}{d t}=y^{3}+x^{5}$, $\\frac{d y}{d t}=x^{3}+y^{5}$, what is the nature of the equilibrium point $x=0, y=0$?"
+      },
+      {
+        "variant_id": "1_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "$x=0, y=0$",
+        "remaining_conditions": [
+          "Investigate the stability of the equilibrium point",
+          "for the system",
+          "$\\frac{d x}{d t}=y^{3}+x^{5}$",
+          "$\\frac{d y}{d t}=x^{3}+y^{5}$"
+        ],
+        "incomplete_question": "Investigate the stability of the equilibrium point for the system $\\frac{d x}{d t}=y^{3}+x^{5}$, $\\frac{d y}{d t}=x^{3}+y^{5}$."
+      },
+      {
+        "variant_id": "1_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "$\\frac{d x}{d t}=y^{3}+x^{5}$",
+        "remaining_conditions": [
+          "Investigate the stability of the equilibrium point $x=0, y=0$ for the system",
+          "$\\frac{d y}{d t}=x^{3}+y^{5}$"
+        ],
+        "incomplete_question": "Investigate the stability of the equilibrium point $x=0, y=0$ for the system $\\frac{d y}{d t}=x^{3}+y^{5}$."
+      },
+      {
+        "variant_id": "1_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "$\\frac{d y}{d t}=x^{3}+y^{5}$",
+        "remaining_conditions": [
+          "Investigate the stability of the equilibrium point $x=0, y=0$ for the system",
+          "$\\frac{d x}{d t}=y^{3}+x^{5}$"
+        ],
+        "incomplete_question": "Investigate the stability of the equilibrium point $x=0, y=0$ for the system $\\frac{d x}{d t}=y^{3}+x^{5}$."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 2,
+    "question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.  Which of the following options are valid parameterizations?\n\n(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$\n\n(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$\n\n(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$\n\n(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$\n\n(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$\n\nEnter the letters of the correct options, separated by commas.",
+    "ground_truth": "\\text{A,C}",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      464,
+      344,
+      768
+    ],
+    "completion_lengths": [
+      4903,
+      10,
+      3556
+    ],
+    "answer": "A,C",
+    "original_verification": {
+      "model_answer": "A,C",
+      "ground_truth": "\\text{A,C}",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, so I need to figure out which of the given parameterizations are valid for the line y = (5/3)x - 17/3. Let me start by recalling what a vector parameterization of a line looks like. Generally, a line can be parameterized as r = r₀ + t*v, where r₀ is a point on the line and v is the direction vector of the line. \n\nFirst, let me find the direction vector of the given line. The line is in slope-intercept form, y = mx + b, where m is the slope. The slope here is 5/3. In terms of direction vectors, a line with slope m can be represented with a direction vector where the rise is m and the run is 1. So, if the slope is 5/3, then a direction vector would be (3, 5), since for every 3 units in x, y increases by 5. Alternatively, any scalar multiple of this vector would also work as a direction vector. So direction vectors like (3,5), (-3,-5), (6,10), etc., are all valid because they are scalar multiples of the original direction vector.\n\nNow, for each option, I need to check two th"
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "2_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
+        "remaining_conditions": [
+          "Which of the following options are valid parameterizations?",
+          "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
+          "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
+          "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
+          "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
+          "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$",
+          "Enter the letters of the correct options, separated by commas."
+        ],
+        "incomplete_question": "Which of the following options are valid parameterizations?"
+      },
+      {
+        "variant_id": "2_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "Which of the following options are valid parameterizations?",
+        "remaining_conditions": [
+          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
+          "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
+          "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
+          "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
+          "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
+          "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$",
+          "Enter the letters of the correct options, separated by commas."
+        ],
+        "incomplete_question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors."
+      },
+      {
+        "variant_id": "2_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
+        "remaining_conditions": [
+          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
+          "Which of the following options are valid parameterizations?",
+          "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
+          "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
+          "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
+          "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$",
+          "Enter the letters of the correct options, separated by commas."
+        ],
+        "incomplete_question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors. Which of the following options are valid parameterizations?"
+      },
+      {
+        "variant_id": "2_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
+        "remaining_conditions": [
+          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
+          "Which of the following options are valid parameterizations?",
+          "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
+          "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
+          "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
+          "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$",
+          "Enter the letters of the correct options, separated by commas."
+        ],
+        "incomplete_question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors. Which of the following options are valid parameterizations?"
+      },
+      {
+        "variant_id": "2_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
+        "remaining_conditions": [
+          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
+          "Which of the following options are valid parameterizations?",
+          "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
+          "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
+          "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
+          "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$",
+          "Enter the letters of the correct options, separated by commas."
+        ],
+        "incomplete_question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors. Which of the following options are valid parameterizations?"
+      },
+      {
+        "variant_id": "2_remove_5",
+        "removed_condition_index": 5,
+        "removed_condition": "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
+        "remaining_conditions": [
+          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
+          "Which of the following options are valid parameterizations?",
+          "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
+          "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
+          "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
+          "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$",
+          "Enter the letters of the correct options, separated by commas."
+        ],
+        "incomplete_question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors. Which of the following options are valid parameterizations?"
+      },
+      {
+        "variant_id": "2_remove_6",
+        "removed_condition_index": 6,
+        "removed_condition": "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$",
+        "remaining_conditions": [
+          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
+          "Which of the following options are valid parameterizations?",
+          "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
+          "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
+          "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
+          "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
+          "Enter the letters of the correct options, separated by commas."
+        ],
+        "incomplete_question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors. Which of the following options are valid parameterizations?"
+      },
+      {
+        "variant_id": "2_remove_7",
+        "removed_condition_index": 7,
+        "removed_condition": "Enter the letters of the correct options, separated by commas.",
+        "remaining_conditions": [
+          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
+          "Which of the following options are valid parameterizations?",
+          "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
+          "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
+          "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
+          "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
+          "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$"
+        ],
+        "incomplete_question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors. Which of the following options are valid parameterizations?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 3,
+    "question": "In the 2013 Zhejiang College Entrance Examination, arrange the six letters A, B, C, D, E, F in a row, with both A and B on the same side of C. How many different arrangements are there? (Answer with a number.)",
+    "ground_truth": "480",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      178,
+      56,
+      482
+    ],
+    "completion_lengths": [
+      3063,
+      10,
+      156
+    ],
+    "answer": "480",
+    "original_verification": {
+      "model_answer": "480",
+      "ground_truth": "480",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, let's see. I need to arrange six letters A, B, C, D, E, F in a row, but with the condition that both A and B are on the same side of C. Hmm. So, how do I approach this?\n\nFirst, maybe I should figure out the total number of possible arrangements without any restrictions. Since there are six distinct letters, the total permutations would be 6! = 720. But then I have to consider the condition about A and B being on the same side of C. \n\nWait, the problem says \"both A and B on the same side of C.\" So that means either both A and B are to the left of C or both are to the right of C. Right? So I need to count the number of permutations where this condition is satisfied.\n\nLet me think. Let's fix the position of C first. Because once C is placed, the positions of A and B relative to C matter. For example, if C is in position k (where k ranges from 1 to 6), then the number of positions to the left of C is (k-1) and to the right is (6 - k). \n\nBut maybe there's a smarter way than co"
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "3_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "arrange the six letters A, B, C, D, E, F in a row",
+        "remaining_conditions": [
+          "both A and B on the same side of C"
+        ],
+        "incomplete_question": "Both A and B are on the same side of C. How many different arrangements are there?"
+      },
+      {
+        "variant_id": "3_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "both A and B on the same side of C",
+        "remaining_conditions": [
+          "arrange the six letters A, B, C, D, E, F in a row"
+        ],
+        "incomplete_question": "Arrange the six letters A, B, C, D, E, F in a row. How many different arrangements are there?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 4,
+    "question": "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print.\n\nSasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?",
+    "ground_truth": "28",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      201,
+      72,
+      498
+    ],
+    "completion_lengths": [
+      5382,
+      10,
+      594
+    ],
+    "answer": "28",
+    "original_verification": {
+      "model_answer": "28",
+      "ground_truth": "28",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, let's try to figure out this problem. So, Sasha tried to type an 8-digit number, but the 1 key isn't working. The result that printed was 202020. Wait, but 202020 is only 6 digits. So the original number she tried to type had 8 digits, but some of the digits (probably 1s) didn't get typed. Our job is to find how many different 8-digit numbers could have resulted in 202020 when the broken 1 key is considered.\n\nFirst, let me understand the problem. When Sasha types a number, any '1's she intended to type don't appear. So, for example, if she tried to type 1231234, the output is 23234. So the original number had some 1s, which were omitted, and the rest of the digits stayed. The output is the original number with all 1s removed.\n\nSo in this case, the output is 202020. Let me note that 202020 has digits in the order 2, 0, 2, 0, 2, 0. So the original number must have been an 8-digit number where, after removing all 1s, we get 202020. Therefore, the original number must contain"
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "4_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "On a computer keyboard, the key for the digit 1 is not working.",
+        "remaining_conditions": [
+          "For example, if you try to type the number 1231234, only the number 23234 will actually print.",
+          "Sasha tried to type an 8-digit number, but only 202020 was printed.",
+          "How many 8-digit numbers satisfy this condition?"
+        ],
+        "incomplete_question": "For example, if you try to type the number 1231234, only the number 23234 will actually print. Sasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?"
+      },
+      {
+        "variant_id": "4_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "For example, if you try to type the number 1231234, only the number 23234 will actually print.",
+        "remaining_conditions": [
+          "On a computer keyboard, the key for the digit 1 is not working.",
+          "Sasha tried to type an 8-digit number, but only 202020 was printed.",
+          "How many 8-digit numbers satisfy this condition?"
+        ],
+        "incomplete_question": "On a computer keyboard, the key for the digit 1 is not working. Sasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?"
+      },
+      {
+        "variant_id": "4_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "Sasha tried to type an 8-digit number, but only 202020 was printed.",
+        "remaining_conditions": [
+          "On a computer keyboard, the key for the digit 1 is not working.",
+          "For example, if you try to type the number 1231234, only the number 23234 will actually print.",
+          "How many 8-digit numbers satisfy this condition?"
+        ],
+        "incomplete_question": "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print. How many 8-digit numbers satisfy this condition?"
+      },
+      {
+        "variant_id": "4_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "How many 8-digit numbers satisfy this condition?",
+        "remaining_conditions": [
+          "On a computer keyboard, the key for the digit 1 is not working.",
+          "For example, if you try to type the number 1231234, only the number 23234 will actually print.",
+          "Sasha tried to type an 8-digit number, but only 202020 was printed."
+        ],
+        "incomplete_question": "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print. Sasha tried to type an 8-digit number, but only 202020 was printed."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 5,
+    "question": "In an acute-angled triangle \\( ABC \\), the angle bisector \\( AN \\), the altitude \\( BH \\), and the line perpendicular to side \\( AB \\) passing through its midpoint intersect at a single point. Find angle \\( BAC \\).",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      171,
+      52
+    ],
+    "completion_lengths": [
+      6546,
+      10
+    ],
+    "answer": "$$",
+    "original_verification": {
+      "model_answer": "$$",
+      "ground_truth": "60",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nOkay, let's try to solve this problem. So, we have an acute-angled triangle ABC. The angle bisector AN, the altitude BH, and the line perpendicular to side AB passing through its midpoint all meet at a single point. We need to find the measure of angle BAC.\n\nFirst, let me visualize the triangle. Since it's acute-angled, all altitudes are inside the triangle. Let me recall that AN is the angle bisector of angle BAC, so it splits angle A into two equal parts. BH is the altitude from B to AC, meaning it meets AC at a right angle. The third line is perpendicular to AB and passes through its midpoint. Let me note that the line perpendicular to AB through its midpoint is actually the perpendicular bisector of AB. In a triangle, the perpendicular bisectors of the sides meet at the circumcenter, but here we have only one perpendicular bisector involved, intersecting with the angle bisector and altitude.\n\nSince all three lines meet at a single point, let's denote this common point as P."
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable",
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
+    "id": 6,
+    "question": "Person A and person B start from locations A and B respectively, walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously. They meet after 10 minutes. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?",
+    "ground_truth": "50",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      194,
+      73
+    ],
+    "completion_lengths": [
+      1433,
+      10
+    ],
+    "answer": "1200",
+    "original_verification": {
+      "model_answer": "1200",
+      "ground_truth": "50",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nOkay, let's see. So the problem is about two people, A and B, starting from points A and B, walking towards each other. Their speeds are 65 meters per minute and 55 meters per minute, respectively. They meet after 10 minutes. The first question is to find the distance between A and B. The second part is to find how far the meeting point is from the midpoint between A and B.\n\nHmm, right. For the first part, I think when two objects move towards each other, their relative speed is the sum of their individual speeds. So the total distance between them should be covered by both of them together. So maybe I can calculate the combined distance they cover in 10 minutes and that should be the total distance between A and B.\n\nLet me check. If Person A is moving at 65 m/min and Person B at 55 m/min towards each other, then their closing speed is 65 + 55 = 120 meters per minute. So in 10 minutes, they would cover 120 * 10 = 1200 meters. Therefore, the distance between A and B is 1200 mete"
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable",
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
+    "id": 7,
+    "question": "Six chairs sit in a row.  Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.  There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.  The probability that this will **not** happen is given by  $\\frac{m}{n}$  where  $m$  and  $n$  are relatively prime positive integers. Find  $m+n$ .",
+    "ground_truth": "1106",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      253,
+      136,
+      562
+    ],
+    "completion_lengths": [
+      6011,
+      10,
+      1654
+    ],
+    "answer": "1106",
+    "original_verification": {
+      "model_answer": "1106",
+      "ground_truth": "1106",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, let's try to tackle this problem. So, we have six chairs in a row, six people seating randomly. Then each person chooses independently to have their legs on the floor, cross to the right, or cross to the left. The problem occurs when a person on the right is crossing left and the person on the left is crossing right. We need to find the probability that this doesn't happen, and express it as m/n with m and n coprime, then find m + n.\n\nFirst, let me parse the problem again. The seating is random, but since the people are seating themselves, the order of people is a permutation of six people. However, since all permutations are equally likely, maybe the actual arrangement of people doesn't matter? Wait, but the problem is about the leg positions, which are chosen independently after seating. So maybe the seating permutation is actually irrelevant? Because regardless of how they are seated, each person independently chooses one of three leg positions. Wait, but the problem i"
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "7_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Six chairs sit in a row.",
+        "remaining_conditions": [
+          "Six people randomly seat themselves in the chairs.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+          "The probability that this will not happen is given by \\( \\frac{m}{n} \\) where \\( m \\) and \\( n \\) are relatively prime positive integers.",
+          "Find \\( m+n \\)."
+        ],
+        "incomplete_question": "Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by \\( \\frac{m}{n} \\) where \\( m \\) and \\( n \\) are relatively prime positive integers. Find \\( m+n \\)."
+      },
+      {
+        "variant_id": "7_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "Six people randomly seat themselves in the chairs.",
+        "remaining_conditions": [
+          "Six chairs sit in a row.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+          "The probability that this will not happen is given by \\( \\frac{m}{n} \\) where \\( m \\) and \\( n \\) are relatively prime positive integers.",
+          "Find \\( m+n \\)."
+        ],
+        "incomplete_question": "Six chairs sit in a row. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by \\( \\frac{m}{n} \\) where \\( m \\) and \\( n \\) are relatively prime positive integers. Find \\( m+n \\)."
+      },
+      {
+        "variant_id": "7_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+        "remaining_conditions": [
+          "Six chairs sit in a row.",
+          "Six people randomly seat themselves in the chairs.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+          "The probability that this will not happen is given by \\( \\frac{m}{n} \\) where \\( m \\) and \\( n \\) are relatively prime positive integers.",
+          "Find \\( m+n \\)."
+        ],
+        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by \\( \\frac{m}{n} \\) where \\( m \\) and \\( n \\) are relatively prime positive integers. Find \\( m+n \\)."
+      },
+      {
+        "variant_id": "7_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+        "remaining_conditions": [
+          "Six chairs sit in a row.",
+          "Six people randomly seat themselves in the chairs.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "The probability that this will not happen is given by \\( \\frac{m}{n} \\) where \\( m \\) and \\( n \\) are relatively prime positive integers.",
+          "Find \\( m+n \\)."
+        ],
+        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. The probability that this will not happen is given by \\( \\frac{m}{n} \\) where \\( m \\) and \\( n \\) are relatively prime positive integers. Find \\( m+n \\)."
+      },
+      {
+        "variant_id": "7_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "The probability that this will not happen is given by \\( \\frac{m}{n} \\) where \\( m \\) and \\( n \\) are relatively prime positive integers.",
+        "remaining_conditions": [
+          "Six chairs sit in a row.",
+          "Six people randomly seat themselves in the chairs.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+          "Find \\( m+n \\)."
+        ],
+        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. Find \\( m+n \\)."
+      },
+      {
+        "variant_id": "7_remove_5",
+        "removed_condition_index": 5,
+        "removed_condition": "Find \\( m+n \\).",
+        "remaining_conditions": [
+          "Six chairs sit in a row.",
+          "Six people randomly seat themselves in the chairs.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+          "The probability that this will not happen is given by \\( \\frac{m}{n} \\) where \\( m \\) and \\( n \\) are relatively prime positive integers."
+        ],
+        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by \\( \\frac{m}{n} \\) where \\( m \\) and \\( n \\) are relatively prime positive integers."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 8,
+    "question": "In a two-story house that is inhabited in both floors as well as on the ground floor, 35 people live above someone and 45 people live below someone. One third of all the people living in the house live on the first floor.\n\nHow many people live in the house in total?",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      181,
+      61,
+      487
+    ],
+    "completion_lengths": [
+      4782,
+      10,
+      321
+    ],
+    "answer": "60",
+    "original_verification": {
+      "model_answer": "60",
+      "ground_truth": "60",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, let's try to figure out this problem. So, there's a two-story house, but it also mentions a ground floor. Wait, two-story usually means ground floor and first floor, but sometimes people might count differently. Let me clarify. The problem says it's a two-story house, but inhabited in both floors as well as on the ground floor. Hmm, maybe the two stories are the ground floor and the first floor? Because otherwise, if it's two stories, maybe there's a first and second floor, plus a ground floor? Wait, that might complicate things. Let me read again.\n\n\"In a two-story house that is inhabited in both floors as well as on the ground floor...\" So, if it's a two-story house, that typically would have a ground floor (like the first floor in some countries) and then the first floor (second story). But the problem says it's inhabited in both floors as well as on the ground floor. Wait, that sounds like three levels: ground floor, first floor, and maybe another? Wait, maybe there's "
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "8_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "35 people live above someone",
+        "remaining_conditions": [
+          "45 people live below someone",
+          "One third of all the people living in the house live on the first floor"
+        ],
+        "incomplete_question": "In a two-story house that is inhabited in both floors as well as on the ground floor, 45 people live below someone. One third of all the people living in the house live on the first floor. How many people live in the house in total?"
+      },
+      {
+        "variant_id": "8_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "45 people live below someone",
+        "remaining_conditions": [
+          "35 people live above someone",
+          "One third of all the people living in the house live on the first floor"
+        ],
+        "incomplete_question": "In a two-story house that is inhabited in both floors as well as on the ground floor, 35 people live above someone. One third of all the people living in the house live on the first floor. How many people live in the house in total?"
+      },
+      {
+        "variant_id": "8_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "One third of all the people living in the house live on the first floor",
+        "remaining_conditions": [
+          "35 people live above someone",
+          "45 people live below someone"
+        ],
+        "incomplete_question": "In a two-story house that is inhabited in both floors as well as on the ground floor, 35 people live above someone and 45 people live below someone. How many people live in the house in total?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 9,
+    "question": "Given a square with four vertices and its center, find the probability that the distance between any two of these five points is less than the side length of the square.",
+    "ground_truth": "\\frac{2}{5}",
+    "solution": "",
+    "difficulty": "6/8",
+    "prompt_lengths": [
+      153,
+      43,
+      465
+    ],
+    "completion_lengths": [
+      2997,
+      10,
+      245
+    ],
+    "answer": "2/5",
+    "original_verification": {
+      "model_answer": "2/5",
+      "ground_truth": "\\frac{2}{5}",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, let's try to figure out this probability problem. So, the question is: Given a square with four vertices and its center, find the probability that the distance between any two of these five points is less than the side length of the square. Hmm, wait, actually, the problem says \"the distance between any two of these five points is less than the side length.\" Wait, no, maybe I need to rephrase that. Wait, the problem is asking for the probability that when you pick two points at random from these five (the four vertices and the center), the distance between them is less than the side length of the square. Or is it asking for the probability that all pairs of points have distances less than the side length? Wait, the wording is a bit ambiguous. Let me check again.\n\nThe problem says: \"find the probability that the distance between any two of these five points is less than the side length of the square.\" Hmm. The wording \"any two\" can sometimes be confusing. In probability qu"
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "9_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Given a square with four vertices",
+        "remaining_conditions": [
+          "its center",
+          "find the probability that the distance between any two of these five points is less than the side length of the square"
+        ],
+        "incomplete_question": "Given its center, find the probability that the distance between any two of these five points is less than the side length of the square."
+      },
+      {
+        "variant_id": "9_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "its center",
+        "remaining_conditions": [
+          "Given a square with four vertices",
+          "find the probability that the distance between any two of these five points is less than the side length of the square"
+        ],
+        "incomplete_question": "Given a square with four vertices, find the probability that the distance between any two of these five points is less than the side length of the square."
+      },
+      {
+        "variant_id": "9_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "find the probability that the distance between any two of these five points is less than the side length of the square",
+        "remaining_conditions": [
+          "Given a square with four vertices",
+          "its center"
+        ],
+        "incomplete_question": "Given a square with four vertices and its center, find the probability."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 10,
+    "question": "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
+    "ground_truth": "9375",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      170,
+      50,
+      473
+    ],
+    "completion_lengths": [
+      4848,
+      10,
+      162
+    ],
+    "answer": "9,375 km",
+    "original_verification": {
+      "model_answer": "9,375 km",
+      "ground_truth": "9375",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, let's see. The problem is about car tires wearing out. The front tires last 25,000 km, and the rear ones last 15,000 km. We need to figure out when to swap them so that all four tires wear out at the same time. Hmm, interesting.\n\nSo, first, I need to understand how tire wear works. Each tire has a certain lifespan depending on whether it's on the front or the rear. But if we swap them at some point, their remaining lifespans will contribute to the total distance. The goal is to have all tires wear out simultaneously, meaning that the total wear from both positions equals their maximum lifespan.\n\nLet me think. Let's assume that when we swap the tires, each tire has been used for some distance x. After swapping, they will be used for another distance y. The total distance when they wear out completely would be x + y. But how do I relate x and y?\n\nLet me consider the wear rates. The front tires wear out after 25,000 km. So, their wear rate is 1/25,000 per km. Similarly, the "
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "10_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The front tires of a car wear out after 25,000 km",
+        "remaining_conditions": [
+          "The rear tires wear out after 15,000 km"
+        ],
+        "incomplete_question": "The rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?"
+      },
+      {
+        "variant_id": "10_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "The rear tires wear out after 15,000 km",
+        "remaining_conditions": [
+          "The front tires of a car wear out after 25,000 km"
+        ],
+        "incomplete_question": "The front tires of a car wear out after 25,000 km. When should the tires be swapped so that they wear out at the same time?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 11,
+    "question": "Given the function \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\), if the minimum value of \\( f(x) \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right] \\) is \\(-1\\), find the value of \\( a \\).",
+    "ground_truth": "-1",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      196,
+      79,
+      504
+    ],
+    "completion_lengths": [
+      5560,
+      10,
+      461
+    ],
+    "answer": "-1",
+    "original_verification": {
+      "model_answer": "-1",
+      "ground_truth": "-1",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, let's try to solve this problem. The function given is f(x) = √3 sin 2x + 2 cos²x + a, and we need to find the value of 'a' such that the minimum value of f(x) on the interval [0, π/2] is -1. Hmm, okay. Let me start by recalling some trigonometric identities that might help simplify this expression.\n\nFirst, I notice there's a sin 2x term and a cos²x term. Maybe I can use double-angle identities or something related. Let me think. The double angle formula for sine is sin 2x = 2 sinx cosx, but I don't know if that helps here. For the cos²x term, there's an identity that cos²x = (1 + cos 2x)/2. Let me try substituting that in.\n\nSo replacing 2 cos²x with 2*(1 + cos 2x)/2, which simplifies to 1 + cos 2x. So the function becomes:\n\nf(x) = √3 sin 2x + 1 + cos 2x + a.\n\nCombining the constants, that's (1 + a) + √3 sin 2x + cos 2x. Now, the expression √3 sin 2x + cos 2x looks like it can be written in the form R sin(2x + φ) or R cos(2x + φ) for some amplitude R and phase shift φ. Th"
+    },
+    "original_solvable": true,
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
+    "id": 12,
+    "question": "From the vertex of the right angle of triangle \\(ABC\\), the median \\(CM\\) is drawn. The circle inscribed in triangle \\(CAM\\) touches \\(CM\\) at its midpoint. Find the angle \\(BAC\\).",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      166,
+      68
+    ],
+    "completion_lengths": [
+      8192,
+      10
+    ],
+    "answer": "√3, which implies that angle BAC is 60 degrees. Wait, let me check.",
+    "original_verification": {
+      "model_answer": "√3, which implies that angle BAC is 60 degrees. Wait, let me check.",
+      "ground_truth": "60",
+      "judge_result": "not_equivalent",
+      "is_solvable": false,
+      "full_response": "<think>\nOkay, let's try to solve this problem. So, we have a right-angled triangle ABC, right-angled at C. Wait, no, the problem says \"from the vertex of the right angle of triangle ABC, the median CM is drawn.\" So, the right angle is at C, and CM is the median from C to the hypotenuse AB. Wait, in a right-angled triangle, the median to the hypotenuse is half the hypotenuse. So, M is the midpoint of AB, and CM equals half of AB. Got that.\n\nNow, the problem says that the circle inscribed in triangle CAM touches CM at its midpoint. So, we have triangle CAM, and its incircle touches the median CM at its midpoint. Let me visualize this. Let me sketch triangle ABC with right angle at C. Let me mark M as the midpoint of AB. Then triangle CAM is formed by points C, A, and M. The incircle of triangle CAM touches CM at its midpoint. So, the midpoint of CM is the point where the incircle touches CM. Let me denote some variables here.\n\nLet me denote the lengths. Let me assign coordinates to make "
+    },
+    "original_solvable": false,
+    "skip_reason": "original_unsolvable",
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
+    "id": 13,
+    "question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?",
+    "ground_truth": "300",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      170,
+      52,
+      478
+    ],
+    "completion_lengths": [
+      4480,
+      10,
+      315
+    ],
+    "answer": "300",
+    "original_verification": {
+      "model_answer": "300",
+      "ground_truth": "300",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, let's see. I need to figure out how many six-digit numbers can be formed using the digits 0, 1, 2, 3, 4, 5 without repeating any digit, and with the condition that the unit digit (the ones place) is less than the ten's digit. Hmm. Let me break this down step by step.\n\nFirst, let me recall that a six-digit number can't start with 0. So the first digit (hundred thousands place) has to be one of 1-5. The other digits can include 0, as long as they are not repeated.\n\nBut the main condition here is about the unit digit (which is the sixth digit from the left, right?) being less than the ten's digit (which is the fifth digit from the left). So positions 5 and 6 have this constraint. Let me confirm: in a six-digit number ABCDEF, A is the hundred thousands place, B is ten thousands, C is thousands, D is hundreds, E is tens, and F is units. So yes, the tens digit is E and the units digit is F. The problem states that F < E.\n\nSo my task is to count all permutations of the digits 0-"
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "13_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number",
+        "remaining_conditions": [
+          "without repeating any digit",
+          "the unit digit is less than the ten's digit"
+        ],
+        "incomplete_question": "Without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?"
+      },
+      {
+        "variant_id": "13_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "Without repeating any digit",
+        "remaining_conditions": [
+          "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number",
+          "the unit digit is less than the ten's digit"
+        ],
+        "incomplete_question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number, how many such numbers are there where the unit digit is less than the ten's digit?"
+      },
+      {
+        "variant_id": "13_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "the unit digit is less than the ten's digit",
+        "remaining_conditions": [
+          "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number",
+          "without repeating any digit"
+        ],
+        "incomplete_question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number without repeating any digit, how many such numbers are there?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 14,
+    "question": "An electronic clock always displays the date as an eight-digit number. For example, January 1, 2011, is displayed as 20110101. What is the last day of 2011 that can be evenly divided by 101? The date is displayed as $\\overline{2011 \\mathrm{ABCD}}$. What is $\\overline{\\mathrm{ABCD}}$?",
+    "ground_truth": "1221",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      214,
+      84,
+      510
+    ],
+    "completion_lengths": [
+      6267,
+      10,
+      931
+    ],
+    "answer": "1221",
+    "original_verification": {
+      "model_answer": "1221",
+      "ground_truth": "1221",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, let's try to figure out this problem. So, we need to find the last day in 2011 where the date, when written as an eight-digit number (like 20110101 for January 1, 2011), is divisible by 101. The date is in the form 2011ABCD, and we need to find ABCD. \n\nFirst, let me recall that 2011 is the year, so the date format is year-month-day, right? So ABCD represents the month and day. Since it's an eight-digit number, the first four digits are 2011, and the next four are month (MM) and day (DD). For example, December 31 would be 20111231. \n\nOur goal is to find the largest possible date in 2011 (so the latest possible month and day) such that the entire eight-digit number is divisible by 101. \n\nFirst, I need to remember that 101 is a prime number. Also, divisibility by 101 might have some patterns. But maybe I can approach this problem by considering the entire number N = 2011ABCD and find N divisible by 101. \n\nSince N is 2011 followed by ABCD, mathematically, N can be written as "
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "14_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "An electronic clock always displays the date as an eight-digit number.",
+        "remaining_conditions": [
+          "For example, January 1, 2011, is displayed as 20110101.",
+          "What is the last day of 2011 that can be evenly divided by 101?",
+          "The date is displayed as \\(\\overline{2011 \\mathrm{ABCD}}\\).",
+          "What is \\(\\overline{\\mathrm{ABCD}}\\)?"
+        ],
+        "incomplete_question": "For example, January 1, 2011, is displayed as 20110101. What is the last day of 2011 that can be evenly divided by 101? The date is displayed as \\(\\overline{2011 \\mathrm{ABCD}}\\). What is \\(\\overline{\\mathrm{ABCD}}\\)?"
+      },
+      {
+        "variant_id": "14_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "For example, January 1, 2011, is displayed as 20110101.",
+        "remaining_conditions": [
+          "An electronic clock always displays the date as an eight-digit number.",
+          "What is the last day of 2011 that can be evenly divided by 101?",
+          "The date is displayed as \\(\\overline{2011 \\mathrm{ABCD}}\\).",
+          "What is \\(\\overline{\\mathrm{ABCD}}\\)?"
+        ],
+        "incomplete_question": "An electronic clock always displays the date as an eight-digit number. What is the last day of 2011 that can be evenly divided by 101? The date is displayed as \\(\\overline{2011 \\mathrm{ABCD}}\\). What is \\(\\overline{\\mathrm{ABCD}}\\)?"
+      },
+      {
+        "variant_id": "14_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "What is the last day of 2011 that can be evenly divided by 101?",
+        "remaining_conditions": [
+          "An electronic clock always displays the date as an eight-digit number.",
+          "For example, January 1, 2011, is displayed as 20110101.",
+          "The date is displayed as \\(\\overline{2011 \\mathrm{ABCD}}\\).",
+          "What is \\(\\overline{\\mathrm{ABCD}}\\)?"
+        ],
+        "incomplete_question": "An electronic clock always displays the date as an eight-digit number. For example, January 1, 2011, is displayed as 20110101. The date is displayed as \\(\\overline{2011 \\mathrm{ABCD}}\\). What is \\(\\overline{\\mathrm{ABCD}}\\)?"
+      },
+      {
+        "variant_id": "14_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "The date is displayed as \\(\\overline{2011 \\mathrm{ABCD}}\\).",
+        "remaining_conditions": [
+          "An electronic clock always displays the date as an eight-digit number.",
+          "For example, January 1, 2011, is displayed as 20110101.",
+          "What is the last day of 2011 that can be evenly divided by 101?",
+          "What is \\(\\overline{\\mathrm{ABCD}}\\)?"
+        ],
+        "incomplete_question": "An electronic clock always displays the date as an eight-digit number. For example, January 1, 2011, is displayed as 20110101. What is the last day of 2011 that can be evenly divided by 101? What is \\(\\overline{\\mathrm{ABCD}}\\)?"
+      },
+      {
+        "variant_id": "14_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "What is \\(\\overline{\\mathrm{ABCD}}\\)?",
+        "remaining_conditions": [
+          "An electronic clock always displays the date as an eight-digit number.",
+          "For example, January 1, 2011, is displayed as 20110101.",
+          "What is the last day of 2011 that can be evenly divided by 101?",
+          "The date is displayed as \\(\\overline{2011 \\mathrm{ABCD}}\\)."
+        ],
+        "incomplete_question": "An electronic clock always displays the date as an eight-digit number. For example, January 1, 2011, is displayed as 20110101. What is the last day of 2011 that can be evenly divided by 101? The date is displayed as \\(\\overline{2011 \\mathrm{ABCD}}\\)."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 15,
+    "question": "A cube with a side length of 1 meter was cut into smaller cubes with a side length of 1 centimeter and arranged in a straight line. What is the length of the resulting line?",
+    "ground_truth": "10000",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      160,
+      41,
+      468
+    ],
+    "completion_lengths": [
+      4254,
+      10,
+      261
+    ],
+    "answer": "N/A",
+    "original_verification": {
+      "model_answer": "N/A",
+      "ground_truth": "10000",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, let's see. I need to figure out the length of a line made by arranging all the small cubes from a 1-meter cube that's been cut into 1-centimeter cubes. Hmm, first, I should probably start by understanding the volumes involved here. \n\nSo, the original cube has a side length of 1 meter. Wait, 1 meter is equal to 100 centimeters, right? Because 1 meter is 100 cm. So, the volume of the original cube would be side length cubed. Let me write that down. The volume of the big cube is (1 m)^3. But since I need to work with centimeters, maybe I should convert that to centimeters first. \n\nSo, converting 1 meter to centimeters: 1 m = 100 cm. Therefore, the volume is (100 cm)^3. Let me calculate that. 100 cubed is 1,000,000. So, the volume is 1,000,000 cubic centimeters. \n\nNow, each small cube has a side length of 1 cm. So, the volume of each small cube is (1 cm)^3 = 1 cm³. Therefore, the number of small cubes should be the volume of the big cube divided by the volume of a small cube."
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "15_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "A cube with a side length of 1 meter",
+        "remaining_conditions": [
+          "was cut into smaller cubes with a side length of 1 centimeter",
+          "arranged in a straight line"
+        ],
+        "incomplete_question": "A cube was cut into smaller cubes with a side length of 1 centimeter and arranged in a straight line. What is the length of the resulting line?"
+      },
+      {
+        "variant_id": "15_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "was cut into smaller cubes with a side length of 1 centimeter",
+        "remaining_conditions": [
+          "A cube with a side length of 1 meter",
+          "arranged in a straight line"
+        ],
+        "incomplete_question": "A cube with a side length of 1 meter was arranged in a straight line. What is the length of the resulting line?"
+      },
+      {
+        "variant_id": "15_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "arranged in a straight line",
+        "remaining_conditions": [
+          "A cube with a side length of 1 meter",
+          "was cut into smaller cubes with a side length of 1 centimeter"
+        ],
+        "incomplete_question": "A cube with a side length of 1 meter was cut into smaller cubes with a side length of 1 centimeter. What is the length of the resulting line?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 16,
+    "question": "In a right-angled triangle, let \\( s_{a} \\) and \\( s_{b} \\) be the medians to the legs, and \\( s_{c} \\) be the median to the hypotenuse. Determine the maximum value of the expression \\( \\frac{s_{a} + s_{b}}{s_{c}} \\).",
+    "ground_truth": "\\sqrt{10}",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      194,
+      80,
+      504
+    ],
+    "completion_lengths": [
+      5666,
+      10,
+      350
+    ],
+    "answer": "$$",
+    "original_verification": {
+      "model_answer": "$$",
+      "ground_truth": "\\sqrt{10}",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, so I need to find the maximum value of the expression (s_a + s_b)/s_c in a right-angled triangle, where s_a and s_b are the medians to the legs, and s_c is the median to the hypotenuse. Hmm, let me start by recalling some properties of medians in right-angled triangles.\n\nFirst, let me visualize the triangle. Let's say we have a right-angled triangle with legs of lengths a and b, and hypotenuse of length c. The medians to the legs would be the medians from the vertices opposite each leg. Wait, actually, the median to a side is the line segment from the midpoint of that side to the opposite vertex. Wait, no, actually, the median to a side is drawn from the opposite vertex to the midpoint of that side. So, for example, the median to leg a (which is one of the legs, say of length a) would be the median from the vertex opposite leg a to the midpoint of leg a. But in a right-angled triangle, the legs are the sides forming the right angle. Let me clarify.\n\nLet me denote the tria"
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "16_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "In a right-angled triangle",
+        "remaining_conditions": [
+          "let s_{a} and s_{b} be the medians to the legs",
+          "s_{c} be the median to the hypotenuse"
+        ],
+        "incomplete_question": "Let s_{a} and s_{b} be the medians to the legs, and s_{c} be the median to the hypotenuse. Determine the maximum value of the expression \\( \\frac{s_{a} + s_{b}}{s_{c}} \\)."
+      },
+      {
+        "variant_id": "16_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "let s_{a} and s_{b} be the medians to the legs",
+        "remaining_conditions": [
+          "In a right-angled triangle",
+          "s_{c} be the median to the hypotenuse"
+        ],
+        "incomplete_question": "In a right-angled triangle, s_{c} be the median to the hypotenuse. Determine the maximum value of the expression \\( \\frac{s_{a} + s_{b}}{s_{c}} \\)."
+      },
+      {
+        "variant_id": "16_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "s_{c} be the median to the hypotenuse",
+        "remaining_conditions": [
+          "In a right-angled triangle",
+          "let s_{a} and s_{b} be the medians to the legs"
+        ],
+        "incomplete_question": "In a right-angled triangle, let s_{a} and s_{b} be the medians to the legs. Determine the maximum value of the expression \\( \\frac{s_{a} + s_{b}}{s_{c}} \\)."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 17,
+    "question": "Given the function $f(x) = x^2 - 2\\cos{\\theta}x + 1$, where $x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]$.\n\n(1) When $\\theta = \\frac{\\pi}{3}$, find the maximum and minimum values of $f(x)$.\n\n(2) If $f(x)$ is a monotonous function on $x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]$ and $\\theta \\in [0, 2\\pi)$, find the range of $\\theta$.\n\n(3) If $\\sin{\\alpha}$ and $\\cos{\\alpha}$ are the two real roots of the equation $f(x) = \\frac{1}{4} + \\cos{\\theta}$, find the value of $\\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}$.",
+    "ground_truth": "\\frac{16 + 4\\sqrt{11}}{5}",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      328,
+      247,
+      649
+    ],
+    "completion_lengths": [
+      7806,
+      10,
+      1461
+    ],
+    "answer": "(3) Value: $ \\boxed{\\dfrac{16 + 4\\sqrt{11}}{5}} $",
+    "original_verification": {
+      "model_answer": "(3) Value: $ \\boxed{\\dfrac{16 + 4\\sqrt{11}}{5}} $",
+      "ground_truth": "\\frac{16 + 4\\sqrt{11}}{5}",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, let's try to solve this problem step by step. There are three parts, so I need to tackle each one carefully.\n\n**Part 1: When θ = π/3, find the maximum and minimum values of f(x).**\n\nFirst, let's recall the function: f(x) = x² - 2cosθ x + 1. When θ is π/3, cosθ is cos(π/3) which is 0.5. So substituting θ = π/3, the function becomes:\n\nf(x) = x² - 2*(0.5)*x + 1 = x² - x + 1.\n\nNow, we need to find the maximum and minimum of this quadratic function on the interval [-√3/2, 1/2]. \n\nQuadratic functions have their extrema either at the vertex or at the endpoints of the interval. The general form is ax² + bx + c. Here, a = 1, which is positive, so the parabola opens upwards, meaning the vertex is the minimum point. The maximum will be at one of the endpoints.\n\nFirst, let's find the vertex. The x-coordinate of the vertex is at -b/(2a). Here, b is -1, so:\n\nx = -(-1)/(2*1) = 1/2.\n\nWait, the x-coordinate of the vertex is 1/2. But our interval is up to 1/2. So the vertex is actually at "
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "17_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]",
+        "remaining_conditions": [
+          "f(x) = x^2 - 2\\cos{\\theta}x + 1",
+          "When \\theta = \\frac{\\pi}{3}, find the maximum and minimum values of f(x).",
+          "If f(x) is a monotonous function on x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right] and \\theta \\in [0, 2\\pi), find the range of \\theta.",
+          "If \\sin{\\alpha} and \\cos{\\alpha} are the two real roots of the equation f(x) = \\frac{1}{4} + \\cos{\\theta}, find the value of \\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}."
+        ],
+        "incomplete_question": "Given the function f(x) = x^2 - 2\\cos{\\theta}x + 1. When \\theta = \\frac{\\pi}{3}, find the maximum and minimum values of f(x). If f(x) is a monotonous function and \\theta \\in [0, 2\\pi), find the range of \\theta. If \\sin{\\alpha} and \\cos{\\alpha} are the two real roots of the equation f(x) = \\frac{1}{4} + \\cos{\\theta}, find the value of \\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}."
+      },
+      {
+        "variant_id": "17_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "When \\theta = \\frac{\\pi}{3}, find the maximum and minimum values of f(x).",
+        "remaining_conditions": [
+          "f(x) = x^2 - 2\\cos{\\theta}x + 1",
+          "x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]",
+          "If f(x) is a monotonous function on x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right] and \\theta \\in [0, 2\\pi), find the range of \\theta.",
+          "If \\sin{\\alpha} and \\cos{\\alpha} are the two real roots of the equation f(x) = \\frac{1}{4} + \\cos{\\theta}, find the value of \\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}."
+        ],
+        "incomplete_question": "Given the function f(x) = x^2 - 2\\cos{\\theta}x + 1, where x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]. If f(x) is a monotonous function on x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right] and \\theta \\in [0, 2\\pi), find the range of \\theta. If \\sin{\\alpha} and \\cos{\\alpha} are the two real roots of the equation f(x) = \\frac{1}{4} + \\cos{\\theta}, find the value of \\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}."
+      },
+      {
+        "variant_id": "17_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "If f(x) is a monotonous function on x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right] and \\theta \\in [0, 2\\pi), find the range of \\theta.",
+        "remaining_conditions": [
+          "f(x) = x^2 - 2\\cos{\\theta}x + 1",
+          "x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]",
+          "When \\theta = \\frac{\\pi}{3}, find the maximum and minimum values of f(x).",
+          "If \\sin{\\alpha} and \\cos{\\alpha} are the two real roots of the equation f(x) = \\frac{1}{4} + \\cos{\\theta}, find the value of \\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}."
+        ],
+        "incomplete_question": "Given the function f(x) = x^2 - 2\\cos{\\theta}x + 1, where x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]. When \\theta = \\frac{\\pi}{3}, find the maximum and minimum values of f(x). If \\sin{\\alpha} and \\cos{\\alpha} are the two real roots of the equation f(x) = \\frac{1}{4} + \\cos{\\theta}, find the value of \\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}."
+      },
+      {
+        "variant_id": "17_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "If \\sin{\\alpha} and \\cos{\\alpha} are the two real roots of the equation f(x) = \\frac{1}{4} + \\cos{\\theta}, find the value of \\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}.",
+        "remaining_conditions": [
+          "f(x) = x^2 - 2\\cos{\\theta}x + 1",
+          "x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]",
+          "When \\theta = \\frac{\\pi}{3}, find the maximum and minimum values of f(x).",
+          "If f(x) is a monotonous function on x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right] and \\theta \\in [0, 2\\pi), find the range of \\theta."
+        ],
+        "incomplete_question": "Given the function f(x) = x^2 - 2\\cos{\\theta}x + 1, where x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]. When \\theta = \\frac{\\pi}{3}, find the maximum and minimum values of f(x). If f(x) is a monotonous function on x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right] and \\theta \\in [0, 2\\pi), find the range of \\theta."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 18,
+    "question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even. Find $|a-b|.$\n",
+    "ground_truth": "25",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      265,
+      143,
+      569
+    ],
+    "completion_lengths": [
+      7493,
+      10,
+      1479
+    ],
+    "answer": "25",
+    "original_verification": {
+      "model_answer": "25",
+      "ground_truth": "25",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, so I need to solve this problem where I have to find the absolute difference between the number of positive integers n ≤ 2005 for which S(n) is odd and those for which S(n) is even. Here, S(n) is the sum of the number of divisors from 1 up to n. Let me start by understanding the problem step by step.\n\nFirst, let me recall what τ(n) is. τ(n) counts the number of positive divisors of n. For example, τ(1) is 1 because 1 only has one divisor. τ(6) is 4 because 6 has divisors 1, 2, 3, 6. Now, S(n) is the cumulative sum of τ(1) + τ(2) + ... + τ(n). The problem wants me to find how many times this sum S(n) is odd and how many times it's even for n from 1 to 2005, then take the absolute difference between those counts.\n\nSo, my goal is to compute a and b where a is the count of n ≤ 2005 with S(n) odd, and b is the count with S(n) even, then find |a - b|.\n\nFirst, I need to figure out for each n, whether S(n) is odd or even. Since S(n) is a sum, its parity (odd or even) depends on t"
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "18_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$",
+        "remaining_conditions": [
+          "For example, $\\tau (1)=1$ and $\\tau(6) =4.$",
+          "Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$",
+          "Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even.",
+          "Find $|a-b|.$"
+        ],
+        "incomplete_question": "For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even. Find $|a-b|.$"
+      },
+      {
+        "variant_id": "18_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "For example, $\\tau (1)=1$ and $\\tau(6) =4.$",
+        "remaining_conditions": [
+          "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$",
+          "Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$",
+          "Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even.",
+          "Find $|a-b|.$"
+        ],
+        "incomplete_question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even. Find $|a-b|.$"
+      },
+      {
+        "variant_id": "18_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$",
+        "remaining_conditions": [
+          "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$",
+          "For example, $\\tau (1)=1$ and $\\tau(6) =4.$",
+          "Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even.",
+          "Find $|a-b|.$"
+        ],
+        "incomplete_question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even. Find $|a-b|.$"
+      },
+      {
+        "variant_id": "18_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even.",
+        "remaining_conditions": [
+          "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$",
+          "For example, $\\tau (1)=1$ and $\\tau(6) =4.$",
+          "Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$",
+          "Find $|a-b|.$"
+        ],
+        "incomplete_question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Find $|a-b|.$"
+      },
+      {
+        "variant_id": "18_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "Find $|a-b|.$",
+        "remaining_conditions": [
+          "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$",
+          "For example, $\\tau (1)=1$ and $\\tau(6) =4.$",
+          "Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$",
+          "Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even."
+        ],
+        "incomplete_question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 19,
+    "question": "Determine the largest value of \\( x \\) for which\n\\[ \\left|x^{2}-4x-39601\\right| \\geq \\left|x^{2}+4x-39601\\right| \\]",
+    "ground_truth": "199",
+    "solution": "",
+    "difficulty": "7/8",
+    "prompt_lengths": [
+      173,
+      50,
+      476
+    ],
+    "completion_lengths": [
+      3359,
+      10,
+      160
+    ],
+    "answer": "199",
+    "original_verification": {
+      "model_answer": "199",
+      "ground_truth": "199",
+      "judge_result": "equivalent",
+      "is_solvable": true,
+      "full_response": "<think>\nOkay, so I need to solve this inequality involving absolute values of quadratic expressions. The problem is |x² - 4x - 39601| ≥ |x² + 4x - 39601|. Hmm, let me think about how to approach this.\n\nFirst, I remember that when dealing with absolute value inequalities, one common method is to square both sides to eliminate the absolute values. But I have to be careful because squaring can sometimes introduce extraneous solutions. However, since both sides are absolute values (which are non-negative), squaring should preserve the inequality direction. Let me try that.\n\nSo, if I square both sides, the inequality becomes:\n\n(|x² - 4x - 39601|)² ≥ (|x² + 4x - 39601|)²\n\nWhich simplifies to:\n\n(x² - 4x - 39601)² ≥ (x² + 4x - 39601)²\n\nNow, expanding both sides might help. Let me denote A = x² - 39601 for simplicity. Then the left side becomes (A - 4x)² and the right side is (A + 4x)². So expanding both:\n\nLeft: (A - 4x)² = A² - 8Ax + 16x²\n\nRight: (A + 4x)² = A² + 8Ax + 16x²\n\nSubtracting the ri"
+    },
+    "original_solvable": true,
+    "removal_variants": [
+      {
+        "variant_id": "19_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Determine the largest value of x",
+        "remaining_conditions": [
+          "|x^2 - 4x - 39601| >= |x^2 + 4x - 39601|"
+        ],
+        "incomplete_question": "For which values of x does |x^2 - 4x - 39601| >= |x^2 + 4x - 39601| hold?"
+      },
+      {
+        "variant_id": "19_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "|x^2 - 4x - 39601| >= |x^2 + 4x - 39601|",
+        "remaining_conditions": [
+          "Determine the largest value of x"
+        ],
+        "incomplete_question": "Determine the largest value of x."
+      }
+    ]
+  }
+]

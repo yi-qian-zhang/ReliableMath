@@ -125,7 +125,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="转换 Polaris 数据格式")
     parser.add_argument(
         "--input", 
-        default="/data/home/zyq/ReliableMath/data/solve/polaris-data-53K.jsonl", 
+        default="/home/zhangyiqian/ReliableMath/data/solve/polaris-data-53K.jsonl", 
         help="输入 JSONL 文件路径"
     )
     parser.add_argument(
