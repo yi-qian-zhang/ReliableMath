@@ -1,5 +1,5 @@
 #启动DeepSeek-R1-Distill-Qwen-7B和Qwen3-32B的vllm服务
-CUDA_VISIBLE_DEVICES=6,7 vllm serve /shared/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
+CUDA_VISIBLE_DEVICES=0,1 vllm serve /shared/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
     --served-model-name DeepSeek-R1-Distill-Qwen-7B \
     --max-model-len 16384 \
     --tensor_parallel_size 2 \
@@ -38,11 +38,12 @@ cd ~/ReliableMath
 # DeepSeek-R1-Distill-Qwen-7B 版本
 python code/construct_mip_data/construct_mip_distill.py \
   --dataset polaris_easy_40 \
+  --model gpt-4o-mini \
   --verify_model DeepSeek-R1-Distill-Qwen-7B \
   --model gpt-4o \
   --judge_model gpt-4o \
   --prompt_dir prompt/construct_mip_distill \
-  --output_dir data/construct_mip_qwen_7B_16384 \
+  --output_dir data/construct_mip_qwen_7B_16384/10-28/easy_40 \
   --force
 
 # QWEN3-32B 版本
