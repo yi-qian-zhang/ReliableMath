@@ -484,7 +484,7 @@ def verify_incomplete_questions_multi_attempt(data):
     if not variants:
         return data
     
-    # ✅ 修改这里
+    # 并行处理所有变体
     with ThreadPoolExecutor(max_workers=args.threads) as executor:
         future_to_variant = {
             executor.submit(verify_single_variant, data, variant, prompt_template, ground_truth): variant
@@ -532,7 +532,7 @@ def process_with_jsonl_parallel(dataset, output_path, process_func, desc):
         logging.info(f"{desc}: All items processed")
         return True
     
-    # ✅ 修改这里
+    # 使用线程池并行处理
     with ThreadPoolExecutor(max_workers=args.threads) as executor:
         # 提交所有任务
         future_to_data = {executor.submit(process_func, data): data for data in dataset}
@@ -556,6 +556,10 @@ def process_with_jsonl_parallel(dataset, output_path, process_func, desc):
     all_data = existing_data + read_jsonl(jsonl_path)[len(existing_data):]
     
     if all_data:
+        # ========== 新增：按 ID 排序 ==========
+        all_data.sort(key=lambda x: x.get('id', 0))
+        # ===================================
+        
         write_json(output_path, all_data)
         if os.path.exists(jsonl_path):
             os.remove(jsonl_path)
@@ -611,6 +615,12 @@ def filter_valid_data(final_path):
                 }
                 valid_data.append(valid_item)
                 valid_variants += 1
+    
+    # ========== 新增：按 ID 排序（考虑 variant_id 格式）==========
+    # variant_id 格式：0_remove_0, 0_remove_1, 1_remove_0 等
+    # 排序规则：先按原始 ID，再按 removed_condition_index
+    valid_data.sort(key=lambda x: (x.get('original_id', 0), x.get('removed_condition_index', 0)))
+    # ========================================================
     
     output_path = final_path.replace("_final.json", "_valid.json")
     write_json(output_path, valid_data)
@@ -716,18 +726,18 @@ def construction_workflow():
     print("="*70)
     
     # Step 1: Extract and Generate Variants (并行)
-    print("\n[1/3] Extracting conditions and generating removal variants (parallel)")
+    print("\n[1/2] Extracting conditions and generating removal variants (parallel)")
     extract_path = os.path.join(output_dir, f"{args.dataset}_variants.json")
     process_with_jsonl_parallel(dataset, extract_path, extract_and_generate_variants, "Generating variants")
     
     # Step 2: Verify with Multiple Attempts (并行处理变体)
-    print(f"\n[2/3] Verifying incomplete questions (max {args.max_attempts} attempts, parallel)")
+    print(f"\n[2/2] Verifying incomplete questions (max {args.max_attempts} attempts, parallel)")
     dataset = read_json(extract_path)
     final_path = os.path.join(output_dir, f"{args.dataset}_final.json")
     process_with_jsonl_parallel(dataset, final_path, verify_incomplete_questions_multi_attempt, "Verifying")
     
     # Filter
-    print("\n[3/3] Filtering valid data")
+    print("\n[3/2] Filtering valid data")
     filter_valid_data(final_path)
     
     print("\n✓ Pipeline completed!")

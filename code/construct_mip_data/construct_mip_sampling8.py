@@ -1,7 +1,23 @@
 #!/usr/bin/env python3
 """
-MIP (Missing Information Problem) Construction Pipeline - 2 Steps Version with Sampling
-使用 vLLM sampling 功能一次生成多个候选答案，加速验证过程
+输入数据:原始数学问题 (question)+标准答案 (ground_truth)  +难度标签 (difficulty)
+
+Step 1. GPT-4o提取条件并改写 (extract_and_generate_variants): 
+   → 让LLM提取该问题中的[关键条件]，改写剩余内容为{缺省问题},[关键条件]+{缺省问题}组成pairs
+   ↓
+
+生成多个 removal_variants (移除变体)
+
+Step 2.验证缺省问题 (verify_incomplete_questions_multi_attempt) 
+   → distill 7B\qwen3-8B回答8次 ，回答对了就通过，回答错了就继续试到8次
+   → 给模型：缺省问题(incomplete_question) + 被移除的[关键条件] （removed_condition）
+
+   → 调用 Judge（gpt-4o-mini） 判断等价性：                
+
+​        答案 = ground_truth → 保留（条件必要）
+​        答案 ≠ ground_truth → 丢弃（条件非必要）
+   ↓
+最终数据集：只包含移除关键条件后的有效缺省问题:-------------------------每个难度500条
 """
 
 import os

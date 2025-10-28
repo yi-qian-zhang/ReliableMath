@@ -1,6 +1,59 @@
 [
   {
     "data_source": "polaris",
+    "id": 0,
+    "question": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:",
+    "ground_truth": "392",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      484
+    ],
+    "gpt4o_mini_completion_lengths": [
+      247
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "0_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The largest three-digit number",
+        "remaining_conditions": [
+          "divided by an integer",
+          "with the quotient rounded to one decimal place being 2.5",
+          "will have the smallest divisor as"
+        ],
+        "incomplete_question": "An integer divided by another integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:"
+      },
+      {
+        "variant_id": "0_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "divided by an integer",
+        "remaining_conditions": [
+          "The largest three-digit number",
+          "with the quotient rounded to one decimal place being 2.5",
+          "will have the smallest divisor as"
+        ],
+        "incomplete_question": "The largest three-digit number, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:"
+      },
+      {
+        "variant_id": "0_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "with the quotient rounded to one decimal place being 2.5",
+        "remaining_conditions": [
+          "The largest three-digit number",
+          "divided by an integer",
+          "will have the smallest divisor as"
+        ],
+        "incomplete_question": "The largest three-digit number divided by an integer will have the smallest divisor as:"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
     "id": 1,
     "question": "Investigate the stability of the equilibrium point $x=0, y=0$ for the system\n\n$$\n\\left\\{\\begin{array}{l}\n\\frac{d x}{d t}=y^{3}+x^{5} \\\\\n\\frac{d y}{d t}=x^{3}+y^{5}\n\\end{array}\\right.\n$$",
     "ground_truth": "Unstable",
@@ -12,7 +65,7 @@
       531
     ],
     "gpt4o_mini_completion_lengths": [
-      118
+      183
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -20,20 +73,20 @@
       {
         "variant_id": "1_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "The equilibrium point is $x=0, y=0$",
+        "removed_condition": "The equilibrium point is (0, 0)",
         "remaining_conditions": [
-          "Investigate the stability of the system"
+          "The system of equations is given by dx/dt = y^3 + x^5 and dy/dt = x^3 + y^5"
         ],
-        "incomplete_question": "Investigate the stability of the system"
+        "incomplete_question": "Investigate the stability of the equilibrium point for the system of equations dx/dt = y^3 + x^5 and dy/dt = x^3 + y^5."
       },
       {
         "variant_id": "1_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "The system is given by the equations",
+        "removed_condition": "The system of equations is given by dx/dt = y^3 + x^5 and dy/dt = x^3 + y^5",
         "remaining_conditions": [
-          "The equilibrium point is $x=0, y=0$"
+          "The equilibrium point is (0, 0)"
         ],
-        "incomplete_question": "Investigate the stability of the equilibrium point $x=0, y=0$."
+        "incomplete_question": "Investigate the stability of the equilibrium point (0, 0)."
       }
     ]
   },
@@ -50,7 +103,7 @@
       793
     ],
     "gpt4o_mini_completion_lengths": [
-      164
+      167
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -58,7 +111,7 @@
       {
         "variant_id": "2_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "The line y = \\frac{5}{3} x - \\frac{17}{3} is to be parameterized using vectors.",
+        "removed_condition": "The line $y = \frac{5}{3} x - \frac{17}{3}$ is to be parameterized using vectors.",
         "remaining_conditions": [
           "Which of the following options are valid parameterizations?"
         ],
@@ -69,59 +122,9 @@
         "removed_condition_index": 1,
         "removed_condition": "Which of the following options are valid parameterizations?",
         "remaining_conditions": [
-          "The line y = \\frac{5}{3} x - \\frac{17}{3} is to be parameterized using vectors."
+          "The line $y = \frac{5}{3} x - \frac{17}{3}$ is to be parameterized using vectors."
         ],
-        "incomplete_question": "The line y = \\frac{5}{3} x - \\frac{17}{3} is to be parameterized using vectors."
-      }
-    ]
-  },
-  {
-    "data_source": "polaris",
-    "id": 0,
-    "question": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:",
-    "ground_truth": "392",
-    "solution": "",
-    "difficulty": "6/8",
-    "gpt4o_prompt_lengths": [],
-    "gpt4o_completion_lengths": [],
-    "gpt4o_mini_prompt_lengths": [
-      484
-    ],
-    "gpt4o_mini_completion_lengths": [
-      219
-    ],
-    "local_prompt_lengths": [],
-    "local_completion_lengths": [],
-    "removal_variants": [
-      {
-        "variant_id": "0_remove_0",
-        "removed_condition_index": 0,
-        "removed_condition": "The largest three-digit number",
-        "remaining_conditions": [
-          "divided by an integer",
-          "with the quotient rounded to one decimal place being 2.5"
-        ],
-        "incomplete_question": "An integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:"
-      },
-      {
-        "variant_id": "0_remove_1",
-        "removed_condition_index": 1,
-        "removed_condition": "divided by an integer",
-        "remaining_conditions": [
-          "The largest three-digit number",
-          "with the quotient rounded to one decimal place being 2.5"
-        ],
-        "incomplete_question": "The largest three-digit number, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:"
-      },
-      {
-        "variant_id": "0_remove_2",
-        "removed_condition_index": 2,
-        "removed_condition": "with the quotient rounded to one decimal place being 2.5",
-        "remaining_conditions": [
-          "The largest three-digit number",
-          "divided by an integer"
-        ],
-        "incomplete_question": "The largest three-digit number divided by an integer will have the smallest divisor as:"
+        "incomplete_question": "The line $y = \frac{5}{3} x - \frac{17}{3}$ is to be parameterized using vectors."
       }
     ]
   },
@@ -138,7 +141,7 @@
       507
     ],
     "gpt4o_mini_completion_lengths": [
-      278
+      157
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -150,7 +153,7 @@
         "remaining_conditions": [
           "arrange the six letters A, B, C, D, E, F in a row"
         ],
-        "incomplete_question": "In the 2013 Zhejiang College Entrance Examination, arrange the six letters A, B, C, D, E, F in a row. How many different arrangements are there?"
+        "incomplete_question": "Arrange the six letters A, B, C, D, E, F in a row. How many different arrangements are there?"
       },
       {
         "variant_id": "3_remove_1",
@@ -159,17 +162,7 @@
         "remaining_conditions": [
           "both A and B on the same side of C"
         ],
-        "incomplete_question": "In the 2013 Zhejiang College Entrance Examination, arrange in a row, with both A and B on the same side of C. How many different arrangements are there?"
-      },
-      {
-        "variant_id": "3_remove_2",
-        "removed_condition_index": 2,
-        "removed_condition": "In the 2013 Zhejiang College Entrance Examination",
-        "remaining_conditions": [
-          "arrange the six letters A, B, C, D, E, F in a row",
-          "both A and B on the same side of C"
-        ],
-        "incomplete_question": "Arrange the six letters A, B, C, D, E, F in a row, with both A and B on the same side of C. How many different arrangements are there?"
+        "incomplete_question": "Arrange the letters in a row, with both A and B on the same side of C. How many different arrangements are there?"
       }
     ]
   },
@@ -236,7 +229,7 @@
       503
     ],
     "gpt4o_mini_completion_lengths": [
-      362
+      357
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -283,7 +276,7 @@
           "the angle bisector AN",
           "the altitude BH"
         ],
-        "incomplete_question": "In an acute-angled triangle ABC, the angle bisector AN and the altitude BH intersect at a single point. Find angle BAC."
+        "incomplete_question": "In an acute-angled triangle ABC, the angle bisector AN and the altitude BH. Find angle BAC."
       }
     ]
   },
@@ -339,88 +332,81 @@
   },
   {
     "data_source": "polaris",
-    "id": 10,
-    "question": "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
-    "ground_truth": "9375",
-    "solution": "",
-    "difficulty": "7/8",
-    "gpt4o_prompt_lengths": [],
-    "gpt4o_completion_lengths": [],
-    "gpt4o_mini_prompt_lengths": [
-      498
-    ],
-    "gpt4o_mini_completion_lengths": [
-      161
-    ],
-    "local_prompt_lengths": [],
-    "local_completion_lengths": [],
-    "removal_variants": [
-      {
-        "variant_id": "10_remove_0",
-        "removed_condition_index": 0,
-        "removed_condition": "The front tires of a car wear out after 25,000 km",
-        "remaining_conditions": [
-          "the rear tires wear out after 15,000 km"
-        ],
-        "incomplete_question": "The rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?"
-      },
-      {
-        "variant_id": "10_remove_1",
-        "removed_condition_index": 1,
-        "removed_condition": "The rear tires wear out after 15,000 km",
-        "remaining_conditions": [
-          "the front tires of a car wear out after 25,000 km"
-        ],
-        "incomplete_question": "The front tires of a car wear out after 25,000 km. When should the tires be swapped so that they wear out at the same time?"
-      }
-    ]
-  },
-  {
-    "data_source": "polaris",
-    "id": 9,
-    "question": "Given a square with four vertices and its center, find the probability that the distance between any two of these five points is less than the side length of the square.",
-    "ground_truth": "\\frac{2}{5}",
+    "id": 7,
+    "question": "Six chairs sit in a row.  Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.  There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.  The probability that this will **not** happen is given by  $\\frac{m}{n}$  where  $m$  and  $n$  are relatively prime positive integers. Find  $m+n$ .",
+    "ground_truth": "1106",
     "solution": "",
     "difficulty": "6/8",
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      490
+      587
     ],
     "gpt4o_mini_completion_lengths": [
-      247
+      1120
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "removal_variants": [
       {
-        "variant_id": "9_remove_0",
+        "variant_id": "7_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "Given a square with four vertices and its center",
+        "removed_condition": "Six chairs sit in a row.",
         "remaining_conditions": [
-          "find the probability that the distance between any two of these five points is less than the side length of the square"
+          "Six people randomly seat themselves in the chairs.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+          "The probability that this will not happen is given by  m/n where m and n are relatively prime positive integers."
         ],
-        "incomplete_question": "Find the probability that the distance between any two of these five points is less than the side length of the square."
+        "incomplete_question": "Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by  m/n where m and n are relatively prime positive integers. Find m+n."
       },
       {
-        "variant_id": "9_remove_1",
+        "variant_id": "7_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "the distance between any two of these five points",
+        "removed_condition": "Six people randomly seat themselves in the chairs.",
         "remaining_conditions": [
-          "Given a square with four vertices and its center",
-          "find the probability that it is less than the side length of the square"
+          "Six chairs sit in a row.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+          "The probability that this will not happen is given by  m/n where m and n are relatively prime positive integers."
         ],
-        "incomplete_question": "Given a square with four vertices and its center, find the probability that the distance is less than the side length of the square."
+        "incomplete_question": "Six chairs sit in a row. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by  m/n where m and n are relatively prime positive integers. Find m+n."
       },
       {
-        "variant_id": "9_remove_2",
+        "variant_id": "7_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "less than the side length of the square",
+        "removed_condition": "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
         "remaining_conditions": [
-          "Given a square with four vertices and its center",
-          "find the probability that the distance between any two of these five points"
+          "Six chairs sit in a row.",
+          "Six people randomly seat themselves in the chairs.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+          "The probability that this will not happen is given by  m/n where m and n are relatively prime positive integers."
         ],
-        "incomplete_question": "Given a square with four vertices and its center, find the probability that the distance between any two of these five points."
+        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by  m/n where m and n are relatively prime positive integers. Find m+n."
+      },
+      {
+        "variant_id": "7_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+        "remaining_conditions": [
+          "Six chairs sit in a row.",
+          "Six people randomly seat themselves in the chairs.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "The probability that this will not happen is given by  m/n where m and n are relatively prime positive integers."
+        ],
+        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. The probability that this will not happen is given by  m/n where m and n are relatively prime positive integers. Find m+n."
+      },
+      {
+        "variant_id": "7_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "The probability that this will not happen is given by  m/n where m and n are relatively prime positive integers.",
+        "remaining_conditions": [
+          "Six chairs sit in a row.",
+          "Six people randomly seat themselves in the chairs.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right."
+        ],
+        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. Find m+n."
       }
     ]
   },
@@ -476,6 +462,141 @@
   },
   {
     "data_source": "polaris",
+    "id": 9,
+    "question": "Given a square with four vertices and its center, find the probability that the distance between any two of these five points is less than the side length of the square.",
+    "ground_truth": "\\frac{2}{5}",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      490
+    ],
+    "gpt4o_mini_completion_lengths": [
+      246
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "9_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Given a square with four vertices and its center",
+        "remaining_conditions": [
+          "find the probability that the distance between any two of these five points is less than the side length of the square"
+        ],
+        "incomplete_question": "Find the probability that the distance between any two of these five points is less than the side length of the square."
+      },
+      {
+        "variant_id": "9_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "the distance between any two of these five points",
+        "remaining_conditions": [
+          "Given a square with four vertices and its center",
+          "find the probability that it is less than the side length of the square"
+        ],
+        "incomplete_question": "Given a square with four vertices and its center, find the probability that it is less than the side length of the square."
+      },
+      {
+        "variant_id": "9_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "less than the side length of the square",
+        "remaining_conditions": [
+          "Given a square with four vertices and its center",
+          "find the probability that the distance between any two of these five points"
+        ],
+        "incomplete_question": "Given a square with four vertices and its center, find the probability that the distance between any two of these five points."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 10,
+    "question": "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
+    "ground_truth": "9375",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      498
+    ],
+    "gpt4o_mini_completion_lengths": [
+      161
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "10_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The front tires of a car wear out after 25,000 km",
+        "remaining_conditions": [
+          "the rear tires wear out after 15,000 km"
+        ],
+        "incomplete_question": "The rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?"
+      },
+      {
+        "variant_id": "10_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "The rear tires wear out after 15,000 km",
+        "remaining_conditions": [
+          "the front tires of a car wear out after 25,000 km"
+        ],
+        "incomplete_question": "The front tires of a car wear out after 25,000 km. When should the tires be swapped so that they wear out at the same time?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 11,
+    "question": "Given the function \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\), if the minimum value of \\( f(x) \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right] \\) is \\(-1\\), find the value of \\( a \\).",
+    "ground_truth": "-1",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      529
+    ],
+    "gpt4o_mini_completion_lengths": [
+      287
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "11_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "the minimum value of f(x) on the interval [0, π/2] is -1",
+        "remaining_conditions": [
+          "f(x)=√3 sin 2x + 2 cos^2 x + a"
+        ],
+        "incomplete_question": "Given the function f(x)=√3 sin 2x + 2 cos^2 x + a, find the value of a."
+      },
+      {
+        "variant_id": "11_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "f(x)=√3 sin 2x + 2 cos^2 x + a",
+        "remaining_conditions": [
+          "the minimum value of f(x) on the interval [0, π/2] is -1"
+        ],
+        "incomplete_question": "If the minimum value of f(x) on the interval [0, π/2] is -1, find the value of a."
+      },
+      {
+        "variant_id": "11_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "the interval [0, π/2]",
+        "remaining_conditions": [
+          "f(x)=√3 sin 2x + 2 cos^2 x + a",
+          "the minimum value of f(x) is -1"
+        ],
+        "incomplete_question": "Given the function f(x)=√3 sin 2x + 2 cos^2 x + a, if the minimum value of f(x) is -1, find the value of a."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
     "id": 12,
     "question": "From the vertex of the right angle of triangle \\(ABC\\), the median \\(CM\\) is drawn. The circle inscribed in triangle \\(CAM\\) touches \\(CM\\) at its midpoint. Find the angle \\(BAC\\).",
     "ground_truth": "60",
@@ -516,25 +637,6 @@
   },
   {
     "data_source": "polaris",
-    "id": 11,
-    "question": "Given the function \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\), if the minimum value of \\( f(x) \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right] \\) is \\(-1\\), find the value of \\( a \\).",
-    "ground_truth": "-1",
-    "solution": "",
-    "difficulty": "7/8",
-    "gpt4o_prompt_lengths": [],
-    "gpt4o_completion_lengths": [],
-    "gpt4o_mini_prompt_lengths": [
-      529
-    ],
-    "gpt4o_mini_completion_lengths": [
-      331
-    ],
-    "local_prompt_lengths": [],
-    "local_completion_lengths": [],
-    "removal_variants": []
-  },
-  {
-    "data_source": "polaris",
     "id": 13,
     "question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?",
     "ground_truth": "300",
@@ -546,7 +648,7 @@
       503
     ],
     "gpt4o_mini_completion_lengths": [
-      311
+      316
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -565,10 +667,10 @@
         "removed_condition_index": 1,
         "removed_condition": "the six digits 0, 1, 2, 3, 4, 5",
         "remaining_conditions": [
-          "the unit digit is less than the ten's digit",
-          "to form a six-digit number without repeating any digit"
+          "to form a six-digit number without repeating any digit",
+          "where the unit digit is less than the ten's digit"
         ],
-        "incomplete_question": "How many such numbers are there where the unit digit is less than the ten's digit and to form a six-digit number without repeating any digit?"
+        "incomplete_question": "Using the digits to form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?"
       },
       {
         "variant_id": "13_remove_2",
@@ -576,7 +678,7 @@
         "removed_condition": "to form a six-digit number without repeating any digit",
         "remaining_conditions": [
           "Using the six digits 0, 1, 2, 3, 4, 5",
-          "the unit digit is less than the ten's digit"
+          "where the unit digit is less than the ten's digit"
         ],
         "incomplete_question": "Using the six digits 0, 1, 2, 3, 4, 5, how many such numbers are there where the unit digit is less than the ten's digit?"
       }
@@ -634,105 +736,6 @@
   },
   {
     "data_source": "polaris",
-    "id": 7,
-    "question": "Six chairs sit in a row.  Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.  There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.  The probability that this will **not** happen is given by  $\\frac{m}{n}$  where  $m$  and  $n$  are relatively prime positive integers. Find  $m+n$ .",
-    "ground_truth": "1106",
-    "solution": "",
-    "difficulty": "6/8",
-    "gpt4o_prompt_lengths": [],
-    "gpt4o_completion_lengths": [],
-    "gpt4o_mini_prompt_lengths": [
-      587
-    ],
-    "gpt4o_mini_completion_lengths": [
-      1307
-    ],
-    "local_prompt_lengths": [],
-    "local_completion_lengths": [],
-    "removal_variants": [
-      {
-        "variant_id": "7_remove_0",
-        "removed_condition_index": 0,
-        "removed_condition": "Six chairs sit in a row.",
-        "remaining_conditions": [
-          "Six people randomly seat themselves in the chairs.",
-          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
-          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
-          "The probability that this will not happen is given by  \\(\\frac{m}{n}\\) where  \\(m\\) and  \\(n\\) are relatively prime positive integers."
-        ],
-        "incomplete_question": "Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by  \\(\\frac{m}{n}\\) where  \\(m\\) and  \\(n\\) are relatively prime positive integers. Find  \\(m+n\\)."
-      },
-      {
-        "variant_id": "7_remove_1",
-        "removed_condition_index": 1,
-        "removed_condition": "Six people randomly seat themselves in the chairs.",
-        "remaining_conditions": [
-          "Six chairs sit in a row.",
-          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
-          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
-          "The probability that this will not happen is given by  \\(\\frac{m}{n}\\) where  \\(m\\) and  \\(n\\) are relatively prime positive integers."
-        ],
-        "incomplete_question": "Six chairs sit in a row. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by  \\(\\frac{m}{n}\\) where  \\(m\\) and  \\(n\\) are relatively prime positive integers. Find  \\(m+n\\)."
-      },
-      {
-        "variant_id": "7_remove_2",
-        "removed_condition_index": 2,
-        "removed_condition": "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
-        "remaining_conditions": [
-          "Six chairs sit in a row.",
-          "Six people randomly seat themselves in the chairs.",
-          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
-          "The probability that this will not happen is given by  \\(\\frac{m}{n}\\) where  \\(m\\) and  \\(n\\) are relatively prime positive integers."
-        ],
-        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by  \\(\\frac{m}{n}\\) where  \\(m\\) and  \\(n\\) are relatively prime positive integers. Find  \\(m+n\\)."
-      },
-      {
-        "variant_id": "7_remove_3",
-        "removed_condition_index": 3,
-        "removed_condition": "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
-        "remaining_conditions": [
-          "Six chairs sit in a row.",
-          "Six people randomly seat themselves in the chairs.",
-          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
-          "The probability that this will not happen is given by  \\(\\frac{m}{n}\\) where  \\(m\\) and  \\(n\\) are relatively prime positive integers."
-        ],
-        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. The probability that this will not happen is given by  \\(\\frac{m}{n}\\) where  \\(m\\) and  \\(n\\) are relatively prime positive integers. Find  \\(m+n\\)."
-      },
-      {
-        "variant_id": "7_remove_4",
-        "removed_condition_index": 4,
-        "removed_condition": "The probability that this will not happen is given by  \\(\\frac{m}{n}\\) where  \\(m\\) and  \\(n\\) are relatively prime positive integers.",
-        "remaining_conditions": [
-          "Six chairs sit in a row.",
-          "Six people randomly seat themselves in the chairs.",
-          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
-          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right."
-        ],
-        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. Find  \\(m+n\\)."
-      }
-    ]
-  },
-  {
-    "data_source": "polaris",
-    "id": 16,
-    "question": "In a right-angled triangle, let \\( s_{a} \\) and \\( s_{b} \\) be the medians to the legs, and \\( s_{c} \\) be the median to the hypotenuse. Determine the maximum value of the expression \\( \\frac{s_{a} + s_{b}}{s_{c}} \\).",
-    "ground_truth": "\\sqrt{10}",
-    "solution": "",
-    "difficulty": "7/8",
-    "gpt4o_prompt_lengths": [],
-    "gpt4o_completion_lengths": [],
-    "gpt4o_mini_prompt_lengths": [
-      529
-    ],
-    "gpt4o_mini_completion_lengths": [
-      395
-    ],
-    "local_prompt_lengths": [],
-    "local_completion_lengths": [],
-    "removal_variants": []
-  },
-  {
-    "data_source": "polaris",
     "id": 15,
     "question": "A cube with a side length of 1 meter was cut into smaller cubes with a side length of 1 centimeter and arranged in a straight line. What is the length of the resulting line?",
     "ground_truth": "10000",
@@ -780,48 +783,22 @@
   },
   {
     "data_source": "polaris",
-    "id": 19,
-    "question": "Determine the largest value of \\( x \\) for which\n\\[ \\left|x^{2}-4x-39601\\right| \\geq \\left|x^{2}+4x-39601\\right| \\]",
-    "ground_truth": "199",
+    "id": 16,
+    "question": "In a right-angled triangle, let \\( s_{a} \\) and \\( s_{b} \\) be the medians to the legs, and \\( s_{c} \\) be the median to the hypotenuse. Determine the maximum value of the expression \\( \\frac{s_{a} + s_{b}}{s_{c}} \\).",
+    "ground_truth": "\\sqrt{10}",
     "solution": "",
     "difficulty": "7/8",
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      501
+      529
     ],
     "gpt4o_mini_completion_lengths": [
-      219
+      395
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
-    "removal_variants": [
-      {
-        "variant_id": "19_remove_0",
-        "removed_condition_index": 0,
-        "removed_condition": "The absolute value of x^2 - 4x - 39601 is greater than or equal to the absolute value of x^2 + 4x - 39601",
-        "remaining_conditions": [],
-        "incomplete_question": "Determine the largest value of x."
-      },
-      {
-        "variant_id": "19_remove_1",
-        "removed_condition_index": 1,
-        "removed_condition": "The expression |x^2 - 4x - 39601|",
-        "remaining_conditions": [
-          "|x^2 + 4x - 39601|"
-        ],
-        "incomplete_question": "Determine the largest value of x for which |x^2 + 4x - 39601|."
-      },
-      {
-        "variant_id": "19_remove_2",
-        "removed_condition_index": 2,
-        "removed_condition": "The expression |x^2 + 4x - 39601|",
-        "remaining_conditions": [
-          "|x^2 - 4x - 39601|"
-        ],
-        "incomplete_question": "Determine the largest value of x for which |x^2 - 4x - 39601|."
-      }
-    ]
+    "removal_variants": []
   },
   {
     "data_source": "polaris",
@@ -836,7 +813,7 @@
       674
     ],
     "gpt4o_mini_completion_lengths": [
-      406
+      390
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -856,7 +833,6 @@
         "removed_condition_index": 1,
         "removed_condition": "f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π)",
         "remaining_conditions": [
-          "When θ = π/3",
           "f(x) = x^2 - 2cos(θ)x + 1",
           "x ∈ [-√3/2, 1/2]"
         ],
@@ -867,13 +843,106 @@
         "removed_condition_index": 2,
         "removed_condition": "If sin(α) and cos(α) are the two real roots of the equation f(x) = 1/4 + cos(θ)",
         "remaining_conditions": [
-          "When θ = π/3",
           "f(x) = x^2 - 2cos(θ)x + 1",
           "x ∈ [-√3/2, 1/2]"
         ],
         "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2], find the value of (tan^2(α) + 1)/tan(α)."
       }
     ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 18,
+    "question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even. Find $|a-b|.$\n",
+    "ground_truth": "25",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      594
+    ],
+    "gpt4o_mini_completion_lengths": [
+      1391
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
+    "id": 19,
+    "question": "Determine the largest value of \\( x \\) for which\n\\[ \\left|x^{2}-4x-39601\\right| \\geq \\left|x^{2}+4x-39601\\right| \\]",
+    "ground_truth": "199",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      501
+    ],
+    "gpt4o_mini_completion_lengths": [
+      360
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "19_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "|x^{2}-4x-39601|",
+        "remaining_conditions": [
+          "|x^{2}+4x-39601| >= |x^{2}+4x-39601|"
+        ],
+        "incomplete_question": "Determine the largest value of x for which |x^{2}+4x-39601| >= |x^{2}+4x-39601|"
+      },
+      {
+        "variant_id": "19_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "|x^{2}+4x-39601|",
+        "remaining_conditions": [
+          "|x^{2}-4x-39601| >= |x^{2}+4x-39601|"
+        ],
+        "incomplete_question": "Determine the largest value of x for which |x^{2}-4x-39601| >= |x^{2}-4x-39601|"
+      },
+      {
+        "variant_id": "19_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "x^{2}-4x-39601",
+        "remaining_conditions": [
+          "|x^{2}-4x-39601| >= |x^{2}+4x-39601|"
+        ],
+        "incomplete_question": "Determine the largest value of x for which |x^{2}-4x-39601| >= |x^{2}+4x-39601|"
+      },
+      {
+        "variant_id": "19_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "x^{2}+4x-39601",
+        "remaining_conditions": [
+          "|x^{2}-4x-39601| >= |x^{2}+4x-39601|"
+        ],
+        "incomplete_question": "Determine the largest value of x for which |x^{2}-4x-39601| >= |x^{2}-4x-39601|"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 20,
+    "question": "Triangle $ABC$ has $AB = 13, BC = 14$, and $AC = 15$. The points $D, E$, and $F$ are the midpoints of $\\overline{AB}, \\overline{BC}$, and $\\overline{AC}$ respectively. Let $X \\neq E$ be the intersection of the circumcircles of $\\triangle BDE$ and $\\triangle CEF$. What is $XA + XB + XC$?",
+    "ground_truth": "\\frac{195}{8}",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      555
+    ],
+    "gpt4o_mini_completion_lengths": [
+      851
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": []
   },
   {
     "data_source": "polaris",
@@ -899,9 +968,9 @@
         "removed_condition": "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$",
         "remaining_conditions": [
           "let side $BC$ be extended through $C$, to meet in point $E.$",
-          "Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$,"
+          "Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$"
         ],
-        "incomplete_question": "Let side $BC$ be extended through $C$, to meet in point $E.$ Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$ then:"
+        "incomplete_question": "Let side $BC$ be extended through $C$, to meet in point $E.$ Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$, then:"
       },
       {
         "variant_id": "21_remove_1",
@@ -909,9 +978,9 @@
         "removed_condition": "let side $BC$ be extended through $C$, to meet in point $E.$",
         "remaining_conditions": [
           "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$",
-          "Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$,"
+          "Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$"
         ],
-        "incomplete_question": "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$. Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$ then:"
+        "incomplete_question": "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$. Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$, then:"
       },
       {
         "variant_id": "21_remove_2",
@@ -920,30 +989,11 @@
         "remaining_conditions": [
           "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$",
           "let side $BC$ be extended through $C$, to meet in point $E.$",
-          "If $r=S/S'$,"
+          "If $r=S/S'$"
         ],
-        "incomplete_question": "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$ and let side $BC$ be extended through $C$, to meet in point $E.$ If $r=S/S'$ then:"
+        "incomplete_question": "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$, and let side $BC$ be extended through $C$, to meet in point $E.$ If $r=S/S'$, then:"
       }
     ]
-  },
-  {
-    "data_source": "polaris",
-    "id": 20,
-    "question": "Triangle $ABC$ has $AB = 13, BC = 14$, and $AC = 15$. The points $D, E$, and $F$ are the midpoints of $\\overline{AB}, \\overline{BC}$, and $\\overline{AC}$ respectively. Let $X \\neq E$ be the intersection of the circumcircles of $\\triangle BDE$ and $\\triangle CEF$. What is $XA + XB + XC$?",
-    "ground_truth": "\\frac{195}{8}",
-    "solution": "",
-    "difficulty": "7/8",
-    "gpt4o_prompt_lengths": [],
-    "gpt4o_completion_lengths": [],
-    "gpt4o_mini_prompt_lengths": [
-      555
-    ],
-    "gpt4o_mini_completion_lengths": [
-      894
-    ],
-    "local_prompt_lengths": [],
-    "local_completion_lengths": [],
-    "removal_variants": []
   },
   {
     "data_source": "polaris",
@@ -958,7 +1008,7 @@
       492
     ],
     "gpt4o_mini_completion_lengths": [
-      257
+      279
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -966,48 +1016,29 @@
       {
         "variant_id": "22_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "The equation of the ellipse is given as \\frac{x^2}{36} + \\frac{y^2}{16} = 8.",
+        "removed_condition": "The equation of the ellipse is given as \\(\\frac{x^2}{36} + \\frac{y^2}{16} = 8\\).",
         "remaining_conditions": [],
         "incomplete_question": "Find the distance between the foci of the ellipse."
       },
       {
         "variant_id": "22_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "The semi-major axis squared is 36.",
+        "removed_condition": "The semi-major axis length is derived from the equation.",
         "remaining_conditions": [
-          "The equation of the ellipse is given as \\frac{x^2}{36} + \\frac{y^2}{16} = 8."
+          "The equation of the ellipse is given as \\(\\frac{x^2}{36} + \\frac{y^2}{16} = 8\\)."
         ],
-        "incomplete_question": "Find the distance between the foci of the ellipse \\frac{x^2}{36} + \\frac{y^2}{16} = 8."
+        "incomplete_question": "Find the distance between the foci of the ellipse \\(\\frac{x^2}{36} + \\frac{y^2}{16} = 8\\)."
       },
       {
         "variant_id": "22_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "The semi-minor axis squared is 16.",
+        "removed_condition": "The semi-minor axis length is derived from the equation.",
         "remaining_conditions": [
-          "The equation of the ellipse is given as \\frac{x^2}{36} + \\frac{y^2}{16} = 8."
+          "The equation of the ellipse is given as \\(\\frac{x^2}{36} + \\frac{y^2}{16} = 8\\)."
         ],
-        "incomplete_question": "Find the distance between the foci of the ellipse \\frac{x^2}{36} + \\frac{y^2}{16} = 8."
+        "incomplete_question": "Find the distance between the foci of the ellipse \\(\\frac{x^2}{36} + \\frac{y^2}{16} = 8\\)."
       }
     ]
-  },
-  {
-    "data_source": "polaris",
-    "id": 24,
-    "question": "For the polynomial \\(\\left(x^{2}-x+1\\right)^{100}\\), find the sum of the coefficients of the even powers of \\(x\\).",
-    "ground_truth": "\\frac{1+3^{100}}{2}",
-    "solution": "",
-    "difficulty": "7/8",
-    "gpt4o_prompt_lengths": [],
-    "gpt4o_completion_lengths": [],
-    "gpt4o_mini_prompt_lengths": [
-      497
-    ],
-    "gpt4o_mini_completion_lengths": [
-      152
-    ],
-    "local_prompt_lengths": [],
-    "local_completion_lengths": [],
-    "removal_variants": []
   },
   {
     "data_source": "polaris",
@@ -1061,6 +1092,25 @@
   },
   {
     "data_source": "polaris",
+    "id": 24,
+    "question": "For the polynomial \\(\\left(x^{2}-x+1\\right)^{100}\\), find the sum of the coefficients of the even powers of \\(x\\).",
+    "ground_truth": "\\frac{1+3^{100}}{2}",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      497
+    ],
+    "gpt4o_mini_completion_lengths": [
+      135
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
     "id": 25,
     "question": "Sierpinski's triangle is formed by taking a triangle, and drawing an upside down triangle inside each upright triangle that appears. A snake sees the fractal, but decides that the triangles need circles inside them. Therefore, she draws a circle inscribed in every upside down triangle she sees (assume that the snake can do an infinite amount of work). If the original triangle had side length  $1$ , what is the total area of all the individual circles?\n\n*2015 CCA Math Bonanza Lightning Round #4.4*",
     "ground_truth": "\\frac{\\pi}{12}",
@@ -1103,7 +1153,7 @@
       {
         "variant_id": "25_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "Assume that the snake can do an infinite amount of work.",
+        "removed_condition": "Assume that the snake can do an infinite amount of work",
         "remaining_conditions": [
           "Sierpinski's triangle is formed by taking a triangle, and drawing an upside down triangle inside each upright triangle that appears.",
           "The original triangle had side length 1",
@@ -1127,7 +1177,7 @@
       567
     ],
     "gpt4o_mini_completion_lengths": [
-      678
+      517
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1137,41 +1187,30 @@
         "removed_condition_index": 0,
         "removed_condition": "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD.",
         "remaining_conditions": [
-          "Denote F_{1}, F_{2}, and F_{3} as the areas of triangle ABE, triangle CDE, and the quadrilateral ABCD, respectively.",
-          "Prove that sqrt{F_{1}} + sqrt{F_{2}} ≤ sqrt{F} and determine when equality holds."
+          "Denote F_{1}, F_{2}, and F_{3} as the areas of \\triangle ABE, \\triangle CDE, and the quadrilateral ABCD, respectively.",
+          "Prove that \\sqrt{F_{1}} + \\sqrt{F_{2}} \\leq \\sqrt{F} and determine when equality holds."
         ],
-        "incomplete_question": "Denote F_{1}, F_{2}, and F_{3} as the areas of triangle ABE, triangle CDE, and the quadrilateral ABCD, respectively. Prove that sqrt{F_{1}} + sqrt{F_{2}} ≤ sqrt{F} and determine when equality holds."
+        "incomplete_question": "Denote F_{1}, F_{2}, and F_{3} as the areas of \\triangle ABE, \\triangle CDE, and the quadrilateral ABCD, respectively. Prove that \\sqrt{F_{1}} + \\sqrt{F_{2}} \\leq \\sqrt{F} and determine when equality holds."
       },
       {
         "variant_id": "26_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "ABCD is a convex quadrilateral.",
+        "removed_condition": "Denote F_{1}, F_{2}, and F_{3} as the areas of \\triangle ABE, \\triangle CDE, and the quadrilateral ABCD, respectively.",
         "remaining_conditions": [
           "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD.",
-          "Denote F_{1}, F_{2}, and F_{3} as the areas of triangle ABE, triangle CDE, and the quadrilateral ABCD, respectively.",
-          "Prove that sqrt{F_{1}} + sqrt{F_{2}} ≤ sqrt{F} and determine when equality holds."
+          "Prove that \\sqrt{F_{1}} + \\sqrt{F_{2}} \\leq \\sqrt{F} and determine when equality holds."
         ],
-        "incomplete_question": "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD. Denote F_{1}, F_{2}, and F_{3} as the areas of triangle ABE, triangle CDE, and the quadrilateral ABCD, respectively. Prove that sqrt{F_{1}} + sqrt{F_{2}} ≤ sqrt{F} and determine when equality holds."
+        "incomplete_question": "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD. Prove that \\sqrt{F_{1}} + \\sqrt{F_{2}} \\leq \\sqrt{F} and determine when equality holds."
       },
       {
         "variant_id": "26_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "Denote F_{1}, F_{2}, and F_{3} as the areas of triangle ABE, triangle CDE, and the quadrilateral ABCD, respectively.",
+        "removed_condition": "Prove that \\sqrt{F_{1}} + \\sqrt{F_{2}} \\leq \\sqrt{F} and determine when equality holds.",
         "remaining_conditions": [
           "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD.",
-          "Prove that sqrt{F_{1}} + sqrt{F_{2}} ≤ sqrt{F} and determine when equality holds."
+          "Denote F_{1}, F_{2}, and F_{3} as the areas of \\triangle ABE, \\triangle CDE, and the quadrilateral ABCD, respectively."
         ],
-        "incomplete_question": "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD. Prove that sqrt{F_{1}} + sqrt{F_{2}} ≤ sqrt{F} and determine when equality holds."
-      },
-      {
-        "variant_id": "26_remove_3",
-        "removed_condition_index": 3,
-        "removed_condition": "Prove that sqrt{F_{1}} + sqrt{F_{2}} ≤ sqrt{F} and determine when equality holds.",
-        "remaining_conditions": [
-          "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD.",
-          "Denote F_{1}, F_{2}, and F_{3} as the areas of triangle ABE, triangle CDE, and the quadrilateral ABCD, respectively."
-        ],
-        "incomplete_question": "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD. Denote F_{1}, F_{2}, and F_{3} as the areas of triangle ABE, triangle CDE, and the quadrilateral ABCD, respectively."
+        "incomplete_question": "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD. Denote F_{1}, F_{2}, and F_{3} as the areas of \\triangle ABE, \\triangle CDE, and the quadrilateral ABCD, respectively."
       }
     ]
   },
@@ -1188,7 +1227,7 @@
       585
     ],
     "gpt4o_mini_completion_lengths": [
-      871
+      1189
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1196,22 +1235,24 @@
       {
         "variant_id": "27_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "Let p and q be relatively prime positive integers",
+        "removed_condition": "p and q are relatively prime positive integers",
         "remaining_conditions": [
-          "dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ...",
+          "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
           "the numerators always increase by 1",
-          "the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term"
+          "the denominators alternate between powers of 2 and 4",
+          "exponents also increasing by 1 for each subsequent term"
         ],
-        "incomplete_question": "Let p and q be positive integers such that dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ..., where the numerators always increase by 1, and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q."
+        "incomplete_question": "Let p and q be positive integers such that \\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots, where the numerators always increase by 1, and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q."
       },
       {
         "variant_id": "27_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ...",
+        "removed_condition": "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
         "remaining_conditions": [
-          "Let p and q be relatively prime positive integers",
+          "p and q are relatively prime positive integers",
           "the numerators always increase by 1",
-          "the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term"
+          "the denominators alternate between powers of 2 and 4",
+          "exponents also increasing by 1 for each subsequent term"
         ],
         "incomplete_question": "Let p and q be relatively prime positive integers such that the numerators always increase by 1, and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q."
       },
@@ -1220,111 +1261,36 @@
         "removed_condition_index": 2,
         "removed_condition": "the numerators always increase by 1",
         "remaining_conditions": [
-          "Let p and q be relatively prime positive integers",
-          "dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ...",
-          "the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term"
+          "p and q are relatively prime positive integers",
+          "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
+          "the denominators alternate between powers of 2 and 4",
+          "exponents also increasing by 1 for each subsequent term"
         ],
-        "incomplete_question": "Let p and q be relatively prime positive integers such that dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ..., and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q."
+        "incomplete_question": "Let p and q be relatively prime positive integers such that \\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots, and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q."
       },
       {
         "variant_id": "27_remove_3",
         "removed_condition_index": 3,
-        "removed_condition": "the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term",
+        "removed_condition": "the denominators alternate between powers of 2 and 4",
         "remaining_conditions": [
-          "Let p and q be relatively prime positive integers",
-          "dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ...",
-          "the numerators always increase by 1"
+          "p and q are relatively prime positive integers",
+          "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
+          "the numerators always increase by 1",
+          "exponents also increasing by 1 for each subsequent term"
         ],
-        "incomplete_question": "Let p and q be relatively prime positive integers such that dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ..., and the numerators always increase by 1. Compute p+q."
-      }
-    ]
-  },
-  {
-    "data_source": "polaris",
-    "id": 18,
-    "question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even. Find $|a-b|.$\n",
-    "ground_truth": "25",
-    "solution": "",
-    "difficulty": "7/8",
-    "gpt4o_prompt_lengths": [],
-    "gpt4o_completion_lengths": [],
-    "gpt4o_mini_prompt_lengths": [
-      594
-    ],
-    "gpt4o_mini_completion_lengths": [
-      2118
-    ],
-    "local_prompt_lengths": [],
-    "local_completion_lengths": [],
-    "removal_variants": [
-      {
-        "variant_id": "18_remove_0",
-        "removed_condition_index": 0,
-        "removed_condition": "Let \\(\\tau (n)\\) denote the number of positive integer divisors of \\(n,\\) including 1 and \\(n.\\)",
-        "remaining_conditions": [
-          "For positive integers \\(n,\\) \\(\\tau (1)=1\\) and \\(\\tau(6) =4.\\)",
-          "Define \\(S(n)\\) by \\(S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).\\)",
-          "Let \\(a\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) odd, and let \\(b\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) even. Find \\(|a-b|.\\'"
-        ],
-        "incomplete_question": "For positive integers \\(n,\\) \\(\\tau (1)=1\\) and \\(\\tau(6) =4.\\) Define \\(S(n)\\) by \\(S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).\\) Let \\(a\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) odd, and let \\(b\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) even. Find \\(|a-b|.\\"
+        "incomplete_question": "Let p and q be relatively prime positive integers such that \\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots, where the numerators always increase by 1, and exponents also increasing by 1 for each subsequent term. Compute p+q."
       },
       {
-        "variant_id": "18_remove_1",
-        "removed_condition_index": 1,
-        "removed_condition": "For positive integers \\(n,\\)",
-        "remaining_conditions": [
-          "Let \\(\\tau (n)\\) denote the number of positive integer divisors of \\(n,\\) including 1 and \\(n.\\)",
-          "\\(\\tau (1)=1\\) and \\(\\tau(6) =4.\\)",
-          "Define \\(S(n)\\) by \\(S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).\\)",
-          "Let \\(a\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) odd, and let \\(b\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) even. Find \\(|a-b|.\\'"
-        ],
-        "incomplete_question": "Let \\(\\tau (n)\\) denote the number of positive integer divisors of \\(n,\\) including 1 and \\(n.\\) \\(\\tau (1)=1\\) and \\(\\tau(6) =4.\\) Define \\(S(n)\\) by \\(S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).\\) Let \\(a\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) odd, and let \\(b\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) even. Find \\(|a-b|.\\"
-      },
-      {
-        "variant_id": "18_remove_2",
-        "removed_condition_index": 2,
-        "removed_condition": "For example, \\(\\tau (1)=1\\) and \\(\\tau(6) =4.\\)",
-        "remaining_conditions": [
-          "For positive integers \\(n,\\) let \\(\\tau (n)\\) denote the number of positive integer divisors of \\(n,\\) including 1 and \\(n.\\)",
-          "Define \\(S(n)\\) by \\(S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).\\)",
-          "Let \\(a\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) odd, and let \\(b\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) even. Find \\(|a-b|.\\'"
-        ],
-        "incomplete_question": "For positive integers \\(n,\\) let \\(\\tau (n)\\) denote the number of positive integer divisors of \\(n,\\) including 1 and \\(n.\\) Define \\(S(n)\\) by \\(S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).\\) Let \\(a\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) odd, and let \\(b\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) even. Find \\(|a-b|.\\"
-      },
-      {
-        "variant_id": "18_remove_3",
-        "removed_condition_index": 3,
-        "removed_condition": "Define \\(S(n)\\) by \\(S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).\\)",
-        "remaining_conditions": [
-          "For positive integers \\(n,\\) let \\(\\tau (n)\\) denote the number of positive integer divisors of \\(n,\\) including 1 and \\(n.\\)",
-          "\\(\\tau (1)=1\\) and \\(\\tau(6) =4.\\)",
-          "Let \\(a\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) odd, and let \\(b\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) even. Find \\(|a-b|.\\'"
-        ],
-        "incomplete_question": "For positive integers \\(n,\\) let \\(\\tau (n)\\) denote the number of positive integer divisors of \\(n,\\) including 1 and \\(n.\\) \\(\\tau (1)=1\\) and \\(\\tau(6) =4.\\) Let \\(a\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) odd, and let \\(b\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) even. Find \\(|a-b|.\\"
-      },
-      {
-        "variant_id": "18_remove_4",
+        "variant_id": "27_remove_4",
         "removed_condition_index": 4,
-        "removed_condition": "Let \\(a\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) odd, and let \\(b\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) even.",
+        "removed_condition": "exponents also increasing by 1 for each subsequent term",
         "remaining_conditions": [
-          "For positive integers \\(n,\\) let \\(\\tau (n)\\) denote the number of positive integer divisors of \\(n,\\) including 1 and \\(n.\\)",
-          "\\(\\tau (1)=1\\) and \\(\\tau(6) =4.\\)",
-          "Define \\(S(n)\\) by \\(S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).\\)",
-          "Find \\(|a-b|.\\'"
+          "p and q are relatively prime positive integers",
+          "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
+          "the numerators always increase by 1",
+          "the denominators alternate between powers of 2 and 4"
         ],
-        "incomplete_question": "For positive integers \\(n,\\) let \\(\\tau (n)\\) denote the number of positive integer divisors of \\(n,\\) including 1 and \\(n.\\) \\(\\tau (1)=1\\) and \\(\\tau(6) =4.\\) Define \\(S(n)\\) by \\(S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).\\) Find \\(|a-b|.\\"
-      },
-      {
-        "variant_id": "18_remove_5",
-        "removed_condition_index": 5,
-        "removed_condition": "Find \\(|a-b|.\\",
-        "remaining_conditions": [
-          "For positive integers \\(n,\\) let \\(\\tau (n)\\) denote the number of positive integer divisors of \\(n,\\) including 1 and \\(n.\\)",
-          "\\(\\tau (1)=1\\) and \\(\\tau(6) =4.\\)",
-          "Define \\(S(n)\\) by \\(S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).\\)",
-          "Let \\(a\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) odd, and let \\(b\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) even."
-        ],
-        "incomplete_question": "For positive integers \\(n,\\) let \\(\\tau (n)\\) denote the number of positive integer divisors of \\(n,\\) including 1 and \\(n.\\) \\(\\tau (1)=1\\) and \\(\\tau(6) =4.\\) Define \\(S(n)\\) by \\(S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).\\) Let \\(a\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) odd, and let \\(b\\) denote the number of positive integers \\(n \\leq 2005\\) with \\(S(n)\\) even."
+        "incomplete_question": "Let p and q be relatively prime positive integers such that \\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots, where the numerators always increase by 1, and the denominators alternate between powers of 2 and 4. Compute p+q."
       }
     ]
   },
@@ -1341,7 +1307,7 @@
       557
     ],
     "gpt4o_mini_completion_lengths": [
-      372
+      291
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1349,38 +1315,32 @@
       {
         "variant_id": "28_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "angle ABC equals 30 degrees",
+        "removed_condition": "angle ABC equals 30°",
         "remaining_conditions": [
-          "X is the foot of the perpendicular from A onto BC",
-          "Y is the foot of the perpendicular from C to AB",
           "AX = 20",
           "CY = 22"
         ],
-        "incomplete_question": "Parallelogram ABCD is given such that X is the foot of the perpendicular from A onto BC, and Y is the foot of the perpendicular from C to AB. If AX = 20 and CY = 22, find the area of the parallelogram."
+        "incomplete_question": "Parallelogram ABCD is given. Let X be the foot of the perpendicular from A onto BC, and Y the foot of the perpendicular from C to AB. If AX = 20 and CY = 22, find the area of the parallelogram."
       },
       {
         "variant_id": "28_remove_1",
         "removed_condition_index": 1,
         "removed_condition": "AX = 20",
         "remaining_conditions": [
-          "angle ABC equals 30 degrees",
-          "X is the foot of the perpendicular from A onto BC",
-          "Y is the foot of the perpendicular from C to AB",
+          "angle ABC equals 30°",
           "CY = 22"
         ],
-        "incomplete_question": "Parallelogram ABCD is given such that angle ABC equals 30 degrees. Let X be the foot of the perpendicular from A onto BC, and Y the foot of the perpendicular from C to AB. If CY = 22, find the area of the parallelogram."
+        "incomplete_question": "Parallelogram ABCD is given such that angle ABC equals 30°. Let X be the foot of the perpendicular from A onto BC, and Y the foot of the perpendicular from C to AB. If CY = 22, find the area of the parallelogram."
       },
       {
         "variant_id": "28_remove_2",
         "removed_condition_index": 2,
         "removed_condition": "CY = 22",
         "remaining_conditions": [
-          "angle ABC equals 30 degrees",
-          "X is the foot of the perpendicular from A onto BC",
-          "Y is the foot of the perpendicular from C to AB",
+          "angle ABC equals 30°",
           "AX = 20"
         ],
-        "incomplete_question": "Parallelogram ABCD is given such that angle ABC equals 30 degrees. Let X be the foot of the perpendicular from A onto BC, and Y the foot of the perpendicular from C to AB. If AX = 20, find the area of the parallelogram."
+        "incomplete_question": "Parallelogram ABCD is given such that angle ABC equals 30°. Let X be the foot of the perpendicular from A onto BC, and Y the foot of the perpendicular from C to AB. If AX = 20, find the area of the parallelogram."
       }
     ]
   },
@@ -1397,7 +1357,7 @@
       597
     ],
     "gpt4o_mini_completion_lengths": [
-      799
+      771
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1405,79 +1365,68 @@
   },
   {
     "data_source": "polaris",
-    "id": 32,
-    "question": "In the Cartesian coordinate system $(xOy)$, the parametric equations of curve $C_{1}$ are given by $\\begin{cases}x=2t-1 \\\\ y=-4t-2\\end{cases}$ $(t$ is the parameter$)$, and in the polar coordinate system with the coordinate origin $O$ as the pole and the positive half of the $x$-axis as the polar axis, the polar equation of curve $C_{2}$ is $\\rho= \\frac{2}{1-\\cos \\theta}$.\n\n(1) Write the Cartesian equation of curve $C_{2}$;\n\n(2) Let $M_{1}$ be a point on curve $C_{1}$, and $M_{2}$ be a point on curve $C_{2}$. Find the minimum value of $|M_{1}M_{2}|$.",
-    "ground_truth": "\\frac{3 \\sqrt{5}}{10}",
+    "id": 30,
+    "question": "Let $\\triangle{PQR}$ be a right triangle with $PQ = 90$, $PR = 120$, and $QR = 150$. Let $C_{1}$ be the inscribed circle. Construct $\\overline{ST}$ with $S$ on $\\overline{PR}$ and $T$ on $\\overline{QR}$, such that $\\overline{ST}$ is perpendicular to $\\overline{PR}$ and tangent to $C_{1}$. Construct $\\overline{UV}$ with $U$ on $\\overline{PQ}$ and $V$ on $\\overline{QR}$ such that $\\overline{UV}$ is perpendicular to $\\overline{PQ}$ and tangent to $C_{1}$. Let $C_{2}$ be the inscribed circle of $\\triangle{RST}$ and $C_{3}$ the inscribed circle of $\\triangle{QUV}$. The distance between the centers of $C_{2}$ and $C_{3}$ can be written as $\\sqrt {10n}$. What is $n$?\n",
+    "ground_truth": "725",
     "solution": "",
     "difficulty": "7/8",
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      645
+      676
     ],
     "gpt4o_mini_completion_lengths": [
-      360
+      1232
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "removal_variants": [
       {
-        "variant_id": "32_remove_0",
+        "variant_id": "30_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "The parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2.",
+        "removed_condition": "PQ = 90",
         "remaining_conditions": [
-          "In the polar coordinate system with the coordinate origin O as the pole and the positive half of the x-axis as the polar axis, the polar equation of curve C_{2} is ρ= 2/(1−cos θ)."
+          "PR = 120",
+          "QR = 150",
+          "Let C_{1} be the inscribed circle.",
+          "Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}.",
+          "Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}.",
+          "Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}.",
+          "The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
         ],
-        "incomplete_question": "In the polar coordinate system with the coordinate origin O as the pole and the positive half of the x-axis as the polar axis, the polar equation of curve C_{2} is ρ= 2/(1−cos θ). (1) Write the Cartesian equation of curve C_{2}; (2) Let M_{2} be a point on curve C_{2}. Find the minimum value of |M_{1}M_{2}|."
+        "incomplete_question": "Let \\triangle{PQR} be a right triangle with PR = 120 and QR = 150. Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
       },
       {
-        "variant_id": "32_remove_1",
+        "variant_id": "30_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "The polar equation of curve C_{2} is ρ= 2/(1−cos θ).",
+        "removed_condition": "PR = 120",
         "remaining_conditions": [
-          "The parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2."
+          "PQ = 90",
+          "QR = 150",
+          "Let C_{1} be the inscribed circle.",
+          "Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}.",
+          "Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}.",
+          "Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}.",
+          "The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
         ],
-        "incomplete_question": "In the Cartesian coordinate system (xOy), the parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2. (1) Write the Cartesian equation of curve C_{2}; (2) Let M_{1} be a point on curve C_{1}, and M_{2} be a point on curve C_{2}. Find the minimum value of |M_{1}M_{2}|."
+        "incomplete_question": "Let \\triangle{PQR} be a right triangle with PQ = 90 and QR = 150. Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+      },
+      {
+        "variant_id": "30_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "QR = 150",
+        "remaining_conditions": [
+          "PQ = 90",
+          "PR = 120",
+          "Let C_{1} be the inscribed circle.",
+          "Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}.",
+          "Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}.",
+          "Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}.",
+          "The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+        ],
+        "incomplete_question": "Let \\triangle{PQR} be a right triangle with PQ = 90 and PR = 120. Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
       }
     ]
-  },
-  {
-    "data_source": "polaris",
-    "id": 34,
-    "question": "Compute $\\arccos(\\cos 9).$ All functions are in radians.",
-    "ground_truth": "9 - 2\\pi",
-    "solution": "",
-    "difficulty": "7/8",
-    "gpt4o_prompt_lengths": [],
-    "gpt4o_completion_lengths": [],
-    "gpt4o_mini_prompt_lengths": [
-      475
-    ],
-    "gpt4o_mini_completion_lengths": [
-      99
-    ],
-    "local_prompt_lengths": [],
-    "local_completion_lengths": [],
-    "removal_variants": []
-  },
-  {
-    "data_source": "polaris",
-    "id": 33,
-    "question": "The sequence $\\mathrm{Az}\\left(a_{n}\\right)$ is defined as follows:\n\n$$\na_{0}=a_{1}=1, \\quad a_{n+1}=a_{n}+\\frac{1}{a_{n-1}}\n$$\n\nShow that $a_{n} \\geq \\sqrt{n}$.",
-    "ground_truth": "a_n\\ge\\sqrt{n}",
-    "solution": "",
-    "difficulty": "7/8",
-    "gpt4o_prompt_lengths": [],
-    "gpt4o_completion_lengths": [],
-    "gpt4o_mini_prompt_lengths": [
-      531
-    ],
-    "gpt4o_mini_completion_lengths": [
-      216
-    ],
-    "local_prompt_lengths": [],
-    "local_completion_lengths": [],
-    "removal_variants": []
   },
   {
     "data_source": "polaris",
@@ -1561,94 +1510,89 @@
   },
   {
     "data_source": "polaris",
-    "id": 30,
-    "question": "Let $\\triangle{PQR}$ be a right triangle with $PQ = 90$, $PR = 120$, and $QR = 150$. Let $C_{1}$ be the inscribed circle. Construct $\\overline{ST}$ with $S$ on $\\overline{PR}$ and $T$ on $\\overline{QR}$, such that $\\overline{ST}$ is perpendicular to $\\overline{PR}$ and tangent to $C_{1}$. Construct $\\overline{UV}$ with $U$ on $\\overline{PQ}$ and $V$ on $\\overline{QR}$ such that $\\overline{UV}$ is perpendicular to $\\overline{PQ}$ and tangent to $C_{1}$. Let $C_{2}$ be the inscribed circle of $\\triangle{RST}$ and $C_{3}$ the inscribed circle of $\\triangle{QUV}$. The distance between the centers of $C_{2}$ and $C_{3}$ can be written as $\\sqrt {10n}$. What is $n$?\n",
-    "ground_truth": "725",
+    "id": 32,
+    "question": "In the Cartesian coordinate system $(xOy)$, the parametric equations of curve $C_{1}$ are given by $\\begin{cases}x=2t-1 \\\\ y=-4t-2\\end{cases}$ $(t$ is the parameter$)$, and in the polar coordinate system with the coordinate origin $O$ as the pole and the positive half of the $x$-axis as the polar axis, the polar equation of curve $C_{2}$ is $\\rho= \\frac{2}{1-\\cos \\theta}$.\n\n(1) Write the Cartesian equation of curve $C_{2}$;\n\n(2) Let $M_{1}$ be a point on curve $C_{1}$, and $M_{2}$ be a point on curve $C_{2}$. Find the minimum value of $|M_{1}M_{2}|$.",
+    "ground_truth": "\\frac{3 \\sqrt{5}}{10}",
     "solution": "",
     "difficulty": "7/8",
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      676
+      645
     ],
     "gpt4o_mini_completion_lengths": [
-      1211
+      612
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "removal_variants": [
       {
-        "variant_id": "30_remove_0",
+        "variant_id": "32_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "PQ = 90",
+        "removed_condition": "The parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2.",
         "remaining_conditions": [
-          "PR = 120",
-          "QR = 150",
-          "Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+          "In the polar coordinate system with the coordinate origin O as the pole and the positive half of the x-axis as the polar axis, the polar equation of curve C_{2} is ρ= 2/(1−cos θ)."
         ],
-        "incomplete_question": "Let \\triangle{PQR} be a right triangle with PR = 120 and QR = 150. Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+        "incomplete_question": "In the polar coordinate system with the coordinate origin O as the pole and the positive half of the x-axis as the polar axis, the polar equation of curve C_{2} is ρ= 2/(1−cos θ). (1) Write the Cartesian equation of curve C_{2}; (2) Let M_{2} be a point on curve C_{2}. Find the minimum value of |M_{1}M_{2}|."
       },
       {
-        "variant_id": "30_remove_1",
+        "variant_id": "32_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "PR = 120",
+        "removed_condition": "The polar equation of curve C_{2} is ρ= 2/(1−cos θ).",
         "remaining_conditions": [
-          "PQ = 90",
-          "QR = 150",
-          "Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+          "The parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2."
         ],
-        "incomplete_question": "Let \\triangle{PQR} be a right triangle with PQ = 90 and QR = 150. Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+        "incomplete_question": "In the Cartesian coordinate system (xOy), the parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2. (1) Write the Cartesian equation of curve C_{2}; (2) Let M_{1} be a point on curve C_{1}, and M_{2} be a point on curve C_{2}. Find the minimum value of |M_{1}M_{2}|."
       },
       {
-        "variant_id": "30_remove_2",
+        "variant_id": "32_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "QR = 150",
+        "removed_condition": "Let M_{1} be a point on curve C_{1}, and M_{2} be a point on curve C_{2}.",
         "remaining_conditions": [
-          "PQ = 90",
-          "PR = 120",
-          "Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+          "In the Cartesian coordinate system (xOy), the parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2.",
+          "In the polar coordinate system with the coordinate origin O as the pole and the positive half of the x-axis as the polar axis, the polar equation of curve C_{2} is ρ= 2/(1−cos θ)."
         ],
-        "incomplete_question": "Let \\triangle{PQR} be a right triangle with PQ = 90 and PR = 120. Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+        "incomplete_question": "In the Cartesian coordinate system (xOy), the parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2, and in the polar coordinate system with the coordinate origin O as the pole and the positive half of the x-axis as the polar axis, the polar equation of curve C_{2} is ρ= 2/(1−cos θ). (1) Write the Cartesian equation of curve C_{2}; (2) Find the minimum value of |M_{1}M_{2}|."
       }
     ]
   },
   {
     "data_source": "polaris",
-    "id": 36,
-    "question": "Given that the total amount of money originally owned by Moe, Loki, and Nick was $72, and each of Loki, Moe, and Nick gave Ott$\\, 4, determine the fractional part of the group's money that Ott now has.",
-    "ground_truth": "\\frac{1}{6}",
+    "id": 33,
+    "question": "The sequence $\\mathrm{Az}\\left(a_{n}\\right)$ is defined as follows:\n\n$$\na_{0}=a_{1}=1, \\quad a_{n+1}=a_{n}+\\frac{1}{a_{n-1}}\n$$\n\nShow that $a_{n} \\geq \\sqrt{n}$.",
+    "ground_truth": "a_n\\ge\\sqrt{n}",
     "solution": "",
     "difficulty": "7/8",
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      506
+      531
     ],
     "gpt4o_mini_completion_lengths": [
-      171
+      216
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
-    "removal_variants": [
-      {
-        "variant_id": "36_remove_0",
-        "removed_condition_index": 0,
-        "removed_condition": "the total amount of money originally owned by Moe, Loki, and Nick was $72",
-        "remaining_conditions": [
-          "each of Loki, Moe, and Nick gave Ott $4"
-        ],
-        "incomplete_question": "Given that each of Loki, Moe, and Nick gave Ott $4, determine the fractional part of the group's money that Ott now has."
-      },
-      {
-        "variant_id": "36_remove_1",
-        "removed_condition_index": 1,
-        "removed_condition": "each of Loki, Moe, and Nick gave Ott $4",
-        "remaining_conditions": [
-          "the total amount of money originally owned by Moe, Loki, and Nick was $72"
-        ],
-        "incomplete_question": "Given that the total amount of money originally owned by Moe, Loki, and Nick was $72, determine the fractional part of the group's money that Ott now has."
-      }
-    ]
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
+    "id": 34,
+    "question": "Compute $\\arccos(\\cos 9).$ All functions are in radians.",
+    "ground_truth": "9 - 2\\pi",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      475
+    ],
+    "gpt4o_mini_completion_lengths": [
+      163
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": []
   },
   {
     "data_source": "polaris",
@@ -1663,61 +1607,49 @@
       615
     ],
     "gpt4o_mini_completion_lengths": [
-      792
+      1249
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
-    "removal_variants": [
-      {
-        "variant_id": "35_remove_0",
-        "removed_condition_index": 0,
-        "removed_condition": "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively.",
-        "remaining_conditions": [
-          "Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B.",
-          "The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime. Find the greatest integer less than or equal to m + \\sqrt{n}."
-        ],
-        "incomplete_question": "Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B. The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime. Find the greatest integer less than or equal to m + \\sqrt{n}."
-      },
-      {
-        "variant_id": "35_remove_1",
-        "removed_condition_index": 1,
-        "removed_condition": "Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B.",
-        "remaining_conditions": [
-          "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively.",
-          "The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime. Find the greatest integer less than or equal to m + \\sqrt{n}."
-        ],
-        "incomplete_question": "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively. The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime. Find the greatest integer less than or equal to m + \\sqrt{n}."
-      },
-      {
-        "variant_id": "35_remove_2",
-        "removed_condition_index": 2,
-        "removed_condition": "The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime.",
-        "remaining_conditions": [
-          "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively.",
-          "Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B."
-        ],
-        "incomplete_question": "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively. Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B. Find the greatest integer less than or equal to m + \\sqrt{n}."
-      }
-    ]
+    "removal_variants": []
   },
   {
     "data_source": "polaris",
-    "id": 38,
-    "question": "In the diagram shown, $\\overrightarrow{OA}\\perp\\overrightarrow{OC}$ and $\\overrightarrow{OB}\\perp\\overrightarrow{OD}$. If $\\angle{AOD}$ is 3.5 times $\\angle{BOC}$, what is $\\angle{AOD}$? [asy]\nunitsize(1.5cm);\ndefaultpen(linewidth(.7pt)+fontsize(10pt));\ndotfactor=4;\n\npair O=(0,0), A=dir(0), B=dir(50), C=dir(90), D=dir(140);\npair[] dots={O,A,B,C,D};\n\ndot(dots);\ndraw(O--1.2*D,EndArrow(4));\ndraw(O--1.2*B,EndArrow(4));\ndraw(O--1.2*C,EndArrow(4));\ndraw(O--1.2*A,EndArrow(4));\n\nlabel(\"$D$\",D,SW);\nlabel(\"$C$\",C,W);\nlabel(\"$B$\",B,E);\nlabel(\"$A$\",A,N);\nlabel(\"$O$\",O,S);\n[/asy]",
-    "ground_truth": "140\\text{ degrees}",
+    "id": 36,
+    "question": "Given that the total amount of money originally owned by Moe, Loki, and Nick was $72, and each of Loki, Moe, and Nick gave Ott$\\, 4, determine the fractional part of the group's money that Ott now has.",
+    "ground_truth": "\\frac{1}{6}",
     "solution": "",
     "difficulty": "7/8",
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      688
+      506
     ],
     "gpt4o_mini_completion_lengths": [
-      363
+      169
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
-    "removal_variants": []
+    "removal_variants": [
+      {
+        "variant_id": "36_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "the total amount of money originally owned by Moe, Loki, and Nick was $72",
+        "remaining_conditions": [
+          "each of Loki, Moe, and Nick gave Ott $4"
+        ],
+        "incomplete_question": "Each of Loki, Moe, and Nick gave Ott $4. Determine the fractional part of the group's money that Ott now has."
+      },
+      {
+        "variant_id": "36_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "each of Loki, Moe, and Nick gave Ott $4",
+        "remaining_conditions": [
+          "the total amount of money originally owned by Moe, Loki, and Nick was $72"
+        ],
+        "incomplete_question": "Given that the total amount of money originally owned by Moe, Loki, and Nick was $72, determine the fractional part of the group's money that Ott now has."
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -1732,7 +1664,7 @@
       542
     ],
     "gpt4o_mini_completion_lengths": [
-      424
+      423
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1771,6 +1703,25 @@
   },
   {
     "data_source": "polaris",
+    "id": 38,
+    "question": "In the diagram shown, $\\overrightarrow{OA}\\perp\\overrightarrow{OC}$ and $\\overrightarrow{OB}\\perp\\overrightarrow{OD}$. If $\\angle{AOD}$ is 3.5 times $\\angle{BOC}$, what is $\\angle{AOD}$? [asy]\nunitsize(1.5cm);\ndefaultpen(linewidth(.7pt)+fontsize(10pt));\ndotfactor=4;\n\npair O=(0,0), A=dir(0), B=dir(50), C=dir(90), D=dir(140);\npair[] dots={O,A,B,C,D};\n\ndot(dots);\ndraw(O--1.2*D,EndArrow(4));\ndraw(O--1.2*B,EndArrow(4));\ndraw(O--1.2*C,EndArrow(4));\ndraw(O--1.2*A,EndArrow(4));\n\nlabel(\"$D$\",D,SW);\nlabel(\"$C$\",C,W);\nlabel(\"$B$\",B,E);\nlabel(\"$A$\",A,N);\nlabel(\"$O$\",O,S);\n[/asy]",
+    "ground_truth": "140\\text{ degrees}",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      688
+    ],
+    "gpt4o_mini_completion_lengths": [
+      363
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
     "id": 39,
     "question": "In a class of  $ n\\geq 4$  some students are friends. In this class any  $ n \\minus{} 1$  students can be seated in a round table such that every student is sitting next to a friend of him in both sides, but  $ n$  students can not be seated in that way. Prove that the minimum value of  $ n$  is  $ 10$ .",
     "ground_truth": "10",
@@ -1782,7 +1733,7 @@
       544
     ],
     "gpt4o_mini_completion_lengths": [
-      715
+      556
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1793,8 +1744,7 @@
         "removed_condition": "n >= 4",
         "remaining_conditions": [
           "some students are friends",
-          "any n - 1 students can be seated in a round table such that every student is sitting next to a friend of him in both sides",
-          "n students can not be seated in that way",
+          "any n - 1 students can be seated in a round table such that every student is sitting next to a friend of him in both sides, but n students can not be seated in that way",
           "prove that the minimum value of n is 10"
         ],
         "incomplete_question": "In a class, some students are friends. In this class, any n - 1 students can be seated in a round table such that every student is sitting next to a friend of him in both sides, but n students can not be seated in that way. Prove that the minimum value of n is 10."
@@ -1805,8 +1755,7 @@
         "removed_condition": "some students are friends",
         "remaining_conditions": [
           "n >= 4",
-          "any n - 1 students can be seated in a round table such that every student is sitting next to a friend of him in both sides",
-          "n students can not be seated in that way",
+          "any n - 1 students can be seated in a round table such that every student is sitting next to a friend of him in both sides, but n students can not be seated in that way",
           "prove that the minimum value of n is 10"
         ],
         "incomplete_question": "In a class of n >= 4, any n - 1 students can be seated in a round table such that every student is sitting next to a friend of him in both sides, but n students can not be seated in that way. Prove that the minimum value of n is 10."
@@ -1814,36 +1763,22 @@
       {
         "variant_id": "39_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "any n - 1 students can be seated in a round table such that every student is sitting next to a friend of him in both sides",
+        "removed_condition": "any n - 1 students can be seated in a round table such that every student is sitting next to a friend of him in both sides, but n students can not be seated in that way",
         "remaining_conditions": [
           "n >= 4",
           "some students are friends",
-          "n students can not be seated in that way",
           "prove that the minimum value of n is 10"
         ],
-        "incomplete_question": "In a class of n >= 4, some students are friends. In this class, n students can not be seated in that way. Prove that the minimum value of n is 10."
+        "incomplete_question": "In a class of n >= 4, some students are friends. Prove that the minimum value of n is 10."
       },
       {
         "variant_id": "39_remove_3",
         "removed_condition_index": 3,
-        "removed_condition": "n students can not be seated in that way",
-        "remaining_conditions": [
-          "n >= 4",
-          "some students are friends",
-          "any n - 1 students can be seated in a round table such that every student is sitting next to a friend of him in both sides",
-          "prove that the minimum value of n is 10"
-        ],
-        "incomplete_question": "In a class of n >= 4, some students are friends. In this class, any n - 1 students can be seated in a round table such that every student is sitting next to a friend of him in both sides. Prove that the minimum value of n is 10."
-      },
-      {
-        "variant_id": "39_remove_4",
-        "removed_condition_index": 4,
         "removed_condition": "prove that the minimum value of n is 10",
         "remaining_conditions": [
           "n >= 4",
           "some students are friends",
-          "any n - 1 students can be seated in a round table such that every student is sitting next to a friend of him in both sides",
-          "n students can not be seated in that way"
+          "any n - 1 students can be seated in a round table such that every student is sitting next to a friend of him in both sides, but n students can not be seated in that way"
         ],
         "incomplete_question": "In a class of n >= 4, some students are friends. In this class, any n - 1 students can be seated in a round table such that every student is sitting next to a friend of him in both sides, but n students can not be seated in that way."
       }
