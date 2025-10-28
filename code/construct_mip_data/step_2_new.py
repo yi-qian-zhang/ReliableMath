@@ -19,7 +19,7 @@ Step 2.验证缺省问题 (verify_incomplete_questions_multi_attempt)
    ↓
 最终数据集：只包含移除关键条件后的有效缺省问题:-------------------------每个难度500条
 """
-
+  
 import os
 import json
 import time
@@ -99,15 +99,54 @@ def count_tokens(text, model_name="gpt-4o"):
     except:
         return len(text) // 4
 
+def record_tokens(data, model_type, prompt_tokens, completion_tokens):
+    """
+    根据模型类型记录 token 使用量
+    
+    参数：
+        data: 数据字典
+        model_type: "gpt-4o" / "gpt-4o-mini" / "local"
+        prompt_tokens: 输入 token 数
+        completion_tokens: 输出 token 数
+    """
+    # 初始化字段
+    if "gpt4o_prompt_lengths" not in data:
+        data["gpt4o_prompt_lengths"] = []
+        data["gpt4o_completion_lengths"] = []
+    if "gpt4o_mini_prompt_lengths" not in data:
+        data["gpt4o_mini_prompt_lengths"] = []
+        data["gpt4o_mini_completion_lengths"] = []
+    if "local_prompt_lengths" not in data:
+        data["local_prompt_lengths"] = []
+        data["local_completion_lengths"] = []
+    
+    # 根据模型类型记录
+    if model_type == "gpt-4o":
+        data["gpt4o_prompt_lengths"].append(prompt_tokens)
+        data["gpt4o_completion_lengths"].append(completion_tokens)
+    elif model_type == "gpt-4o-mini":
+        data["gpt4o_mini_prompt_lengths"].append(prompt_tokens)
+        data["gpt4o_mini_completion_lengths"].append(completion_tokens)
+    elif model_type == "local":
+        data["local_prompt_lengths"].append(prompt_tokens)
+        data["local_completion_lengths"].append(completion_tokens)
+
 # ============= API Functions =============
 
 def get_response_openai(input_prompt, persona="", model=None, temperature=0.0):
+    """
+    调用 OpenAI-compatible API
+    
+    返回：
+        (response_text, prompt_tokens, completion_tokens, model_type)
+        model_type: "gpt-4o" / "gpt-4o-mini" / "local"
+    """
     if model is None:
         model = args.model
     
     if model not in model_options:
         logging.error(f"Model {model} not found")
-        return "", 0, 0
+        return "", 0, 0, "unknown"
     
     model_name, key, url = random.choice(model_options[model])
     client = OpenAI(api_key=key, base_url=url)
@@ -120,7 +159,17 @@ def get_response_openai(input_prompt, persona="", model=None, temperature=0.0):
     prompt_text = (persona + "\n" if persona else "") + input_prompt
     prompt_tokens = count_tokens(prompt_text, model_name)
     
+    # 判断模型类型
     is_local_model = "localhost" in url or "127.0.0.1" in url
+    
+    if is_local_model:
+        model_type = "local"
+    elif "gpt-4o-mini" in model_name.lower():
+        model_type = "gpt-4o-mini"
+    elif "gpt-4o" in model_name.lower():
+        model_type = "gpt-4o"
+    else:
+        model_type = "gpt-4o"
     
     max_retries = 5
     for attempt in range(max_retries):
@@ -143,7 +192,7 @@ def get_response_openai(input_prompt, persona="", model=None, temperature=0.0):
                     logging.debug(f"Local model: estimating tokens")
                 completion_tokens = count_tokens(response_text, model_name)
             
-            return response_text, prompt_tokens, completion_tokens
+            return response_text, prompt_tokens, completion_tokens, model_type
             
         except Exception as e:
             logging.warning(f'API call failed (attempt {attempt+1}/{max_retries}): {e}')
@@ -151,7 +200,7 @@ def get_response_openai(input_prompt, persona="", model=None, temperature=0.0):
                 wait_time = 3 if is_local_model else 10
                 time.sleep(wait_time * (attempt + 1))
     
-    return "", 0, 0
+    return "", 0, 0, model_type
 
 def parse_json_response(response, fallback=None):
     """简化的 JSON 解析"""
@@ -177,7 +226,7 @@ def parse_json_response(response, fallback=None):
 # ============= Answer Processing =============
 
 def extract_answer_tag(response):
-    """从（<answer>,{box}中提取答案 ）"""
+    """从响应中提取答案（支持多种格式）"""
     try:
         # 方法 1: 优先查找 <answer> 标签
         start = response.find('<answer>')
@@ -224,12 +273,12 @@ def extract_answer_tag(response):
         return None
 
 def judge_answer_equivalence(question, model_answer, ground_truth):
-    """LLM-as-Judge (4o-mini) 判断答案等价性"""
+    """使用 LLM-as-Judge 判断答案等价性"""
     prompt_path = os.path.join(args.prompt_dir, "judge_equivalence.txt")
     
     if not os.path.exists(prompt_path):
         logging.error(f"Judge prompt not found: {prompt_path}")
-        return False
+        return False, 0, 0, "unknown"
     
     with open(prompt_path, 'r', encoding='utf-8') as f:
         prompt_template = f.read()
@@ -240,7 +289,7 @@ def judge_answer_equivalence(question, model_answer, ground_truth):
         ground_truth=ground_truth
     )
     
-    response, _, _ = get_response_openai(
+    response, prompt_tokens, completion_tokens, model_type = get_response_openai(
         input_prompt,
         persona="You are an expert mathematical equivalence judge.",
         model=args.judge_model,
@@ -250,16 +299,18 @@ def judge_answer_equivalence(question, model_answer, ground_truth):
     response_lower = response.strip().lower()
     
     if 'true' in response_lower and 'false' not in response_lower:
-        return True
+        result = True
     elif response_lower == 'true':
-        return True
+        result = True
     else:
-        return False
+        result = False
+    
+    return result, prompt_tokens, completion_tokens, model_type
 
 # ============= Step 1: Extract and Generate Variants =============
 
 def extract_and_generate_variants(data):
-    """Step 1: 提取条件并生成所有变体（4o）"""
+    """Step 1: 一次性提取条件并生成所有移除变体"""
     prompt_path = os.path.join(args.prompt_dir, "extract_and_remove.txt")
     
     if not os.path.exists(prompt_path):
@@ -275,22 +326,20 @@ def extract_and_generate_variants(data):
         ground_truth=data.get("ground_truth", "")
     )
     
-    response, prompt_tokens, completion_tokens = get_response_openai(
+    response, prompt_tokens, completion_tokens, model_type = get_response_openai(
         input_prompt,
         persona="You are an expert at analyzing and rewriting mathematical problems.",
         model=args.model,
         temperature=0.0
     )
     
-    if "prompt_lengths" not in data:
-        data["prompt_lengths"] = []
-        data["completion_lengths"] = []
+    # 记录 token
+    record_tokens(data, model_type, prompt_tokens, completion_tokens)
     
-    data["prompt_lengths"].append(prompt_tokens)
-    data["completion_lengths"].append(completion_tokens)
-    
+    # Parse response - 期望得到一个变体列表
     parsed = parse_json_response(response, {"variants": []})
     
+    # 处理两种可能的 JSON 格式
     if isinstance(parsed, list):
         variants_data = parsed
     else:
@@ -299,14 +348,17 @@ def extract_and_generate_variants(data):
     removal_variants = []
     
     for i, variant_data in enumerate(variants_data):
+        # 清理 incomplete_question
         incomplete_question = variant_data.get("incomplete_question", "").strip()
         
+        # Remove common prefixes
         for prefix in ["Rewritten Problem:", "Incomplete Problem:", "Problem:", "**Problem:**"]:
             if prefix in incomplete_question:
                 incomplete_question = incomplete_question.split(prefix)[-1].strip()
         
         incomplete_question = incomplete_question.replace("**", "").strip()
         
+        # Remove quotes if present
         if incomplete_question.startswith('"') and incomplete_question.endswith('"'):
             incomplete_question = incomplete_question[1:-1].strip()
         
@@ -329,7 +381,7 @@ def extract_and_generate_variants(data):
 # ============= Step 2: Verify with Multiple Attempts =============
 
 def verify_incomplete_questions_multi_attempt(data):
-    """Step 2: 验证缺省问题（最多8次尝试）"""
+    """Step 2: 验证"缺省问题 + 移除的条件"能否解出 ground_truth（最多 8 次尝试）"""
     prompt_path = os.path.join(args.prompt_dir, "verify_with_condition.txt")
     
     if not os.path.exists(prompt_path):
@@ -357,15 +409,15 @@ def verify_incomplete_questions_multi_attempt(data):
                 removed_condition=removed_condition
             )
             
-            response, prompt_tokens, completion_tokens = get_response_openai(
+            response, prompt_tokens, completion_tokens, model_type = get_response_openai(
                 input_prompt,
                 persona="You are an expert mathematical problem solver.",
                 model=args.verify_model,
-                temperature=args.temperature  # 使用配置的 temperature
+                temperature=args.temperature
             )
             
-            data["prompt_lengths"].append(prompt_tokens)
-            data["completion_lengths"].append(completion_tokens)
+            # 记录 token
+            record_tokens(data, model_type, prompt_tokens, completion_tokens)
             
             # 提取答案
             model_answer = extract_answer_tag(response)
@@ -375,7 +427,7 @@ def verify_incomplete_questions_multi_attempt(data):
                 is_correct = False
                 judge_result = "no_answer_tag"
             else:
-                is_correct = judge_answer_equivalence(
+                is_correct, judge_prompt_tokens, judge_completion_tokens, judge_model_type = judge_answer_equivalence(
                     incomplete_question + " [With condition: " + removed_condition + "]",
                     model_answer,
                     ground_truth
@@ -383,9 +435,7 @@ def verify_incomplete_questions_multi_attempt(data):
                 judge_result = "equivalent" if is_correct else "not_equivalent"
                 
                 # 记录 judge token
-                judge_tokens = count_tokens(incomplete_question + removed_condition + model_answer + ground_truth)
-                data["prompt_lengths"].append(judge_tokens)
-                data["completion_lengths"].append(10)
+                record_tokens(data, judge_model_type, judge_prompt_tokens, judge_completion_tokens)
             
             # 记录本次尝试
             attempt_record = {
@@ -412,9 +462,9 @@ def verify_incomplete_questions_multi_attempt(data):
         # 保存验证结果
         variant["verification"] = {
             "total_attempts": len(all_attempts),
-            "success_at_attempt": success_at_attempt,  # None 表示全部失败
+            "success_at_attempt": success_at_attempt,
             "is_valid": is_valid,
-            "all_attempts": all_attempts,  # 记录每次尝试的详情
+            "all_attempts": all_attempts,
             "ground_truth": ground_truth
         }
     
@@ -473,8 +523,15 @@ def filter_valid_data(final_path):
     dataset = read_json(final_path)
     valid_data = []
     
-    total_prompt = sum(sum(d.get("prompt_lengths", [])) for d in dataset)
-    total_completion = sum(sum(d.get("completion_lengths", [])) for d in dataset)
+    # 分别统计三类模型的 token
+    total_gpt4o_prompt = sum(sum(d.get("gpt4o_prompt_lengths", [])) for d in dataset)
+    total_gpt4o_completion = sum(sum(d.get("gpt4o_completion_lengths", [])) for d in dataset)
+    
+    total_gpt4o_mini_prompt = sum(sum(d.get("gpt4o_mini_prompt_lengths", [])) for d in dataset)
+    total_gpt4o_mini_completion = sum(sum(d.get("gpt4o_mini_completion_lengths", [])) for d in dataset)
+    
+    total_local_prompt = sum(sum(d.get("local_prompt_lengths", [])) for d in dataset)
+    total_local_completion = sum(sum(d.get("local_completion_lengths", [])) for d in dataset)
     
     total_original = len(dataset)
     total_variants = 0
@@ -489,6 +546,7 @@ def filter_valid_data(final_path):
             
             verification = variant.get("verification", {})
             
+            # 只保留有效的 pair（加回条件后能解出 ground_truth）
             if verification.get("is_valid", False):
                 success_attempt = verification.get("success_at_attempt", 0)
                 attempt_distribution[success_attempt] = attempt_distribution.get(success_attempt, 0) + 1
@@ -528,10 +586,37 @@ def filter_valid_data(final_path):
         count = attempt_distribution[attempt]
         print(f"  Attempt {attempt}: {count} variants ({count/valid_variants*100:.1f}%)")
     
-    print(f"\nToken Usage (ALL):")
-    print(f"  Prompt: {total_prompt:,}")
-    print(f"  Completion: {total_completion:,}")
-    print(f"  Total: {total_prompt + total_completion:,}")
+    # 单价（每 1M tokens）
+    gpt4o_prompt_rate = 2.5
+    gpt4o_completion_rate = 10.0
+    gpt4o_mini_prompt_rate = 0.15
+    gpt4o_mini_completion_rate = 0.6
+
+    # GPT-4o Token 统计
+    print(f"\n💰 GPT-4o Token Usage:")
+    print(f"  Prompt: {total_gpt4o_prompt:,}")
+    print(f"  Completion: {total_gpt4o_completion:,}")
+    print(
+        f"  Cost = {total_gpt4o_prompt}/1e6*{gpt4o_prompt_rate} "
+        f"+ {total_gpt4o_completion}/1e6*{gpt4o_completion_rate} "
+        f"= ${total_gpt4o_prompt/1e6*gpt4o_prompt_rate + total_gpt4o_completion/1e6*gpt4o_completion_rate:.6f}"
+    )
+
+    # GPT-4o-mini Token 统计
+    print(f"\n💰 GPT-4o-mini Token Usage:")
+    print(f"  Prompt: {total_gpt4o_mini_prompt:,}")
+    print(f"  Completion: {total_gpt4o_mini_completion:,}")
+    print(
+        f"  Cost = {total_gpt4o_mini_prompt}/1e6*{gpt4o_mini_prompt_rate} "
+        f"+ {total_gpt4o_mini_completion}/1e6*{gpt4o_mini_completion_rate} "
+        f"= ${total_gpt4o_mini_prompt/1e6*gpt4o_mini_prompt_rate + total_gpt4o_mini_completion/1e6*gpt4o_mini_completion_rate:.6f}"
+    )
+
+    
+    # 本地模型 Token 统计
+    print(f"\n🖥️  Local Model Token Usage:")
+    print(f"  Prompt: {total_local_prompt:,}")
+    print(f"  Completion: {total_local_completion:,}")
     
     print(f"\nOutput: {output_path}")
     print("="*70)
@@ -539,6 +624,7 @@ def filter_valid_data(final_path):
 # ============= Main Workflow =============
 
 def construction_workflow():
+    # 直接使用 args 中的路径（相对于 ~/ReliableMath）
     input_path = os.path.join(args.data_dir, f"{args.dataset}.json")
     output_dir = args.output_dir
     
@@ -556,6 +642,7 @@ def construction_workflow():
     
     os.makedirs(output_dir, exist_ok=True)
     
+    # Force cleanup
     if args.force:
         logging.info("Force mode: Cleaning up existing intermediate files...")
         for pattern in [f"{args.dataset}_*.json", f"{args.dataset}_*.jsonl"]:

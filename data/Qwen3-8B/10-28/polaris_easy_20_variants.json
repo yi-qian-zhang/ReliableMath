@@ -6,19 +6,24 @@
     "ground_truth": "392",
     "solution": "",
     "difficulty": "6/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       484
     ],
-    "completion_lengths": [
-      228
+    "gpt4o_completion_lengths": [
+      248
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "0_remove_0",
         "removed_condition_index": 0,
         "removed_condition": "The largest three-digit number",
         "remaining_conditions": [
-          "divided by an integer, with the quotient rounded to one decimal place being 2.5",
+          "divided by an integer",
+          "with the quotient rounded to one decimal place being 2.5",
           "will have the smallest divisor as"
         ],
         "incomplete_question": "A number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:"
@@ -26,19 +31,21 @@
       {
         "variant_id": "0_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "divided by an integer, with the quotient rounded to one decimal place being 2.5",
+        "removed_condition": "divided by an integer",
         "remaining_conditions": [
           "The largest three-digit number",
+          "with the quotient rounded to one decimal place being 2.5",
           "will have the smallest divisor as"
         ],
-        "incomplete_question": "The largest three-digit number will have the smallest divisor as:"
+        "incomplete_question": "The largest three-digit number, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:"
       },
       {
         "variant_id": "0_remove_2",
         "removed_condition_index": 2,
         "removed_condition": "with the quotient rounded to one decimal place being 2.5",
         "remaining_conditions": [
-          "The largest three-digit number divided by an integer",
+          "The largest three-digit number",
+          "divided by an integer",
           "will have the smallest divisor as"
         ],
         "incomplete_question": "The largest three-digit number divided by an integer will have the smallest divisor as:"
@@ -52,30 +59,34 @@
     "ground_truth": "Unstable",
     "solution": "",
     "difficulty": "6/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       531
     ],
-    "completion_lengths": [
-      295
+    "gpt4o_completion_lengths": [
+      183
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "1_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "Investigate the stability of the equilibrium point $x=0, y=0$",
+        "removed_condition": "Investigate the stability of the equilibrium point x=0, y=0",
         "remaining_conditions": [
-          "for the system $$ \\left\\{\\begin{array}{l} \\frac{d x}{d t}=y^{3}+x^{5} \\\\ \\frac{d y}{d t}=x^{3}+y^{5} \\end{array}\\right. $$"
+          "System of equations: dx/dt = y^3 + x^5, dy/dt = x^3 + y^5"
         ],
-        "incomplete_question": "For the system $$ \\left\\{\\begin{array}{l} \\frac{d x}{d t}=y^{3}+x^{5} \\\\ \\frac{d y}{d t}=x^{3}+y^{5} \\end{array}\\right. $$, what is the stability of the equilibrium point?"
+        "incomplete_question": "Consider the system of equations: dx/dt = y^3 + x^5, dy/dt = x^3 + y^5."
       },
       {
         "variant_id": "1_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "for the system $$ \\left\\{\\begin{array}{l} \\frac{d x}{d t}=y^{3}+x^{5} \\\\ \\frac{d y}{d t}=x^{3}+y^{5} \\end{array}\\right. $$",
+        "removed_condition": "System of equations: dx/dt = y^3 + x^5, dy/dt = x^3 + y^5",
         "remaining_conditions": [
-          "Investigate the stability of the equilibrium point $x=0, y=0$"
+          "Investigate the stability of the equilibrium point x=0, y=0"
         ],
-        "incomplete_question": "Investigate the stability of the equilibrium point $x=0, y=0$."
+        "incomplete_question": "Investigate the stability of the equilibrium point x=0, y=0."
       }
     ]
   },
@@ -86,24 +97,23 @@
     "ground_truth": "\\text{A,C}",
     "solution": "",
     "difficulty": "6/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       793
     ],
-    "completion_lengths": [
-      3009
+    "gpt4o_completion_lengths": [
+      168
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "2_remove_0",
         "removed_condition_index": 0,
         "removed_condition": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
         "remaining_conditions": [
-          "Which of the following options are valid parameterizations?",
-          "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
-          "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
-          "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
-          "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
-          "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$"
+          "Which of the following options are valid parameterizations?"
         ],
         "incomplete_question": "Which of the following options are valid parameterizations?"
       },
@@ -112,84 +122,9 @@
         "removed_condition_index": 1,
         "removed_condition": "Which of the following options are valid parameterizations?",
         "remaining_conditions": [
-          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
-          "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
-          "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
-          "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
-          "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
-          "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$"
+          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors."
         ],
         "incomplete_question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors."
-      },
-      {
-        "variant_id": "2_remove_2",
-        "removed_condition_index": 2,
-        "removed_condition": "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
-        "remaining_conditions": [
-          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
-          "Which of the following options are valid parameterizations?",
-          "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
-          "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
-          "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
-          "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$"
-        ],
-        "incomplete_question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors. Which of the following options are valid parameterizations?"
-      },
-      {
-        "variant_id": "2_remove_3",
-        "removed_condition_index": 3,
-        "removed_condition": "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
-        "remaining_conditions": [
-          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
-          "Which of the following options are valid parameterizations?",
-          "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
-          "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
-          "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
-          "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$"
-        ],
-        "incomplete_question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors. Which of the following options are valid parameterizations?"
-      },
-      {
-        "variant_id": "2_remove_4",
-        "removed_condition_index": 4,
-        "removed_condition": "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
-        "remaining_conditions": [
-          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
-          "Which of the following options are valid parameterizations?",
-          "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
-          "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
-          "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
-          "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$"
-        ],
-        "incomplete_question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors. Which of the following options are valid parameterizations?"
-      },
-      {
-        "variant_id": "2_remove_5",
-        "removed_condition_index": 5,
-        "removed_condition": "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$",
-        "remaining_conditions": [
-          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
-          "Which of the following options are valid parameterizations?",
-          "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
-          "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
-          "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
-          "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$"
-        ],
-        "incomplete_question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors. Which of the following options are valid parameterizations?"
-      },
-      {
-        "variant_id": "2_remove_6",
-        "removed_condition_index": 6,
-        "removed_condition": "(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$",
-        "remaining_conditions": [
-          "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.",
-          "Which of the following options are valid parameterizations?",
-          "(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$",
-          "(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$",
-          "(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$",
-          "(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$"
-        ],
-        "incomplete_question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors. Which of the following options are valid parameterizations?"
       }
     ]
   },
@@ -200,12 +135,16 @@
     "ground_truth": "480",
     "solution": "",
     "difficulty": "6/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       507
     ],
-    "completion_lengths": [
-      176
+    "gpt4o_completion_lengths": [
+      190
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "3_remove_0",
@@ -214,7 +153,7 @@
         "remaining_conditions": [
           "both A and B on the same side of C"
         ],
-        "incomplete_question": "In the 2013 Zhejiang College Entrance Examination, with both A and B on the same side of C, how many different arrangements are there?"
+        "incomplete_question": "In the 2013 Zhejiang College Entrance Examination, with both A and B on the same side of C, how many different arrangements are there? (Answer with a number.)"
       },
       {
         "variant_id": "3_remove_1",
@@ -223,7 +162,7 @@
         "remaining_conditions": [
           "arrange the six letters A, B, C, D, E, F in a row"
         ],
-        "incomplete_question": "In the 2013 Zhejiang College Entrance Examination, arrange the six letters A, B, C, D, E, F in a row. How many different arrangements are there?"
+        "incomplete_question": "In the 2013 Zhejiang College Entrance Examination, arrange the six letters A, B, C, D, E, F in a row. How many different arrangements are there? (Answer with a number.)"
       }
     ]
   },
@@ -234,12 +173,16 @@
     "ground_truth": "28",
     "solution": "",
     "difficulty": "6/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       523
     ],
-    "completion_lengths": [
+    "gpt4o_completion_lengths": [
       176
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "4_remove_0",
@@ -268,12 +211,16 @@
     "ground_truth": "60",
     "solution": "",
     "difficulty": "6/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       503
     ],
-    "completion_lengths": [
-      247
+    "gpt4o_completion_lengths": [
+      260
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "5_remove_0",
@@ -299,7 +246,7 @@
         "removed_condition": "The line perpendicular to side AB passing through its midpoint",
         "remaining_conditions": [
           "In an acute-angled triangle ABC",
-          "The angle bisector AN and the altitude BH intersect at a single point"
+          "The angle bisector AN, the altitude BH intersect at a single point"
         ],
         "incomplete_question": "In an acute-angled triangle ABC, the angle bisector AN and the altitude BH intersect at a single point. Find angle BAC."
       }
@@ -312,12 +259,16 @@
     "ground_truth": "50",
     "solution": "",
     "difficulty": "6/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       524
     ],
-    "completion_lengths": [
+    "gpt4o_completion_lengths": [
       233
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "6_remove_0",
@@ -346,12 +297,16 @@
     "ground_truth": "1106",
     "solution": "",
     "difficulty": "6/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       587
     ],
-    "completion_lengths": [
-      1365
+    "gpt4o_completion_lengths": [
+      1654
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "7_remove_0",
@@ -417,6 +372,19 @@
           "Find \\( m+n \\)."
         ],
         "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. Find \\( m+n \\)."
+      },
+      {
+        "variant_id": "7_remove_5",
+        "removed_condition_index": 5,
+        "removed_condition": "Find \\( m+n \\).",
+        "remaining_conditions": [
+          "Six chairs sit in a row.",
+          "Six people randomly seat themselves in the chairs.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+          "The probability that this will not happen is given by \\( \\frac{m}{n} \\) where \\( m \\) and \\( n \\) are relatively prime positive integers."
+        ],
+        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by \\( \\frac{m}{n} \\) where \\( m \\) and \\( n \\) are relatively prime positive integers."
       }
     ]
   },
@@ -427,12 +395,16 @@
     "ground_truth": "60",
     "solution": "",
     "difficulty": "6/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       512
     ],
-    "completion_lengths": [
-      306
+    "gpt4o_completion_lengths": [
+      321
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "8_remove_0",
@@ -473,19 +445,23 @@
     "ground_truth": "\\frac{2}{5}",
     "solution": "",
     "difficulty": "6/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       490
     ],
-    "completion_lengths": [
-      245
+    "gpt4o_completion_lengths": [
+      244
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "9_remove_0",
         "removed_condition_index": 0,
         "removed_condition": "Given a square with four vertices",
         "remaining_conditions": [
-          "its center",
+          "and its center",
           "find the probability that the distance between any two of these five points is less than the side length of the square"
         ],
         "incomplete_question": "Given its center, find the probability that the distance between any two of these five points is less than the side length of the square."
@@ -493,7 +469,7 @@
       {
         "variant_id": "9_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "its center",
+        "removed_condition": "and its center",
         "remaining_conditions": [
           "Given a square with four vertices",
           "find the probability that the distance between any two of these five points is less than the side length of the square"
@@ -506,9 +482,9 @@
         "removed_condition": "find the probability that the distance between any two of these five points is less than the side length of the square",
         "remaining_conditions": [
           "Given a square with four vertices",
-          "its center"
+          "and its center"
         ],
-        "incomplete_question": "Given a square with four vertices and its center, find the probability."
+        "incomplete_question": "Given a square with four vertices and its center."
       }
     ]
   },
@@ -519,12 +495,16 @@
     "ground_truth": "9375",
     "solution": "",
     "difficulty": "7/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       498
     ],
-    "completion_lengths": [
+    "gpt4o_completion_lengths": [
       162
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "10_remove_0",
@@ -553,40 +533,34 @@
     "ground_truth": "-1",
     "solution": "",
     "difficulty": "7/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       529
     ],
-    "completion_lengths": [
-      369
+    "gpt4o_completion_lengths": [
+      193
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "11_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "The function is given as f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a",
+        "removed_condition": "Given the function f(x)=√3 sin 2x + 2 cos^2 x + a",
         "remaining_conditions": [
-          "The minimum value of f(x) on the interval \\left[ 0, \\frac{\\pi}{2} \\right] is -1"
+          "if the minimum value of f(x) on the interval [0, π/2] is -1"
         ],
-        "incomplete_question": "If the minimum value of f(x) on the interval \\left[ 0, \\frac{\\pi}{2} \\right] is -1, find the value of a."
+        "incomplete_question": "If the minimum value of f(x) on the interval [0, π/2] is -1, find the value of a."
       },
       {
         "variant_id": "11_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "The minimum value of f(x) on the interval \\left[ 0, \\frac{\\pi}{2} \\right] is -1",
+        "removed_condition": "if the minimum value of f(x) on the interval [0, π/2] is -1",
         "remaining_conditions": [
-          "The function is given as f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a"
+          "Given the function f(x)=√3 sin 2x + 2 cos^2 x + a"
         ],
-        "incomplete_question": "Given the function f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a, find the value of a."
-      },
-      {
-        "variant_id": "11_remove_2",
-        "removed_condition_index": 2,
-        "removed_condition": "The interval is \\left[ 0, \\frac{\\pi}{2} \\right]",
-        "remaining_conditions": [
-          "The function is given as f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a",
-          "The minimum value of f(x) is -1"
-        ],
-        "incomplete_question": "Given the function f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a, if the minimum value of f(x) is -1, find the value of a."
+        "incomplete_question": "Given the function f(x)=√3 sin 2x + 2 cos^2 x + a, find the value of a."
       }
     ]
   },
@@ -597,12 +571,16 @@
     "ground_truth": "60",
     "solution": "",
     "difficulty": "7/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       501
     ],
-    "completion_lengths": [
+    "gpt4o_completion_lengths": [
       151
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "12_remove_0",
@@ -631,12 +609,16 @@
     "ground_truth": "300",
     "solution": "",
     "difficulty": "7/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       503
     ],
-    "completion_lengths": [
+    "gpt4o_completion_lengths": [
       192
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "13_remove_0",
@@ -665,12 +647,16 @@
     "ground_truth": "1221",
     "solution": "",
     "difficulty": "7/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       535
     ],
-    "completion_lengths": [
-      966
+    "gpt4o_completion_lengths": [
+      931
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "14_remove_0",
@@ -741,12 +727,16 @@
     "ground_truth": "10000",
     "solution": "",
     "difficulty": "7/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       493
     ],
-    "completion_lengths": [
+    "gpt4o_completion_lengths": [
       261
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "15_remove_0",
@@ -787,12 +777,16 @@
     "ground_truth": "\\sqrt{10}",
     "solution": "",
     "difficulty": "7/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       529
     ],
-    "completion_lengths": [
+    "gpt4o_completion_lengths": [
       618
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": []
   },
   {
@@ -802,45 +796,64 @@
     "ground_truth": "\\frac{16 + 4\\sqrt{11}}{5}",
     "solution": "",
     "difficulty": "7/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       674
     ],
-    "completion_lengths": [
-      812
+    "gpt4o_completion_lengths": [
+      977
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "17_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "When θ = π/3, find the maximum and minimum values of f(x).",
+        "removed_condition": "x ∈ [-√3/2, 1/2]",
         "remaining_conditions": [
-          "Given the function f(x) = x^2 - 2cosθx + 1, where x ∈ [-√3/2, 1/2].",
-          "If f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π), find the range of θ.",
-          "If sinα and cosα are the two real roots of the equation f(x) = 1/4 + cosθ, find the value of (tan^2α + 1)/tanα."
+          "f(x) = x^2 - 2cos(θ)x + 1",
+          "θ = π/3",
+          "f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π)",
+          "sin(α) and cos(α) are the two real roots of f(x) = 1/4 + cos(θ)"
         ],
-        "incomplete_question": "Given the function f(x) = x^2 - 2cosθx + 1, where x ∈ [-√3/2, 1/2]. If f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π), find the range of θ. If sinα and cosα are the two real roots of the equation f(x) = 1/4 + cosθ, find the value of (tan^2α + 1)/tanα."
+        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1. When θ = π/3, find the maximum and minimum values of f(x). If f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π), find the range of θ. If sin(α) and cos(α) are the two real roots of the equation f(x) = 1/4 + cos(θ), find the value of (tan^2(α) + 1)/tan(α)."
       },
       {
         "variant_id": "17_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "If f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π), find the range of θ.",
+        "removed_condition": "θ = π/3",
         "remaining_conditions": [
-          "Given the function f(x) = x^2 - 2cosθx + 1, where x ∈ [-√3/2, 1/2].",
-          "When θ = π/3, find the maximum and minimum values of f(x).",
-          "If sinα and cosα are the two real roots of the equation f(x) = 1/4 + cosθ, find the value of (tan^2α + 1)/tanα."
+          "f(x) = x^2 - 2cos(θ)x + 1",
+          "x ∈ [-√3/2, 1/2]",
+          "f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π)",
+          "sin(α) and cos(α) are the two real roots of f(x) = 1/4 + cos(θ)"
         ],
-        "incomplete_question": "Given the function f(x) = x^2 - 2cosθx + 1, where x ∈ [-√3/2, 1/2]. When θ = π/3, find the maximum and minimum values of f(x). If sinα and cosα are the two real roots of the equation f(x) = 1/4 + cosθ, find the value of (tan^2α + 1)/tanα."
+        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2]. Find the maximum and minimum values of f(x). If f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π), find the range of θ. If sin(α) and cos(α) are the two real roots of the equation f(x) = 1/4 + cos(θ), find the value of (tan^2(α) + 1)/tan(α)."
       },
       {
         "variant_id": "17_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "If sinα and cosα are the two real roots of the equation f(x) = 1/4 + cosθ, find the value of (tan^2α + 1)/tanα.",
+        "removed_condition": "f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π)",
         "remaining_conditions": [
-          "Given the function f(x) = x^2 - 2cosθx + 1, where x ∈ [-√3/2, 1/2].",
-          "When θ = π/3, find the maximum and minimum values of f(x).",
-          "If f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π), find the range of θ."
+          "f(x) = x^2 - 2cos(θ)x + 1",
+          "x ∈ [-√3/2, 1/2]",
+          "θ = π/3",
+          "sin(α) and cos(α) are the two real roots of f(x) = 1/4 + cos(θ)"
         ],
-        "incomplete_question": "Given the function f(x) = x^2 - 2cosθx + 1, where x ∈ [-√3/2, 1/2]. When θ = π/3, find the maximum and minimum values of f(x). If f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π), find the range of θ."
+        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2]. When θ = π/3, find the maximum and minimum values of f(x). If sin(α) and cos(α) are the two real roots of the equation f(x) = 1/4 + cos(θ), find the value of (tan^2(α) + 1)/tan(α)."
+      },
+      {
+        "variant_id": "17_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "sin(α) and cos(α) are the two real roots of f(x) = 1/4 + cos(θ)",
+        "remaining_conditions": [
+          "f(x) = x^2 - 2cos(θ)x + 1",
+          "x ∈ [-√3/2, 1/2]",
+          "θ = π/3",
+          "f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π)"
+        ],
+        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2]. When θ = π/3, find the maximum and minimum values of f(x). If f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π), find the range of θ."
       }
     ]
   },
@@ -851,56 +864,49 @@
     "ground_truth": "25",
     "solution": "",
     "difficulty": "7/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       594
     ],
-    "completion_lengths": [
-      1117
+    "gpt4o_completion_lengths": [
+      560
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "18_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$",
+        "removed_condition": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
         "remaining_conditions": [
-          "Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$",
-          "Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even.",
-          "Find $|a-b|.$"
+          "Define S(n) by S(n)=τ(1)+ τ(2) + ⋯ + τ(n).",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
         ],
-        "incomplete_question": "Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even. Find $|a-b|.$"
+        "incomplete_question": "Define S(n) by S(n)=τ(1)+ τ(2) + ⋯ + τ(n). Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|."
       },
       {
         "variant_id": "18_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$",
+        "removed_condition": "Define S(n) by S(n)=τ(1)+ τ(2) + ⋯ + τ(n).",
         "remaining_conditions": [
-          "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$",
-          "Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even.",
-          "Find $|a-b|.$"
+          "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
         ],
-        "incomplete_question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even. Find $|a-b|.$"
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|."
       },
       {
         "variant_id": "18_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even.",
+        "removed_condition": "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
         "remaining_conditions": [
-          "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$",
-          "Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$",
-          "Find $|a-b|.$"
+          "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "Define S(n) by S(n)=τ(1)+ τ(2) + ⋯ + τ(n).",
+          "Find |a-b|."
         ],
-        "incomplete_question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Find $|a-b|.$"
-      },
-      {
-        "variant_id": "18_remove_3",
-        "removed_condition_index": 3,
-        "removed_condition": "Find $|a-b|.$",
-        "remaining_conditions": [
-          "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$",
-          "Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$",
-          "Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even."
-        ],
-        "incomplete_question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even."
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. Define S(n) by S(n)=τ(1)+ τ(2) + ⋯ + τ(n). Find |a-b|."
       }
     ]
   },
@@ -911,12 +917,16 @@
     "ground_truth": "199",
     "solution": "",
     "difficulty": "7/8",
-    "prompt_lengths": [
+    "gpt4o_prompt_lengths": [
       501
     ],
-    "completion_lengths": [
+    "gpt4o_completion_lengths": [
       160
     ],
+    "gpt4o_mini_prompt_lengths": [],
+    "gpt4o_mini_completion_lengths": [],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
     "removal_variants": [
       {
         "variant_id": "19_remove_0",
