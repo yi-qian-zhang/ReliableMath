@@ -92,12 +92,12 @@ def convert_polaris_data(input_file: str, output_file: str, difficulty_counts: d
 
     # 转换格式
     converted_data = []
-    for i, item in enumerate(all_data):
+    for i, item in enumerate(all_data, start=1):
         # 保持原始ID或使用行号作为新ID
         converted_item = {
             "data_source": "polaris",
-            # 使用原始 ID，如果不存在则使用行号
-            "id": item.get("id", f"line_{i}"),
+            # 使用原始 ID，如果不存在则使用序号（纯数字）
+            "id": item.get("id", i),
             "question": item.get("problem", ""),
             "ground_truth": item.get("answer", ""),
             "solution": "",
