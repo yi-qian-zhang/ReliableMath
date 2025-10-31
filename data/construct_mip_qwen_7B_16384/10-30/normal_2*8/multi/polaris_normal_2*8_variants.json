@@ -1,0 +1,580 @@
+[
+  {
+    "data_source": "polaris",
+    "id": 1,
+    "question": "Mr. Lee V. Soon starts his morning commute at 7:00 AM to arrive at work by 8:00 AM. If he drives at an average speed of 30 miles per hour, he is late by 5 minutes, and if he drives at an average speed of 70 miles per hour, he is early by 4 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM.",
+    "ground_truth": "32.5",
+    "solution": "",
+    "difficulty": "1/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      544
+    ],
+    "gpt4o_mini_completion_lengths": [
+      663
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "1_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Mr. Lee starts his morning commute at 7:00 AM",
+        "remaining_conditions": [
+          "He needs to arrive at work by 8:00 AM",
+          "If he drives at an average speed of 30 miles per hour, he is late by 5 minutes",
+          "If he drives at an average speed of 70 miles per hour, he is early by 4 minutes"
+        ],
+        "incomplete_question": "He needs to arrive at work by 8:00 AM. If he drives at an average speed of 30 miles per hour, he is late by 5 minutes, and if he drives at an average speed of 70 miles per hour, he is early by 4 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM."
+      },
+      {
+        "variant_id": "1_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "He needs to arrive at work by 8:00 AM",
+        "remaining_conditions": [
+          "Mr. Lee starts his morning commute at 7:00 AM",
+          "If he drives at an average speed of 30 miles per hour, he is late by 5 minutes",
+          "If he drives at an average speed of 70 miles per hour, he is early by 4 minutes"
+        ],
+        "incomplete_question": "Mr. Lee starts his morning commute at 7:00 AM. If he drives at an average speed of 30 miles per hour, he is late by 5 minutes, and if he drives at an average speed of 70 miles per hour, he is early by 4 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM."
+      },
+      {
+        "variant_id": "1_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "If he drives at an average speed of 30 miles per hour, he is late by 5 minutes",
+        "remaining_conditions": [
+          "Mr. Lee starts his morning commute at 7:00 AM",
+          "He needs to arrive at work by 8:00 AM",
+          "If he drives at an average speed of 70 miles per hour, he is early by 4 minutes"
+        ],
+        "incomplete_question": "Mr. Lee starts his morning commute at 7:00 AM to arrive at work by 8:00 AM. If he drives at an average speed of 70 miles per hour, he is early by 4 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM."
+      },
+      {
+        "variant_id": "1_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "If he drives at an average speed of 70 miles per hour, he is early by 4 minutes",
+        "remaining_conditions": [
+          "Mr. Lee starts his morning commute at 7:00 AM",
+          "He needs to arrive at work by 8:00 AM",
+          "If he drives at an average speed of 30 miles per hour, he is late by 5 minutes"
+        ],
+        "incomplete_question": "Mr. Lee starts his morning commute at 7:00 AM to arrive at work by 8:00 AM. If he drives at an average speed of 30 miles per hour, he is late by 5 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 2,
+    "question": "Suppose convex hexagon  $ \\text{HEXAGN}$  has  $ 120^\\circ$ -rotational symmetry about a point  $ P$ —that is, if you rotate it  $ 120^\\circ$  about  $ P$ , it doesn't change. If  $ PX\\equal{}1$ , find the area of triangle  $ \\triangle{GHX}$ .",
+    "ground_truth": "\\frac{\\sqrt{3}}{4}",
+    "solution": "",
+    "difficulty": "1/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      542
+    ],
+    "gpt4o_mini_completion_lengths": [
+      150
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
+    "id": 3,
+    "question": "Find all functions  $f : \\mathbb{N} \\to \\mathbb{N}$  such that for any positive integers  $m, n$  the number  $$ (f(m))^2+ 2mf(n) + f(n^2) $$  is the square of an integer.\n\n*Proposed by Fedir Yudin*",
+    "ground_truth": "f(n)=n",
+    "solution": "",
+    "difficulty": "2/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      530
+    ],
+    "gpt4o_mini_completion_lengths": [
+      342
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
+    "id": 4,
+    "question": "A square with an integer side length was cut into 2020 smaller squares. It is known that the areas of 2019 of these squares are 1, while the area of the 2020th square is not equal to 1. Find all possible values that the area of the 2020th square can take. Provide the smallest of these possible area values in the answer.",
+    "ground_truth": "112225",
+    "solution": "",
+    "difficulty": "2/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      533
+    ],
+    "gpt4o_mini_completion_lengths": [
+      847
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "4_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "A square with an integer side length was cut into 2020 smaller squares.",
+        "remaining_conditions": [
+          "It is known that the areas of 2019 of these squares are 1, while the area of the 2020th square is not equal to 1.",
+          "Find all possible values that the area of the 2020th square can take.",
+          "Provide the smallest of these possible area values in the answer."
+        ],
+        "incomplete_question": "It is known that the areas of 2019 of these squares are 1, while the area of the 2020th square is not equal to 1. Find all possible values that the area of the 2020th square can take. Provide the smallest of these possible area values in the answer."
+      },
+      {
+        "variant_id": "4_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "It is known that the areas of 2019 of these squares are 1.",
+        "remaining_conditions": [
+          "A square with an integer side length was cut into 2020 smaller squares.",
+          "while the area of the 2020th square is not equal to 1.",
+          "Find all possible values that the area of the 2020th square can take.",
+          "Provide the smallest of these possible area values in the answer."
+        ],
+        "incomplete_question": "A square with an integer side length was cut into 2020 smaller squares. while the area of the 2020th square is not equal to 1. Find all possible values that the area of the 2020th square can take. Provide the smallest of these possible area values in the answer."
+      },
+      {
+        "variant_id": "4_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "while the area of the 2020th square is not equal to 1.",
+        "remaining_conditions": [
+          "A square with an integer side length was cut into 2020 smaller squares.",
+          "It is known that the areas of 2019 of these squares are 1.",
+          "Find all possible values that the area of the 2020th square can take.",
+          "Provide the smallest of these possible area values in the answer."
+        ],
+        "incomplete_question": "A square with an integer side length was cut into 2020 smaller squares. It is known that the areas of 2019 of these squares are 1. Find all possible values that the area of the 2020th square can take. Provide the smallest of these possible area values in the answer."
+      },
+      {
+        "variant_id": "4_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "Find all possible values that the area of the 2020th square can take.",
+        "remaining_conditions": [
+          "A square with an integer side length was cut into 2020 smaller squares.",
+          "It is known that the areas of 2019 of these squares are 1.",
+          "while the area of the 2020th square is not equal to 1.",
+          "Provide the smallest of these possible area values in the answer."
+        ],
+        "incomplete_question": "A square with an integer side length was cut into 2020 smaller squares. It is known that the areas of 2019 of these squares are 1, while the area of the 2020th square is not equal to 1. Provide the smallest of these possible area values in the answer."
+      },
+      {
+        "variant_id": "4_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "Provide the smallest of these possible area values in the answer.",
+        "remaining_conditions": [
+          "A square with an integer side length was cut into 2020 smaller squares.",
+          "It is known that the areas of 2019 of these squares are 1.",
+          "while the area of the 2020th square is not equal to 1.",
+          "Find all possible values that the area of the 2020th square can take."
+        ],
+        "incomplete_question": "A square with an integer side length was cut into 2020 smaller squares. It is known that the areas of 2019 of these squares are 1, while the area of the 2020th square is not equal to 1. Find all possible values that the area of the 2020th square can take."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 5,
+    "question": "In rectangle $PQRS$, $PQ=8$ and $QR=6$. Points $A$ and $B$ lie on $\\overline{PQ}$, points $C$ and $D$ lie on $\\overline{QR}$, points $E$ and $F$ lie on $\\overline{RS}$, and points $G$ and $H$ lie on $\\overline{SP}$ so that $AP=BQ<4$ and the convex octagon $ABCDEFGH$ is equilateral. The length of a side of this octagon can be expressed in the form $k+m\\sqrt{n}$, where $k$, $m$, and $n$ are integers and $n$ is not divisible by the square of any prime. What is $k+m+n$?",
+    "ground_truth": "7",
+    "solution": "",
+    "difficulty": "3/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      619
+    ],
+    "gpt4o_mini_completion_lengths": [
+      704
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
+    "id": 6,
+    "question": "Let  $ n > 1, n \\in \\mathbb{Z}$  and  $ B \\equal{}\\{1,2,\\ldots, 2^n\\}.$  A subset  $ A$  of  $ B$  is called weird if it contains exactly one of the distinct elements  $ x,y \\in B$  such that the sum of  $ x$  and  $ y$  is a power of two. How many weird subsets does  $ B$  have?",
+    "ground_truth": "2^{n+1}",
+    "solution": "",
+    "difficulty": "3/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      566
+    ],
+    "gpt4o_mini_completion_lengths": [
+      557
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "6_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "n > 1",
+        "remaining_conditions": [
+          "n ∈ ℤ",
+          "B = {1, 2, ..., 2^n}",
+          "A is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two"
+        ],
+        "incomplete_question": "Let n ∈ ℤ and B = {1, 2, ..., 2^n}. A subset A of B is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two. How many weird subsets does B have?"
+      },
+      {
+        "variant_id": "6_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "n ∈ ℤ",
+        "remaining_conditions": [
+          "n > 1",
+          "B = {1, 2, ..., 2^n}",
+          "A is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two"
+        ],
+        "incomplete_question": "Let n > 1 and B = {1, 2, ..., 2^n}. A subset A of B is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two. How many weird subsets does B have?"
+      },
+      {
+        "variant_id": "6_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "B = {1, 2, ..., 2^n}",
+        "remaining_conditions": [
+          "n > 1",
+          "n ∈ ℤ",
+          "A is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two"
+        ],
+        "incomplete_question": "Let n > 1, n ∈ ℤ. A subset A of B is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two. How many weird subsets does B have?"
+      },
+      {
+        "variant_id": "6_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "A is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two",
+        "remaining_conditions": [
+          "n > 1",
+          "n ∈ ℤ",
+          "B = {1, 2, ..., 2^n}"
+        ],
+        "incomplete_question": "Let n > 1, n ∈ ℤ and B = {1, 2, ..., 2^n}. How many weird subsets does B have?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 7,
+    "question": "The integer 119 is a multiple of which number?",
+    "ground_truth": "7",
+    "solution": "",
+    "difficulty": "4/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      464
+    ],
+    "gpt4o_mini_completion_lengths": [
+      85
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "7_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The integer 119",
+        "remaining_conditions": [
+          "is a multiple of which number?"
+        ],
+        "incomplete_question": "Is a multiple of which number?"
+      },
+      {
+        "variant_id": "7_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "is a multiple of which number?",
+        "remaining_conditions": [
+          "The integer 119"
+        ],
+        "incomplete_question": "The integer 119."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 8,
+    "question": "A convex pentagon  $P=ABCDE$  is inscribed in a circle of radius  $1$ . Find the maximum area of  $P$  subject to the condition that the chords  $AC$  and  $BD$  are perpendicular.",
+    "ground_truth": "1 + \\frac{3\\sqrt{3}}{4}",
+    "solution": "",
+    "difficulty": "4/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      520
+    ],
+    "gpt4o_mini_completion_lengths": [
+      148
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "8_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "A convex pentagon $P=ABCDE$ is inscribed in a circle of radius $1$",
+        "remaining_conditions": [
+          "the chords $AC$ and $BD$ are perpendicular"
+        ],
+        "incomplete_question": "Find the maximum area of $P$ subject to the condition that the chords $AC$ and $BD$ are perpendicular."
+      },
+      {
+        "variant_id": "8_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "the chords $AC$ and $BD$ are perpendicular",
+        "remaining_conditions": [
+          "A convex pentagon $P=ABCDE$ is inscribed in a circle of radius $1$"
+        ],
+        "incomplete_question": "Find the maximum area of $P$."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 9,
+    "question": "The edges of tetrahedron $ABCD$ are given as $AB=c$, $BC=a$, $CA=b$, $DA=a_{1}$, $DB=b_{1}$, and $DC=c_{1}$. Let $h$ be the length of the median line from vertex $D$. Prove that\n\n$$\nh^{2}=\\frac{1}{3}\\left(a_{1}^{2}+b_{1}^{2}+c_{1}^{2}\\right)-\\frac{1}{9}\\left(a^{2}+b^{2}+c^{2}\\right)\n$$",
+    "ground_truth": "^2=\\frac{1}{3}(a_1^2+b_1^2+c_1^2)-\\frac{1}{9}(^2+b^2+^2)",
+    "solution": "",
+    "difficulty": "5/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      615
+    ],
+    "gpt4o_mini_completion_lengths": [
+      1149
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
+    "id": 10,
+    "question": "Consider the region $A^{}_{}$ in the complex plane that consists of all points $z^{}_{}$ such that both $\\frac{z^{}_{}}{40}$ and $\\frac{40^{}_{}}{\\overline{z}}$ have real and imaginary parts between $0^{}_{}$ and $1^{}_{}$, inclusive. Find the area of $A.$",
+    "ground_truth": "1200 - 200 \\pi",
+    "solution": "",
+    "difficulty": "5/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      542
+    ],
+    "gpt4o_mini_completion_lengths": [
+      372
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "10_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Both \\frac{z_{}}{40} and \\frac{40_{}}{\\overline{z}} have real and imaginary parts between 0 and 1, inclusive.",
+        "remaining_conditions": [],
+        "incomplete_question": "Consider the region A in the complex plane that consists of all points z. Find the area of A."
+      },
+      {
+        "variant_id": "10_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "The region A consists of all points z such that \\frac{z_{}}{40} has real and imaginary parts between 0 and 1, inclusive.",
+        "remaining_conditions": [
+          "Both \\frac{z_{}}{40} and \\frac{40_{}}{\\overline{z}} have real and imaginary parts between 0 and 1, inclusive."
+        ],
+        "incomplete_question": "Consider the region A in the complex plane that consists of all points z such that \\frac{40_{}}{\\overline{z}} has real and imaginary parts between 0 and 1, inclusive. Find the area of A."
+      },
+      {
+        "variant_id": "10_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "The region A consists of all points z such that \\frac{40_{}}{\\overline{z}} has real and imaginary parts between 0 and 1, inclusive.",
+        "remaining_conditions": [
+          "Both \\frac{z_{}}{40} and \\frac{40_{}}{\\overline{z}} have real and imaginary parts between 0 and 1, inclusive."
+        ],
+        "incomplete_question": "Consider the region A in the complex plane that consists of all points z such that \\frac{z_{}}{40} has real and imaginary parts between 0 and 1, inclusive. Find the area of A."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 11,
+    "question": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:",
+    "ground_truth": "392",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      484
+    ],
+    "gpt4o_mini_completion_lengths": [
+      219
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "11_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The largest three-digit number",
+        "remaining_conditions": [
+          "divided by an integer",
+          "with the quotient rounded to one decimal place being 2.5"
+        ],
+        "incomplete_question": "An integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:"
+      },
+      {
+        "variant_id": "11_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "divided by an integer",
+        "remaining_conditions": [
+          "The largest three-digit number",
+          "with the quotient rounded to one decimal place being 2.5"
+        ],
+        "incomplete_question": "The largest three-digit number, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:"
+      },
+      {
+        "variant_id": "11_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "with the quotient rounded to one decimal place being 2.5",
+        "remaining_conditions": [
+          "The largest three-digit number",
+          "divided by an integer"
+        ],
+        "incomplete_question": "The largest three-digit number divided by an integer will have the smallest divisor as:"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 12,
+    "question": "Investigate the stability of the equilibrium point $x=0, y=0$ for the system\n\n$$\n\\left\\{\\begin{array}{l}\n\\frac{d x}{d t}=y^{3}+x^{5} \\\\\n\\frac{d y}{d t}=x^{3}+y^{5}\n\\end{array}\\right.\n$$",
+    "ground_truth": "Unstable",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      531
+    ],
+    "gpt4o_mini_completion_lengths": [
+      137
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "12_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The system is defined by the equations for dx/dt and dy/dt.",
+        "remaining_conditions": [
+          "Investigate the stability of the equilibrium point x=0, y=0"
+        ],
+        "incomplete_question": "Investigate the stability of the equilibrium point x=0, y=0."
+      },
+      {
+        "variant_id": "12_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "The equilibrium point is x=0, y=0.",
+        "remaining_conditions": [
+          "The system is defined by the equations for dx/dt and dy/dt."
+        ],
+        "incomplete_question": "Investigate the stability of the equilibrium point for the system."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 13,
+    "question": "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
+    "ground_truth": "9375",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      498
+    ],
+    "gpt4o_mini_completion_lengths": [
+      161
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "13_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The front tires of a car wear out after 25,000 km",
+        "remaining_conditions": [
+          "the rear tires wear out after 15,000 km"
+        ],
+        "incomplete_question": "The rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?"
+      },
+      {
+        "variant_id": "13_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "The rear tires wear out after 15,000 km",
+        "remaining_conditions": [
+          "the front tires of a car wear out after 25,000 km"
+        ],
+        "incomplete_question": "The front tires of a car wear out after 25,000 km. When should the tires be swapped so that they wear out at the same time?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 14,
+    "question": "Given the function \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\), if the minimum value of \\( f(x) \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right] \\) is \\(-1\\), find the value of \\( a \\).",
+    "ground_truth": "-1",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      529
+    ],
+    "gpt4o_mini_completion_lengths": [
+      287
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": [
+      {
+        "variant_id": "14_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "the minimum value of f(x) on the interval [0, π/2] is -1",
+        "remaining_conditions": [
+          "f(x)=√3 sin 2x + 2 cos^2 x + a"
+        ],
+        "incomplete_question": "Given the function f(x)=√3 sin 2x + 2 cos^2 x + a, find the value of a."
+      },
+      {
+        "variant_id": "14_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "f(x)=√3 sin 2x + 2 cos^2 x + a",
+        "remaining_conditions": [
+          "the minimum value of f(x) on the interval [0, π/2] is -1"
+        ],
+        "incomplete_question": "If the minimum value of f(x) on the interval [0, π/2] is -1, find the value of a."
+      },
+      {
+        "variant_id": "14_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "the interval [0, π/2]",
+        "remaining_conditions": [
+          "f(x)=√3 sin 2x + 2 cos^2 x + a",
+          "the minimum value of f(x) is -1"
+        ],
+        "incomplete_question": "Given the function f(x)=√3 sin 2x + 2 cos^2 x + a, if the minimum value of f(x) is -1, find the value of a."
+      }
+    ]
+  }
+]

@@ -10,41 +10,21 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       484,
-      238,
-      240,
       241,
-      238,
-      238,
-      242,
-      244,
-      244,
-      240,
-      242,
-      242,
-      244,
-      242,
-      242,
-      242,
+      241,
       242,
       242,
       242,
       240,
       242,
       240,
-      240
+      242,
+      240,
+      242,
+      244
     ],
     "gpt4o_mini_completion_lengths": [
-      247,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
+      248,
       1,
       1,
       1,
@@ -59,14 +39,14 @@
       1
     ],
     "local_prompt_lengths": [
-      281,
-      285,
-      284
+      282,
+      284,
+      285
     ],
     "local_completion_lengths": [
-      9672,
-      7850,
-      14538
+      6489,
+      9092,
+      14771
     ],
     "removal_variants": [
       {
@@ -80,9 +60,9 @@
         ],
         "incomplete_question": "An integer divided by another integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:",
         "verification": {
-          "total_attempts": 8,
-          "success_at_attempt": null,
-          "is_valid": false,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
+          "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
@@ -92,45 +72,9 @@
             },
             {
               "attempt": 2,
-              "model_answer": "999",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 3,
-              "model_answer": "399",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 4,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 5,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 6,
-              "model_answer": "81",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 7,
-              "model_answer": ".",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 8,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
+              "model_answer": "392",
+              "judge_result": "equivalent",
+              "is_correct": true
             }
           ],
           "ground_truth": "392"
@@ -153,49 +97,49 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "393",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
               "model_answer": "3",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
+              "attempt": 2,
+              "model_answer": "391",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
               "attempt": 3,
-              "model_answer": "1",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 4,
-              "model_answer": "398",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 5,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 6,
               "model_answer": "393",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
-              "attempt": 7,
+              "attempt": 4,
+              "model_answer": ".",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 5,
+              "model_answer": "2",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 6,
               "model_answer": ">",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
+              "attempt": 7,
+              "model_answer": "3",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
               "attempt": 8,
-              "model_answer": ".",
+              "model_answer": ">",
               "judge_result": "not_equivalent",
               "is_correct": false
             }
@@ -212,44 +156,20 @@
           "divided by an integer",
           "will have the smallest divisor as"
         ],
-        "incomplete_question": "The largest three-digit number divided by an integer will have the smallest divisor as:",
+        "incomplete_question": "The largest three-digit number divided by an integer, will have the smallest divisor as:",
         "verification": {
-          "total_attempts": 6,
-          "success_at_attempt": 6,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": ">",
+              "model_answer": "1",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 2,
-              "model_answer": "3",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 3,
-              "model_answer": "is 2.",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 4,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 5,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 6,
               "model_answer": "392",
               "judge_result": "equivalent",
               "is_correct": true
@@ -271,21 +191,23 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       531,
-      266,
-      253
+      237,
+      248,
+      280
     ],
     "gpt4o_mini_completion_lengths": [
-      183,
+      177,
+      1,
       1,
       1
     ],
     "local_prompt_lengths": [
-      298,
-      296
+      277,
+      326
     ],
     "local_completion_lengths": [
-      8793,
-      14208
+      3102,
+      10061
     ],
     "removal_variants": [
       {
@@ -293,9 +215,9 @@
         "removed_condition_index": 0,
         "removed_condition": "The equilibrium point is (0, 0)",
         "remaining_conditions": [
-          "The system of equations is given by dx/dt = y^3 + x^5 and dy/dt = x^3 + y^5"
+          "Investigate the stability of the equilibrium point"
         ],
-        "incomplete_question": "Investigate the stability of the equilibrium point for the system of equations dx/dt = y^3 + x^5 and dy/dt = x^3 + y^5.",
+        "incomplete_question": "Investigate the stability of the equilibrium point for the system $$\\left\\{\\begin{array}{l}\\frac{d x}{d t}=y^{3}+x^{5} \\\\ \\frac{d y}{d t}=x^{3}+y^{5}\\end{array}\\right.$$",
         "verification": {
           "total_attempts": 1,
           "success_at_attempt": 1,
@@ -303,7 +225,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "The equilibrium point (0, 0) is unstable.",
+              "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -314,19 +236,25 @@
       {
         "variant_id": "1_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "The system of equations is given by dx/dt = y^3 + x^5 and dy/dt = x^3 + y^5",
+        "removed_condition": "The system is given by the equations",
         "remaining_conditions": [
-          "The equilibrium point is (0, 0)"
+          "Investigate the stability of the equilibrium point $x=0, y=0$"
         ],
-        "incomplete_question": "Investigate the stability of the equilibrium point (0, 0).",
+        "incomplete_question": "Investigate the stability of the equilibrium point $x=0, y=0$.",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": ">",
+              "model_answer": "[Final answer only]",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "The equilibrium point \\( x=0, y=0 \\) is unstable.",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -347,11 +275,15 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       793,
+      333,
       252,
+      258,
       253
     ],
     "gpt4o_mini_completion_lengths": [
       167,
+      1,
+      1,
       1,
       1
     ],
@@ -360,8 +292,8 @@
       293
     ],
     "local_completion_lengths": [
-      4852,
-      7863
+      4090,
+      6501
     ],
     "removal_variants": [
       {
@@ -373,12 +305,18 @@
         ],
         "incomplete_question": "Which of the following options are valid parameterizations?",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
+              "model_answer": "The parameterization of the line \\( y = \\frac{5}{3}x - \\frac{17}{3} \\) using vectors is given by:\n\\[\n\\begin{cases}\nx = 3t \\\\\ny = -\\frac{17}{3} + 5t\n\\end{cases}\n\\]\nfor \\( t \\in \\mathbb{R} \\).",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
               "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
@@ -396,12 +334,18 @@
         ],
         "incomplete_question": "The line $y = \frac{5}{3} x - \frac{17}{3}$ is to be parameterized using vectors.",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
+              "model_answer": "\\begin{pmatrix",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
               "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
@@ -423,21 +367,15 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       507,
-      247,
-      247,
-      249,
-      253,
-      252,
-      252,
-      250,
-      249,
-      249
+      257,
+      257,
+      266,
+      259,
+      258,
+      259
     ],
     "gpt4o_mini_completion_lengths": [
-      157,
-      1,
-      1,
-      1,
+      278,
       1,
       1,
       1,
@@ -446,12 +384,14 @@
       1
     ],
     "local_prompt_lengths": [
-      288,
-      292
+      302,
+      304,
+      303
     ],
     "local_completion_lengths": [
-      11981,
-      17829
+      9987,
+      22714,
+      15885
     ],
     "removal_variants": [
       {
@@ -461,7 +401,7 @@
         "remaining_conditions": [
           "arrange the six letters A, B, C, D, E, F in a row"
         ],
-        "incomplete_question": "Arrange the six letters A, B, C, D, E, F in a row. How many different arrangements are there?",
+        "incomplete_question": "In the 2013 Zhejiang College Entrance Examination, arrange the six letters A, B, C, D, E, F in a row. How many different arrangements are there?",
         "verification": {
           "total_attempts": 2,
           "success_at_attempt": 2,
@@ -469,7 +409,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "360",
+              "model_answer": "80",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
@@ -490,59 +430,53 @@
         "remaining_conditions": [
           "both A and B on the same side of C"
         ],
-        "incomplete_question": "Arrange the letters in a row, with both A and B on the same side of C. How many different arrangements are there?",
+        "incomplete_question": "In the 2013 Zhejiang College Entrance Examination, arrange in a row, with both A and B on the same side of C. How many different arrangements are there?",
         "verification": {
-          "total_attempts": 8,
-          "success_at_attempt": null,
-          "is_valid": false,
+          "total_attempts": 3,
+          "success_at_attempt": 3,
+          "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "N/A",
-              "judge_result": "no_answer_tag",
+              "model_answer": "The total number of valid arrangements is 360.",
+              "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 2,
-              "model_answer": ">",
+              "model_answer": "240",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 3,
-              "model_answer": "** 1200",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
+              "model_answer": "480",
+              "judge_result": "equivalent",
+              "is_correct": true
+            }
+          ],
+          "ground_truth": "480"
+        }
+      },
+      {
+        "variant_id": "3_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "In the 2013 Zhejiang College Entrance Examination",
+        "remaining_conditions": [
+          "arrange the six letters A, B, C, D, E, F in a row",
+          "both A and B on the same side of C"
+        ],
+        "incomplete_question": "Arrange the six letters A, B, C, D, E, F in a row, with both A and B on the same side of C. How many different arrangements are there?",
+        "verification": {
+          "total_attempts": 1,
+          "success_at_attempt": 1,
+          "is_valid": true,
+          "all_attempts": [
             {
-              "attempt": 4,
-              "model_answer": "1920",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 5,
-              "model_answer": "is 360.",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 6,
-              "model_answer": "**:",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 7,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 8,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
+              "attempt": 1,
+              "model_answer": "480",
+              "judge_result": "equivalent",
+              "is_correct": true
             }
           ],
           "ground_truth": "480"
@@ -561,44 +495,59 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       523,
-      278,
-      279,
-      249
+      248,
+      248,
+      246,
+      252,
+      247,
+      249,
+      250,
+      248
     ],
     "gpt4o_mini_completion_lengths": [
-      309,
+      252,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
       1,
       1
     ],
     "local_prompt_lengths": [
-      330,
-      331,
+      293,
+      294,
       295
     ],
     "local_completion_lengths": [
-      6342,
-      15111,
-      17721
+      7473,
+      12629,
+      13702
     ],
     "removal_variants": [
       {
         "variant_id": "4_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "Sasha tried to type an 8-digit number",
+        "removed_condition": "The key for the digit 1 is not working.",
         "remaining_conditions": [
-          "the key for the digit 1 is not working",
-          "only 202020 was printed"
+          "Sasha tried to type an 8-digit number, but only 202020 was printed."
         ],
-        "incomplete_question": "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print. Only 202020 was printed. How many 8-digit numbers satisfy this condition?",
+        "incomplete_question": "Sasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "is 28.",
+              "model_answer": "**",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "28",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -609,19 +558,43 @@
       {
         "variant_id": "4_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "only 202020 was printed",
+        "removed_condition": "Sasha tried to type an 8-digit number.",
         "remaining_conditions": [
-          "Sasha tried to type an 8-digit number",
-          "the key for the digit 1 is not working"
+          "The key for the digit 1 is not working.",
+          "only 202020 was printed."
         ],
-        "incomplete_question": "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print. Sasha tried to type an 8-digit number. How many 8-digit numbers satisfy this condition?",
+        "incomplete_question": "The key for the digit 1 is not working. Only 202020 was printed. How many 8-digit numbers satisfy this condition?",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 5,
+          "success_at_attempt": 5,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
+              "model_answer": "128",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 3,
+              "model_answer": "38,263,752",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 4,
+              "model_answer": "38263752",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 5,
               "model_answer": "28",
               "judge_result": "equivalent",
               "is_correct": true
@@ -633,12 +606,12 @@
       {
         "variant_id": "4_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "the key for the digit 1 is not working",
+        "removed_condition": "Only 202020 was printed.",
         "remaining_conditions": [
-          "Sasha tried to type an 8-digit number",
-          "only 202020 was printed"
+          "The key for the digit 1 is not working.",
+          "Sasha tried to type an 8-digit number."
         ],
-        "incomplete_question": "Sasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?",
+        "incomplete_question": "The key for the digit 1 is not working. Sasha tried to type an 8-digit number. How many 8-digit numbers satisfy this condition?",
         "verification": {
           "total_attempts": 1,
           "success_at_attempt": 1,
@@ -667,29 +640,35 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       503,
-      250,
+      255,
       251,
-      250,
+      251,
+      251,
+      251,
+      246,
       250
     ],
     "gpt4o_mini_completion_lengths": [
-      357,
+      362,
+      1,
+      1,
+      1,
       1,
       1,
       1,
       1
     ],
     "local_prompt_lengths": [
-      290,
+      295,
       291,
       290,
       290
     ],
     "local_completion_lengths": [
-      10559,
-      17146,
-      15987,
-      25829
+      13640,
+      22365,
+      25492,
+      42882
     ],
     "removal_variants": [
       {
@@ -703,12 +682,30 @@
         ],
         "incomplete_question": "The angle bisector AN, the altitude BH, and the line perpendicular to side AB passing through its midpoint intersect at a single point. Find angle BAC.",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 4,
+          "success_at_attempt": 4,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
+              "model_answer": "90^\\circ",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "90^\\circ",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 3,
+              "model_answer": "120^\\circ",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 4,
               "model_answer": "60^\\circ",
               "judge_result": "equivalent",
               "is_correct": true
@@ -734,7 +731,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "60^\\circ",
+              "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -776,7 +773,7 @@
           "the angle bisector AN",
           "the altitude BH"
         ],
-        "incomplete_question": "In an acute-angled triangle ABC, the angle bisector AN and the altitude BH. Find angle BAC.",
+        "incomplete_question": "In an acute-angled triangle ABC, the angle bisector AN and the altitude BH intersect at a single point. Find angle BAC.",
         "verification": {
           "total_attempts": 1,
           "success_at_attempt": 1,
@@ -805,14 +802,38 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       524,
-      282,
       281,
-      282,
+      279,
+      311,
+      279,
+      296,
+      279,
+      288,
+      279,
+      285,
+      288,
+      287,
+      285,
+      279,
+      280,
+      285,
       281,
-      281
+      288
     ],
     "gpt4o_mini_completion_lengths": [
-      367,
+      373,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
       1,
       1,
@@ -822,12 +843,12 @@
     "local_prompt_lengths": [
       325,
       325,
-      325
+      331
     ],
     "local_completion_lengths": [
-      3086,
-      3819,
-      4038
+      3389,
+      3624,
+      3668
     ],
     "removal_variants": [
       {
@@ -838,23 +859,59 @@
           "walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously",
           "They meet after 10 minutes"
         ],
-        "incomplete_question": "Walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously, they meet after 10 minutes. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?",
+        "incomplete_question": "Person A and person B are walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously. They meet after 10 minutes. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?",
         "verification": {
-          "total_attempts": 2,
-          "success_at_attempt": 2,
-          "is_valid": true,
+          "total_attempts": 8,
+          "success_at_attempt": null,
+          "is_valid": false,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "1200",
+              "model_answer": "The distance between A and B is 1,200 meters, and the meeting point is 50 meters from the midpoint towards A.",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 2,
-              "model_answer": "50",
-              "judge_result": "equivalent",
-              "is_correct": true
+              "model_answer": "Distance between A and B: <answer>1200",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 3,
+              "model_answer": "1200",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 4,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 5,
+              "model_answer": "1200",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 6,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 7,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 8,
+              "model_answer": "1200",
+              "judge_result": "not_equivalent",
+              "is_correct": false
             }
           ],
           "ground_truth": "50"
@@ -870,18 +927,12 @@
         ],
         "incomplete_question": "Person A and person B start from locations A and B respectively. They meet after 10 minutes. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?",
         "verification": {
-          "total_attempts": 2,
-          "success_at_attempt": 2,
+          "total_attempts": 1,
+          "success_at_attempt": 1,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "1200",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
               "model_answer": "50",
               "judge_result": "equivalent",
               "is_correct": true
@@ -900,12 +951,54 @@
         ],
         "incomplete_question": "Person A and person B start from locations A and B respectively, walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 8,
+          "success_at_attempt": 8,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 3,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 4,
+              "model_answer": "**",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 5,
+              "model_answer": "1200 meters, 50 meters",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 6,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 7,
+              "model_answer": "s:",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 8,
               "model_answer": "50",
               "judge_result": "equivalent",
               "is_correct": true
@@ -928,23 +1021,13 @@
     "gpt4o_mini_prompt_lengths": [
       587,
       323,
-      322,
       323,
       323,
       323,
-      323,
-      320,
-      320,
-      323,
-      323
+      320
     ],
     "gpt4o_mini_completion_lengths": [
       1120,
-      1,
-      1,
-      1,
-      1,
-      1,
       1,
       1,
       1,
@@ -959,11 +1042,11 @@
       362
     ],
     "local_completion_lengths": [
-      19880,
-      25104,
-      25285,
-      30144,
-      26076
+      14353,
+      19959,
+      35270,
+      18087,
+      27957
     ],
     "removal_variants": [
       {
@@ -1004,18 +1087,12 @@
         ],
         "incomplete_question": "Six chairs sit in a row. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by  m/n where m and n are relatively prime positive integers. Find m+n.",
         "verification": {
-          "total_attempts": 2,
-          "success_at_attempt": 2,
+          "total_attempts": 1,
+          "success_at_attempt": 1,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "1177",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
               "model_answer": "1106",
               "judge_result": "equivalent",
               "is_correct": true
@@ -1042,7 +1119,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "1106",
+              "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -1062,18 +1139,12 @@
         ],
         "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. The probability that this will not happen is given by  m/n where m and n are relatively prime positive integers. Find m+n.",
         "verification": {
-          "total_attempts": 2,
-          "success_at_attempt": 2,
+          "total_attempts": 1,
+          "success_at_attempt": 1,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "968",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
               "model_answer": "1106",
               "judge_result": "equivalent",
               "is_correct": true
@@ -1094,36 +1165,12 @@
         ],
         "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. Find m+n.",
         "verification": {
-          "total_attempts": 5,
-          "success_at_attempt": 5,
+          "total_attempts": 1,
+          "success_at_attempt": 1,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 3,
-              "model_answer": "N/A",
-              "judge_result": "no_answer_tag",
-              "is_correct": false
-            },
-            {
-              "attempt": 4,
-              "model_answer": "1139",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 5,
               "model_answer": "1106",
               "judge_result": "equivalent",
               "is_correct": true
@@ -1146,17 +1193,11 @@
     "gpt4o_mini_prompt_lengths": [
       512,
       267,
-      269,
       267,
-      269,
-      269,
       267
     ],
     "gpt4o_mini_completion_lengths": [
       307,
-      1,
-      1,
-      1,
       1,
       1,
       1
@@ -1167,9 +1208,9 @@
       312
     ],
     "local_completion_lengths": [
-      6742,
-      9125,
-      10528
+      7274,
+      9012,
+      14746
     ],
     "removal_variants": [
       {
@@ -1182,18 +1223,12 @@
         ],
         "incomplete_question": "In a two-story house that is inhabited in both floors as well as on the ground floor, 45 people live below someone. One third of all the people living in the house live on the first floor. How many people live in the house in total?",
         "verification": {
-          "total_attempts": 2,
-          "success_at_attempt": 2,
+          "total_attempts": 1,
+          "success_at_attempt": 1,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "45",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
               "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
@@ -1236,24 +1271,12 @@
         ],
         "incomplete_question": "In a two-story house that is inhabited in both floors as well as on the ground floor, 35 people live above someone and 45 people live below someone. How many people live in the house in total?",
         "verification": {
-          "total_attempts": 3,
-          "success_at_attempt": 3,
+          "total_attempts": 1,
+          "success_at_attempt": 1,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "135",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
-              "model_answer": "105",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 3,
               "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
@@ -1275,25 +1298,26 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       490,
+      252,
       250,
-      245,
-      250,
+      252,
       250,
       252,
       245,
-      250,
-      252,
       247,
-      247,
-      250,
-      252,
-      250,
-      256,
       245,
-      252,
-      249,
+      245,
+      250,
+      245,
+      250,
+      245,
       247,
-      247
+      250,
+      245,
+      245,
+      247,
+      250,
+      250
     ],
     "gpt4o_mini_completion_lengths": [
       246,
@@ -1315,17 +1339,18 @@
       1,
       1,
       1,
+      1,
       1
     ],
     "local_prompt_lengths": [
       284,
-      284,
-      286
+      286,
+      284
     ],
     "local_completion_lengths": [
-      7032,
-      8758,
-      7572
+      7072,
+      8044,
+      11496
     ],
     "removal_variants": [
       {
@@ -1343,13 +1368,13 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "\\dfrac{2",
+              "model_answer": ">",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 2,
-              "model_answer": ">",
+              "model_answer": "0",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
@@ -1361,31 +1386,31 @@
             },
             {
               "attempt": 4,
-              "model_answer": "1",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 5,
-              "model_answer": "\\dfrac{2",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 6,
-              "model_answer": "\\dfrac{2",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 7,
               "model_answer": ">",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
+              "attempt": 5,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 6,
+              "model_answer": "0",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 7,
+              "model_answer": "\\dfrac{2",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
               "attempt": 8,
-              "model_answer": "0.4",
+              "model_answer": "\\dfrac{2",
               "judge_result": "not_equivalent",
               "is_correct": false
             }
@@ -1403,8 +1428,8 @@
         ],
         "incomplete_question": "Given a square with four vertices and its center, find the probability that it is less than the side length of the square.",
         "verification": {
-          "total_attempts": 8,
-          "success_at_attempt": 8,
+          "total_attempts": 4,
+          "success_at_attempt": 4,
           "is_valid": true,
           "all_attempts": [
             {
@@ -1421,36 +1446,12 @@
             },
             {
               "attempt": 3,
-              "model_answer": ">",
+              "model_answer": "\\dfrac{1",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 4,
-              "model_answer": "\\dfrac{2",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 5,
-              "model_answer": "\\( \\frac{3}{5} \\)",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 6,
-              "model_answer": "\\dfrac{2",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 7,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 8,
               "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
@@ -1469,9 +1470,9 @@
         ],
         "incomplete_question": "Given a square with four vertices and its center, find the probability that the distance between any two of these five points.",
         "verification": {
-          "total_attempts": 3,
-          "success_at_attempt": 3,
-          "is_valid": true,
+          "total_attempts": 8,
+          "success_at_attempt": null,
+          "is_valid": false,
           "all_attempts": [
             {
               "attempt": 1,
@@ -1481,15 +1482,45 @@
             },
             {
               "attempt": 2,
-              "model_answer": ">",
+              "model_answer": "\\dfrac{2",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 3,
-              "model_answer": "is 2/5.",
-              "judge_result": "equivalent",
-              "is_correct": true
+              "model_answer": "**",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 4,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 5,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 6,
+              "model_answer": "\\dfrac{2",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 7,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 8,
+              "model_answer": "\\dfrac{2",
+              "judge_result": "not_equivalent",
+              "is_correct": false
             }
           ],
           "ground_truth": "\\frac{2}{5}"
@@ -1508,13 +1539,23 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       498,
-      256,
+      255,
+      255,
       252,
       252,
-      255
+      252,
+      252,
+      252,
+      252,
+      252
     ],
     "gpt4o_mini_completion_lengths": [
       161,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
       1,
       1,
@@ -1525,8 +1566,8 @@
       300
     ],
     "local_completion_lengths": [
-      8088,
-      10832
+      10421,
+      10794
     ],
     "removal_variants": [
       {
@@ -1534,31 +1575,61 @@
         "removed_condition_index": 0,
         "removed_condition": "The front tires of a car wear out after 25,000 km",
         "remaining_conditions": [
-          "the rear tires wear out after 15,000 km"
+          "The rear tires wear out after 15,000 km"
         ],
         "incomplete_question": "The rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
         "verification": {
-          "total_attempts": 3,
-          "success_at_attempt": 3,
-          "is_valid": true,
+          "total_attempts": 8,
+          "success_at_attempt": null,
+          "is_valid": false,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": ">",
+              "model_answer": "18750",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 2,
-              "model_answer": ">",
+              "model_answer": "**",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 3,
-              "model_answer": "9375",
-              "judge_result": "equivalent",
-              "is_correct": true
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 4,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 5,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 6,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 7,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 8,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
             }
           ],
           "ground_truth": "9375"
@@ -1569,7 +1640,7 @@
         "removed_condition_index": 1,
         "removed_condition": "The rear tires wear out after 15,000 km",
         "remaining_conditions": [
-          "the front tires of a car wear out after 25,000 km"
+          "The front tires of a car wear out after 25,000 km"
         ],
         "incomplete_question": "The front tires of a car wear out after 25,000 km. When should the tires be swapped so that they wear out at the same time?",
         "verification": {
@@ -1579,7 +1650,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "9,375",
+              "model_answer": "9375",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -1600,11 +1671,15 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       529,
+      255,
+      257,
+      259,
       259,
       259,
       257,
-      257,
-      259
+      264,
+      259,
+      257
     ],
     "gpt4o_mini_completion_lengths": [
       287,
@@ -1612,17 +1687,21 @@
       1,
       1,
       1,
+      1,
+      1,
+      1,
+      1,
       1
     ],
     "local_prompt_lengths": [
-      300,
       298,
+      300,
       300
     ],
     "local_completion_lengths": [
-      7440,
-      7200,
-      12135
+      10386,
+      8007,
+      15938
     ],
     "removal_variants": [
       {
@@ -1634,13 +1713,31 @@
         ],
         "incomplete_question": "Given the function f(x)=√3 sin 2x + 2 cos^2 x + a, find the value of a.",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 4,
+          "success_at_attempt": 4,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "-1",
+              "model_answer": "0",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "0",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 3,
+              "model_answer": "0",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 4,
+              "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -1657,12 +1754,18 @@
         ],
         "incomplete_question": "If the minimum value of f(x) on the interval [0, π/2] is -1, find the value of a.",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
+              "model_answer": ">",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
               "model_answer": "-1",
               "judge_result": "equivalent",
               "is_correct": true
@@ -1681,24 +1784,30 @@
         ],
         "incomplete_question": "Given the function f(x)=√3 sin 2x + 2 cos^2 x + a, if the minimum value of f(x) is -1, find the value of a.",
         "verification": {
-          "total_attempts": 3,
-          "success_at_attempt": 3,
+          "total_attempts": 4,
+          "success_at_attempt": 4,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "0",
+              "model_answer": "-1 - \\sqrt{3",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 2,
+              "model_answer": "N/A",
+              "judge_result": "no_answer_tag",
+              "is_correct": false
+            },
+            {
+              "attempt": 3,
               "model_answer": "0",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
-              "attempt": 3,
+              "attempt": 4,
               "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
@@ -1721,7 +1830,7 @@
     "gpt4o_mini_prompt_lengths": [
       501,
       243,
-      243
+      247
     ],
     "gpt4o_mini_completion_lengths": [
       161,
@@ -1733,8 +1842,8 @@
       287
     ],
     "local_completion_lengths": [
-      13347,
-      40820
+      13039,
+      20164
     ],
     "removal_variants": [
       {
@@ -1777,7 +1886,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": ">",
+              "model_answer": "60^\\circ",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -1798,13 +1907,13 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       503,
+      261,
       259,
       261,
-      261,
-      261
+      260
     ],
     "gpt4o_mini_completion_lengths": [
-      316,
+      318,
       1,
       1,
       1,
@@ -1812,13 +1921,13 @@
     ],
     "local_prompt_lengths": [
       302,
-      301,
-      304
+      302,
+      301
     ],
     "local_completion_lengths": [
-      8935,
-      6050,
-      10795
+      3722,
+      6063,
+      12599
     ],
     "removal_variants": [
       {
@@ -1836,7 +1945,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "is 300.",
+              "model_answer": "300",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -1847,19 +1956,25 @@
       {
         "variant_id": "13_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "the six digits 0, 1, 2, 3, 4, 5",
+        "removed_condition": "without repeating any digit",
         "remaining_conditions": [
-          "to form a six-digit number without repeating any digit",
-          "where the unit digit is less than the ten's digit"
+          "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number",
+          "the unit digit is less than the ten's digit"
         ],
-        "incomplete_question": "Using the digits to form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?",
+        "incomplete_question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number, how many such numbers are there where the unit digit is less than the ten's digit?",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
+              "model_answer": "360",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
               "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
@@ -1871,25 +1986,19 @@
       {
         "variant_id": "13_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "to form a six-digit number without repeating any digit",
+        "removed_condition": "Using the six digits 0, 1, 2, 3, 4, 5",
         "remaining_conditions": [
-          "Using the six digits 0, 1, 2, 3, 4, 5",
-          "where the unit digit is less than the ten's digit"
+          "to form a six-digit number without repeating any digit",
+          "the unit digit is less than the ten's digit"
         ],
-        "incomplete_question": "Using the six digits 0, 1, 2, 3, 4, 5, how many such numbers are there where the unit digit is less than the ten's digit?",
+        "incomplete_question": "To form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?",
         "verification": {
-          "total_attempts": 2,
-          "success_at_attempt": 2,
+          "total_attempts": 1,
+          "success_at_attempt": 1,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "**",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
               "model_answer": "300",
               "judge_result": "equivalent",
               "is_correct": true
@@ -1912,29 +2021,35 @@
     "gpt4o_mini_prompt_lengths": [
       535,
       259,
-      275,
       258,
-      260,
-      260,
+      256,
       260,
       259,
-      262,
       258,
+      259,
       258,
-      263,
-      262,
-      263,
-      262,
-      263,
-      262,
+      260,
       258,
-      258,
+      294,
       262,
+      262,
+      262,
+      261,
+      262,
+      259,
       256,
-      264
+      260,
+      260,
+      258,
+      258,
+      256,
+      260
     ],
     "gpt4o_mini_completion_lengths": [
       314,
+      1,
+      1,
+      1,
       1,
       1,
       1,
@@ -1963,9 +2078,9 @@
       304
     ],
     "local_completion_lengths": [
-      17769,
-      20360,
-      30398
+      17247,
+      26744,
+      21551
     ],
     "removal_variants": [
       {
@@ -1984,50 +2099,50 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "21",
+              "model_answer": "1230",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 2,
-              "model_answer": "2011-09-09",
+              "model_answer": ".",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 3,
-              "model_answer": "12-12-2011",
+              "model_answer": "20111213",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 4,
-              "model_answer": "2011-12-21",
+              "model_answer": "20111221",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 5,
-              "model_answer": "31",
+              "model_answer": "21",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 6,
-              "model_answer": ">",
+              "model_answer": "10",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 7,
-              "model_answer": "0, but that doesn't make sense.",
+              "model_answer": ">",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 8,
-              "model_answer": "N/A",
-              "judge_result": "no_answer_tag",
+              "model_answer": "20111211",
+              "judge_result": "not_equivalent",
               "is_correct": false
             }
           ],
@@ -2044,51 +2159,57 @@
         ],
         "incomplete_question": "An electronic clock always displays the date as an eight-digit number. The date is displayed as \\overline{2011 \\mathrm{ABCD}}.",
         "verification": {
-          "total_attempts": 7,
-          "success_at_attempt": 7,
-          "is_valid": true,
+          "total_attempts": 8,
+          "success_at_attempt": null,
+          "is_valid": false,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "1120",
+              "model_answer": "1231",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 2,
-              "model_answer": "December 21, 2011, which as an eight-digit number is 20111221.",
+              "model_answer": "09",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 3,
-              "model_answer": "21",
+              "model_answer": ".",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 4,
-              "model_answer": "20111221",
+              "model_answer": "20110909",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 5,
-              "model_answer": "20111031",
+              "model_answer": "122111",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 6,
-              "model_answer": "20111220",
+              "model_answer": "21",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 7,
-              "model_answer": "1221",
-              "judge_result": "equivalent",
-              "is_correct": true
+              "model_answer": "3123",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 8,
+              "model_answer": "17",
+              "judge_result": "not_equivalent",
+              "is_correct": false
             }
           ],
           "ground_truth": "1221"
@@ -2110,7 +2231,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "20111231",
+              "model_answer": "21",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
@@ -2122,37 +2243,37 @@
             },
             {
               "attempt": 3,
-              "model_answer": "20111129",
+              "model_answer": ". If not, I'll move to the previous day and repeat the check. This might take several iterations, so I'll look for a pattern or a quicker method to find the appropriate date.",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 4,
-              "model_answer": "20110801",
+              "model_answer": "20111221",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 5,
-              "model_answer": "20111010",
+              "model_answer": "20111221",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 6,
-              "model_answer": ">",
+              "model_answer": "20111221",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 7,
-              "model_answer": "N/A",
-              "judge_result": "no_answer_tag",
+              "model_answer": "1228",
+              "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 8,
-              "model_answer": "20111221",
+              "model_answer": "20111212",
               "judge_result": "not_equivalent",
               "is_correct": false
             }
@@ -2173,25 +2294,33 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       493,
-      252,
+      251,
       249,
-      246
+      249,
+      248,
+      246,
+      257,
+      249
     ],
     "gpt4o_mini_completion_lengths": [
       255,
+      1,
+      1,
+      1,
+      1,
       1,
       1,
       1
     ],
     "local_prompt_lengths": [
       292,
-      292,
-      290
+      290,
+      292
     ],
     "local_completion_lengths": [
-      3191,
-      3649,
-      3679
+      3381,
+      4397,
+      4656
     ],
     "removal_variants": [
       {
@@ -2203,12 +2332,24 @@
         ],
         "incomplete_question": "Smaller cubes with a side length of 1 centimeter were arranged in a straight line. What is the length of the resulting line?",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 3,
+          "success_at_attempt": 3,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
+              "model_answer": "1000",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "1",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 3,
               "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
@@ -2226,13 +2367,19 @@
         ],
         "incomplete_question": "A cube with a side length of 1 meter was cut into smaller cubes and arranged in a straight line. What is the length of the resulting line?",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": ">",
+              "model_answer": "1",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "N/A",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -2243,19 +2390,25 @@
       {
         "variant_id": "15_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "arranged in a straight line",
+        "removed_condition": "and arranged in a straight line",
         "remaining_conditions": [
           "A cube with a side length of 1 meter was cut into smaller cubes with a side length of 1 centimeter"
         ],
         "incomplete_question": "A cube with a side length of 1 meter was cut into smaller cubes with a side length of 1 centimeter. What is the length of the resulting line?",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "10000 meters",
+              "model_answer": "is 1,000,000 centimeters.",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -2295,30 +2448,36 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       674,
-      296,
-      296,
-      328,
-      278,
-      296,
-      300,
+      293,
+      273,
+      273,
+      273,
+      273,
       277,
+      277,
+      301,
+      312,
+      319,
+      312,
+      312,
       307,
-      278,
-      333,
-      278,
-      296,
-      294,
-      308,
-      316,
-      309,
-      318,
-      318,
-      318,
+      311,
+      336,
+      311,
       315,
-      315
+      315,
+      315,
+      315,
+      315,
+      315,
+      315,
+      321
     ],
     "gpt4o_mini_completion_lengths": [
-      390,
+      425,
+      1,
+      1,
+      1,
       1,
       1,
       1,
@@ -2342,14 +2501,14 @@
       1
     ],
     "local_prompt_lengths": [
-      327,
       304,
-      336
+      338,
+      344
     ],
     "local_completion_lengths": [
-      7581,
-      7733,
-      29119
+      5509,
+      11785,
+      18570
     ],
     "removal_variants": [
       {
@@ -2360,7 +2519,7 @@
           "f(x) = x^2 - 2cos(θ)x + 1",
           "x ∈ [-√3/2, 1/2]"
         ],
-        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2], find the maximum and minimum values of f(x).",
+        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2]. Find the maximum and minimum values of f(x).",
         "verification": {
           "total_attempts": 8,
           "success_at_attempt": null,
@@ -2368,49 +2527,49 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "\\dfrac{3",
+              "model_answer": "Maximum value is 7/4 + √3/2 and minimum value is 3/4",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 2,
-              "model_answer": "\\frac{7",
+              "model_answer": ">",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 3,
-              "model_answer": "\\dfrac{3",
+              "model_answer": ">",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 4,
-              "model_answer": "\\dfrac{3",
+              "model_answer": ">",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 5,
-              "model_answer": "Maximum value is 7/4 + √3/2, and minimum value is 3/4.",
+              "model_answer": "**",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 6,
-              "model_answer": "s: maximum at x=-√3/2 is 7/4 + √3/2, and the minimum at x=1/2 is 3/4.",
+              "model_answer": "\\frac{1",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 7,
-              "model_answer": "The minimum value of \\( f(x) \\) is \\( \\frac{3}{4} \\) and the maximum value is \\( \\frac{7 + 2\\sqrt{3}}{4} \\).",
+              "model_answer": "\\frac{7",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 8,
-              "model_answer": "Maximum value: \\( \\frac{7}{4} + \\frac{\\sqrt{3}}{2} \\)\n\nMinimum value: \\( \\frac{3}{4} \\)",
+              "model_answer": "The maximum value of f(x) is (7/4) + (√3)/2 and the minimum value is 3/4.",
               "judge_result": "not_equivalent",
               "is_correct": false
             }
@@ -2423,10 +2582,11 @@
         "removed_condition_index": 1,
         "removed_condition": "f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π)",
         "remaining_conditions": [
+          "When θ = π/3",
           "f(x) = x^2 - 2cos(θ)x + 1",
           "x ∈ [-√3/2, 1/2]"
         ],
-        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2], find the range of θ.",
+        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2]. When θ = π/3, find the maximum and minimum values of f(x).",
         "verification": {
           "total_attempts": 8,
           "success_at_attempt": null,
@@ -2434,49 +2594,49 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": ">",
+              "model_answer": "\\dfrac{3",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 2,
-              "model_answer": "**",
+              "model_answer": "\\dfrac{7 + 2\\sqrt{3",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 3,
-              "model_answer": "[0, π/3] ∪ [2π/3, 4π/3] ∪ [5π/3, 2π)",
+              "model_answer": "\\dfrac{3",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 4,
-              "model_answer": ">",
+              "model_answer": "\\dfrac{7",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 5,
-              "model_answer": "[Final answer only]",
+              "model_answer": ">",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 6,
-              "model_answer": "\\theta \\in [0, \\frac{\\pi",
+              "model_answer": "\\frac{3",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 7,
-              "model_answer": "The range of θ is [0, π/3) ∪ (2π/3, 4π/3) ∪ (5π/3, 2π).",
+              "model_answer": "Maximum: \\(\\frac{7 + 2\\sqrt{3}}{4}\\), Minimum: \\(\\frac{3}{4}\\)",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 8,
-              "model_answer": ">",
+              "model_answer": "\\sqrt{3",
               "judge_result": "not_equivalent",
               "is_correct": false
             }
@@ -2489,44 +2649,63 @@
         "removed_condition_index": 2,
         "removed_condition": "If sin(α) and cos(α) are the two real roots of the equation f(x) = 1/4 + cos(θ)",
         "remaining_conditions": [
+          "When θ = π/3",
           "f(x) = x^2 - 2cos(θ)x + 1",
           "x ∈ [-√3/2, 1/2]"
         ],
-        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2], find the value of (tan^2(α) + 1)/tan(α).",
+        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2]. When θ = π/3, find the value of (tan^2(α) + 1)/tan(α).",
         "verification": {
-          "total_attempts": 5,
-          "success_at_attempt": 5,
-          "is_valid": true,
+          "total_attempts": 8,
+          "success_at_attempt": null,
+          "is_valid": false,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "\\dfrac{16 + 4\\sqrt{11",
+              "model_answer": "2",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 2,
-              "model_answer": "\\dfrac{16 + 4\\sqrt{11",
+              "model_answer": "2",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 3,
-              "model_answer": "\\dfrac{16 + 4\\sqrt{11",
+              "model_answer": "4",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 4,
-              "model_answer": "\\dfrac{4\\sqrt{11",
+              "model_answer": "4",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 5,
-              "model_answer": "(16 +4sqrt(11))/5.",
-              "judge_result": "equivalent",
-              "is_correct": true
+              "model_answer": "4.",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 6,
+              "model_answer": "2",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 7,
+              "model_answer": "2",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 8,
+              "model_answer": "\\text{No solution due to contradiction",
+              "judge_result": "not_equivalent",
+              "is_correct": false
             }
           ],
           "ground_truth": "\\frac{16 + 4\\sqrt{11}}{5}"
@@ -2544,14 +2723,219 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      594
+      594,
+      318,
+      317,
+      317,
+      317,
+      317,
+      315,
+      317,
+      317
     ],
     "gpt4o_mini_completion_lengths": [
-      1391
+      1353,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
-    "local_prompt_lengths": [],
-    "local_completion_lengths": [],
-    "removal_variants": []
+    "local_prompt_lengths": [
+      362,
+      362,
+      362,
+      362,
+      362,
+      362
+    ],
+    "local_completion_lengths": [
+      24591,
+      23490,
+      26291,
+      28770,
+      23508,
+      26659
+    ],
+    "removal_variants": [
+      {
+        "variant_id": "18_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "For positive integers n",
+        "remaining_conditions": [
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "Let τ(n) denote the number of positive integer divisors of n, including 1 and n. For example, τ(1)=1 and τ(6)=4. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|.",
+        "verification": {
+          "total_attempts": 2,
+          "success_at_attempt": 2,
+          "is_valid": true,
+          "all_attempts": [
+            {
+              "attempt": 1,
+              "model_answer": "45",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "25",
+              "judge_result": "equivalent",
+              "is_correct": true
+            }
+          ],
+          "ground_truth": "25"
+        }
+      },
+      {
+        "variant_id": "18_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+        "remaining_conditions": [
+          "For positive integers n",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "For positive integers n, For example, τ(1)=1 and τ(6)=4. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|.",
+        "verification": {
+          "total_attempts": 1,
+          "success_at_attempt": 1,
+          "is_valid": true,
+          "all_attempts": [
+            {
+              "attempt": 1,
+              "model_answer": "25",
+              "judge_result": "equivalent",
+              "is_correct": true
+            }
+          ],
+          "ground_truth": "25"
+        }
+      },
+      {
+        "variant_id": "18_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "For example, τ(1)=1 and τ(6)=4.",
+        "remaining_conditions": [
+          "For positive integers n",
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|.",
+        "verification": {
+          "total_attempts": 1,
+          "success_at_attempt": 1,
+          "is_valid": true,
+          "all_attempts": [
+            {
+              "attempt": 1,
+              "model_answer": "25",
+              "judge_result": "equivalent",
+              "is_correct": true
+            }
+          ],
+          "ground_truth": "25"
+        }
+      },
+      {
+        "variant_id": "18_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+        "remaining_conditions": [
+          "For positive integers n",
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. For example, τ(1)=1 and τ(6)=4. Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|.",
+        "verification": {
+          "total_attempts": 1,
+          "success_at_attempt": 1,
+          "is_valid": true,
+          "all_attempts": [
+            {
+              "attempt": 1,
+              "model_answer": "25",
+              "judge_result": "equivalent",
+              "is_correct": true
+            }
+          ],
+          "ground_truth": "25"
+        }
+      },
+      {
+        "variant_id": "18_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+        "remaining_conditions": [
+          "For positive integers n",
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. For example, τ(1)=1 and τ(6)=4. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Find |a-b|.",
+        "verification": {
+          "total_attempts": 1,
+          "success_at_attempt": 1,
+          "is_valid": true,
+          "all_attempts": [
+            {
+              "attempt": 1,
+              "model_answer": ">",
+              "judge_result": "equivalent",
+              "is_correct": true
+            }
+          ],
+          "ground_truth": "25"
+        }
+      },
+      {
+        "variant_id": "18_remove_5",
+        "removed_condition_index": 5,
+        "removed_condition": "Find |a-b|.",
+        "remaining_conditions": [
+          "For positive integers n",
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even."
+        ],
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. For example, τ(1)=1 and τ(6)=4. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+        "verification": {
+          "total_attempts": 2,
+          "success_at_attempt": 2,
+          "is_valid": true,
+          "all_attempts": [
+            {
+              "attempt": 1,
+              "model_answer": "26",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "25",
+              "judge_result": "equivalent",
+              "is_correct": true
+            }
+          ],
+          "ground_truth": "25"
+        }
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -2563,133 +2947,14 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      501,
-      251,
-      251,
-      249,
-      253,
-      253
+      501
     ],
     "gpt4o_mini_completion_lengths": [
-      360,
-      1,
-      1,
-      1,
-      1,
-      1
+      282
     ],
-    "local_prompt_lengths": [
-      303,
-      303,
-      303,
-      304
-    ],
-    "local_completion_lengths": [
-      13543,
-      13126,
-      16250,
-      22974
-    ],
-    "removal_variants": [
-      {
-        "variant_id": "19_remove_0",
-        "removed_condition_index": 0,
-        "removed_condition": "|x^{2}-4x-39601|",
-        "remaining_conditions": [
-          "|x^{2}+4x-39601| >= |x^{2}+4x-39601|"
-        ],
-        "incomplete_question": "Determine the largest value of x for which |x^{2}+4x-39601| >= |x^{2}+4x-39601|",
-        "verification": {
-          "total_attempts": 2,
-          "success_at_attempt": 2,
-          "is_valid": true,
-          "all_attempts": [
-            {
-              "attempt": 1,
-              "model_answer": "202",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
-              "model_answer": "199",
-              "judge_result": "equivalent",
-              "is_correct": true
-            }
-          ],
-          "ground_truth": "199"
-        }
-      },
-      {
-        "variant_id": "19_remove_1",
-        "removed_condition_index": 1,
-        "removed_condition": "|x^{2}+4x-39601|",
-        "remaining_conditions": [
-          "|x^{2}-4x-39601| >= |x^{2}+4x-39601|"
-        ],
-        "incomplete_question": "Determine the largest value of x for which |x^{2}-4x-39601| >= |x^{2}-4x-39601|",
-        "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
-          "is_valid": true,
-          "all_attempts": [
-            {
-              "attempt": 1,
-              "model_answer": ">",
-              "judge_result": "equivalent",
-              "is_correct": true
-            }
-          ],
-          "ground_truth": "199"
-        }
-      },
-      {
-        "variant_id": "19_remove_2",
-        "removed_condition_index": 2,
-        "removed_condition": "x^{2}-4x-39601",
-        "remaining_conditions": [
-          "|x^{2}-4x-39601| >= |x^{2}+4x-39601|"
-        ],
-        "incomplete_question": "Determine the largest value of x for which |x^{2}-4x-39601| >= |x^{2}+4x-39601|",
-        "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
-          "is_valid": true,
-          "all_attempts": [
-            {
-              "attempt": 1,
-              "model_answer": ">",
-              "judge_result": "equivalent",
-              "is_correct": true
-            }
-          ],
-          "ground_truth": "199"
-        }
-      },
-      {
-        "variant_id": "19_remove_3",
-        "removed_condition_index": 3,
-        "removed_condition": "x^{2}+4x-39601",
-        "remaining_conditions": [
-          "|x^{2}-4x-39601| >= |x^{2}+4x-39601|"
-        ],
-        "incomplete_question": "Determine the largest value of x for which |x^{2}-4x-39601| >= |x^{2}-4x-39601|",
-        "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
-          "is_valid": true,
-          "all_attempts": [
-            {
-              "attempt": 1,
-              "model_answer": "199",
-              "judge_result": "equivalent",
-              "is_correct": true
-            }
-          ],
-          "ground_truth": "199"
-        }
-      }
-    ]
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "removal_variants": []
   },
   {
     "data_source": "polaris",
@@ -2704,7 +2969,7 @@
       555
     ],
     "gpt4o_mini_completion_lengths": [
-      851
+      892
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -2721,36 +2986,48 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       539,
-      296,
-      297,
-      296
+      278,
+      274,
+      272,
+      285,
+      286,
+      279
     ],
     "gpt4o_mini_completion_lengths": [
-      509,
+      733,
+      1,
+      1,
+      1,
       1,
       1,
       1
     ],
     "local_prompt_lengths": [
-      334,
-      336,
-      335
+      317,
+      313,
+      313,
+      317,
+      318
     ],
     "local_completion_lengths": [
-      10212,
-      10982,
-      17150
+      16324,
+      19441,
+      18059,
+      16137,
+      12749
     ],
     "removal_variants": [
       {
         "variant_id": "21_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$",
+        "removed_condition": "Let side AD of convex quadrilateral ABCD be extended through D",
         "remaining_conditions": [
-          "let side $BC$ be extended through $C$, to meet in point $E.$",
-          "Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$"
+          "let side BC be extended through C to meet in point E",
+          "let S be the degree-sum of angles CDE and DCE",
+          "let S' represent the degree-sum of angles BAD and ABC",
+          "if r=S/S'"
         ],
-        "incomplete_question": "Let side $BC$ be extended through $C$, to meet in point $E.$ Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$, then:",
+        "incomplete_question": "Let side BC be extended through C to meet in point E. Let S be the degree-sum of angles CDE and DCE, and let S' represent the degree-sum of angles BAD and ABC. If r=S/S', then:",
         "verification": {
           "total_attempts": 1,
           "success_at_attempt": 1,
@@ -2758,7 +3035,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "1",
+              "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -2769,12 +3046,14 @@
       {
         "variant_id": "21_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "let side $BC$ be extended through $C$, to meet in point $E.$",
+        "removed_condition": "let side BC be extended through C",
         "remaining_conditions": [
-          "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$",
-          "Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$"
+          "let side AD of convex quadrilateral ABCD be extended through D to meet in point E",
+          "let S be the degree-sum of angles CDE and DCE",
+          "let S' represent the degree-sum of angles BAD and ABC",
+          "if r=S/S'"
         ],
-        "incomplete_question": "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$. Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$, then:",
+        "incomplete_question": "Let side AD of convex quadrilateral ABCD be extended through D to meet in point E. Let S be the degree-sum of angles CDE and DCE, and let S' represent the degree-sum of angles BAD and ABC. If r=S/S', then:",
         "verification": {
           "total_attempts": 1,
           "success_at_attempt": 1,
@@ -2793,13 +3072,72 @@
       {
         "variant_id": "21_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$",
+        "removed_condition": "let S be the degree-sum of angles CDE and DCE",
         "remaining_conditions": [
-          "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$",
-          "let side $BC$ be extended through $C$, to meet in point $E.$",
-          "If $r=S/S'$"
+          "let side AD of convex quadrilateral ABCD be extended through D to meet in point E",
+          "let side BC be extended through C to meet in point E",
+          "let S' represent the degree-sum of angles BAD and ABC",
+          "if r=S/S'"
         ],
-        "incomplete_question": "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$, and let side $BC$ be extended through $C$, to meet in point $E.$ If $r=S/S'$, then:",
+        "incomplete_question": "Let side AD of convex quadrilateral ABCD be extended through D to meet in point E. Let side BC be extended through C to meet in point E. Let S' represent the degree-sum of angles BAD and ABC. If r=S/S', then:",
+        "verification": {
+          "total_attempts": 2,
+          "success_at_attempt": 2,
+          "is_valid": true,
+          "all_attempts": [
+            {
+              "attempt": 1,
+              "model_answer": "\\dfrac{360^\\circ - S'",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "is 1, meaning S is equal to S'.",
+              "judge_result": "equivalent",
+              "is_correct": true
+            }
+          ],
+          "ground_truth": "1"
+        }
+      },
+      {
+        "variant_id": "21_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "let S' represent the degree-sum of angles BAD and ABC",
+        "remaining_conditions": [
+          "let side AD of convex quadrilateral ABCD be extended through D to meet in point E",
+          "let side BC be extended through C to meet in point E",
+          "let S be the degree-sum of angles CDE and DCE",
+          "if r=S/S'"
+        ],
+        "incomplete_question": "Let side AD of convex quadrilateral ABCD be extended through D to meet in point E. Let side BC be extended through C to meet in point E. Let S be the degree-sum of angles CDE and DCE. If r=S/S', then:",
+        "verification": {
+          "total_attempts": 1,
+          "success_at_attempt": 1,
+          "is_valid": true,
+          "all_attempts": [
+            {
+              "attempt": 1,
+              "model_answer": "1",
+              "judge_result": "equivalent",
+              "is_correct": true
+            }
+          ],
+          "ground_truth": "1"
+        }
+      },
+      {
+        "variant_id": "21_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "if r=S/S'",
+        "remaining_conditions": [
+          "let side AD of convex quadrilateral ABCD be extended through D to meet in point E",
+          "let side BC be extended through C to meet in point E",
+          "let S be the degree-sum of angles CDE and DCE",
+          "let S' represent the degree-sum of angles BAD and ABC"
+        ],
+        "incomplete_question": "Let side AD of convex quadrilateral ABCD be extended through D to meet in point E. Let side BC be extended through C to meet in point E. Let S be the degree-sum of angles CDE and DCE, and let S' represent the degree-sum of angles BAD and ABC. Then:",
         "verification": {
           "total_attempts": 1,
           "success_at_attempt": 1,
@@ -2828,32 +3166,18 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       492,
-      257,
-      257,
-      257,
-      256,
-      263,
-      256,
       256,
       262,
-      258,
-      258,
-      258,
-      258,
-      258,
-      258,
-      258,
-      264
+      255,
+      255,
+      259,
+      261,
+      256,
+      262,
+      262
     ],
     "gpt4o_mini_completion_lengths": [
-      279,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
+      275,
       1,
       1,
       1,
@@ -2865,14 +3189,14 @@
       1
     ],
     "local_prompt_lengths": [
-      298,
       296,
-      299
+      297,
+      298
     ],
     "local_completion_lengths": [
-      3745,
-      3852,
-      4745
+      3085,
+      3512,
+      9063
     ],
     "removal_variants": [
       {
@@ -2882,8 +3206,8 @@
         "remaining_conditions": [],
         "incomplete_question": "Find the distance between the foci of the ellipse.",
         "verification": {
-          "total_attempts": 4,
-          "success_at_attempt": 4,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
@@ -2894,18 +3218,6 @@
             },
             {
               "attempt": 2,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 3,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 4,
               "model_answer": "8\\sqrt{10",
               "judge_result": "equivalent",
               "is_correct": true
@@ -2917,7 +3229,7 @@
       {
         "variant_id": "22_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "The semi-major axis length is derived from the equation.",
+        "removed_condition": "The semi-major axis squared is 36.",
         "remaining_conditions": [
           "The equation of the ellipse is given as \\(\\frac{x^2}{36} + \\frac{y^2}{16} = 8\\)."
         ],
@@ -2941,7 +3253,7 @@
             },
             {
               "attempt": 3,
-              "model_answer": ">",
+              "model_answer": "[Final answer only]",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
@@ -2958,14 +3270,14 @@
       {
         "variant_id": "22_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "The semi-minor axis length is derived from the equation.",
+        "removed_condition": "The semi-minor axis squared is 16.",
         "remaining_conditions": [
           "The equation of the ellipse is given as \\(\\frac{x^2}{36} + \\frac{y^2}{16} = 8\\)."
         ],
         "incomplete_question": "Find the distance between the foci of the ellipse \\(\\frac{x^2}{36} + \\frac{y^2}{16} = 8\\).",
         "verification": {
-          "total_attempts": 8,
-          "success_at_attempt": 8,
+          "total_attempts": 3,
+          "success_at_attempt": 3,
           "is_valid": true,
           "all_attempts": [
             {
@@ -2976,42 +3288,12 @@
             },
             {
               "attempt": 2,
-              "model_answer": ">",
+              "model_answer": "4\\sqrt{5",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 3,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 4,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 5,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 6,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 7,
-              "model_answer": ">",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 8,
               "model_answer": "8\\sqrt{10",
               "judge_result": "equivalent",
               "is_correct": true
@@ -3033,32 +3315,28 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       495,
-      250,
+      251,
       255,
       255,
       255,
       255,
-      257,
       255,
-      257,
-      253,
-      256,
-      253,
-      256,
-      256,
-      256,
-      258,
       252,
       255,
-      253,
+      252,
       255,
-      255,
-      250
+      252,
+      250,
+      256,
+      256,
+      251,
+      256,
+      256,
+      256,
+      253
     ],
     "gpt4o_mini_completion_lengths": [
       272,
-      1,
-      1,
       1,
       1,
       1,
@@ -3085,9 +3363,9 @@
       290
     ],
     "local_completion_lengths": [
-      14261,
-      29986,
-      38929
+      21310,
+      18169,
+      24304
     ],
     "removal_variants": [
       {
@@ -3106,7 +3384,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "1",
+              "model_answer": "\\dfrac{2",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
@@ -3118,19 +3396,19 @@
             },
             {
               "attempt": 3,
-              "model_answer": "1",
+              "model_answer": ">",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 4,
-              "model_answer": "\\dfrac{2",
-              "judge_result": "not_equivalent",
+              "model_answer": "N/A",
+              "judge_result": "no_answer_tag",
               "is_correct": false
             },
             {
               "attempt": 5,
-              "model_answer": "\\dfrac{2",
+              "model_answer": "\\dfrac{1",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
@@ -3142,13 +3420,13 @@
             },
             {
               "attempt": 7,
-              "model_answer": "\\dfrac{\\sqrt{5",
+              "model_answer": "\\dfrac{2",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 8,
-              "model_answer": "2",
+              "model_answer": "1",
               "judge_result": "not_equivalent",
               "is_correct": false
             }
@@ -3166,8 +3444,8 @@
         ],
         "incomplete_question": "All the complex roots of $(z + 1)^4 = 16z^4$ lie on a circle. Find the radius of this circle.",
         "verification": {
-          "total_attempts": 5,
-          "success_at_attempt": 5,
+          "total_attempts": 4,
+          "success_at_attempt": 4,
           "is_valid": true,
           "all_attempts": [
             {
@@ -3184,18 +3462,12 @@
             },
             {
               "attempt": 3,
-              "model_answer": "\\dfrac{2",
+              "model_answer": "1",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 4,
-              "model_answer": "\\dfrac{2",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 5,
               "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
@@ -3220,7 +3492,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": ">",
+              "model_answer": "is:",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
@@ -3238,7 +3510,7 @@
             },
             {
               "attempt": 4,
-              "model_answer": "\\dfrac{1",
+              "model_answer": "\\dfrac{2",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
@@ -3250,19 +3522,19 @@
             },
             {
               "attempt": 6,
-              "model_answer": "\\dfrac{\\sqrt{5",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 7,
               "model_answer": "\\dfrac{2",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
+              "attempt": 7,
+              "model_answer": "1",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
               "attempt": 8,
-              "model_answer": "\\dfrac{\\sqrt{2",
+              "model_answer": "\\dfrac{2",
               "judge_result": "not_equivalent",
               "is_correct": false
             }
@@ -3285,7 +3557,7 @@
       497
     ],
     "gpt4o_mini_completion_lengths": [
-      135
+      152
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -3302,13 +3574,15 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       567,
+      309,
       304,
       304,
-      306,
-      303
+      310,
+      305
     ],
     "gpt4o_mini_completion_lengths": [
-      597,
+      583,
+      1,
       1,
       1,
       1,
@@ -3317,12 +3591,12 @@
     "local_prompt_lengths": [
       342,
       342,
-      343
+      342
     ],
     "local_completion_lengths": [
-      9154,
-      8011,
-      12361
+      7535,
+      8752,
+      11995
     ],
     "removal_variants": [
       {
@@ -3331,17 +3605,24 @@
         "removed_condition": "The original triangle had side length 1",
         "remaining_conditions": [
           "Sierpinski's triangle is formed by taking a triangle, and drawing an upside down triangle inside each upright triangle that appears.",
-          "A snake sees the fractal, but decides that the triangles need circles inside them. Therefore, she draws a circle inscribed in every upside down triangle she sees (assume that the snake can do an infinite amount of work).",
+          "A snake sees the fractal, but decides that the triangles need circles inside them.",
+          "Therefore, she draws a circle inscribed in every upside down triangle she sees (assume that the snake can do an infinite amount of work).",
           "What is the total area of all the individual circles?"
         ],
         "incomplete_question": "Sierpinski's triangle is formed by taking a triangle, and drawing an upside down triangle inside each upright triangle that appears. A snake sees the fractal, but decides that the triangles need circles inside them. Therefore, she draws a circle inscribed in every upside down triangle she sees (assume that the snake can do an infinite amount of work). What is the total area of all the individual circles?",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
+              "model_answer": "\\dfrac{\\pi",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
               "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
@@ -3379,14 +3660,14 @@
       {
         "variant_id": "25_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "Assume that the snake can do an infinite amount of work",
+        "removed_condition": "Therefore, she draws a circle inscribed in every upside down triangle she sees (assume that the snake can do an infinite amount of work).",
         "remaining_conditions": [
           "Sierpinski's triangle is formed by taking a triangle, and drawing an upside down triangle inside each upright triangle that appears.",
           "The original triangle had side length 1",
-          "A snake sees the fractal, but decides that the triangles need circles inside them. Therefore, she draws a circle inscribed in every upside down triangle she sees.",
+          "A snake sees the fractal, but decides that the triangles need circles inside them.",
           "What is the total area of all the individual circles?"
         ],
-        "incomplete_question": "Sierpinski's triangle is formed by taking a triangle, and drawing an upside down triangle inside each upright triangle that appears. The original triangle had side length 1. A snake sees the fractal, but decides that the triangles need circles inside them. Therefore, she draws a circle inscribed in every upside down triangle she sees. What is the total area of all the individual circles?",
+        "incomplete_question": "Sierpinski's triangle is formed by taking a triangle, and drawing an upside down triangle inside each upright triangle that appears. The original triangle had side length 1. A snake sees the fractal, but decides that the triangles need circles inside them. What is the total area of all the individual circles?",
         "verification": {
           "total_attempts": 2,
           "success_at_attempt": 2,
@@ -3394,7 +3675,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "π/4",
+              "model_answer": "\\dfrac{\\pi",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
@@ -3424,7 +3705,7 @@
       319,
       319,
       319,
-      336,
+      313,
       319,
       313,
       319,
@@ -3459,9 +3740,9 @@
       339
     ],
     "local_completion_lengths": [
-      15966,
-      18807,
-      23890
+      12092,
+      19774,
+      28078
     ],
     "removal_variants": [
       {
@@ -3480,13 +3761,13 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "\\sqrt{F_{1",
+              "model_answer": "\\sqrt{F_1",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 2,
-              "model_answer": "\\sqrt{F_1",
+              "model_answer": "\\sqrt{F_{1",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
@@ -3498,7 +3779,7 @@
             },
             {
               "attempt": 4,
-              "model_answer": "√F₁ + √F₂ ≤ √F, with equality when E is the midpoint of both diagonals.",
+              "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -3516,13 +3797,43 @@
         ],
         "incomplete_question": "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD. Prove that \\sqrt{F_{1}} + \\sqrt{F_{2}} \\leq \\sqrt{F} and determine when equality holds.",
         "verification": {
+          "total_attempts": 2,
+          "success_at_attempt": 2,
+          "is_valid": true,
+          "all_attempts": [
+            {
+              "attempt": 1,
+              "model_answer": "\\sqrt{F_{1",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": ">",
+              "judge_result": "equivalent",
+              "is_correct": true
+            }
+          ],
+          "ground_truth": "\\sqrt{F_1}+\\sqrt{F_2}\\le\\sqrt{F}"
+        }
+      },
+      {
+        "variant_id": "26_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "Prove that \\sqrt{F_{1}} + \\sqrt{F_{2}} \\leq \\sqrt{F} and determine when equality holds.",
+        "remaining_conditions": [
+          "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD.",
+          "Denote F_{1}, F_{2}, and F_{3} as the areas of \\triangle ABE, \\triangle CDE, and the quadrilateral ABCD, respectively."
+        ],
+        "incomplete_question": "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD. Denote F_{1}, F_{2}, and F_{3} as the areas of \\triangle ABE, \\triangle CDE, and the quadrilateral ABCD, respectively.",
+        "verification": {
           "total_attempts": 8,
           "success_at_attempt": null,
           "is_valid": false,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "\\sqrt{F_1",
+              "model_answer": "\\sqrt{F_{1",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
@@ -3534,7 +3845,7 @@
             },
             {
               "attempt": 3,
-              "model_answer": "\\sqrt{F_{1",
+              "model_answer": "\\sqrt{F_1",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
@@ -3571,36 +3882,6 @@
           ],
           "ground_truth": "\\sqrt{F_1}+\\sqrt{F_2}\\le\\sqrt{F}"
         }
-      },
-      {
-        "variant_id": "26_remove_2",
-        "removed_condition_index": 2,
-        "removed_condition": "Prove that \\sqrt{F_{1}} + \\sqrt{F_{2}} \\leq \\sqrt{F} and determine when equality holds.",
-        "remaining_conditions": [
-          "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD.",
-          "Denote F_{1}, F_{2}, and F_{3} as the areas of \\triangle ABE, \\triangle CDE, and the quadrilateral ABCD, respectively."
-        ],
-        "incomplete_question": "Let E be the intersection point of the diagonals of a convex quadrilateral ABCD. Denote F_{1}, F_{2}, and F_{3} as the areas of \\triangle ABE, \\triangle CDE, and the quadrilateral ABCD, respectively.",
-        "verification": {
-          "total_attempts": 2,
-          "success_at_attempt": 2,
-          "is_valid": true,
-          "all_attempts": [
-            {
-              "attempt": 1,
-              "model_answer": "\\sqrt{F_1",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
-              "model_answer": ">",
-              "judge_result": "equivalent",
-              "is_correct": true
-            }
-          ],
-          "ground_truth": "\\sqrt{F_1}+\\sqrt{F_2}\\le\\sqrt{F}"
-        }
       }
     ]
   },
@@ -3615,50 +3896,41 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       585,
-      331,
-      331,
-      339,
-      329,
-      331,
-      331,
-      329
+      321,
+      330,
+      321,
+      319
     ],
     "gpt4o_mini_completion_lengths": [
-      1189,
-      1,
-      1,
-      1,
+      871,
       1,
       1,
       1,
       1
     ],
     "local_prompt_lengths": [
-      380,
+      362,
       371,
-      372,
-      372,
-      372
+      362,
+      362
     ],
     "local_completion_lengths": [
-      17429,
-      18834,
-      15269,
-      10512,
-      19972
+      13330,
+      15569,
+      21226,
+      21624
     ],
     "removal_variants": [
       {
         "variant_id": "27_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "p and q are relatively prime positive integers",
+        "removed_condition": "Let p and q be relatively prime positive integers",
         "remaining_conditions": [
-          "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
+          "dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ...",
           "the numerators always increase by 1",
-          "the denominators alternate between powers of 2 and 4",
-          "exponents also increasing by 1 for each subsequent term"
+          "the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term"
         ],
-        "incomplete_question": "Let p and q be positive integers such that \\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots, where the numerators always increase by 1, and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q.",
+        "incomplete_question": "Let p and q be positive integers such that dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ..., where the numerators always increase by 1, and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q.",
         "verification": {
           "total_attempts": 1,
           "success_at_attempt": 1,
@@ -3677,12 +3949,11 @@
       {
         "variant_id": "27_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
+        "removed_condition": "dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ...",
         "remaining_conditions": [
-          "p and q are relatively prime positive integers",
+          "Let p and q be relatively prime positive integers",
           "the numerators always increase by 1",
-          "the denominators alternate between powers of 2 and 4",
-          "exponents also increasing by 1 for each subsequent term"
+          "the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term"
         ],
         "incomplete_question": "Let p and q be relatively prime positive integers such that the numerators always increase by 1, and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q.",
         "verification": {
@@ -3705,12 +3976,11 @@
         "removed_condition_index": 2,
         "removed_condition": "the numerators always increase by 1",
         "remaining_conditions": [
-          "p and q are relatively prime positive integers",
-          "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
-          "the denominators alternate between powers of 2 and 4",
-          "exponents also increasing by 1 for each subsequent term"
+          "Let p and q be relatively prime positive integers",
+          "dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ...",
+          "the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term"
         ],
-        "incomplete_question": "Let p and q be relatively prime positive integers such that \\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots, and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q.",
+        "incomplete_question": "Let p and q be relatively prime positive integers such that dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ..., and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q.",
         "verification": {
           "total_attempts": 1,
           "success_at_attempt": 1,
@@ -3718,7 +3988,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": ">",
+              "model_answer": "169",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -3729,60 +3999,21 @@
       {
         "variant_id": "27_remove_3",
         "removed_condition_index": 3,
-        "removed_condition": "the denominators alternate between powers of 2 and 4",
+        "removed_condition": "the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term",
         "remaining_conditions": [
-          "p and q are relatively prime positive integers",
-          "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
-          "the numerators always increase by 1",
-          "exponents also increasing by 1 for each subsequent term"
+          "Let p and q be relatively prime positive integers",
+          "dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ...",
+          "the numerators always increase by 1"
         ],
-        "incomplete_question": "Let p and q be relatively prime positive integers such that \\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots, where the numerators always increase by 1, and exponents also increasing by 1 for each subsequent term. Compute p+q.",
+        "incomplete_question": "Let p and q be relatively prime positive integers such that dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ..., and the numerators always increase by 1. Compute p+q.",
         "verification": {
-          "total_attempts": 2,
-          "success_at_attempt": 2,
+          "total_attempts": 1,
+          "success_at_attempt": 1,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "491",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
               "model_answer": ">",
-              "judge_result": "equivalent",
-              "is_correct": true
-            }
-          ],
-          "ground_truth": "169"
-        }
-      },
-      {
-        "variant_id": "27_remove_4",
-        "removed_condition_index": 4,
-        "removed_condition": "exponents also increasing by 1 for each subsequent term",
-        "remaining_conditions": [
-          "p and q are relatively prime positive integers",
-          "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
-          "the numerators always increase by 1",
-          "the denominators alternate between powers of 2 and 4"
-        ],
-        "incomplete_question": "Let p and q be relatively prime positive integers such that \\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots, where the numerators always increase by 1, and the denominators alternate between powers of 2 and 4. Compute p+q.",
-        "verification": {
-          "total_attempts": 2,
-          "success_at_attempt": 2,
-          "is_valid": true,
-          "all_attempts": [
-            {
-              "attempt": 1,
-              "model_answer": "17",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
-              "model_answer": "169",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -3803,7 +4034,7 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       557,
-      269,
+      271,
       271,
       269
     ],
@@ -3819,9 +4050,9 @@
       316
     ],
     "local_completion_lengths": [
-      5826,
-      7048,
-      9921
+      6980,
+      7310,
+      8980
     ],
     "removal_variants": [
       {
@@ -3888,7 +4119,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": ">",
+              "model_answer": "880",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -3911,7 +4142,7 @@
       597
     ],
     "gpt4o_mini_completion_lengths": [
-      771
+      799
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -3929,26 +4160,28 @@
     "gpt4o_mini_prompt_lengths": [
       676,
       407,
+      405,
       407,
       407,
-      407
+      405
     ],
     "gpt4o_mini_completion_lengths": [
-      1232,
+      1211,
+      1,
       1,
       1,
       1,
       1
     ],
     "local_prompt_lengths": [
-      457,
       458,
+      457,
       457
     ],
     "local_completion_lengths": [
-      16094,
-      22280,
-      39581
+      19750,
+      20754,
+      26641
     ],
     "removal_variants": [
       {
@@ -3958,21 +4191,23 @@
         "remaining_conditions": [
           "PR = 120",
           "QR = 150",
-          "Let C_{1} be the inscribed circle.",
-          "Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}.",
-          "Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}.",
-          "Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}.",
-          "The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+          "Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
         ],
         "incomplete_question": "Let \\triangle{PQR} be a right triangle with PR = 120 and QR = 150. Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "725",
+              "model_answer": "17",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -3987,11 +4222,7 @@
         "remaining_conditions": [
           "PQ = 90",
           "QR = 150",
-          "Let C_{1} be the inscribed circle.",
-          "Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}.",
-          "Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}.",
-          "Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}.",
-          "The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+          "Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
         ],
         "incomplete_question": "Let \\triangle{PQR} be a right triangle with PQ = 90 and QR = 150. Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?",
         "verification": {
@@ -4001,7 +4232,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "725",
+              "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -4016,11 +4247,7 @@
         "remaining_conditions": [
           "PQ = 90",
           "PR = 120",
-          "Let C_{1} be the inscribed circle.",
-          "Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}.",
-          "Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}.",
-          "Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}.",
-          "The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+          "Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
         ],
         "incomplete_question": "Let \\triangle{PQR} be a right triangle with PQ = 90 and PR = 120. Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?",
         "verification": {
@@ -4030,7 +4257,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "245",
+              "model_answer": "425",
               "judge_result": "not_equivalent",
               "is_correct": false
             },
@@ -4057,13 +4284,13 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       578,
-      328,
-      328,
-      328,
-      332,
       331,
       331,
-      328
+      331,
+      328,
+      331,
+      331,
+      331
     ],
     "gpt4o_mini_completion_lengths": [
       1060,
@@ -4083,11 +4310,11 @@
       370
     ],
     "local_completion_lengths": [
-      9552,
-      14499,
-      13777,
-      12776,
-      12383
+      10932,
+      13379,
+      11458,
+      10653,
+      18053
     ],
     "removal_variants": [
       {
@@ -4108,7 +4335,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": ">",
+              "model_answer": "4583",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -4154,13 +4381,19 @@
         ],
         "incomplete_question": "A secret agent is trying to decipher a passcode. So far, he has obtained the following information: It is a four-digit number. It is not divisible by seven. The number formed by the first two digits of the code (in this order) is fifteen times the last digit of the code. The first and last digits of the code (in this order) form a prime number. Does the agent have enough information to decipher the code? Justify your conclusion.",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": ">",
+              "model_answer": "1541",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "4583",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -4180,30 +4413,18 @@
         ],
         "incomplete_question": "A secret agent is trying to decipher a passcode. So far, he has obtained the following information: It is a four-digit number. It is not divisible by seven. The digit in the tens place is the sum of the digit in the units place and the digit in the hundreds place. The first and last digits of the code (in this order) form a prime number. Does the agent have enough information to decipher the code? Justify your conclusion.",
         "verification": {
-          "total_attempts": 4,
-          "success_at_attempt": 4,
+          "total_attempts": 2,
+          "success_at_attempt": 2,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "N/A",
-              "judge_result": "no_answer_tag",
+              "model_answer": "1541",
+              "judge_result": "not_equivalent",
               "is_correct": false
             },
             {
               "attempt": 2,
-              "model_answer": "N/A",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 3,
-              "model_answer": "\\text{No",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 4,
               "model_answer": "4583",
               "judge_result": "equivalent",
               "is_correct": true
@@ -4251,17 +4472,16 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       645,
-      370,
-      368,
-      363,
-      363,
-      370,
+      340,
       361,
-      336,
-      343,
-      343,
-      343,
-      334
+      338,
+      345,
+      345,
+      358,
+      345,
+      345,
+      345,
+      345
     ],
     "gpt4o_mini_completion_lengths": [
       612,
@@ -4274,18 +4494,17 @@
       1,
       1,
       1,
-      1,
       1
     ],
     "local_prompt_lengths": [
+      369,
       397,
-      371,
-      369
+      371
     ],
     "local_completion_lengths": [
-      19532,
-      17803,
-      27488
+      18285,
+      18370,
+      22178
     ],
     "removal_variants": [
       {
@@ -4297,15 +4516,57 @@
         ],
         "incomplete_question": "In the polar coordinate system with the coordinate origin O as the pole and the positive half of the x-axis as the polar axis, the polar equation of curve C_{2} is ρ= 2/(1−cos θ). (1) Write the Cartesian equation of curve C_{2}; (2) Let M_{2} be a point on curve C_{2}. Find the minimum value of |M_{1}M_{2}|.",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
-          "is_valid": true,
+          "total_attempts": 8,
+          "success_at_attempt": null,
+          "is_valid": false,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": ">",
-              "judge_result": "equivalent",
-              "is_correct": true
+              "model_answer": "3",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "\\dfrac{3\\sqrt{5",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 3,
+              "model_answer": "\\dfrac{3\\sqrt{5",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 4,
+              "model_answer": "The minimum value of \\( |M_1 M_2| \\) cannot be determined with the given information.",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 5,
+              "model_answer": "\\dfrac{3\\sqrt{5",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 6,
+              "model_answer": "\\dfrac{3\\sqrt{5",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 7,
+              "model_answer": "\\dfrac{3\\sqrt{5",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 8,
+              "model_answer": "\\dfrac{3\\sqrt{5",
+              "judge_result": "not_equivalent",
+              "is_correct": false
             }
           ],
           "ground_truth": "\\frac{3 \\sqrt{5}}{10}"
@@ -4320,31 +4581,13 @@
         ],
         "incomplete_question": "In the Cartesian coordinate system (xOy), the parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2. (1) Write the Cartesian equation of curve C_{2}; (2) Let M_{1} be a point on curve C_{1}, and M_{2} be a point on curve C_{2}. Find the minimum value of |M_{1}M_{2}|.",
         "verification": {
-          "total_attempts": 4,
-          "success_at_attempt": 4,
+          "total_attempts": 1,
+          "success_at_attempt": 1,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "\\dfrac{3\\sqrt{5",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
-              "model_answer": "\\dfrac{3\\sqrt{5",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 3,
-              "model_answer": "\\dfrac{3\\sqrt{5",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 4,
-              "model_answer": ">",
+              "model_answer": "3√5/10",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -4357,47 +4600,16 @@
         "removed_condition_index": 2,
         "removed_condition": "Let M_{1} be a point on curve C_{1}, and M_{2} be a point on curve C_{2}.",
         "remaining_conditions": [
-          "In the Cartesian coordinate system (xOy), the parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2.",
-          "In the polar coordinate system with the coordinate origin O as the pole and the positive half of the x-axis as the polar axis, the polar equation of curve C_{2} is ρ= 2/(1−cos θ)."
+          "In the Cartesian coordinate system (xOy), the parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2, and in the polar coordinate system with the coordinate origin O as the pole and the positive half of the x-axis as the polar axis, the polar equation of curve C_{2} is ρ= 2/(1−cos θ)."
         ],
         "incomplete_question": "In the Cartesian coordinate system (xOy), the parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2, and in the polar coordinate system with the coordinate origin O as the pole and the positive half of the x-axis as the polar axis, the polar equation of curve C_{2} is ρ= 2/(1−cos θ). (1) Write the Cartesian equation of curve C_{2}; (2) Find the minimum value of |M_{1}M_{2}|.",
         "verification": {
-          "total_attempts": 6,
-          "success_at_attempt": 6,
+          "total_attempts": 1,
+          "success_at_attempt": 1,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "\\dfrac{3\\sqrt{5",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 2,
-              "model_answer": "14√5⁄5",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 3,
-              "model_answer": "2",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 4,
-              "model_answer": "2",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 5,
-              "model_answer": "\\dfrac{2\\sqrt{5",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 6,
               "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
@@ -4440,7 +4652,7 @@
       475
     ],
     "gpt4o_mini_completion_lengths": [
-      163
+      99
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -4456,14 +4668,155 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      615
+      615,
+      352,
+      352,
+      339,
+      340,
+      340,
+      340,
+      340,
+      340,
+      340
     ],
     "gpt4o_mini_completion_lengths": [
-      1249
+      775,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
-    "local_prompt_lengths": [],
-    "local_completion_lengths": [],
-    "removal_variants": []
+    "local_prompt_lengths": [
+      395,
+      395,
+      379
+    ],
+    "local_completion_lengths": [
+      27738,
+      43120,
+      35453
+    ],
+    "removal_variants": [
+      {
+        "variant_id": "35_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively.",
+        "remaining_conditions": [
+          "Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B.",
+          "The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime. Find the greatest integer less than or equal to m + \\sqrt{n}."
+        ],
+        "incomplete_question": "Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B. The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime. Find the greatest integer less than or equal to m + \\sqrt{n}.",
+        "verification": {
+          "total_attempts": 1,
+          "success_at_attempt": 1,
+          "is_valid": true,
+          "all_attempts": [
+            {
+              "attempt": 1,
+              "model_answer": "12",
+              "judge_result": "equivalent",
+              "is_correct": true
+            }
+          ],
+          "ground_truth": "12"
+        }
+      },
+      {
+        "variant_id": "35_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B.",
+        "remaining_conditions": [
+          "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively.",
+          "The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime. Find the greatest integer less than or equal to m + \\sqrt{n}."
+        ],
+        "incomplete_question": "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively. The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime. Find the greatest integer less than or equal to m + \\sqrt{n}.",
+        "verification": {
+          "total_attempts": 1,
+          "success_at_attempt": 1,
+          "is_valid": true,
+          "all_attempts": [
+            {
+              "attempt": 1,
+              "model_answer": "12",
+              "judge_result": "equivalent",
+              "is_correct": true
+            }
+          ],
+          "ground_truth": "12"
+        }
+      },
+      {
+        "variant_id": "35_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime.",
+        "remaining_conditions": [
+          "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively.",
+          "Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B."
+        ],
+        "incomplete_question": "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively. Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B.",
+        "verification": {
+          "total_attempts": 8,
+          "success_at_attempt": null,
+          "is_valid": false,
+          "all_attempts": [
+            {
+              "attempt": 1,
+              "model_answer": "\\sqrt{1659",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "6\\sqrt{43",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 3,
+              "model_answer": "26\\sqrt{5",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 4,
+              "model_answer": "6\\sqrt{43",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 5,
+              "model_answer": "6\\sqrt{43",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 6,
+              "model_answer": "6\\sqrt{43",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 7,
+              "model_answer": "50\\sqrt{7",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 8,
+              "model_answer": "N/A",
+              "judge_result": "no_answer_tag",
+              "is_correct": false
+            }
+          ],
+          "ground_truth": "12"
+        }
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -4477,22 +4830,26 @@
     "gpt4o_mini_prompt_lengths": [
       506,
       258,
-      261,
-      256
+      263,
+      263,
+      275,
+      258
     ],
     "gpt4o_mini_completion_lengths": [
-      169,
+      171,
+      1,
+      1,
       1,
       1,
       1
     ],
     "local_prompt_lengths": [
       301,
-      299
+      301
     ],
     "local_completion_lengths": [
-      2654,
-      11616
+      2192,
+      2061
     ],
     "removal_variants": [
       {
@@ -4502,10 +4859,10 @@
         "remaining_conditions": [
           "each of Loki, Moe, and Nick gave Ott $4"
         ],
-        "incomplete_question": "Each of Loki, Moe, and Nick gave Ott $4. Determine the fractional part of the group's money that Ott now has.",
+        "incomplete_question": "Given that each of Loki, Moe, and Nick gave Ott $4, determine the fractional part of the group's money that Ott now has.",
         "verification": {
-          "total_attempts": 2,
-          "success_at_attempt": 2,
+          "total_attempts": 4,
+          "success_at_attempt": 4,
           "is_valid": true,
           "all_attempts": [
             {
@@ -4516,7 +4873,19 @@
             },
             {
               "attempt": 2,
-              "model_answer": "**",
+              "model_answer": "\\dfrac{1",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 3,
+              "model_answer": "** The fractional part of the group's money that Ott now has is 7/12.",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 4,
+              "model_answer": "N/A",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -4560,12 +4929,18 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       542,
+      291,
+      291,
+      286,
+      293,
+      293,
+      293,
+      293,
+      288,
       285,
-      292,
-      291,
-      291,
-      346,
-      286
+      297,
+      290,
+      285
     ],
     "gpt4o_mini_completion_lengths": [
       423,
@@ -4574,17 +4949,23 @@
       1,
       1,
       1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1
     ],
     "local_prompt_lengths": [
-      326,
+      327,
       329,
-      327
+      326
     ],
     "local_completion_lengths": [
-      7034,
-      10792,
-      16553
+      9320,
+      10436,
+      11853
     ],
     "removal_variants": [
       {
@@ -4597,8 +4978,8 @@
         ],
         "incomplete_question": "In the Cartesian coordinate system (xOy), if there exists at least one point on the line y=kx-3 such that a circle with this point as the center and 2 as the radius intersects with circle C, then the maximum value of k is _____.",
         "verification": {
-          "total_attempts": 4,
-          "success_at_attempt": 4,
+          "total_attempts": 3,
+          "success_at_attempt": 3,
           "is_valid": true,
           "all_attempts": [
             {
@@ -4615,12 +4996,6 @@
             },
             {
               "attempt": 3,
-              "model_answer": "more cleanly expressed as (12 + 2√6)/15, which can be simplified by factoring numerator: 2*(6 +√6)/15= (6 +√6)/7.5, but I think leaving it as (12 + 2√6)/15 is acceptable.",
-              "judge_result": "not_equivalent",
-              "is_correct": false
-            },
-            {
-              "attempt": 4,
               "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
@@ -4639,12 +5014,30 @@
         ],
         "incomplete_question": "In the Cartesian coordinate system (xOy), the equation of circle C is ((x-4)^{2}+y^{2}=1). Then the maximum value of k is _____.",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 4,
+          "success_at_attempt": 4,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
+              "model_answer": ".",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "\\dfrac{12 + 2\\sqrt{6",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 3,
+              "model_answer": "\\dfrac{24",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 4,
               "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
@@ -4663,13 +5056,37 @@
         ],
         "incomplete_question": "In the Cartesian coordinate system (xOy), the equation of circle C is ((x-4)^{2}+y^{2}=1). If there exists at least one point on the line y=kx-3 such that a circle with this point as the center and 2 as the radius intersects with circle C, then _____.",
         "verification": {
-          "total_attempts": 1,
-          "success_at_attempt": 1,
+          "total_attempts": 5,
+          "success_at_attempt": 5,
           "is_valid": true,
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "24/7",
+              "model_answer": "\\dfrac{24",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 2,
+              "model_answer": "\\dfrac{24",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 3,
+              "model_answer": "\\dfrac{24",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 4,
+              "model_answer": "\\dfrac{24",
+              "judge_result": "not_equivalent",
+              "is_correct": false
+            },
+            {
+              "attempt": 5,
+              "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
             }
@@ -4709,9 +5126,9 @@
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
       544,
-      276,
-      276,
+      274,
       279,
+      276,
       280
     ],
     "gpt4o_mini_completion_lengths": [
@@ -4723,15 +5140,15 @@
     ],
     "local_prompt_lengths": [
       318,
-      318,
       321,
+      318,
       322
     ],
     "local_completion_lengths": [
-      9047,
-      11116,
-      12218,
-      9431
+      10673,
+      9129,
+      14367,
+      16267
     ],
     "removal_variants": [
       {
@@ -4801,7 +5218,7 @@
           "all_attempts": [
             {
               "attempt": 1,
-              "model_answer": "10",
+              "model_answer": ">",
               "judge_result": "equivalent",
               "is_correct": true
             }

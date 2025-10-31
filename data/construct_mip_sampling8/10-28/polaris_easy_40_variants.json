@@ -12,7 +12,7 @@
       484
     ],
     "gpt4o_mini_completion_lengths": [
-      247
+      248
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -48,7 +48,7 @@
           "divided by an integer",
           "will have the smallest divisor as"
         ],
-        "incomplete_question": "The largest three-digit number divided by an integer will have the smallest divisor as:"
+        "incomplete_question": "The largest three-digit number divided by an integer, will have the smallest divisor as:"
       }
     ]
   },
@@ -65,7 +65,7 @@
       531
     ],
     "gpt4o_mini_completion_lengths": [
-      183
+      177
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -75,18 +75,18 @@
         "removed_condition_index": 0,
         "removed_condition": "The equilibrium point is (0, 0)",
         "remaining_conditions": [
-          "The system of equations is given by dx/dt = y^3 + x^5 and dy/dt = x^3 + y^5"
+          "Investigate the stability of the equilibrium point"
         ],
-        "incomplete_question": "Investigate the stability of the equilibrium point for the system of equations dx/dt = y^3 + x^5 and dy/dt = x^3 + y^5."
+        "incomplete_question": "Investigate the stability of the equilibrium point for the system $$\\left\\{\\begin{array}{l}\\frac{d x}{d t}=y^{3}+x^{5} \\\\ \\frac{d y}{d t}=x^{3}+y^{5}\\end{array}\\right.$$"
       },
       {
         "variant_id": "1_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "The system of equations is given by dx/dt = y^3 + x^5 and dy/dt = x^3 + y^5",
+        "removed_condition": "The system is given by the equations",
         "remaining_conditions": [
-          "The equilibrium point is (0, 0)"
+          "Investigate the stability of the equilibrium point $x=0, y=0$"
         ],
-        "incomplete_question": "Investigate the stability of the equilibrium point (0, 0)."
+        "incomplete_question": "Investigate the stability of the equilibrium point $x=0, y=0$."
       }
     ]
   },
@@ -141,7 +141,7 @@
       507
     ],
     "gpt4o_mini_completion_lengths": [
-      157
+      278
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -153,7 +153,7 @@
         "remaining_conditions": [
           "arrange the six letters A, B, C, D, E, F in a row"
         ],
-        "incomplete_question": "Arrange the six letters A, B, C, D, E, F in a row. How many different arrangements are there?"
+        "incomplete_question": "In the 2013 Zhejiang College Entrance Examination, arrange the six letters A, B, C, D, E, F in a row. How many different arrangements are there?"
       },
       {
         "variant_id": "3_remove_1",
@@ -162,7 +162,17 @@
         "remaining_conditions": [
           "both A and B on the same side of C"
         ],
-        "incomplete_question": "Arrange the letters in a row, with both A and B on the same side of C. How many different arrangements are there?"
+        "incomplete_question": "In the 2013 Zhejiang College Entrance Examination, arrange in a row, with both A and B on the same side of C. How many different arrangements are there?"
+      },
+      {
+        "variant_id": "3_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "In the 2013 Zhejiang College Entrance Examination",
+        "remaining_conditions": [
+          "arrange the six letters A, B, C, D, E, F in a row",
+          "both A and B on the same side of C"
+        ],
+        "incomplete_question": "Arrange the six letters A, B, C, D, E, F in a row, with both A and B on the same side of C. How many different arrangements are there?"
       }
     ]
   },
@@ -179,7 +189,7 @@
       523
     ],
     "gpt4o_mini_completion_lengths": [
-      309
+      252
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -187,32 +197,31 @@
       {
         "variant_id": "4_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "Sasha tried to type an 8-digit number",
+        "removed_condition": "The key for the digit 1 is not working.",
         "remaining_conditions": [
-          "the key for the digit 1 is not working",
-          "only 202020 was printed"
+          "Sasha tried to type an 8-digit number, but only 202020 was printed."
         ],
-        "incomplete_question": "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print. Only 202020 was printed. How many 8-digit numbers satisfy this condition?"
+        "incomplete_question": "Sasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?"
       },
       {
         "variant_id": "4_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "only 202020 was printed",
+        "removed_condition": "Sasha tried to type an 8-digit number.",
         "remaining_conditions": [
-          "Sasha tried to type an 8-digit number",
-          "the key for the digit 1 is not working"
+          "The key for the digit 1 is not working.",
+          "only 202020 was printed."
         ],
-        "incomplete_question": "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print. Sasha tried to type an 8-digit number. How many 8-digit numbers satisfy this condition?"
+        "incomplete_question": "The key for the digit 1 is not working. Only 202020 was printed. How many 8-digit numbers satisfy this condition?"
       },
       {
         "variant_id": "4_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "the key for the digit 1 is not working",
+        "removed_condition": "Only 202020 was printed.",
         "remaining_conditions": [
-          "Sasha tried to type an 8-digit number",
-          "only 202020 was printed"
+          "The key for the digit 1 is not working.",
+          "Sasha tried to type an 8-digit number."
         ],
-        "incomplete_question": "Sasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?"
+        "incomplete_question": "The key for the digit 1 is not working. Sasha tried to type an 8-digit number. How many 8-digit numbers satisfy this condition?"
       }
     ]
   },
@@ -229,7 +238,7 @@
       503
     ],
     "gpt4o_mini_completion_lengths": [
-      357
+      362
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -276,7 +285,7 @@
           "the angle bisector AN",
           "the altitude BH"
         ],
-        "incomplete_question": "In an acute-angled triangle ABC, the angle bisector AN and the altitude BH. Find angle BAC."
+        "incomplete_question": "In an acute-angled triangle ABC, the angle bisector AN and the altitude BH intersect at a single point. Find angle BAC."
       }
     ]
   },
@@ -293,7 +302,7 @@
       524
     ],
     "gpt4o_mini_completion_lengths": [
-      367
+      373
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -306,7 +315,7 @@
           "walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously",
           "They meet after 10 minutes"
         ],
-        "incomplete_question": "Walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously, they meet after 10 minutes. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?"
+        "incomplete_question": "Person A and person B are walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously. They meet after 10 minutes. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?"
       },
       {
         "variant_id": "6_remove_1",
@@ -532,7 +541,7 @@
         "removed_condition_index": 0,
         "removed_condition": "The front tires of a car wear out after 25,000 km",
         "remaining_conditions": [
-          "the rear tires wear out after 15,000 km"
+          "The rear tires wear out after 15,000 km"
         ],
         "incomplete_question": "The rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?"
       },
@@ -541,7 +550,7 @@
         "removed_condition_index": 1,
         "removed_condition": "The rear tires wear out after 15,000 km",
         "remaining_conditions": [
-          "the front tires of a car wear out after 25,000 km"
+          "The front tires of a car wear out after 25,000 km"
         ],
         "incomplete_question": "The front tires of a car wear out after 25,000 km. When should the tires be swapped so that they wear out at the same time?"
       }
@@ -648,7 +657,7 @@
       503
     ],
     "gpt4o_mini_completion_lengths": [
-      316
+      318
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -665,22 +674,22 @@
       {
         "variant_id": "13_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "the six digits 0, 1, 2, 3, 4, 5",
+        "removed_condition": "without repeating any digit",
         "remaining_conditions": [
-          "to form a six-digit number without repeating any digit",
-          "where the unit digit is less than the ten's digit"
+          "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number",
+          "the unit digit is less than the ten's digit"
         ],
-        "incomplete_question": "Using the digits to form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?"
+        "incomplete_question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number, how many such numbers are there where the unit digit is less than the ten's digit?"
       },
       {
         "variant_id": "13_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "to form a six-digit number without repeating any digit",
+        "removed_condition": "Using the six digits 0, 1, 2, 3, 4, 5",
         "remaining_conditions": [
-          "Using the six digits 0, 1, 2, 3, 4, 5",
-          "where the unit digit is less than the ten's digit"
+          "to form a six-digit number without repeating any digit",
+          "the unit digit is less than the ten's digit"
         ],
-        "incomplete_question": "Using the six digits 0, 1, 2, 3, 4, 5, how many such numbers are there where the unit digit is less than the ten's digit?"
+        "incomplete_question": "To form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?"
       }
     ]
   },
@@ -773,7 +782,7 @@
       {
         "variant_id": "15_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "arranged in a straight line",
+        "removed_condition": "and arranged in a straight line",
         "remaining_conditions": [
           "A cube with a side length of 1 meter was cut into smaller cubes with a side length of 1 centimeter"
         ],
@@ -813,7 +822,7 @@
       674
     ],
     "gpt4o_mini_completion_lengths": [
-      390
+      425
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -826,27 +835,29 @@
           "f(x) = x^2 - 2cos(θ)x + 1",
           "x ∈ [-√3/2, 1/2]"
         ],
-        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2], find the maximum and minimum values of f(x)."
+        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2]. Find the maximum and minimum values of f(x)."
       },
       {
         "variant_id": "17_remove_1",
         "removed_condition_index": 1,
         "removed_condition": "f(x) is a monotonous function on x ∈ [-√3/2, 1/2] and θ ∈ [0, 2π)",
         "remaining_conditions": [
+          "When θ = π/3",
           "f(x) = x^2 - 2cos(θ)x + 1",
           "x ∈ [-√3/2, 1/2]"
         ],
-        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2], find the range of θ."
+        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2]. When θ = π/3, find the maximum and minimum values of f(x)."
       },
       {
         "variant_id": "17_remove_2",
         "removed_condition_index": 2,
         "removed_condition": "If sin(α) and cos(α) are the two real roots of the equation f(x) = 1/4 + cos(θ)",
         "remaining_conditions": [
+          "When θ = π/3",
           "f(x) = x^2 - 2cos(θ)x + 1",
           "x ∈ [-√3/2, 1/2]"
         ],
-        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2], find the value of (tan^2(α) + 1)/tan(α)."
+        "incomplete_question": "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2]. When θ = π/3, find the value of (tan^2(α) + 1)/tan(α)."
       }
     ]
   },
@@ -863,11 +874,90 @@
       594
     ],
     "gpt4o_mini_completion_lengths": [
-      1391
+      1353
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
-    "removal_variants": []
+    "removal_variants": [
+      {
+        "variant_id": "18_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "For positive integers n",
+        "remaining_conditions": [
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "Let τ(n) denote the number of positive integer divisors of n, including 1 and n. For example, τ(1)=1 and τ(6)=4. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|."
+      },
+      {
+        "variant_id": "18_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+        "remaining_conditions": [
+          "For positive integers n",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "For positive integers n, For example, τ(1)=1 and τ(6)=4. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|."
+      },
+      {
+        "variant_id": "18_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "For example, τ(1)=1 and τ(6)=4.",
+        "remaining_conditions": [
+          "For positive integers n",
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|."
+      },
+      {
+        "variant_id": "18_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+        "remaining_conditions": [
+          "For positive integers n",
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. For example, τ(1)=1 and τ(6)=4. Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|."
+      },
+      {
+        "variant_id": "18_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+        "remaining_conditions": [
+          "For positive integers n",
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. For example, τ(1)=1 and τ(6)=4. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Find |a-b|."
+      },
+      {
+        "variant_id": "18_remove_5",
+        "removed_condition_index": 5,
+        "removed_condition": "Find |a-b|.",
+        "remaining_conditions": [
+          "For positive integers n",
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even."
+        ],
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. For example, τ(1)=1 and τ(6)=4. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even."
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -882,48 +972,11 @@
       501
     ],
     "gpt4o_mini_completion_lengths": [
-      360
+      282
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
-    "removal_variants": [
-      {
-        "variant_id": "19_remove_0",
-        "removed_condition_index": 0,
-        "removed_condition": "|x^{2}-4x-39601|",
-        "remaining_conditions": [
-          "|x^{2}+4x-39601| >= |x^{2}+4x-39601|"
-        ],
-        "incomplete_question": "Determine the largest value of x for which |x^{2}+4x-39601| >= |x^{2}+4x-39601|"
-      },
-      {
-        "variant_id": "19_remove_1",
-        "removed_condition_index": 1,
-        "removed_condition": "|x^{2}+4x-39601|",
-        "remaining_conditions": [
-          "|x^{2}-4x-39601| >= |x^{2}+4x-39601|"
-        ],
-        "incomplete_question": "Determine the largest value of x for which |x^{2}-4x-39601| >= |x^{2}-4x-39601|"
-      },
-      {
-        "variant_id": "19_remove_2",
-        "removed_condition_index": 2,
-        "removed_condition": "x^{2}-4x-39601",
-        "remaining_conditions": [
-          "|x^{2}-4x-39601| >= |x^{2}+4x-39601|"
-        ],
-        "incomplete_question": "Determine the largest value of x for which |x^{2}-4x-39601| >= |x^{2}+4x-39601|"
-      },
-      {
-        "variant_id": "19_remove_3",
-        "removed_condition_index": 3,
-        "removed_condition": "x^{2}+4x-39601",
-        "remaining_conditions": [
-          "|x^{2}-4x-39601| >= |x^{2}+4x-39601|"
-        ],
-        "incomplete_question": "Determine the largest value of x for which |x^{2}-4x-39601| >= |x^{2}-4x-39601|"
-      }
-    ]
+    "removal_variants": []
   },
   {
     "data_source": "polaris",
@@ -938,7 +991,7 @@
       555
     ],
     "gpt4o_mini_completion_lengths": [
-      851
+      892
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -957,7 +1010,7 @@
       539
     ],
     "gpt4o_mini_completion_lengths": [
-      509
+      733
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -965,33 +1018,62 @@
       {
         "variant_id": "21_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$",
+        "removed_condition": "Let side AD of convex quadrilateral ABCD be extended through D",
         "remaining_conditions": [
-          "let side $BC$ be extended through $C$, to meet in point $E.$",
-          "Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$"
+          "let side BC be extended through C to meet in point E",
+          "let S be the degree-sum of angles CDE and DCE",
+          "let S' represent the degree-sum of angles BAD and ABC",
+          "if r=S/S'"
         ],
-        "incomplete_question": "Let side $BC$ be extended through $C$, to meet in point $E.$ Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$, then:"
+        "incomplete_question": "Let side BC be extended through C to meet in point E. Let S be the degree-sum of angles CDE and DCE, and let S' represent the degree-sum of angles BAD and ABC. If r=S/S', then:"
       },
       {
         "variant_id": "21_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "let side $BC$ be extended through $C$, to meet in point $E.$",
+        "removed_condition": "let side BC be extended through C",
         "remaining_conditions": [
-          "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$",
-          "Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$"
+          "let side AD of convex quadrilateral ABCD be extended through D to meet in point E",
+          "let S be the degree-sum of angles CDE and DCE",
+          "let S' represent the degree-sum of angles BAD and ABC",
+          "if r=S/S'"
         ],
-        "incomplete_question": "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$. Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$ If $r=S/S'$, then:"
+        "incomplete_question": "Let side AD of convex quadrilateral ABCD be extended through D to meet in point E. Let S be the degree-sum of angles CDE and DCE, and let S' represent the degree-sum of angles BAD and ABC. If r=S/S', then:"
       },
       {
         "variant_id": "21_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "Let $S$ be the degree-sum of angles $CDE$ and $DCE$, and let $S'$ represent the degree-sum of angles $BAD$ and $ABC.$",
+        "removed_condition": "let S be the degree-sum of angles CDE and DCE",
         "remaining_conditions": [
-          "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$",
-          "let side $BC$ be extended through $C$, to meet in point $E.$",
-          "If $r=S/S'$"
+          "let side AD of convex quadrilateral ABCD be extended through D to meet in point E",
+          "let side BC be extended through C to meet in point E",
+          "let S' represent the degree-sum of angles BAD and ABC",
+          "if r=S/S'"
         ],
-        "incomplete_question": "Let side $AD$ of convex quadrilateral $ABCD$ be extended through $D$, and let side $BC$ be extended through $C$, to meet in point $E.$ If $r=S/S'$, then:"
+        "incomplete_question": "Let side AD of convex quadrilateral ABCD be extended through D to meet in point E. Let side BC be extended through C to meet in point E. Let S' represent the degree-sum of angles BAD and ABC. If r=S/S', then:"
+      },
+      {
+        "variant_id": "21_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "let S' represent the degree-sum of angles BAD and ABC",
+        "remaining_conditions": [
+          "let side AD of convex quadrilateral ABCD be extended through D to meet in point E",
+          "let side BC be extended through C to meet in point E",
+          "let S be the degree-sum of angles CDE and DCE",
+          "if r=S/S'"
+        ],
+        "incomplete_question": "Let side AD of convex quadrilateral ABCD be extended through D to meet in point E. Let side BC be extended through C to meet in point E. Let S be the degree-sum of angles CDE and DCE. If r=S/S', then:"
+      },
+      {
+        "variant_id": "21_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "if r=S/S'",
+        "remaining_conditions": [
+          "let side AD of convex quadrilateral ABCD be extended through D to meet in point E",
+          "let side BC be extended through C to meet in point E",
+          "let S be the degree-sum of angles CDE and DCE",
+          "let S' represent the degree-sum of angles BAD and ABC"
+        ],
+        "incomplete_question": "Let side AD of convex quadrilateral ABCD be extended through D to meet in point E. Let side BC be extended through C to meet in point E. Let S be the degree-sum of angles CDE and DCE, and let S' represent the degree-sum of angles BAD and ABC. Then:"
       }
     ]
   },
@@ -1008,7 +1090,7 @@
       492
     ],
     "gpt4o_mini_completion_lengths": [
-      279
+      275
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1023,7 +1105,7 @@
       {
         "variant_id": "22_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "The semi-major axis length is derived from the equation.",
+        "removed_condition": "The semi-major axis squared is 36.",
         "remaining_conditions": [
           "The equation of the ellipse is given as \\(\\frac{x^2}{36} + \\frac{y^2}{16} = 8\\)."
         ],
@@ -1032,7 +1114,7 @@
       {
         "variant_id": "22_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "The semi-minor axis length is derived from the equation.",
+        "removed_condition": "The semi-minor axis squared is 16.",
         "remaining_conditions": [
           "The equation of the ellipse is given as \\(\\frac{x^2}{36} + \\frac{y^2}{16} = 8\\)."
         ],
@@ -1103,7 +1185,7 @@
       497
     ],
     "gpt4o_mini_completion_lengths": [
-      135
+      152
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1122,7 +1204,7 @@
       567
     ],
     "gpt4o_mini_completion_lengths": [
-      597
+      583
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1133,7 +1215,8 @@
         "removed_condition": "The original triangle had side length 1",
         "remaining_conditions": [
           "Sierpinski's triangle is formed by taking a triangle, and drawing an upside down triangle inside each upright triangle that appears.",
-          "A snake sees the fractal, but decides that the triangles need circles inside them. Therefore, she draws a circle inscribed in every upside down triangle she sees (assume that the snake can do an infinite amount of work).",
+          "A snake sees the fractal, but decides that the triangles need circles inside them.",
+          "Therefore, she draws a circle inscribed in every upside down triangle she sees (assume that the snake can do an infinite amount of work).",
           "What is the total area of all the individual circles?"
         ],
         "incomplete_question": "Sierpinski's triangle is formed by taking a triangle, and drawing an upside down triangle inside each upright triangle that appears. A snake sees the fractal, but decides that the triangles need circles inside them. Therefore, she draws a circle inscribed in every upside down triangle she sees (assume that the snake can do an infinite amount of work). What is the total area of all the individual circles?"
@@ -1153,14 +1236,14 @@
       {
         "variant_id": "25_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "Assume that the snake can do an infinite amount of work",
+        "removed_condition": "Therefore, she draws a circle inscribed in every upside down triangle she sees (assume that the snake can do an infinite amount of work).",
         "remaining_conditions": [
           "Sierpinski's triangle is formed by taking a triangle, and drawing an upside down triangle inside each upright triangle that appears.",
           "The original triangle had side length 1",
-          "A snake sees the fractal, but decides that the triangles need circles inside them. Therefore, she draws a circle inscribed in every upside down triangle she sees.",
+          "A snake sees the fractal, but decides that the triangles need circles inside them.",
           "What is the total area of all the individual circles?"
         ],
-        "incomplete_question": "Sierpinski's triangle is formed by taking a triangle, and drawing an upside down triangle inside each upright triangle that appears. The original triangle had side length 1. A snake sees the fractal, but decides that the triangles need circles inside them. Therefore, she draws a circle inscribed in every upside down triangle she sees. What is the total area of all the individual circles?"
+        "incomplete_question": "Sierpinski's triangle is formed by taking a triangle, and drawing an upside down triangle inside each upright triangle that appears. The original triangle had side length 1. A snake sees the fractal, but decides that the triangles need circles inside them. What is the total area of all the individual circles?"
       }
     ]
   },
@@ -1227,7 +1310,7 @@
       585
     ],
     "gpt4o_mini_completion_lengths": [
-      1189
+      871
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1235,24 +1318,22 @@
       {
         "variant_id": "27_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "p and q are relatively prime positive integers",
+        "removed_condition": "Let p and q be relatively prime positive integers",
         "remaining_conditions": [
-          "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
+          "dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ...",
           "the numerators always increase by 1",
-          "the denominators alternate between powers of 2 and 4",
-          "exponents also increasing by 1 for each subsequent term"
+          "the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term"
         ],
-        "incomplete_question": "Let p and q be positive integers such that \\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots, where the numerators always increase by 1, and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q."
+        "incomplete_question": "Let p and q be positive integers such that dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ..., where the numerators always increase by 1, and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q."
       },
       {
         "variant_id": "27_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
+        "removed_condition": "dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ...",
         "remaining_conditions": [
-          "p and q are relatively prime positive integers",
+          "Let p and q be relatively prime positive integers",
           "the numerators always increase by 1",
-          "the denominators alternate between powers of 2 and 4",
-          "exponents also increasing by 1 for each subsequent term"
+          "the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term"
         ],
         "incomplete_question": "Let p and q be relatively prime positive integers such that the numerators always increase by 1, and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q."
       },
@@ -1261,36 +1342,22 @@
         "removed_condition_index": 2,
         "removed_condition": "the numerators always increase by 1",
         "remaining_conditions": [
-          "p and q are relatively prime positive integers",
-          "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
-          "the denominators alternate between powers of 2 and 4",
-          "exponents also increasing by 1 for each subsequent term"
+          "Let p and q be relatively prime positive integers",
+          "dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ...",
+          "the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term"
         ],
-        "incomplete_question": "Let p and q be relatively prime positive integers such that \\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots, and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q."
+        "incomplete_question": "Let p and q be relatively prime positive integers such that dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ..., and the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term. Compute p+q."
       },
       {
         "variant_id": "27_remove_3",
         "removed_condition_index": 3,
-        "removed_condition": "the denominators alternate between powers of 2 and 4",
+        "removed_condition": "the denominators alternate between powers of 2 and 4, with exponents also increasing by 1 for each subsequent term",
         "remaining_conditions": [
-          "p and q are relatively prime positive integers",
-          "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
-          "the numerators always increase by 1",
-          "exponents also increasing by 1 for each subsequent term"
+          "Let p and q be relatively prime positive integers",
+          "dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ...",
+          "the numerators always increase by 1"
         ],
-        "incomplete_question": "Let p and q be relatively prime positive integers such that \\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots, where the numerators always increase by 1, and exponents also increasing by 1 for each subsequent term. Compute p+q."
-      },
-      {
-        "variant_id": "27_remove_4",
-        "removed_condition_index": 4,
-        "removed_condition": "exponents also increasing by 1 for each subsequent term",
-        "remaining_conditions": [
-          "p and q are relatively prime positive integers",
-          "\\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots",
-          "the numerators always increase by 1",
-          "the denominators alternate between powers of 2 and 4"
-        ],
-        "incomplete_question": "Let p and q be relatively prime positive integers such that \\dfrac pq = \\dfrac1{2^1} + \\dfrac2{4^2} + \\dfrac3{2^3} + \\dfrac4{4^4} + \\dfrac5{2^5} + \\dfrac6{4^6} + \\cdots, where the numerators always increase by 1, and the denominators alternate between powers of 2 and 4. Compute p+q."
+        "incomplete_question": "Let p and q be relatively prime positive integers such that dfrac pq = dfrac1{2^1} + dfrac2{4^2} + dfrac3{2^3} + dfrac4{4^4} + dfrac5{2^5} + dfrac6{4^6} + ..., and the numerators always increase by 1. Compute p+q."
       }
     ]
   },
@@ -1357,7 +1424,7 @@
       597
     ],
     "gpt4o_mini_completion_lengths": [
-      771
+      799
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1376,7 +1443,7 @@
       676
     ],
     "gpt4o_mini_completion_lengths": [
-      1232
+      1211
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1388,11 +1455,7 @@
         "remaining_conditions": [
           "PR = 120",
           "QR = 150",
-          "Let C_{1} be the inscribed circle.",
-          "Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}.",
-          "Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}.",
-          "Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}.",
-          "The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+          "Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
         ],
         "incomplete_question": "Let \\triangle{PQR} be a right triangle with PR = 120 and QR = 150. Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
       },
@@ -1403,11 +1466,7 @@
         "remaining_conditions": [
           "PQ = 90",
           "QR = 150",
-          "Let C_{1} be the inscribed circle.",
-          "Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}.",
-          "Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}.",
-          "Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}.",
-          "The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+          "Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
         ],
         "incomplete_question": "Let \\triangle{PQR} be a right triangle with PQ = 90 and QR = 150. Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
       },
@@ -1418,11 +1477,7 @@
         "remaining_conditions": [
           "PQ = 90",
           "PR = 120",
-          "Let C_{1} be the inscribed circle.",
-          "Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}.",
-          "Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}.",
-          "Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}.",
-          "The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
+          "Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
         ],
         "incomplete_question": "Let \\triangle{PQR} be a right triangle with PQ = 90 and PR = 120. Let C_{1} be the inscribed circle. Construct \\overline{ST} with S on \\overline{PR} and T on \\overline{QR}, such that \\overline{ST} is perpendicular to \\overline{PR} and tangent to C_{1}. Construct \\overline{UV} with U on \\overline{PQ} and V on \\overline{QR} such that \\overline{UV} is perpendicular to \\overline{PQ} and tangent to C_{1}. Let C_{2} be the inscribed circle of \\triangle{RST} and C_{3} the inscribed circle of \\triangle{QUV}. The distance between the centers of C_{2} and C_{3} can be written as \\sqrt {10n}. What is n?"
       }
@@ -1549,8 +1604,7 @@
         "removed_condition_index": 2,
         "removed_condition": "Let M_{1} be a point on curve C_{1}, and M_{2} be a point on curve C_{2}.",
         "remaining_conditions": [
-          "In the Cartesian coordinate system (xOy), the parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2.",
-          "In the polar coordinate system with the coordinate origin O as the pole and the positive half of the x-axis as the polar axis, the polar equation of curve C_{2} is ρ= 2/(1−cos θ)."
+          "In the Cartesian coordinate system (xOy), the parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2, and in the polar coordinate system with the coordinate origin O as the pole and the positive half of the x-axis as the polar axis, the polar equation of curve C_{2} is ρ= 2/(1−cos θ)."
         ],
         "incomplete_question": "In the Cartesian coordinate system (xOy), the parametric equations of curve C_{1} are given by x=2t-1 and y=-4t-2, and in the polar coordinate system with the coordinate origin O as the pole and the positive half of the x-axis as the polar axis, the polar equation of curve C_{2} is ρ= 2/(1−cos θ). (1) Write the Cartesian equation of curve C_{2}; (2) Find the minimum value of |M_{1}M_{2}|."
       }
@@ -1588,7 +1642,7 @@
       475
     ],
     "gpt4o_mini_completion_lengths": [
-      163
+      99
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1607,11 +1661,42 @@
       615
     ],
     "gpt4o_mini_completion_lengths": [
-      1249
+      775
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
-    "removal_variants": []
+    "removal_variants": [
+      {
+        "variant_id": "35_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively.",
+        "remaining_conditions": [
+          "Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B.",
+          "The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime. Find the greatest integer less than or equal to m + \\sqrt{n}."
+        ],
+        "incomplete_question": "Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B. The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime. Find the greatest integer less than or equal to m + \\sqrt{n}."
+      },
+      {
+        "variant_id": "35_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B.",
+        "remaining_conditions": [
+          "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively.",
+          "The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime. Find the greatest integer less than or equal to m + \\sqrt{n}."
+        ],
+        "incomplete_question": "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively. The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime. Find the greatest integer less than or equal to m + \\sqrt{n}."
+      },
+      {
+        "variant_id": "35_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "The length of \\overline{AD} can be expressed as m\\sqrt{n}, where m and n are positive integers and n is not divisible by the square of any prime.",
+        "remaining_conditions": [
+          "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively.",
+          "Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B."
+        ],
+        "incomplete_question": "Triangle ABC has sides \\overline{AB}, \\overline{BC}, and \\overline{CA} of length 43, 13, and 48, respectively. Let \\omega be the circle circumscribed around \\triangle ABC and let D be the intersection of \\omega and the perpendicular bisector of \\overline{AC} that is not on the same side of \\overline{AC} as B."
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -1626,7 +1711,7 @@
       506
     ],
     "gpt4o_mini_completion_lengths": [
-      169
+      171
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1638,7 +1723,7 @@
         "remaining_conditions": [
           "each of Loki, Moe, and Nick gave Ott $4"
         ],
-        "incomplete_question": "Each of Loki, Moe, and Nick gave Ott $4. Determine the fractional part of the group's money that Ott now has."
+        "incomplete_question": "Given that each of Loki, Moe, and Nick gave Ott $4, determine the fractional part of the group's money that Ott now has."
       },
       {
         "variant_id": "36_remove_1",
