@@ -30,7 +30,7 @@ python code/construct_mip_data/construct_mip_with_deepscaler.py \
     --temperature 0.9 \
     --max_attempts 8 \
     --threads 16 \
-    --output_dir /home/zhangyiqian/ReliableMath/data/construct_mip_qwen_7B_16384/11-03/polaris_normal_5_times_8 \
+    --output_dir /home/zhangyiqian/ReliableMath/data/construct_mip_qwen_7B_16384/11-03/polaris_normal_5_times_8/deepscaler_extract \
     --force
 
 # 完整模式（启发式 + ORM 备份）
