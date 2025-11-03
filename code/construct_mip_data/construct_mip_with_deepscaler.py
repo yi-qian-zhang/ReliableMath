@@ -42,7 +42,11 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 
 # ============= 新增：导入 Deepscaler 模块 =============
-from deepscaler.rewards.math_utils.utils import grade_answer_mathd, grade_answer_sympy
+from deepscaler.rewards.math_utils.utils import (
+    grade_answer_mathd, 
+    grade_answer_sympy, 
+    extract_answer  # 自带的提取boxed{}逻辑
+)
 from deepscaler.system_prompts import ORM_PROMPT
 # ====================================================
 
@@ -342,52 +346,52 @@ def parse_json_response(response, fallback=None):
 
 # ============= Answer Processing =============
 
-def extract_answer_tag(response):
-    """从响应中提取答案（支持多种格式）"""
-    try:
-        # 方法 1: 优先查找 <answer> 标签
-        start = response.find('<answer>')
-        end = response.find('</answer>')
+# def extract_answer_tag(response):
+#     """从响应中提取答案（支持多种格式）"""
+#     try:
+#         # 方法 1: 优先查找 <answer> 标签
+#         start = response.find('<answer>')
+#         end = response.find('</answer>')
         
-        if start >= 0 and end > start:
-            answer = response[start + 8:end].strip()
-            if '\\boxed{' in answer:
-                boxed_match = re.search(r'\\boxed\{([^}]+)\}', answer)
-                if boxed_match:
-                    return boxed_match.group(1).strip()
-            return answer
+#         if start >= 0 and end > start:
+#             answer = response[start + 8:end].strip()
+#             if '\\boxed{' in answer:
+#                 boxed_match = re.search(r'\\boxed\{([^}]+)\}', answer)
+#                 if boxed_match:
+#                     return boxed_match.group(1).strip()
+#             return answer
         
-        # 方法 2: 查找 $\boxed{...}$ 或 \boxed{...} 格式
-        boxed_pattern = r'\$?\\boxed\{([^}]+)\}\$?'
-        boxed_matches = re.findall(boxed_pattern, response)
+#         # 方法 2: 查找 $\boxed{...}$ 或 \boxed{...} 格式
+#         boxed_pattern = r'\$?\\boxed\{([^}]+)\}\$?'
+#         boxed_matches = re.findall(boxed_pattern, response)
         
-        if boxed_matches:
-            answer = boxed_matches[-1].strip()
-            answer = answer.replace('$', '').strip()
-            return answer
+#         if boxed_matches:
+#             answer = boxed_matches[-1].strip()
+#             answer = answer.replace('$', '').strip()
+#             return answer
         
-        # 方法 3: 查找常见的答案标记
-        answer_patterns = [
-            r'[Ff]inal [Aa]nswer:?\s*(.+?)(?:\n|$)',
-            r'[Tt]he answer is:?\s*(.+?)(?:\n|$)',
-            r'[Aa]nswer:?\s*(.+?)(?:\n|$)',
-        ]
+#         # 方法 3: 查找常见的答案标记
+#         answer_patterns = [
+#             r'[Ff]inal [Aa]nswer:?\s*(.+?)(?:\n|$)',
+#             r'[Tt]he answer is:?\s*(.+?)(?:\n|$)',
+#             r'[Aa]nswer:?\s*(.+?)(?:\n|$)',
+#         ]
         
-        for pattern in answer_patterns:
-            match = re.search(pattern, response)
-            if match:
-                answer = match.group(1).strip()
-                if '\\boxed{' in answer:
-                    boxed_match = re.search(r'\\boxed\{([^}]+)\}', answer)
-                    if boxed_match:
-                        return boxed_match.group(1).strip()
-                return answer
+#         for pattern in answer_patterns:
+#             match = re.search(pattern, response)
+#             if match:
+#                 answer = match.group(1).strip()
+#                 if '\\boxed{' in answer:
+#                     boxed_match = re.search(r'\\boxed\{([^}]+)\}', answer)
+#                     if boxed_match:
+#                         return boxed_match.group(1).strip()
+#                 return answer
         
-        return None
+#         return None
         
-    except Exception as e:
-        logging.error(f"Failed to extract answer: {e}")
-        return None
+#     except Exception as e:
+#         logging.error(f"Failed to extract answer: {e}")
+#         return None
 
 # ============= 修改：使用 Deepscaler 的判断逻辑 =============
 def judge_answer_equivalence(question, model_answer, ground_truth):
@@ -585,7 +589,8 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
     round_a_has_correct = False
     
     for attempt_num, candidate_text in enumerate(response_data_a["candidates"], start=1):
-        model_answer = extract_answer_tag(candidate_text)
+        # model_answer = extract_answer_tag(candidate_text)  # ← 使用自己的提取逻辑函数
+        model_answer = extract_answer(candidate_text) 
         
         if model_answer is None:
             is_correct = False
@@ -684,7 +689,8 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
     success_at_attempt = None
     
     for attempt_num, candidate_text in enumerate(response_data_b["candidates"], start=1):
-        model_answer = extract_answer_tag(candidate_text)
+        # model_answer = extract_answer_tag(candidate_text)  # 旧函数
+        model_answer = extract_answer(candidate_text) 
         
         if model_answer is None:
             is_correct = False
