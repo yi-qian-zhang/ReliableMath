@@ -7,24 +7,16 @@ You are given an incomplete mathematical problem and a missing condition.
 {removed_condition}
 
 **Instructions**:
-1. Integrate the missing condition into the incomplete problem to form a complete problem
-2. Solve the complete problem step by step
-3. Provide the final answer in <answer></answer> tags
+Step 1: Write the complete problem after adding the missing condition
+Step 2: Solve it step by step
+Step 3: Give the final answer in $\boxed{{}}$ format
 
 **Example**:
 Incomplete: "Mike bought some pencils. How many did Jason buy?"
 Missing Condition: "Jason bought 1 pencil"
 Complete Problem: "Jason bought 1 pencil. Mike bought some pencils. How many pencils did Jason buy?"
-Answer: 1
+Answer: $\boxed{{1}}$
 
 ---
 
 Now solve:
-
-Step 1: Write the complete problem after adding the missing condition
-Step 2: Solve it step by step
-Step 3: Give the final answer in <answer></answer> tags
-
-<answer>
-[Final answer only]
-</answer>

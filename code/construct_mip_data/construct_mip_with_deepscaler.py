@@ -8,23 +8,26 @@ Step 1. GPT-4o提取条件并改写 (extract_and_generate_variants):
 
 生成多个 removal_variants (移除变体)
 
-Step 2.验证缺省问题 (verify_incomplete_questions_multi_attempt) 
-   → 1.vllm生成8个sampling ，调用deepscaler判断等价性,有一个回答对了就通过,没有对的就丢弃该样本
-   → 2.验证缺省条件下问题不可解:给模型缺省问题(incomplete_question),验证它在缺少[关键条件]的情况下能否解出ground_truth,
-        → 调用deepscaler判断等价性：                
-​        答案 = ground_truth → 丢弃（条件非必要）
-​        答案 ≠ ground_truth → 保留（条件必要）
-        如果能解出,说明该[关键条件]是非必要的,丢弃;反之保留该样本
+Step 2.验证缺省问题 (verify_incomplete_questions_with_two_rounds) 
+   → 验证 A：缺省条件下问题不可解
+        给模型缺省问题(incomplete_question)，验证它在缺少[关键条件]的情况下能否解出ground_truth
+        vLLM sampling 8次，用 Deepscaler 判断等价性：                
+        全都 ≠ ground_truth → 通过验证A（条件必要）
+        至少1个 = ground_truth → 丢弃（条件非必要）
    
-   → 3.验证条件完整拼装的情况下问题可解:给模型缺省问题(incomplete_question) + 被移除的[关键条件] （removed_condition）
-        → 调用deepscaler判断等价性：                
-​        答案 = ground_truth → 保留（条件必要）
-​        答案 ≠ ground_truth → 丢弃（条件非必要）
+   → 验证 B：条件完整拼装的情况下问题可解
+        给模型缺省问题(incomplete_question) + 被移除的[关键条件] (removed_condition)
+        vLLM sampling 8次，用 Deepscaler 判断等价性：                
+        至少1个 = ground_truth → 保留（条件充分）
+        全都 ≠ ground_truth → 丢弃（条件不充分）
    ↓
 最终数据集：只包含移除关键条件后的有效缺省问题
 """
-
+import sys
 import os
+# 将 code/ 目录添加到 Python 路径
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# =========================================================
 import json
 import time
 import logging
@@ -38,21 +41,29 @@ import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 
+# ============= 新增：导入 Deepscaler 模块 =============
+from deepscaler.rewards.math_utils.utils import grade_answer_mathd, grade_answer_sympy
+from deepscaler.system_prompts import ORM_PROMPT
+# ====================================================
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-parser = argparse.ArgumentParser(description="MIP Dataset Construction - 2 Steps with Sampling")
+parser = argparse.ArgumentParser(description="MIP Dataset Construction - 2 Steps with Sampling + Deepscaler")
 parser.add_argument("--model", default="gpt-4o", help="Model for extraction/rewrite")
 parser.add_argument("--verify_model", default="deepseek-r1-distill-qwen-7b", help="Model for verification")
-parser.add_argument("--judge_model", default="gpt-4o-mini", help="Model for LLM-as-Judge")
+parser.add_argument("--judge_model", default="gpt-4o-mini", help="Model for LLM-as-Judge (ORM fallback)")
 parser.add_argument("--data_dir", default="data/solve", help="Input directory")
 parser.add_argument("--output_dir", default="data/construct_mip_data", help="Output directory")
-parser.add_argument("--prompt_dir", default="prompt/construct_mip_data", help="Prompt directory")
+parser.add_argument("--prompt_dir", default="prompt/construct_mip_with_deepscaler", help="Prompt directory")
 parser.add_argument("--dataset", default="polaris_easy_20", help="Dataset name")
 parser.add_argument("--temperature", default=0.9, type=float, help="Temperature for verification")
 parser.add_argument("--max_attempts", default=8, type=int, help="Max attempts for verification")
-parser.add_argument("--threads", default=4, type=int, help="Number of parallel threads")
+parser.add_argument("--threads", default=8, type=int, help="Number of parallel threads")
 parser.add_argument("--test_mode", action='store_true', help="Test mode - process only first 5 items")
 parser.add_argument("--force", action='store_true', help="Force reprocess all items")
+# ============= 新增：ORM 开关 =============
+parser.add_argument("--use_math_orm", action='store_true', help="Enable LLM ORM for answer verification when heuristics fail")
+# =======================================
 args = parser.parse_args()
 
 # Load API config
@@ -118,7 +129,7 @@ def record_tokens(data, model_type, prompt_tokens, completion_tokens):
     
     参数：
         data: 数据字典
-        model_type: "gpt-4o" / "gpt-4o-mini" / "local"
+        model_type: "gpt-4o" / "gpt-4o-mini" / "local" / "heuristic"
         prompt_tokens: 输入 token 数
         completion_tokens: 输出 token 数
     """
@@ -132,6 +143,10 @@ def record_tokens(data, model_type, prompt_tokens, completion_tokens):
     if "local_prompt_lengths" not in data:
         data["local_prompt_lengths"] = []
         data["local_completion_lengths"] = []
+    # ============= 新增：heuristic 统计 =============
+    if "heuristic_count" not in data:
+        data["heuristic_count"] = 0
+    # =============================================
     
     # 根据模型类型记录
     if model_type == "gpt-4o":
@@ -143,6 +158,9 @@ def record_tokens(data, model_type, prompt_tokens, completion_tokens):
     elif model_type == "local":
         data["local_prompt_lengths"].append(prompt_tokens)
         data["local_completion_lengths"].append(completion_tokens)
+    elif model_type == "heuristic":
+        # 启发式方法是免费的，只记录使用次数
+        data["heuristic_count"] += 1
 
 # ============= API Functions =============
 
@@ -191,7 +209,7 @@ def get_response_openai(input_prompt, persona="", model=None, temperature=0.0):
                 model=model_name,
                 messages=messages,
                 temperature=temperature,
-                max_tokens=8192,
+                max_tokens=4096,
                 stream=False
             )
             
@@ -268,8 +286,8 @@ def get_response_openai_with_sampling(input_prompt, persona="", model=None, temp
                 model=model_name,
                 messages=messages,
                 temperature=temperature,
-                n=n,  # ← 关键：一次生成 n 个候选答案
-                max_tokens=8192,
+                n=n,  
+                max_tokens=4096,
                 stream=False
             )
             
@@ -371,43 +389,64 @@ def extract_answer_tag(response):
         logging.error(f"Failed to extract answer: {e}")
         return None
 
+# ============= 修改：使用 Deepscaler 的判断逻辑 =============
 def judge_answer_equivalence(question, model_answer, ground_truth):
-    """使用 LLM-as-Judge 判断答案等价性"""
-    prompt_path = os.path.join(args.prompt_dir, "judge_equivalence.txt")
+    """
+    使用 Deepscaler 的多层验证逻辑判断答案等价性
     
-    if not os.path.exists(prompt_path):
-        logging.error(f"Judge prompt not found: {prompt_path}")
-        return False, 0, 0, "unknown"
+    返回：
+        (is_correct, prompt_tokens, completion_tokens, model_type)
+        model_type: "heuristic" / "gpt-4o-mini" / "gpt-4o"
+    """
+    # ========== 第一层：启发式方法（免费）==========
+    is_correct = grade_answer_mathd(model_answer, ground_truth) or grade_answer_sympy(model_answer, ground_truth)
     
-    with open(prompt_path, 'r', encoding='utf-8') as f:
-        prompt_template = f.read()
+    if is_correct:
+        logging.debug(f"✓ Heuristic match: {model_answer} ≈ {ground_truth}")
+        return True, 0, 0, "heuristic"
     
-    input_prompt = prompt_template.format(
-        question=question,
-        model_answer=model_answer,
-        ground_truth=ground_truth
-    )
+    # ========== 第二层：LLM ORM（如果启用）==========
+    if args.use_math_orm:
+        logging.debug(f"Heuristic failed, trying ORM: {model_answer} vs {ground_truth}")
+        
+        ORM_USER_TEMPLATE = """
+Problem: {problem}
+Answer 1: {answer_1}
+Answer 2: {answer_2}
+"""
+        
+        input_prompt = ORM_USER_TEMPLATE.format(
+            problem=question,
+            answer_1=model_answer,
+            answer_2=ground_truth
+        )
+        
+        # 主裁判：使用配置的 judge_model (默认 gpt-4o-mini)
+        try:
+            response, prompt_tokens, completion_tokens, model_type = get_response_openai(
+                input_prompt,
+                persona=ORM_PROMPT,
+                model=args.judge_model,
+                temperature=0.0
+            )
+            
+            if "[[YES]]" in response:
+                logging.debug(f"✓ ORM confirmed: {model_answer} ≈ {ground_truth}")
+                return True, prompt_tokens, completion_tokens, model_type
+            else:
+                logging.debug(f"✗ ORM rejected: {model_answer} ≠ {ground_truth}")
+                return False, prompt_tokens, completion_tokens, model_type
+                
+        except Exception as e:
+            logging.error(f"ORM call failed: {e}")
+            return False, 0, 0, "unknown"
     
-    response, prompt_tokens, completion_tokens, model_type = get_response_openai(
-        input_prompt,
-        persona="You are an expert mathematical equivalence judge.",
-        model=args.judge_model,
-        temperature=0.0
-    )
-    
-    response_lower = response.strip().lower()
-    
-    if 'true' in response_lower and 'false' not in response_lower:
-        result = True
-    elif response_lower == 'true':
-        result = True
-    else:
-        result = False
-    
-    return result, prompt_tokens, completion_tokens, model_type
+    # 启发式失败且未启用 ORM
+    logging.debug(f"✗ No match: {model_answer} ≠ {ground_truth}")
+    return False, 0, 0, "heuristic"
+# =========================================================
 
 # ============= Step 1: Extract and Generate Variants =============
-
 def extract_and_generate_variants(data):
     """Step 1: 一次性提取条件并生成所有移除变体"""
     prompt_path = os.path.join(args.prompt_dir, "extract_and_remove.txt")
@@ -435,14 +474,30 @@ def extract_and_generate_variants(data):
     # 记录 token
     record_tokens(data, model_type, prompt_tokens, completion_tokens)
     
-    # Parse response - 期望得到一个变体列表
+    # Parse response
     parsed = parse_json_response(response, {"variants": []})
     
-    # 处理两种可能的 JSON 格式
     if isinstance(parsed, list):
         variants_data = parsed
     else:
         variants_data = parsed.get("variants", [])
+    
+    # ============= 新增：推断所有条件 =============
+    # 方法 1：从第一个 variant 推断
+    all_conditions = []
+    if variants_data:
+        first_variant = variants_data[0]
+        all_conditions = [first_variant.get("removed_condition", "")] + \
+                        first_variant.get("remaining_conditions", [])
+    
+    # 方法 2：或者从所有 variants 合并（更准确）
+    all_conditions_set = set()
+    for variant_data in variants_data:
+        all_conditions_set.add(variant_data.get("removed_condition", ""))
+        all_conditions_set.update(variant_data.get("remaining_conditions", []))
+    
+    all_conditions = sorted(list(all_conditions_set), key=lambda x: len(x), reverse=True)
+    # ==========================================
     
     removal_variants = []
     
@@ -471,123 +526,256 @@ def extract_and_generate_variants(data):
         
         removal_variants.append(variant)
     
+    # ============= 新增：保存到数据中 =============
+    data["all_extracted_conditions"] = all_conditions
+    data["num_conditions_extracted"] = len(all_conditions)
+    # ==========================================
+    
     data["removal_variants"] = removal_variants
     
-    logging.info(f"ID {data['id']}: Generated {len(removal_variants)} removal variants")
+    logging.info(f"ID {data['id']}: Extracted {len(all_conditions)} conditions, generated {len(removal_variants)} removal variants")
     
     return data
 
-# ============= Step 2: Verify with Sampling =============
-
-def verify_single_variant(data, variant, prompt_template, ground_truth):
-    """验证单个变体（使用 sampling 一次性生成多个候选答案）"""
+# ============= Step 2: 两轮验证 =============
+def verify_single_variant(data, variant, prompt_template_incomplete, prompt_template_complete, ground_truth):
+    """
+    验证单个变体（两轮验证）
+    
+    验证 A：不加条件 → 8次sampling → 全都≠ground_truth → ✓通过
+    验证 B：加条件 → 8次sampling → 至少1个=ground_truth → ✓保留
+    """
     incomplete_question = variant["incomplete_question"]
     removed_condition = variant["removed_condition"]
     
-    input_prompt = prompt_template.format(
-        incomplete_question=incomplete_question,
-        removed_condition=removed_condition
+    # ========== 验证 A：缺省条件下问题不可解 ==========
+    logging.info(f"ID {variant['variant_id']}: Starting Round A - Testing imcomplete question...")
+    
+    input_prompt_incomplete = prompt_template_incomplete.format(
+        incomplete_question=incomplete_question
     )
     
-    # ========== 关键修改：一次生成 max_attempts 个候选答案 ==========
-    response_data = get_response_openai_with_sampling(
-        input_prompt,
+    response_data_a = get_response_openai_with_sampling(
+        input_prompt_incomplete,
         persona="You are an expert mathematical problem solver.",
         model=args.verify_model,
         temperature=args.temperature,
-        n=args.max_attempts  # 一次生成 max_attempts 个答案
+        n=args.max_attempts
     )
     
-    if not response_data:
-        # 生成失败，标记为无效
-        logging.error(f"ID {variant['variant_id']}: Failed to generate candidates")
+    if not response_data_a:
+        logging.error(f"ID {variant['variant_id']}: Round A generation failed")
         variant["verification"] = {
-            "total_attempts": 0,
-            "success_at_attempt": None,
+            "round_a_passed": False,
+            "round_b_passed": False,
             "is_valid": False,
-            "all_attempts": [],
+            "round_a": {"total_attempts": 0, "all_attempts": []},
+            "round_b": {"total_attempts": 0, "all_attempts": []},
             "ground_truth": ground_truth
         }
         return variant
     
-    # 解包数据
-    all_candidates = response_data["candidates"]  # max_attempts 个候选答案
-    prompt_tokens = response_data["prompt_tokens"]
-    completion_tokens = response_data["completion_tokens"]
-    model_type = response_data["model_type"]
+    # 记录 Round A 的 token
+    record_tokens(data, response_data_a["model_type"], 
+                  response_data_a["prompt_tokens"], 
+                  response_data_a["completion_tokens"])
     
-    # 记录生成的 token（只记录一次）
-    record_tokens(data, model_type, prompt_tokens, completion_tokens)
+    # 检查 Round A 的所有候选
+    round_a_attempts = []
+    round_a_has_correct = False
     
-    logging.info(f"ID {variant['variant_id']}: Generated {len(all_candidates)} candidates, checking...")
-    
-    # ========== 依次检查每个候选答案 ==========
-    all_attempts = []
-    success_at_attempt = None
-    is_valid = False
-    
-    for attempt_num, candidate_text in enumerate(all_candidates, start=1):
-        # 提取答案
+    for attempt_num, candidate_text in enumerate(response_data_a["candidates"], start=1):
         model_answer = extract_answer_tag(candidate_text)
         
-        # 判断是否正确
         if model_answer is None:
             is_correct = False
             judge_result = "no_answer_tag"
+            judge_method = "none"
+        else:
+            is_correct, judge_prompt_tokens, judge_completion_tokens, judge_model_type = judge_answer_equivalence(
+                incomplete_question,
+                model_answer,
+                ground_truth
+            )
+            
+            if judge_model_type == "heuristic":
+                judge_result = "heuristic_match" if is_correct else "heuristic_fail"
+                judge_method = "heuristic"
+            else:
+                judge_result = "orm_match" if is_correct else "orm_fail"
+                judge_method = "orm"
+            
+            record_tokens(data, judge_model_type, judge_prompt_tokens, judge_completion_tokens)
+        
+        # ============= 修改：添加完整响应记录 =============
+        attempt_record = {
+            "attempt": attempt_num,
+            "full_response": candidate_text,  # ← 新增：保存完整生成内容
+            "model_answer": model_answer if model_answer else "N/A",
+            "judge_result": judge_result,
+            "judge_method": judge_method,
+            "is_correct": is_correct
+        }
+        # ==============================================
+        round_a_attempts.append(attempt_record)
+        
+        if is_correct:
+            round_a_has_correct = True
+    
+    # Round A 结果判定
+    round_a_passed = not round_a_has_correct  # 全都不对才通过
+    
+    if round_a_passed:
+        logging.info(f"ID {variant['variant_id']}: ✓ Round A PASSED - All {args.max_attempts} answers ≠ ground_truth")
+    else:
+        logging.info(f"ID {variant['variant_id']}: ✗ Round A FAILED - At least 1 answer = ground_truth (condition not necessary)")
+        variant["verification"] = {
+            "round_a_passed": False,
+            "round_b_passed": False,
+            "is_valid": False,
+            "round_a": {
+                "total_attempts": len(round_a_attempts),
+                "all_attempts": round_a_attempts
+            },
+            "round_b": {"total_attempts": 0, "all_attempts": []},
+            "ground_truth": ground_truth
+        }
+        return variant
+    
+    # ========== 验证 B：条件完整拼装的情况下问题可解 ==========
+    logging.info(f"ID {variant['variant_id']}: Starting Round B - Testing WITH removed_condition...")
+    
+    input_prompt_complete = prompt_template_complete.format(
+        incomplete_question=incomplete_question,
+        removed_condition=removed_condition
+    )
+    
+    response_data_b = get_response_openai_with_sampling(
+        input_prompt_complete,
+        persona="You are an expert mathematical problem solver.",
+        model=args.verify_model,
+        temperature=args.temperature,
+        n=args.max_attempts
+    )
+    
+    if not response_data_b:
+        logging.error(f"ID {variant['variant_id']}: Round B generation failed")
+        variant["verification"] = {
+            "round_a_passed": True,
+            "round_b_passed": False,
+            "is_valid": False,
+            "round_a": {
+                "total_attempts": len(round_a_attempts),
+                "all_attempts": round_a_attempts
+            },
+            "round_b": {"total_attempts": 0, "all_attempts": []},
+            "ground_truth": ground_truth
+        }
+        return variant
+    
+    # 记录 Round B 的 token
+    record_tokens(data, response_data_b["model_type"], 
+                  response_data_b["prompt_tokens"], 
+                  response_data_b["completion_tokens"])
+    
+    # 检查 Round B 的所有候选
+    round_b_attempts = []
+    round_b_has_correct = False
+    success_at_attempt = None
+    
+    for attempt_num, candidate_text in enumerate(response_data_b["candidates"], start=1):
+        model_answer = extract_answer_tag(candidate_text)
+        
+        if model_answer is None:
+            is_correct = False
+            judge_result = "no_answer_tag"
+            judge_method = "none"
         else:
             is_correct, judge_prompt_tokens, judge_completion_tokens, judge_model_type = judge_answer_equivalence(
                 incomplete_question + " [With condition: " + removed_condition + "]",
                 model_answer,
                 ground_truth
             )
-            judge_result = "equivalent" if is_correct else "not_equivalent"
             
-            # 记录 judge token
+            if judge_model_type == "heuristic":
+                judge_result = "heuristic_match" if is_correct else "heuristic_fail"
+                judge_method = "heuristic"
+            else:
+                judge_result = "orm_match" if is_correct else "orm_fail"
+                judge_method = "orm"
+            
             record_tokens(data, judge_model_type, judge_prompt_tokens, judge_completion_tokens)
         
-        # 记录本次尝试
+        # ============= 修改：添加完整响应记录 =============
         attempt_record = {
             "attempt": attempt_num,
+            "full_response": candidate_text,  # ← 新增：保存完整生成内容
             "model_answer": model_answer if model_answer else "N/A",
             "judge_result": judge_result,
+            "judge_method": judge_method,
             "is_correct": is_correct
         }
-        all_attempts.append(attempt_record)
+        # ==============================================
+        round_b_attempts.append(attempt_record)
         
-        # 如果答对了，立即停止检查后续候选
-        if is_correct:
+        if is_correct and not round_b_has_correct:
+            round_b_has_correct = True
             success_at_attempt = attempt_num
-            is_valid = True
-            logging.info(f"ID {variant['variant_id']}: ✓ VALID at candidate {attempt_num}/{args.max_attempts}")
-            break
-        else:
-            logging.debug(f"ID {variant['variant_id']}: Candidate {attempt_num}/{args.max_attempts} failed")
     
-    # 如果所有候选都失败
-    if not is_valid:
-        logging.info(f"ID {variant['variant_id']}: ✗ INVALID - All {args.max_attempts} candidates failed")
+    # Round B 结果判定
+    round_b_passed = round_b_has_correct  # 至少有1个对才通过
+    
+    if round_b_passed:
+        logging.info(f"ID {variant['variant_id']}: ✓ Round B PASSED - Answer {success_at_attempt}/{args.max_attempts} = ground_truth (via {round_b_attempts[success_at_attempt-1]['judge_method']})")
+    else:
+        logging.info(f"ID {variant['variant_id']}: ✗ Round B FAILED - All {args.max_attempts} answers ≠ ground_truth")
+    
+    # 最终判定
+    is_valid = round_a_passed and round_b_passed
+    
+    if is_valid:
+        logging.info(f"ID {variant['variant_id']}: 🎉 VALID - Both rounds passed!")
+    else:
+        logging.info(f"ID {variant['variant_id']}: ✗ INVALID")
     
     # 保存验证结果
     variant["verification"] = {
-        "total_attempts": len(all_attempts),
-        "success_at_attempt": success_at_attempt,
+        "round_a_passed": round_a_passed,
+        "round_b_passed": round_b_passed,
         "is_valid": is_valid,
-        "all_attempts": all_attempts,
+        "round_a": {
+            "total_attempts": len(round_a_attempts),
+            "all_attempts": round_a_attempts
+        },
+        "round_b": {
+            "total_attempts": len(round_b_attempts),
+            "success_at_attempt": success_at_attempt,
+            "all_attempts": round_b_attempts
+        },
         "ground_truth": ground_truth
     }
     
     return variant
 
-def verify_incomplete_questions_with_sampling(data):
-    """Step 2: 验证"缺省问题 + 移除的条件"能否解出 ground_truth（并行处理变体，使用 sampling）"""
-    prompt_path = os.path.join(args.prompt_dir, "verify_with_condition.txt")
+
+def verify_incomplete_questions_with_two_rounds(data):
+    """Step 2: 两轮验证（并行处理变体）"""
+    prompt_path_incomplete = os.path.join(args.prompt_dir, "verify_without_condition.txt")
+    prompt_path_complete = os.path.join(args.prompt_dir, "verify_with_condition.txt")
     
-    if not os.path.exists(prompt_path):
-        logging.error(f"Prompt file not found: {prompt_path}")
+    if not os.path.exists(prompt_path_incomplete):
+        logging.error(f"Prompt file not found: {prompt_path_incomplete}")
         return data
     
-    with open(prompt_path, 'r', encoding='utf-8') as f:
-        prompt_template = f.read()
+    if not os.path.exists(prompt_path_complete):
+        logging.error(f"Prompt file not found: {prompt_path_complete}")
+        return data
+    
+    with open(prompt_path_incomplete, 'r', encoding='utf-8') as f:
+        prompt_template_incomplete = f.read()
+    
+    with open(prompt_path_complete, 'r', encoding='utf-8') as f:
+        prompt_template_complete = f.read()
     
     ground_truth = str(data.get("ground_truth", "")).strip()
     variants = data.get("removal_variants", [])
@@ -598,7 +786,8 @@ def verify_incomplete_questions_with_sampling(data):
     # 并行处理所有变体
     with ThreadPoolExecutor(max_workers=args.threads) as executor:
         future_to_variant = {
-            executor.submit(verify_single_variant, data, variant, prompt_template, ground_truth): variant
+            executor.submit(verify_single_variant, data, variant, 
+                          prompt_template_incomplete, prompt_template_complete, ground_truth): variant
             for variant in variants
         }
         
@@ -669,10 +858,7 @@ def process_with_jsonl_parallel(dataset, output_path, process_func, desc):
     all_data = existing_data + read_jsonl(jsonl_path)[len(existing_data):]
     
     if all_data:
-        # ========== 新增：按 ID 排序 ==========
         all_data.sort(key=lambda x: x.get('id', 0))
-        # ===================================
-        
         write_json(output_path, all_data)
         if os.path.exists(jsonl_path):
             os.remove(jsonl_path)
@@ -694,12 +880,24 @@ def filter_valid_data(final_path):
     total_local_prompt = sum(sum(d.get("local_prompt_lengths", [])) for d in dataset)
     total_local_completion = sum(sum(d.get("local_completion_lengths", [])) for d in dataset)
     
+    # ============= 新增：heuristic 统计 =============
+    total_heuristic_count = sum(d.get("heuristic_count", 0) for d in dataset)
+    # =============================================
+    
     total_original = len(dataset)
     total_variants = 0
     valid_variants = 0
     
-    # 统计尝试次数分布
-    attempt_distribution = {}
+    # 统计验证结果分布
+    round_a_pass_count = 0
+    round_b_pass_count = 0
+    both_pass_count = 0
+    
+    # 统计 Round B 成功时的尝试次数分布
+    round_b_attempt_distribution = {}
+    
+    # 统计判断方法分布
+    judge_method_distribution = {"heuristic": 0, "orm": 0}
     
     for data in dataset:
         for variant in data.get("removal_variants", []):
@@ -707,10 +905,29 @@ def filter_valid_data(final_path):
             
             verification = variant.get("verification", {})
             
-            # 只保留有效的 pair（加回条件后能解出 ground_truth）
+            # 统计各轮通过情况
+            if verification.get("round_a_passed", False):
+                round_a_pass_count += 1
+            if verification.get("round_b_passed", False):
+                round_b_pass_count += 1
+            
+            # 只保留两轮都通过的
             if verification.get("is_valid", False):
-                success_attempt = verification.get("success_at_attempt", 0)
-                attempt_distribution[success_attempt] = attempt_distribution.get(success_attempt, 0) + 1
+                both_pass_count += 1
+                
+                # 统计 Round B 成功的尝试次数
+                round_b_info = verification.get("round_b", {})
+                success_attempt = round_b_info.get("success_at_attempt", 0)
+                if success_attempt:
+                    round_b_attempt_distribution[success_attempt] = round_b_attempt_distribution.get(success_attempt, 0) + 1
+                    
+                    # 统计判断方法
+                    round_b_attempts = round_b_info.get("all_attempts", [])
+                    if round_b_attempts and success_attempt <= len(round_b_attempts):
+                        success_record = round_b_attempts[success_attempt - 1]
+                        judge_method = success_record.get("judge_method", "unknown")
+                        if judge_method in judge_method_distribution:
+                            judge_method_distribution[judge_method] += 1
                 
                 valid_item = {
                     "id": variant["variant_id"],
@@ -729,11 +946,8 @@ def filter_valid_data(final_path):
                 valid_data.append(valid_item)
                 valid_variants += 1
     
-    # ========== 新增：按 ID 排序（考虑 variant_id 格式）==========
-    # variant_id 格式：0_remove_0, 0_remove_1, 1_remove_0 等
-    # 排序规则：先按原始 ID，再按 removed_condition_index
+    # 按 ID 排序
     valid_data.sort(key=lambda x: (x.get('original_id', 0), x.get('removed_condition_index', 0)))
-    # ========================================================
     
     output_path = final_path.replace("_final.json", "_valid.json")
     write_json(output_path, valid_data)
@@ -744,14 +958,23 @@ def filter_valid_data(final_path):
     print("="*70)
     print(f"Original problems: {total_original}")
     print(f"\nTotal removal variants generated: {total_variants}")
-    print(f"Valid removal variants (condition necessary): {valid_variants}")
-    if total_variants > 0:
-        print(f"Success rate: {valid_variants / total_variants * 100:.2f}%")
     
-    print(f"\nAttempt Distribution (when successful):")
-    for attempt in sorted(attempt_distribution.keys()):
-        count = attempt_distribution[attempt]
-        print(f"  Candidate {attempt}: {count} variants ({count/valid_variants*100:.1f}%)")
+    print(f"\n📊 Two-Round Verification Results:")
+    print(f"  Round A passed (no condition → can't solve): {round_a_pass_count} ({round_a_pass_count/total_variants*100:.1f}%)")
+    print(f"  Round B passed (with condition → can solve): {round_b_pass_count} ({round_b_pass_count/total_variants*100:.1f}%)")
+    print(f"  Both rounds passed (VALID): {both_pass_count} ({both_pass_count/total_variants*100:.1f}%)")
+    print(f"\nValid removal variants: {valid_variants}")
+    
+    if valid_variants > 0:
+        print(f"\nRound B Success Distribution (when valid):")
+        for attempt in sorted(round_b_attempt_distribution.keys()):
+            count = round_b_attempt_distribution[attempt]
+            print(f"  Candidate {attempt}: {count} variants ({count/valid_variants*100:.1f}%)")
+        
+        # 判断方法统计
+        print(f"\nJudge Method Distribution (Round B success):")
+        for method, count in judge_method_distribution.items():
+            print(f"  {method.capitalize()}: {count} ({count/valid_variants*100:.1f}%)")
     
     # 单价（每 1M tokens）
     gpt4o_prompt_rate = 2.5
@@ -783,6 +1006,10 @@ def filter_valid_data(final_path):
     print(f"\n🖥️  Local Model Token Usage:")
     print(f"  Prompt: {total_local_prompt:,}")
     print(f"  Completion: {total_local_completion:,}")
+    
+    # Heuristic 统计
+    print(f"\n🎯 Heuristic Checks (free):")
+    print(f"  Total heuristic validations: {total_heuristic_count:,}")
     
     print(f"\nOutput: {output_path}")
     print("="*70)
@@ -821,7 +1048,7 @@ def construction_workflow():
         logging.info("Cleanup completed.")
     
     print("="*70)
-    print("MIP CONSTRUCTION PIPELINE - WITH SAMPLING OPTIMIZATION")
+    print("MIP CONSTRUCTION - TWO-ROUND VERIFICATION WITH DEEPSCALER")
     print("="*70)
     print(f"Working directory: {os.getcwd()}")
     print(f"Input: {input_path}")
@@ -829,9 +1056,10 @@ def construction_workflow():
     print(f"Prompt: {args.prompt_dir}")
     print(f"Model (extract/rewrite): {args.model}")
     print(f"Model (verify): {args.verify_model}")
-    print(f"Model (judge): {args.judge_model}")
+    print(f"Model (judge ORM fallback): {args.judge_model}")
+    print(f"Use Math ORM: {'✓ Enabled' if args.use_math_orm else '✗ Disabled (heuristic only)'}")
     print(f"Temperature: {args.temperature}")
-    print(f"Max attempts (sampling n): {args.max_attempts}")
+    print(f"Sampling n: {args.max_attempts}")
     print(f"Parallel threads: {args.threads}")
     print(f"Items: {len(dataset)}")
     if args.force:
@@ -843,11 +1071,13 @@ def construction_workflow():
     extract_path = os.path.join(output_dir, f"{args.dataset}_variants.json")
     process_with_jsonl_parallel(dataset, extract_path, extract_and_generate_variants, "Generating variants")
     
-    # Step 2: Verify with Sampling (并行处理变体)
-    print(f"\n[2/3] Verifying incomplete questions with sampling (n={args.max_attempts}, parallel)")
+    # Step 2: Two-Round Verification (并行处理变体)
+    print(f"\n[2/3] Two-round verification with Deepscaler (n={args.max_attempts}, parallel)")
+    print(f"  Round A: WITHOUT condition (must all fail)")
+    print(f"  Round B: WITH condition (at least one succeeds)")
     dataset = read_json(extract_path)
     final_path = os.path.join(output_dir, f"{args.dataset}_final.json")
-    process_with_jsonl_parallel(dataset, final_path, verify_incomplete_questions_with_sampling, "Verifying with sampling")
+    process_with_jsonl_parallel(dataset, final_path, verify_incomplete_questions_with_two_rounds, "Two-round verification")
     
     # Filter
     print("\n[3/3] Filtering valid data")
