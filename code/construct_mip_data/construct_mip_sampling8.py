@@ -9,15 +9,19 @@ Step 1. GPT-4o提取条件并改写 (extract_and_generate_variants):
 生成多个 removal_variants (移除变体)
 
 Step 2.验证缺省问题 (verify_incomplete_questions_multi_attempt) 
-   → distill 7B\qwen3-8B回答8次 ，回答对了就通过，回答错了就继续试到8次
-   → 给模型：缺省问题(incomplete_question) + 被移除的[关键条件] （removed_condition）
-
-   → 调用 Judge（gpt-4o-mini） 判断等价性：                
-
+   → 1.vllm生成8个sampling ，调用deepscaler判断等价性,有一个回答对了就通过,没有对的就丢弃该样本
+   → 2.验证缺省条件下问题不可解:给模型缺省问题(incomplete_question),验证它在缺少[关键条件]的情况下能否解出ground_truth,
+        → 调用deepscaler判断等价性：                
+​        答案 = ground_truth → 丢弃（条件非必要）
+​        答案 ≠ ground_truth → 保留（条件必要）
+        如果能解出,说明该[关键条件]是非必要的,丢弃;反之保留该样本
+   
+   → 3.验证条件完整拼装的情况下问题可解:给模型缺省问题(incomplete_question) + 被移除的[关键条件] （removed_condition）
+        → 调用deepscaler判断等价性：                
 ​        答案 = ground_truth → 保留（条件必要）
 ​        答案 ≠ ground_truth → 丢弃（条件非必要）
    ↓
-最终数据集：只包含移除关键条件后的有效缺省问题:-------------------------每个难度500条
+最终数据集：只包含移除关键条件后的有效缺省问题
 """
 
 import os

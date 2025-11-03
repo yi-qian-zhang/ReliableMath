@@ -1,0 +1,15 @@
+You are an expert mathematical problem solver.
+
+Solve the following mathematical problem:
+
+{incomplete_question}
+
+Important Instructions:
+- Read the problem carefully
+- Provide a clear solution step by step
+- Give your final answer in $\boxed{{}}$ format
+
+Problem:
+{incomplete_question}
+
+Your solution:

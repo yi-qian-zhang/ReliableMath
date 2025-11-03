@@ -1,0 +1,1166 @@
+[
+  {
+    "data_source": "polaris",
+    "id": 0,
+    "question": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:",
+    "ground_truth": "392",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      822
+    ],
+    "gpt4o_mini_completion_lengths": [
+      333
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "0_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The largest three-digit number",
+        "remaining_conditions": [
+          "divided by an integer",
+          "with the quotient rounded to one decimal place being 2.5",
+          "will have the smallest divisor as"
+        ],
+        "incomplete_question": "An integer divided by another integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as?"
+      },
+      {
+        "variant_id": "0_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "divided by an integer",
+        "remaining_conditions": [
+          "The largest three-digit number",
+          "with the quotient rounded to one decimal place being 2.5",
+          "will have the smallest divisor as"
+        ],
+        "incomplete_question": "The largest three-digit number, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as?"
+      },
+      {
+        "variant_id": "0_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "with the quotient rounded to one decimal place being 2.5",
+        "remaining_conditions": [
+          "The largest three-digit number",
+          "divided by an integer",
+          "will have the smallest divisor as"
+        ],
+        "incomplete_question": "The largest three-digit number divided by an integer will have the smallest divisor as?"
+      },
+      {
+        "variant_id": "0_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "will have the smallest divisor as",
+        "remaining_conditions": [
+          "The largest three-digit number",
+          "divided by an integer",
+          "with the quotient rounded to one decimal place being 2.5"
+        ],
+        "incomplete_question": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have what?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 1,
+    "question": "Investigate the stability of the equilibrium point $x=0, y=0$ for the system\n\n$$\n\\left\\{\\begin{array}{l}\n\\frac{d x}{d t}=y^{3}+x^{5} \\\\\n\\frac{d y}{d t}=x^{3}+y^{5}\n\\end{array}\\right.\n$$",
+    "ground_truth": "Unstable",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      869
+    ],
+    "gpt4o_mini_completion_lengths": [
+      187
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "1_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The equilibrium point is x=0, y=0",
+        "remaining_conditions": [
+          "The system is given by the equations: \frac{d x}{d t}=y^{3}+x^{5} and \frac{d y}{d t}=x^{3}+y^{5}"
+        ],
+        "incomplete_question": "Investigate the stability of the equilibrium point for the system"
+      },
+      {
+        "variant_id": "1_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "The system is given by the equations: \frac{d x}{d t}=y^{3}+x^{5} and \frac{d y}{d t}=x^{3}+y^{5}",
+        "remaining_conditions": [
+          "The equilibrium point is x=0, y=0"
+        ],
+        "incomplete_question": "Investigate the stability of the equilibrium point x=0, y=0"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 2,
+    "question": "The line $y = \\frac{5}{3} x - \\frac{17}{3}$ is to be parameterized using vectors.  Which of the following options are valid parameterizations?\n\n(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$\n\n(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$\n\n(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$\n\n(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$\n\n(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$\n\nEnter the letters of the correct options, separated by commas.",
+    "ground_truth": "\\text{A,C}",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      1131
+    ],
+    "gpt4o_mini_completion_lengths": [
+      292
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "2_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The line y = 5/3 x - 17/3",
+        "remaining_conditions": [
+          "Which of the following options are valid parameterizations?"
+        ],
+        "incomplete_question": "A line is to be parameterized using vectors. Which of the following options are valid parameterizations?"
+      },
+      {
+        "variant_id": "2_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "The line y = 5/3 x - 17/3 is to be parameterized using vectors.",
+        "remaining_conditions": [
+          "Which of the following options are valid parameterizations?"
+        ],
+        "incomplete_question": "Which of the following options are valid parameterizations?"
+      },
+      {
+        "variant_id": "2_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "The line y = 5/3 x - 17/3 is to be parameterized using vectors.",
+        "remaining_conditions": [
+          "(A) ...",
+          "(B) ...",
+          "(C) ...",
+          "(D) ...",
+          "(E) ..."
+        ],
+        "incomplete_question": "Which of the following options are valid?"
+      },
+      {
+        "variant_id": "2_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "The line y = 5/3 x - 17/3 is to be parameterized using vectors.",
+        "remaining_conditions": [
+          "(A) ...",
+          "(B) ...",
+          "(C) ...",
+          "(D) ...",
+          "(E) ..."
+        ],
+        "incomplete_question": "Which options are valid parameterizations?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 3,
+    "question": "In the 2013 Zhejiang College Entrance Examination, arrange the six letters A, B, C, D, E, F in a row, with both A and B on the same side of C. How many different arrangements are there? (Answer with a number.)",
+    "ground_truth": "480",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      845
+    ],
+    "gpt4o_mini_completion_lengths": [
+      384
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "3_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "the year is 2013",
+        "remaining_conditions": [
+          "arrange the six letters A, B, C, D, E, F in a row",
+          "both A and B on the same side of C"
+        ],
+        "incomplete_question": "Arrange the six letters A, B, C, D, E, F in a row, with both A and B on the same side of C. How many different arrangements are there?"
+      },
+      {
+        "variant_id": "3_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "the letters are A, B, C, D, E, F",
+        "remaining_conditions": [
+          "arrange the six letters in a row",
+          "both A and B on the same side of C"
+        ],
+        "incomplete_question": "In the 2013 Zhejiang College Entrance Examination, arrange six letters in a row, with both A and B on the same side of C. How many different arrangements are there?"
+      },
+      {
+        "variant_id": "3_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "the letters must be arranged in a row",
+        "remaining_conditions": [
+          "A, B, C, D, E, F",
+          "both A and B on the same side of C"
+        ],
+        "incomplete_question": "In the 2013 Zhejiang College Entrance Examination, A, B, C, D, E, F, with both A and B on the same side of C. How many different arrangements are there?"
+      },
+      {
+        "variant_id": "3_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "both A and B on the same side of C",
+        "remaining_conditions": [
+          "arrange the six letters A, B, C, D, E, F in a row"
+        ],
+        "incomplete_question": "In the 2013 Zhejiang College Entrance Examination, arrange the six letters A, B, C, D, E, F in a row. How many different arrangements are there?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 4,
+    "question": "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print.\n\nSasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?",
+    "ground_truth": "28",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      861
+    ],
+    "gpt4o_mini_completion_lengths": [
+      255
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "4_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Sasha tried to type an 8-digit number",
+        "remaining_conditions": [
+          "the key for the digit 1 is not working",
+          "only 202020 was printed"
+        ],
+        "incomplete_question": "On a computer keyboard, the key for the digit 1 is not working. Only 202020 was printed. How many 8-digit numbers satisfy this condition?"
+      },
+      {
+        "variant_id": "4_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "only 202020 was printed",
+        "remaining_conditions": [
+          "Sasha tried to type an 8-digit number",
+          "the key for the digit 1 is not working"
+        ],
+        "incomplete_question": "Sasha tried to type an 8-digit number. The key for the digit 1 is not working. How many 8-digit numbers satisfy this condition?"
+      },
+      {
+        "variant_id": "4_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "the key for the digit 1 is not working",
+        "remaining_conditions": [
+          "Sasha tried to type an 8-digit number",
+          "only 202020 was printed"
+        ],
+        "incomplete_question": "Sasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 5,
+    "question": "In an acute-angled triangle \\( ABC \\), the angle bisector \\( AN \\), the altitude \\( BH \\), and the line perpendicular to side \\( AB \\) passing through its midpoint intersect at a single point. Find angle \\( BAC \\).",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      841
+    ],
+    "gpt4o_mini_completion_lengths": [
+      254
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "5_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "In an acute-angled triangle ABC",
+        "remaining_conditions": [
+          "the angle bisector AN",
+          "the altitude BH",
+          "the line perpendicular to side AB passing through its midpoint intersect at a single point"
+        ],
+        "incomplete_question": "Find angle BAC."
+      },
+      {
+        "variant_id": "5_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "the angle bisector AN",
+        "remaining_conditions": [
+          "In an acute-angled triangle ABC",
+          "the altitude BH",
+          "the line perpendicular to side AB passing through its midpoint intersect at a single point"
+        ],
+        "incomplete_question": "Find angle BAC."
+      },
+      {
+        "variant_id": "5_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "the altitude BH",
+        "remaining_conditions": [
+          "In an acute-angled triangle ABC",
+          "the angle bisector AN",
+          "the line perpendicular to side AB passing through its midpoint intersect at a single point"
+        ],
+        "incomplete_question": "Find angle BAC."
+      },
+      {
+        "variant_id": "5_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "the line perpendicular to side AB passing through its midpoint intersect at a single point",
+        "remaining_conditions": [
+          "In an acute-angled triangle ABC",
+          "the angle bisector AN",
+          "the altitude BH"
+        ],
+        "incomplete_question": "Find angle BAC."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 6,
+    "question": "Person A and person B start from locations A and B respectively, walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously. They meet after 10 minutes. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?",
+    "ground_truth": "50",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      862
+    ],
+    "gpt4o_mini_completion_lengths": [
+      367
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "6_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Person A and person B start from locations A and B respectively",
+        "remaining_conditions": [
+          "walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously",
+          "They meet after 10 minutes"
+        ],
+        "incomplete_question": "Walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously, they meet after 10 minutes. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?"
+      },
+      {
+        "variant_id": "6_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously",
+        "remaining_conditions": [
+          "Person A and person B start from locations A and B respectively",
+          "They meet after 10 minutes"
+        ],
+        "incomplete_question": "Person A and person B start from locations A and B respectively. They meet after 10 minutes. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?"
+      },
+      {
+        "variant_id": "6_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "They meet after 10 minutes",
+        "remaining_conditions": [
+          "Person A and person B start from locations A and B respectively",
+          "walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously"
+        ],
+        "incomplete_question": "Person A and person B start from locations A and B respectively, walking towards each other at speeds of 65 meters per minute and 55 meters per minute simultaneously. What is the distance between A and B in meters? Also, what is the distance of the meeting point from the midpoint between A and B in meters?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 7,
+    "question": "Six chairs sit in a row.  Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.  There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.  The probability that this will **not** happen is given by  $\\frac{m}{n}$  where  $m$  and  $n$  are relatively prime positive integers. Find  $m+n$ .",
+    "ground_truth": "1106",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      925
+    ],
+    "gpt4o_mini_completion_lengths": [
+      1334
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "7_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Six chairs sit in a row.",
+        "remaining_conditions": [
+          "Six people randomly seat themselves in the chairs.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+          "The probability that this will not happen is given by  \\(\\frac{m}{n}\\)  where  \\(m\\)  and  \\(n\\)  are relatively prime positive integers."
+        ],
+        "incomplete_question": "Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by  \\(\\frac{m}{n}\\)  where  \\(m\\)  and  \\(n\\)  are relatively prime positive integers. Find  \\(m+n\\)."
+      },
+      {
+        "variant_id": "7_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "Six people randomly seat themselves in the chairs.",
+        "remaining_conditions": [
+          "Six chairs sit in a row.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+          "The probability that this will not happen is given by  \\(\\frac{m}{n}\\)  where  \\(m\\)  and  \\(n\\)  are relatively prime positive integers."
+        ],
+        "incomplete_question": "Six chairs sit in a row. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by  \\(\\frac{m}{n}\\)  where  \\(m\\)  and  \\(n\\)  are relatively prime positive integers. Find  \\(m+n\\)."
+      },
+      {
+        "variant_id": "7_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+        "remaining_conditions": [
+          "Six chairs sit in a row.",
+          "Six people randomly seat themselves in the chairs.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+          "The probability that this will not happen is given by  \\(\\frac{m}{n}\\)  where  \\(m\\)  and  \\(n\\)  are relatively prime positive integers."
+        ],
+        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. The probability that this will not happen is given by  \\(\\frac{m}{n}\\)  where  \\(m\\)  and  \\(n\\)  are relatively prime positive integers. Find  \\(m+n\\)."
+      },
+      {
+        "variant_id": "7_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right.",
+        "remaining_conditions": [
+          "Six chairs sit in a row.",
+          "Six people randomly seat themselves in the chairs.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "The probability that this will not happen is given by  \\(\\frac{m}{n}\\)  where  \\(m\\)  and  \\(n\\)  are relatively prime positive integers."
+        ],
+        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. The probability that this will not happen is given by  \\(\\frac{m}{n}\\)  where  \\(m\\)  and  \\(n\\)  are relatively prime positive integers. Find  \\(m+n\\)."
+      },
+      {
+        "variant_id": "7_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "The probability that this will not happen is given by  \\(\\frac{m}{n}\\)  where  \\(m\\)  and  \\(n\\)  are relatively prime positive integers.",
+        "remaining_conditions": [
+          "Six chairs sit in a row.",
+          "Six people randomly seat themselves in the chairs.",
+          "Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left.",
+          "There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right."
+        ],
+        "incomplete_question": "Six chairs sit in a row. Six people randomly seat themselves in the chairs. Each person randomly chooses either to set their feet on the floor, to cross their legs to the right, or to cross their legs to the left. There is only a problem if two people sitting next to each other have the person on the right crossing their legs to the left and the person on the left crossing their legs to the right. Find  \\(m+n\\)."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 8,
+    "question": "In a two-story house that is inhabited in both floors as well as on the ground floor, 35 people live above someone and 45 people live below someone. One third of all the people living in the house live on the first floor.\n\nHow many people live in the house in total?",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      850
+    ],
+    "gpt4o_mini_completion_lengths": [
+      307
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "8_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "35 people live above someone",
+        "remaining_conditions": [
+          "45 people live below someone",
+          "One third of all the people living in the house live on the first floor."
+        ],
+        "incomplete_question": "In a two-story house that is inhabited in both floors as well as on the ground floor, 45 people live below someone. One third of all the people living in the house live on the first floor. How many people live in the house in total?"
+      },
+      {
+        "variant_id": "8_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "45 people live below someone",
+        "remaining_conditions": [
+          "35 people live above someone",
+          "One third of all the people living in the house live on the first floor."
+        ],
+        "incomplete_question": "In a two-story house that is inhabited in both floors as well as on the ground floor, 35 people live above someone. One third of all the people living in the house live on the first floor. How many people live in the house in total?"
+      },
+      {
+        "variant_id": "8_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "One third of all the people living in the house live on the first floor.",
+        "remaining_conditions": [
+          "35 people live above someone",
+          "45 people live below someone"
+        ],
+        "incomplete_question": "In a two-story house that is inhabited in both floors as well as on the ground floor, 35 people live above someone and 45 people live below someone. How many people live in the house in total?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 9,
+    "question": "Given a square with four vertices and its center, find the probability that the distance between any two of these five points is less than the side length of the square.",
+    "ground_truth": "\\frac{2}{5}",
+    "solution": "",
+    "difficulty": "6/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      828
+    ],
+    "gpt4o_mini_completion_lengths": [
+      336
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "9_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The square has four vertices",
+        "remaining_conditions": [
+          "its center",
+          "find the probability that the distance between any two of these five points is less than the side length of the square"
+        ],
+        "incomplete_question": "Given a center and find the probability that the distance between any two of these five points is less than the side length of the square."
+      },
+      {
+        "variant_id": "9_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "Its center",
+        "remaining_conditions": [
+          "The square has four vertices",
+          "find the probability that the distance between any two of these five points is less than the side length of the square"
+        ],
+        "incomplete_question": "Given a square with four vertices, find the probability that the distance between any two of these five points is less than the side length of the square."
+      },
+      {
+        "variant_id": "9_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "The distance between any two of these five points",
+        "remaining_conditions": [
+          "The square has four vertices",
+          "its center",
+          "find the probability that is less than the side length of the square"
+        ],
+        "incomplete_question": "Given a square with four vertices and its center, find the probability that the distance is less than the side length of the square."
+      },
+      {
+        "variant_id": "9_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "Less than the side length of the square",
+        "remaining_conditions": [
+          "The square has four vertices",
+          "its center",
+          "find the probability that the distance between any two of these five points"
+        ],
+        "incomplete_question": "Given a square with four vertices and its center, find the probability that the distance between any two of these five points."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 10,
+    "question": "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
+    "ground_truth": "9375",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      836
+    ],
+    "gpt4o_mini_completion_lengths": [
+      249
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "10_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The front tires of a car wear out after 25,000 km",
+        "remaining_conditions": [
+          "the rear tires wear out after 15,000 km"
+        ],
+        "incomplete_question": "When should the tires be swapped so that they wear out at the same time?"
+      },
+      {
+        "variant_id": "10_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "The rear tires wear out after 15,000 km",
+        "remaining_conditions": [
+          "the front tires of a car wear out after 25,000 km"
+        ],
+        "incomplete_question": "When should the tires be swapped so that they wear out at the same time?"
+      },
+      {
+        "variant_id": "10_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "25,000 km",
+        "remaining_conditions": [
+          "the rear tires wear out after 15,000 km"
+        ],
+        "incomplete_question": "When should the tires be swapped so that they wear out at the same time?"
+      },
+      {
+        "variant_id": "10_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "15,000 km",
+        "remaining_conditions": [
+          "the front tires of a car wear out after 25,000 km"
+        ],
+        "incomplete_question": "When should the tires be swapped so that they wear out at the same time?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 11,
+    "question": "Given the function \\( f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a \\), if the minimum value of \\( f(x) \\) on the interval \\(\\left[ 0, \\frac{\\pi}{2} \\right] \\) is \\(-1\\), find the value of \\( a \\).",
+    "ground_truth": "-1",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      867
+    ],
+    "gpt4o_mini_completion_lengths": [
+      336
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
+    "id": 12,
+    "question": "From the vertex of the right angle of triangle \\(ABC\\), the median \\(CM\\) is drawn. The circle inscribed in triangle \\(CAM\\) touches \\(CM\\) at its midpoint. Find the angle \\(BAC\\).",
+    "ground_truth": "60",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      839
+    ],
+    "gpt4o_mini_completion_lengths": [
+      259
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "12_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The median CM is drawn from the vertex of the right angle of triangle ABC",
+        "remaining_conditions": [
+          "The circle inscribed in triangle CAM touches CM at its midpoint",
+          "Find the angle BAC"
+        ],
+        "incomplete_question": "A circle inscribed in triangle CAM touches CM at its midpoint. Find the angle BAC."
+      },
+      {
+        "variant_id": "12_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "The circle inscribed in triangle CAM touches CM at its midpoint",
+        "remaining_conditions": [
+          "The median CM is drawn from the vertex of the right angle of triangle ABC",
+          "Find the angle BAC"
+        ],
+        "incomplete_question": "From the vertex of the right angle of triangle ABC, the median CM is drawn. Find the angle BAC."
+      },
+      {
+        "variant_id": "12_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "Triangle ABC is a right triangle",
+        "remaining_conditions": [
+          "The median CM is drawn from the vertex of the right angle of triangle ABC",
+          "The circle inscribed in triangle CAM touches CM at its midpoint",
+          "Find the angle BAC"
+        ],
+        "incomplete_question": "From the vertex of the right angle of triangle ABC, the median CM is drawn. The circle inscribed in triangle CAM touches CM at its midpoint. Find the angle BAC."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 13,
+    "question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?",
+    "ground_truth": "300",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      841
+    ],
+    "gpt4o_mini_completion_lengths": [
+      329
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "13_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "Using the six digits 0, 1, 2, 3, 4, 5",
+        "remaining_conditions": [
+          "to form a six-digit number without repeating any digit",
+          "how many such numbers are there where the unit digit is less than the ten's digit"
+        ],
+        "incomplete_question": "To form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?"
+      },
+      {
+        "variant_id": "13_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "without repeating any digit",
+        "remaining_conditions": [
+          "Using the six digits 0, 1, 2, 3, 4, 5",
+          "how many such numbers are there where the unit digit is less than the ten's digit"
+        ],
+        "incomplete_question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number, how many such numbers are there where the unit digit is less than the ten's digit?"
+      },
+      {
+        "variant_id": "13_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "where the unit digit is less than the ten's digit",
+        "remaining_conditions": [
+          "Using the six digits 0, 1, 2, 3, 4, 5",
+          "to form a six-digit number without repeating any digit"
+        ],
+        "incomplete_question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number without repeating any digit, how many such numbers are there?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 14,
+    "question": "An electronic clock always displays the date as an eight-digit number. For example, January 1, 2011, is displayed as 20110101. What is the last day of 2011 that can be evenly divided by 101? The date is displayed as $\\overline{2011 \\mathrm{ABCD}}$. What is $\\overline{\\mathrm{ABCD}}$?",
+    "ground_truth": "1221",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      873
+    ],
+    "gpt4o_mini_completion_lengths": [
+      860
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "14_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The date is displayed as an eight-digit number.",
+        "remaining_conditions": [
+          "An electronic clock always displays the date.",
+          "What is the last day of 2011 that can be evenly divided by 101?",
+          "The date is displayed as \\overline{2011 \\mathrm{ABCD}}.",
+          "What is \\overline{\\mathrm{ABCD}}?"
+        ],
+        "incomplete_question": "An electronic clock always displays the date. What is the last day of 2011 that can be evenly divided by 101? The date is displayed as \\overline{2011 \\mathrm{ABCD}}. What is \\overline{\\mathrm{ABCD}}?"
+      },
+      {
+        "variant_id": "14_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "For example, January 1, 2011, is displayed as 20110101.",
+        "remaining_conditions": [
+          "An electronic clock always displays the date as an eight-digit number.",
+          "What is the last day of 2011 that can be evenly divided by 101?",
+          "The date is displayed as \\overline{2011 \\mathrm{ABCD}}.",
+          "What is \\overline{\\mathrm{ABCD}}?"
+        ],
+        "incomplete_question": "An electronic clock always displays the date as an eight-digit number. What is the last day of 2011 that can be evenly divided by 101? The date is displayed as \\overline{2011 \\mathrm{ABCD}}. What is \\overline{\\mathrm{ABCD}}?"
+      },
+      {
+        "variant_id": "14_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "What is the last day of 2011 that can be evenly divided by 101?",
+        "remaining_conditions": [
+          "An electronic clock always displays the date as an eight-digit number.",
+          "For example, January 1, 2011, is displayed as 20110101.",
+          "The date is displayed as \\overline{2011 \\mathrm{ABCD}}.",
+          "What is \\overline{\\mathrm{ABCD}}?"
+        ],
+        "incomplete_question": "An electronic clock always displays the date as an eight-digit number. For example, January 1, 2011, is displayed as 20110101. The date is displayed as \\overline{2011 \\mathrm{ABCD}}. What is \\overline{\\mathrm{ABCD}}?"
+      },
+      {
+        "variant_id": "14_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "The date is displayed as \\overline{2011 \\mathrm{ABCD}}.",
+        "remaining_conditions": [
+          "An electronic clock always displays the date as an eight-digit number.",
+          "For example, January 1, 2011, is displayed as 20110101.",
+          "What is the last day of 2011 that can be evenly divided by 101?",
+          "What is \\overline{\\mathrm{ABCD}}?"
+        ],
+        "incomplete_question": "An electronic clock always displays the date as an eight-digit number. For example, January 1, 2011, is displayed as 20110101. What is the last day of 2011 that can be evenly divided by 101? What is \\overline{\\mathrm{ABCD}}?"
+      },
+      {
+        "variant_id": "14_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "The year is 2011.",
+        "remaining_conditions": [
+          "An electronic clock always displays the date as an eight-digit number.",
+          "For example, January 1, 2011, is displayed as 20110101.",
+          "What is the last day of that year that can be evenly divided by 101?",
+          "The date is displayed as \\overline{2011 \\mathrm{ABCD}}.",
+          "What is \\overline{\\mathrm{ABCD}}?"
+        ],
+        "incomplete_question": "An electronic clock always displays the date as an eight-digit number. For example, January 1, 2011, is displayed as 20110101. What is the last day of that year that can be evenly divided by 101? The date is displayed as \\overline{2011 \\mathrm{ABCD}}. What is \\overline{\\mathrm{ABCD}}?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 15,
+    "question": "A cube with a side length of 1 meter was cut into smaller cubes with a side length of 1 centimeter and arranged in a straight line. What is the length of the resulting line?",
+    "ground_truth": "10000",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      831
+    ],
+    "gpt4o_mini_completion_lengths": [
+      257
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "15_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "A cube with a side length of 1 meter",
+        "remaining_conditions": [
+          "was cut into smaller cubes with a side length of 1 centimeter and arranged in a straight line"
+        ],
+        "incomplete_question": "Smaller cubes with a side length of 1 centimeter were cut and arranged in a straight line. What is the length of the resulting line?"
+      },
+      {
+        "variant_id": "15_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "with a side length of 1 centimeter",
+        "remaining_conditions": [
+          "A cube with a side length of 1 meter was cut into smaller cubes and arranged in a straight line"
+        ],
+        "incomplete_question": "A cube with a side length of 1 meter was cut into smaller cubes and arranged in a straight line. What is the length of the resulting line?"
+      },
+      {
+        "variant_id": "15_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "arranged in a straight line",
+        "remaining_conditions": [
+          "A cube with a side length of 1 meter was cut into smaller cubes with a side length of 1 centimeter"
+        ],
+        "incomplete_question": "A cube with a side length of 1 meter was cut into smaller cubes with a side length of 1 centimeter. What is the length of the resulting line?"
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 16,
+    "question": "In a right-angled triangle, let \\( s_{a} \\) and \\( s_{b} \\) be the medians to the legs, and \\( s_{c} \\) be the median to the hypotenuse. Determine the maximum value of the expression \\( \\frac{s_{a} + s_{b}}{s_{c}} \\).",
+    "ground_truth": "\\sqrt{10}",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      867
+    ],
+    "gpt4o_mini_completion_lengths": [
+      395
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": []
+  },
+  {
+    "data_source": "polaris",
+    "id": 17,
+    "question": "Given the function $f(x) = x^2 - 2\\cos{\\theta}x + 1$, where $x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]$.\n\n(1) When $\\theta = \\frac{\\pi}{3}$, find the maximum and minimum values of $f(x)$.\n\n(2) If $f(x)$ is a monotonous function on $x \\in \\left[-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right]$ and $\\theta \\in [0, 2\\pi)$, find the range of $\\theta$.\n\n(3) If $\\sin{\\alpha}$ and $\\cos{\\alpha}$ are the two real roots of the equation $f(x) = \\frac{1}{4} + \\cos{\\theta}$, find the value of $\\frac{\\tan^2{\\alpha} + 1}{\\tan{\\alpha}}$.",
+    "ground_truth": "\\frac{16 + 4\\sqrt{11}}{5}",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      1012
+    ],
+    "gpt4o_mini_completion_lengths": [
+      489
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "17_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "When θ = π/3",
+        "remaining_conditions": [
+          "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2]"
+        ],
+        "incomplete_question": "Find the maximum and minimum values of f(x)."
+      },
+      {
+        "variant_id": "17_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "f(x) is a monotonous function on x ∈ [-√3/2, 1/2]",
+        "remaining_conditions": [
+          "Given the function f(x) = x^2 - 2cos(θ)x + 1, where θ ∈ [0, 2π)"
+        ],
+        "incomplete_question": "Find the range of θ."
+      },
+      {
+        "variant_id": "17_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "If sin(α) and cos(α) are the two real roots of the equation f(x) = 1/4 + cos(θ)",
+        "remaining_conditions": [
+          "Given the function f(x) = x^2 - 2cos(θ)x + 1"
+        ],
+        "incomplete_question": "Find the value of (tan^2(α) + 1)/tan(α)."
+      },
+      {
+        "variant_id": "17_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "x ∈ [-√3/2, 1/2]",
+        "remaining_conditions": [
+          "Given the function f(x) = x^2 - 2cos(θ)x + 1, when θ = π/3"
+        ],
+        "incomplete_question": "Find the maximum and minimum values of f(x)."
+      },
+      {
+        "variant_id": "17_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "θ ∈ [0, 2π)",
+        "remaining_conditions": [
+          "Given the function f(x) = x^2 - 2cos(θ)x + 1, where x ∈ [-√3/2, 1/2]"
+        ],
+        "incomplete_question": "Find the range of θ."
+      },
+      {
+        "variant_id": "17_remove_5",
+        "removed_condition_index": 5,
+        "removed_condition": "f(x) = 1/4 + cos(θ)",
+        "remaining_conditions": [
+          "Given the function f(x) = x^2 - 2cos(θ)x + 1"
+        ],
+        "incomplete_question": "Find the value of (tan^2(α) + 1)/tan(α)."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 18,
+    "question": "For positive integers $n,$ let $\\tau (n)$ denote the number of positive integer divisors of $n,$ including 1 and $n.$ For example, $\\tau (1)=1$ and $\\tau(6) =4.$ Define $S(n)$ by $S(n)=\\tau(1)+ \\tau(2) + \\cdots + \\tau(n).$ Let $a$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ odd, and let $b$ denote the number of positive integers $n \\leq 2005$ with $S(n)$ even. Find $|a-b|.$\n",
+    "ground_truth": "25",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      932
+    ],
+    "gpt4o_mini_completion_lengths": [
+      1413
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "18_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "For positive integers n",
+        "remaining_conditions": [
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "Let τ(n) denote the number of positive integer divisors of n, including 1 and n. For example, τ(1)=1 and τ(6)=4. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|."
+      },
+      {
+        "variant_id": "18_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "n ≤ 2005",
+        "remaining_conditions": [
+          "For positive integers n",
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Let a denote the number of positive integers n with S(n) odd, and let b denote the number of positive integers n with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. For example, τ(1)=1 and τ(6)=4. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Let a denote the number of positive integers n with S(n) odd, and let b denote the number of positive integers n with S(n) even. Find |a-b|."
+      },
+      {
+        "variant_id": "18_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "S(n) odd",
+        "remaining_conditions": [
+          "For positive integers n",
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. For example, τ(1)=1 and τ(6)=4. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|."
+      },
+      {
+        "variant_id": "18_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "S(n) even",
+        "remaining_conditions": [
+          "For positive integers n",
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. For example, τ(1)=1 and τ(6)=4. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|."
+      },
+      {
+        "variant_id": "18_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "τ(1)=1 and τ(6)=4",
+        "remaining_conditions": [
+          "For positive integers n",
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n).",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. Define S(n) by S(n)=τ(1)+τ(2)+...+τ(n). Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|."
+      },
+      {
+        "variant_id": "18_remove_5",
+        "removed_condition_index": 5,
+        "removed_condition": "S(n)=τ(1)+τ(2)+...+τ(n)",
+        "remaining_conditions": [
+          "For positive integers n",
+          "let τ(n) denote the number of positive integer divisors of n, including 1 and n.",
+          "For example, τ(1)=1 and τ(6)=4.",
+          "Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even.",
+          "Find |a-b|."
+        ],
+        "incomplete_question": "For positive integers n, let τ(n) denote the number of positive integer divisors of n, including 1 and n. For example, τ(1)=1 and τ(6)=4. Let a denote the number of positive integers n ≤ 2005 with S(n) odd, and let b denote the number of positive integers n ≤ 2005 with S(n) even. Find |a-b|."
+      }
+    ]
+  },
+  {
+    "data_source": "polaris",
+    "id": 19,
+    "question": "Determine the largest value of \\( x \\) for which\n\\[ \\left|x^{2}-4x-39601\\right| \\geq \\left|x^{2}+4x-39601\\right| \\]",
+    "ground_truth": "199",
+    "solution": "",
+    "difficulty": "7/8",
+    "gpt4o_prompt_lengths": [],
+    "gpt4o_completion_lengths": [],
+    "gpt4o_mini_prompt_lengths": [
+      839
+    ],
+    "gpt4o_mini_completion_lengths": [
+      512
+    ],
+    "local_prompt_lengths": [],
+    "local_completion_lengths": [],
+    "heuristic_count": 0,
+    "removal_variants": [
+      {
+        "variant_id": "19_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The expression |x^2 - 4x - 39601|",
+        "remaining_conditions": [
+          "|x^2 + 4x - 39601| >= |x^2 - 4x - 39601|"
+        ],
+        "incomplete_question": "Determine the largest value of x for which |x^2 + 4x - 39601| >= |x^2 - 4x - 39601|"
+      },
+      {
+        "variant_id": "19_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "The expression |x^2 + 4x - 39601|",
+        "remaining_conditions": [
+          "|x^2 - 4x - 39601| >= |x^2 + 4x - 39601|"
+        ],
+        "incomplete_question": "Determine the largest value of x for which |x^2 - 4x - 39601| >= |x^2 + 4x - 39601|"
+      },
+      {
+        "variant_id": "19_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "The number 39601",
+        "remaining_conditions": [
+          "|x^2 - 4x - 39601| >= |x^2 + 4x - 39601|"
+        ],
+        "incomplete_question": "Determine the largest value of x for which |x^2 - 4x - k| >= |x^2 + 4x - k| for some k"
+      },
+      {
+        "variant_id": "19_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "The term 4x in |x^2 - 4x - 39601|",
+        "remaining_conditions": [
+          "|x^2 - a - 39601| >= |x^2 + 4x - 39601|"
+        ],
+        "incomplete_question": "Determine the largest value of x for which |x^2 - a - 39601| >= |x^2 + 4x - 39601| for some a"
+      },
+      {
+        "variant_id": "19_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "The term 4x in |x^2 + 4x - 39601|",
+        "remaining_conditions": [
+          "|x^2 - 4x - 39601| >= |x^2 + b - 39601|"
+        ],
+        "incomplete_question": "Determine the largest value of x for which |x^2 - 4x - 39601| >= |x^2 + b - 39601| for some b"
+      }
+    ]
+  }
+]

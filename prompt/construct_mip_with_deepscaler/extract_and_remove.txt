@@ -1,0 +1,87 @@
+Analyze the following mathematical problem and generate removal variants.
+
+Original Problem: {original_question}
+Ground Truth Answer: {ground_truth}
+
+Task:
+1. Identify ALL conditions in the problem
+2. For EACH condition, create a variant where that condition is removed
+3. Rewrite the problem without that specific condition
+
+Instructions:
+- A condition is any piece of information that could help solve the problem
+- A condition includes: numerical values, equations, constraints, relationships, or background facts
+- A condition does NOT include: the question itself (e.g., "Find...", "Calculate...", "Which option...","Prove...")
+- Each variant should remove exactly ONE condition
+- The rewritten problem should be natural and grammatically correct
+- The rewritten problem MUST still be a question (asking something)
+- Keep all other conditions unchanged in each variant
+
+CRITICAL RULE:
+- DO NOT remove the core question/request from the problem
+- Only remove supporting information (numbers, equations, constraints)
+
+Example 1:
+
+Original Problem: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+
+Conditions identified:
+1. Jason bought 1 pencil
+2. Mike bought 2 pencils
+
+Variants to generate:
+
+Variant 1 (remove condition 1):
+- Removed: "Jason bought 1 pencil"
+- Remaining: ["Mike bought 2 pencils"]
+- Incomplete Question: "Mike bought 2 pencils. How many pencils did Jason buy?"
+
+Variant 2 (remove condition 2):
+- Removed: "Mike bought 2 pencils"  
+- Remaining: ["Jason bought 1 pencil"]
+- Incomplete Question: "Jason bought 1 pencil. How many pencils did Jason buy?"
+
+Example 2 (What NOT to do):
+
+Original Problem: "Find the distance between the foci of the ellipse 36x²+16y²=8"
+
+WRONG - Do NOT do this:
+- Removed: "Find the distance between the foci"  ← This is the QUESTION, not a condition!
+- Incomplete Question: "The ellipse 36x²+16y²=8"  ← This is NOT a question anymore!
+
+CORRECT - Do this instead:
+- Removed: "The equation of the ellipse is 36x²+16y²=8"  ← This is a condition
+- Incomplete Question: "Find the distance between the foci of an ellipse"  ← Still a question!
+
+Example 3 (What NOT to do):
+
+Original Problem: "The line y=3/5x−17/3 is to be parameterized. Which of the following options are valid?"
+
+WRONG - Do NOT do this:
+- Removed: "Which of the following options are valid"  ← This is the QUESTION!
+- Incomplete Question: "The line y=3/5x−17/3 is to be parameterized"  ← NOT asking anything!
+
+CORRECT - Do this instead:
+- Removed: "The equation of the line is y=3/5x−17/3"  ← This is a condition
+- Incomplete Question: "A line is to be parameterized. Which of the following options are valid?"  ← Still asking!
+
+OUTPUT FORMAT:
+
+CRITICAL: Output ONLY a raw JSON array. DO NOT use markdown code blocks, backticks, or any formatting.
+
+Required format - output this EXACTLY:
+[
+  {{
+    "removed_condition": "condition text",
+    "remaining_conditions": ["other conditions"],
+    "incomplete_question": "rewritten question without the removed condition"
+  }},
+  {{
+    "removed_condition": "another condition",
+    "remaining_conditions": ["remaining conditions"],
+    "incomplete_question": "another rewritten question"
+  }}
+]
+
+Start your response directly with [ and end with ]
+Generate all variants now:

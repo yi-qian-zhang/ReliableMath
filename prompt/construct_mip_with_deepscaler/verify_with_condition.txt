@@ -1,0 +1,22 @@
+You are given an incomplete mathematical problem and a missing condition.
+
+**Incomplete Problem**:
+{incomplete_question}
+
+**Missing Condition** (use this to complete the problem):
+{removed_condition}
+
+**Instructions**:
+Step 1: Write the complete problem after adding the missing condition
+Step 2: Solve it step by step
+Step 3: Give the final answer in $\boxed{{}}$ format
+
+**Example**:
+Incomplete: "Mike bought some pencils. How many did Jason buy?"
+Missing Condition: "Jason bought 1 pencil"
+Complete Problem: "Jason bought 1 pencil. Mike bought some pencils. How many pencils did Jason buy?"
+Answer: $\boxed{{1}}$
+
+---
+
+Now solve:
