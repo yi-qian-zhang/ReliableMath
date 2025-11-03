@@ -886,9 +886,9 @@ def filter_valid_data(final_path):
     total_local_prompt = sum(sum(d.get("local_prompt_lengths", [])) for d in dataset)
     total_local_completion = sum(sum(d.get("local_completion_lengths", [])) for d in dataset)
     
-    # ============= 新增：heuristic 统计 =============
+    # ============= heuristic 统计 =============
     total_heuristic_count = sum(d.get("heuristic_count", 0) for d in dataset)
-    # =============================================
+    # =========================================
     
     total_original = len(dataset)
     total_variants = 0
@@ -911,29 +911,37 @@ def filter_valid_data(final_path):
             
             verification = variant.get("verification", {})
             
-            # 统计各轮通过情况
-            if verification.get("round_a_passed", False):
-                round_a_pass_count += 1
-            if verification.get("round_b_passed", False):
-                round_b_pass_count += 1
+            # ========== 统计两轮验证结果 ==========
+            round_a_passed = verification.get("round_a_passed", False)
+            round_b_passed = verification.get("round_b_passed", False)
             
-            # 只保留两轮都通过的
-            if verification.get("is_valid", False):
+            if round_a_passed:
+                round_a_pass_count += 1
+            if round_b_passed:
+                round_b_pass_count += 1
+            if round_a_passed and round_b_passed:
                 both_pass_count += 1
-                
-                # 统计 Round B 成功的尝试次数
+            # ====================================
+            
+            # 只保留有效的 pair（两轮都通过）
+            if verification.get("is_valid", False):
+                # ========== 统计 Round B 成功时的尝试次数 ==========
                 round_b_info = verification.get("round_b", {})
-                success_attempt = round_b_info.get("success_at_attempt", 0)
-                if success_attempt:
-                    round_b_attempt_distribution[success_attempt] = round_b_attempt_distribution.get(success_attempt, 0) + 1
+                success_at_attempt = round_b_info.get("success_at_attempt")
+                
+                if success_at_attempt:
+                    # 修复：使用正确的变量名
+                    round_b_attempt_distribution[success_at_attempt] = \
+                        round_b_attempt_distribution.get(success_at_attempt, 0) + 1
                     
-                    # 统计判断方法
-                    round_b_attempts = round_b_info.get("all_attempts", [])
-                    if round_b_attempts and success_attempt <= len(round_b_attempts):
-                        success_record = round_b_attempts[success_attempt - 1]
-                        judge_method = success_record.get("judge_method", "unknown")
-                        if judge_method in judge_method_distribution:
-                            judge_method_distribution[judge_method] += 1
+                    # 统计判断方法（从成功的那次尝试中获取）
+                    all_attempts = round_b_info.get("all_attempts", [])
+                    if success_at_attempt <= len(all_attempts):
+                        success_attempt_record = all_attempts[success_at_attempt - 1]
+                        judge_method = success_attempt_record.get("judge_method", "orm")
+                        judge_method_distribution[judge_method] = \
+                            judge_method_distribution.get(judge_method, 0) + 1
+                # ==================================================
                 
                 valid_item = {
                     "id": variant["variant_id"],
@@ -947,7 +955,11 @@ def filter_valid_data(final_path):
                     "remaining_conditions": variant["remaining_conditions"],
                     "incomplete_question": variant["incomplete_question"],
                     "verification": verification,
-                    "original_id": data["id"]
+                    "original_id": data["id"],
+                    # ========== 保留所有提取的条件 ==========
+                    "all_extracted_conditions": data.get("all_extracted_conditions", []),
+                    "num_conditions_extracted": data.get("num_conditions_extracted", 0)
+                    # ====================================
                 }
                 valid_data.append(valid_item)
                 valid_variants += 1
@@ -958,7 +970,7 @@ def filter_valid_data(final_path):
     output_path = final_path.replace("_final.json", "_valid.json")
     write_json(output_path, valid_data)
     
-    # Statistics
+    # ========== Statistics ==========
     print("\n" + "="*70)
     print("MISSING INFORMATION PROBLEM (MIP) DATASET STATISTICS")
     print("="*70)
