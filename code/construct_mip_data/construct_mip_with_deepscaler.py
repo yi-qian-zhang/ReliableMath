@@ -1001,8 +1001,8 @@ def filter_valid_data(final_path):
     print(f"\nTotal removal variants generated: {total_variants}")
     
     print(f"\n📊 Two-Round Verification Results:")
-    print(f"  Round A passed (no condition → can't solve): {round_a_pass_count} ({round_a_pass_count/total_variants*100:.1f}%)")
-    print(f"  Round B passed (with condition → can solve): {round_b_pass_count} ({round_b_pass_count/total_variants*100:.1f}%)")
+    print(f"  Round A passed (without removal condition → can't solve): {round_a_pass_count} ({round_a_pass_count/total_variants*100:.1f}%)")
+    print(f"  Round B passed (with removal condition → can solve): {round_b_pass_count} ({round_b_pass_count/total_variants*100:.1f}%)")
     print(f"  Both rounds passed (VALID): {both_pass_count} ({both_pass_count/total_variants*100:.1f}%)")
     print(f"\nValid removal variants: {valid_variants}")
     
