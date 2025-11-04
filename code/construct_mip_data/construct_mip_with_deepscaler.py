@@ -53,7 +53,7 @@ from deepscaler.system_prompts import ORM_PROMPT
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 parser = argparse.ArgumentParser(description="MIP Dataset Construction - 2 Steps with Sampling + Deepscaler")
-parser.add_argument("--model", default="gpt-4o", help="Model for extraction/rewrite")
+parser.add_argument("--model", default="gpt-4o-mini", help="Model for extraction/rewrite")
 parser.add_argument("--verify_model", default="deepseek-r1-distill-qwen-7b", help="Model for verification")
 parser.add_argument("--judge_model", default="gpt-4o-mini", help="Model for LLM-as-Judge (ORM fallback)")
 parser.add_argument("--data_dir", default="data/solve", help="Input directory")
@@ -345,7 +345,30 @@ def parse_json_response(response, fallback=None):
     return fallback if fallback is not None else {}
 
 # ============= Answer Processing =============
+def extract_answer_from_response(response_text):
+    """
+    从 DeepSeek-R1 响应中提取答案
+    
+    DeepSeek-R1 系列模型会生成如下格式：
+    <think>
+    思维过程...
+    中间可能有 \\boxed{错误答案}
+    </think>
+    最终答案 \\boxed{正确答案}
+    
+    策略：
+    1. 移除 <think>...</think> 部分
+    2. 使用 Deepscaler 的 extract_answer（它会找最后一个 \\boxed）
+    """
+    # 如果存在 </think>，只保留其后的内容
+    if "</think>" in response_text:
+        response_text = response_text.split("</think>", 1)[1].strip()
+    
+    # 使用 Deepscaler 的 extract_answer 提取答案
+    # 它会使用 rfind 找到最后一个 \boxed{}
+    return extract_answer(response_text)
 
+# ================================================================
 # def extract_answer_tag(response):
 #     """从响应中提取答案（支持多种格式）"""
 #     try:
@@ -590,7 +613,7 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
     
     for attempt_num, candidate_text in enumerate(response_data_a["candidates"], start=1):
         # model_answer = extract_answer_tag(candidate_text)  # ← 使用自己的提取逻辑函数
-        model_answer = extract_answer(candidate_text) 
+        model_answer = extract_answer_from_response(candidate_text)
         
         if model_answer is None:
             is_correct = False
@@ -690,7 +713,7 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
     
     for attempt_num, candidate_text in enumerate(response_data_b["candidates"], start=1):
         # model_answer = extract_answer_tag(candidate_text)  # 旧函数
-        model_answer = extract_answer(candidate_text) 
+        model_answer = extract_answer_from_response(candidate_text)
         
         if model_answer is None:
             is_correct = False
