@@ -37,3 +37,14 @@ python convert_polaris_data.py \
   --count_5 0 \
   --count_6 0 \
   --count_7 0 \
+
+python code/construct_mip_data/scripts/convert_polaris_data.py \
+  --input /home/zhangyiqian/ReliableMath/data/solve/polaris-data-53K.jsonl \
+  --output /home/zhangyiqian/ReliableMath/data/solve/polaris_normal_800*8.json \
+  --count_1 800 \
+  --count_2 800 \
+  --count_3 800 \
+  --count_4 800 \
+  --count_5 800 \
+  --count_6 800 \
+  --count_7 800 
