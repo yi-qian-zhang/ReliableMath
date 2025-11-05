@@ -16,6 +16,9 @@
 	"DeepSeek-R1-Distill-Qwen-7B": [
     ["DeepSeek-R1-Distill-Qwen-7B", "EMPTY", "http://localhost:8715/v1"]
   ],
+  	"DeepSeek-R1-Distill-Qwen-7B-8717": [
+    ["DeepSeek-R1-Distill-Qwen-7B", "EMPTY", "http://localhost:8717/v1"]
+  ],
 	"Qwen3-32B": [
     ["Qwen3-32B", "EMPTY", "http://localhost:8716/v1"]
   ],

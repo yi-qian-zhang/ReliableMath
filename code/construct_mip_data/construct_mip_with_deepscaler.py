@@ -359,14 +359,15 @@ def extract_answer_from_response(response_text):
     中间可能有 \\boxed{错误答案}
     </think>
     最终答案 \\boxed{正确答案}
-    
-    策略：
-    1. 移除 <think>...</think> 部分
-    2. 使用 Deepscaler 的 extract_answer（它会找最后一个 \\boxed）
+    1. 如果没有 </think> 标签 → 直接返回 None（标记为无效）
+    2. 如果有 </think> → 只保留其后的内容，使用 Deepscaler 的 extract_answer
     """
-    # 如果存在 </think>，只保留其后的内容
-    if "</think>" in response_text:
-        response_text = response_text.split("</think>", 1)[1].strip()
+    # 如果没有 </think>，直接返回 None
+    if "</think>" not in response_text:
+        return None
+    
+    # 有 </think>，只保留其后的内容
+    response_text = response_text.split("</think>", 1)[1].strip()
     
     # 使用 Deepscaler 的 extract_answer 提取答案
     # 它会使用 rfind 找到最后一个 \boxed{}
@@ -897,9 +898,8 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
     
     return variant
 
-
 def verify_incomplete_questions_with_two_rounds(data):
-    """Step 2: 两轮验证（并行处理变体）"""
+    """Step 2: 两轮验证（已修改：移除内层并行，改为串行处理变体）"""
     prompt_path_incomplete = os.path.join(args.prompt_dir, "verify_without_condition.txt")
     prompt_path_complete = os.path.join(args.prompt_dir, "verify_with_condition.txt")
     
@@ -923,30 +923,80 @@ def verify_incomplete_questions_with_two_rounds(data):
     if not variants:
         return data
     
-    # 并行处理所有变体
-    with ThreadPoolExecutor(max_workers=args.threads) as executor:
-        future_to_variant = {
-            executor.submit(verify_single_variant, data, variant, 
-                          prompt_template_incomplete, prompt_template_complete, ground_truth): variant
-            for variant in variants
-        }
-        
-        for future in as_completed(future_to_variant):
-            try:
-                verified_variant = future.result()
-                # 更新 data 中对应的 variant
-                variant_id = verified_variant["variant_id"]
-                for i, v in enumerate(data["removal_variants"]):
-                    if v["variant_id"] == variant_id:
-                        data["removal_variants"][i] = verified_variant
-                        break
-            except Exception as e:
-                variant = future_to_variant[future]
-                logging.error(f"Error verifying {variant['variant_id']}: {e}")
-                import traceback
-                traceback.print_exc()
+    # ============= 修改开始 =============
+    # 移除内层 ThreadPoolExecutor，改为串行循环。
+    # 并发由外层的 process_with_jsonl_parallel (max_workers=args.threads) 控制。
+    
+    for variant in variants:
+        try:
+            verified_variant = verify_single_variant(data, variant, 
+                                                  prompt_template_incomplete, prompt_template_complete, ground_truth)
+            
+            # 更新 data 中对应的 variant
+            variant_id = verified_variant["variant_id"]
+            for i, v in enumerate(data["removal_variants"]):
+                if v["variant_id"] == variant_id:
+                    data["removal_variants"][i] = verified_variant
+                    break
+                    
+        except Exception as e:
+            logging.error(f"Error verifying {variant['variant_id']}: {e}")
+            import traceback
+            traceback.print_exc()
+    # ============= 修改结束 =============
     
     return data
+
+
+# def verify_incomplete_questions_with_two_rounds(data):  
+#     """Step 2: 两轮验证（并行处理变体）内外两层线程池"""
+#     prompt_path_incomplete = os.path.join(args.prompt_dir, "verify_without_condition.txt")
+#     prompt_path_complete = os.path.join(args.prompt_dir, "verify_with_condition.txt")
+    
+#     if not os.path.exists(prompt_path_incomplete):
+#         logging.error(f"Prompt file not found: {prompt_path_incomplete}")
+#         return data
+    
+#     if not os.path.exists(prompt_path_complete):
+#         logging.error(f"Prompt file not found: {prompt_path_complete}")
+#         return data
+    
+#     with open(prompt_path_incomplete, 'r', encoding='utf-8') as f:
+#         prompt_template_incomplete = f.read()
+    
+#     with open(prompt_path_complete, 'r', encoding='utf-8') as f:
+#         prompt_template_complete = f.read()
+    
+#     ground_truth = str(data.get("ground_truth", "")).strip()
+#     variants = data.get("removal_variants", [])
+    
+#     if not variants:
+#         return data
+    
+#     # 并行处理所有变体
+#     with ThreadPoolExecutor(max_workers=args.threads) as executor:
+#         future_to_variant = {
+#             executor.submit(verify_single_variant, data, variant, 
+#                           prompt_template_incomplete, prompt_template_complete, ground_truth): variant
+#             for variant in variants
+#         }
+        
+#         for future in as_completed(future_to_variant):
+#             try:
+#                 verified_variant = future.result()
+#                 # 更新 data 中对应的 variant
+#                 variant_id = verified_variant["variant_id"]
+#                 for i, v in enumerate(data["removal_variants"]):
+#                     if v["variant_id"] == variant_id:
+#                         data["removal_variants"][i] = verified_variant
+#                         break
+#             except Exception as e:
+#                 variant = future_to_variant[future]
+#                 logging.error(f"Error verifying {variant['variant_id']}: {e}")
+#                 import traceback
+#                 traceback.print_exc()
+    
+#     return data
 
 # ============= Pipeline Functions =============
 
@@ -1218,20 +1268,43 @@ def construction_workflow():
         print(f"Mode: FORCE (reprocessing all)")
     print("="*70)
     
-    # Step 1: Extract and Generate Variants (并行)
-    print("\n[1/3] Extracting conditions and generating removal variants (parallel)")
+    # ========== Step 1: Extract and Generate Variants ==========
     extract_path = os.path.join(output_dir, f"{args.dataset}_variants.json")
-    process_with_jsonl_parallel(dataset, extract_path, extract_and_generate_variants, "Generating variants")
     
-    # Step 2: Two-Round Verification (并行处理变体)
-    print(f"\n[2/3] Two-round verification with Deepscaler (n={args.max_attempts}, parallel)")
-    print(f"  Round A: WITHOUT condition (must all fail)")
-    print(f"  Round B: WITH condition (at least one succeeds)")
+    # 预检查：是否已完成
+    if os.path.exists(extract_path) and not args.force:
+        existing_variants = read_json(extract_path)
+        if len(existing_variants) == len(dataset):
+            print(f"\n[1/3] ✓ Variants already complete ({len(existing_variants)} items), skipping...")
+        else:
+            print(f"\n[1/3] Extracting conditions and generating removal variants (continuing from {len(existing_variants)}/{len(dataset)})")
+            process_with_jsonl_parallel(dataset, extract_path, extract_and_generate_variants, "Generating variants")
+    else:
+        print("\n[1/3] Extracting conditions and generating removal variants (parallel)")
+        process_with_jsonl_parallel(dataset, extract_path, extract_and_generate_variants, "Generating variants")
+    
+    # ========== Step 2: Two-Round Verification ==========
+    # 重新读取完整的 variants 数据
     dataset = read_json(extract_path)
     final_path = os.path.join(output_dir, f"{args.dataset}_final.json")
-    process_with_jsonl_parallel(dataset, final_path, verify_incomplete_questions_with_two_rounds, "Two-round verification")
     
-    # Filter
+    # 预检查：是否已完成
+    if os.path.exists(final_path) and not args.force:
+        existing_final = read_json(final_path)
+        if len(existing_final) == len(dataset):
+            print(f"\n[2/3] ✓ Verification already complete ({len(existing_final)} items), skipping...")
+        else:
+            print(f"\n[2/3] Two-round verification with Deepscaler (continuing from {len(existing_final)}/{len(dataset)})")
+            print(f"  Round A: WITHOUT condition (must all fail)")
+            print(f"  Round B: WITH condition (at least one succeeds)")
+            process_with_jsonl_parallel(dataset, final_path, verify_incomplete_questions_with_two_rounds, "Two-round verification")
+    else:
+        print(f"\n[2/3] Two-round verification with Deepscaler (n={args.max_attempts}, parallel)")
+        print(f"  Round A: WITHOUT condition (must all fail)")
+        print(f"  Round B: WITH condition (at least one succeeds)")
+        process_with_jsonl_parallel(dataset, final_path, verify_incomplete_questions_with_two_rounds, "Two-round verification")
+    
+    # ========== Step 3: Filter Valid Data ==========
     print("\n[3/3] Filtering valid data")
     filter_valid_data(final_path)
     
