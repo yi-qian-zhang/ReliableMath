@@ -20,6 +20,10 @@ Instructions:
 CRITICAL RULE:
 - DO NOT remove the core question/request from the problem
 - Only remove supporting information (numbers, equations, constraints)
+- If the problem is a multiple-choice question with options (A), (B), (C), (D), (E), you MUST keep ALL the options in the incomplete_question.
+- The options themselves are NOT conditions - they are part of the question structure.
+- Only remove mathematical conditions that affect which options are correct,such as equations, constraints, or given values.
+
 
 Example 1:
 
@@ -64,6 +68,11 @@ WRONG - Do NOT do this:
 CORRECT - Do this instead:
 - Removed: "The equation of the line is y=3/5x−17/3"  ← This is a condition
 - Incomplete Question: "A line is to be parameterized. Which of the following options are valid?"  ← Still asking!
+
+Example 3 (Multiple Choice):
+Original: "Which circle passes through (1,2)? (A) x^2+y^2=5 (B) x^2+y^2=10"
+Removed condition: "passes through (1,2)"
+Incomplete question: "Which circle? (A) x^2+y^2=5 (B) x^2+y^2=10" ← Keep options!
 
 OUTPUT FORMAT:
 

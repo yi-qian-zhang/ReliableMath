@@ -82,3 +82,24 @@ python code/construct_mip_data/construct_mip_with_deepscaler.py \
     --threads 32 \
     --output_dir /home/zhangyiqian/ReliableMath/data/construct_mip_qwen_7B_16384/11-04/polaris_normal_600_times_8/deepscaler_extract \
     --force
+
+# 测试多选题
+python code/construct_mip_data/construct_mip_with_deepscaler.py \
+    --dataset polaris_choose_que_demo \
+    --model gpt-4o-mini \
+    --verify_model DeepSeek-R1-Distill-Qwen-7B \
+    --temperature 1.0 \
+    --max_attempts 8 \
+    --threads 32 \
+    --output_dir /home/zhangyiqian/ReliableMath/data/polaris_choose_que_demo \
+    --force
+
+python code/construct_mip_data/construct_mip_with_deepscaler.py \
+    --dataset polaris_normal_5_times_8 \
+    --model gpt-4o-mini \
+    --verify_model DeepSeek-R1-Distill-Qwen-7B \
+    --temperature 1.0 \
+    --max_attempts 8 \
+    --threads 16 \
+    --output_dir /home/zhangyiqian/ReliableMath/data/construct_mip_qwen_7B_16384/11-04/polaris_normal_5_times_8/deepscaler_extract \
+    --force

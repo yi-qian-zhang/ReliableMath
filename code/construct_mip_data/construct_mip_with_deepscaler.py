@@ -324,31 +324,35 @@ def get_response_openai_with_sampling(input_prompt, persona="", model=None, temp
     return None
 
 def parse_json_response(response, fallback=None):
-    """简化的 JSON 解析"""
+    """修复 LaTeX 表达式中的反斜杠"""
     try:
+        # 提取 JSON 部分
         start = response.find('[')
         end = response.rfind(']') + 1
         if start >= 0 and end > start:
             json_str = response[start:end]
-            return json.loads(json_str)
+        else:
+            start = response.find('{')
+            end = response.rfind('}') + 1
+            if start >= 0 and end > start:
+                json_str = response[start:end]
+            else:
+                return fallback if fallback is not None else {}
         
-        start = response.find('{')
-        end = response.rfind('}') + 1
-        if start >= 0 and end > start:
-            json_str = response[start:end]
-            return json.loads(json_str)
-            
+        # 转义反斜杠
+        placeholder = "<<<DOUBLE_BACKSLASH>>>"
+        json_str = json_str.replace("\\\\", placeholder)
+        json_str = json_str.replace("\\", "\\\\")
+        json_str = json_str.replace(placeholder, "\\\\")
+        
+        return json.loads(json_str)
     except Exception as e:
         logging.error(f"JSON parsing failed: {e}")
-        logging.error(f"Full response: {response}")
-    
     return fallback if fallback is not None else {}
 
 # ============= Answer Processing =============
 def extract_answer_from_response(response_text):
     """
-    从 DeepSeek-R1 响应中提取答案
-    
     DeepSeek-R1 系列模型会生成如下格式：
     <think>
     思维过程...
@@ -474,6 +478,93 @@ Answer 2: {answer_2}
 # =========================================================
 
 # ============= Step 1: Extract and Generate Variants =============
+
+def extract_multiple_choice_options(question):
+    """
+    从问题中提取选择题选项部分
+    
+    返回：完整的选项字符串（如果是选择题）或 None
+    
+    示例：
+    输入："Which are valid? (A) x=1 (B) x=2 Enter the letters..."
+    输出："(A) x=1\n\n(B) x=2\n\nEnter the letters..."
+    """
+    if not question:
+        return None
+    
+    # 查找第一个选项 (A) 的位置
+    match_a = re.search(r'\(A\)', question)
+    if not match_a:
+        return None
+    
+    # 从 (A) 开始提取到问题结束
+    options_start = match_a.start()
+    options_text = question[options_start:].strip()
+    
+    # 验证是否包含至少2个选项
+    option_count = len(re.findall(r'\([A-E]\)', options_text))
+    if option_count >= 2:
+        return options_text
+    
+    return None
+
+
+def ensure_options_in_question(incomplete_question, original_question):
+    """
+    确保改写后的问题包含原始选项（如果是选择题）
+    
+    参数：
+        incomplete_question: 改写后的问题
+        original_question: 原始问题
+    
+    返回：
+        包含选项的完整问题
+    """
+    # 提取原始选项
+    original_options = extract_multiple_choice_options(original_question)
+    
+    if not original_options:
+        # 不是选择题，直接返回
+        return incomplete_question
+    
+    # 检查改写后的问题是否已经包含选项
+    has_options = extract_multiple_choice_options(incomplete_question)
+    if has_options:
+        # 已经包含选项，直接返回
+        return incomplete_question
+    
+    # 选项丢失，需要恢复
+    logging.debug(f"Multiple-choice options missing, restoring...")
+    
+    # 查找是否有 "Enter the letters" 等提示语
+    enter_patterns = [
+        r'Enter the letters?.*',
+        r'Enter the correct options?.*',
+        r'separated by commas.*'
+    ]
+    
+    enter_match = None
+    for pattern in enter_patterns:
+        enter_match = re.search(pattern, incomplete_question, re.IGNORECASE | re.DOTALL)
+        if enter_match:
+            break
+    
+    if enter_match:
+        # 在提示语之前插入选项
+        before_enter = incomplete_question[:enter_match.start()].strip()
+        enter_text = incomplete_question[enter_match.start():].strip()
+        
+        # 从原始选项中提取纯选项部分（去除末尾的提示语）
+        pure_options = original_options
+        for pattern in enter_patterns:
+            pure_options = re.sub(pattern, '', pure_options, flags=re.IGNORECASE | re.DOTALL).strip()
+        
+        return f"{before_enter}\n\n{pure_options}\n\n{enter_text}"
+    else:
+        # 直接添加选项到末尾
+        return f"{incomplete_question}\n\n{original_options}"
+
+
 def extract_and_generate_variants(data):
     """Step 1: 一次性提取条件并生成所有移除变体"""
     prompt_path = os.path.join(args.prompt_dir, "extract_and_remove.txt")
@@ -509,7 +600,7 @@ def extract_and_generate_variants(data):
     else:
         variants_data = parsed.get("variants", [])
     
-    # ============= 新增：推断所有条件 =============
+    # ============= 推断所有条件 =============
     # 方法 1：从第一个 variant 推断
     all_conditions = []
     if variants_data:
@@ -525,6 +616,12 @@ def extract_and_generate_variants(data):
     
     all_conditions = sorted(list(all_conditions_set), key=lambda x: len(x), reverse=True)
     # ==========================================
+    
+    # ============= 检测是否为选择题 =============
+    is_multiple_choice = extract_multiple_choice_options(data["question"]) is not None
+    if is_multiple_choice:
+        logging.info(f"ID {data['id']}: Detected multiple-choice question")
+    # =========================================
     
     removal_variants = []
     
@@ -543,6 +640,19 @@ def extract_and_generate_variants(data):
         if incomplete_question.startswith('"') and incomplete_question.endswith('"'):
             incomplete_question = incomplete_question[1:-1].strip()
         
+        # ========== 新增：确保选择题选项存在 ==========
+        if is_multiple_choice:
+            original_incomplete = incomplete_question
+            incomplete_question = ensure_options_in_question(
+                incomplete_question, 
+                data["question"]
+            )
+            
+            # 检查是否恢复了选项
+            if original_incomplete != incomplete_question:
+                logging.info(f"ID {data['id']}_remove_{i}: ✓ Restored multiple-choice options")
+        # ===========================================
+        
         variant = {
             "variant_id": f"{data['id']}_remove_{i}",
             "removed_condition_index": i,
@@ -553,9 +663,10 @@ def extract_and_generate_variants(data):
         
         removal_variants.append(variant)
     
-    # ============= 新增：保存到数据中 =============
+    # ============= 保存到数据中 =============
     data["all_extracted_conditions"] = all_conditions
     data["num_conditions_extracted"] = len(all_conditions)
+    data["is_multiple_choice"] = is_multiple_choice  # 新增：标记是否为选择题
     # ==========================================
     
     data["removal_variants"] = removal_variants

@@ -9,10 +9,10 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      882
+      1044
     ],
     "gpt4o_mini_completion_lengths": [
-      737
+      665
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -20,11 +20,11 @@
     "all_extracted_conditions": [
       "if he drives at an average speed of 70 miles per hour, he is early by 4 minutes",
       "If he drives at an average speed of 30 miles per hour, he is late by 5 minutes",
-      "Find the speed he needs to maintain to arrive exactly at 8:00 AM",
       "Mr. Lee V. Soon starts his morning commute at 7:00 AM",
       "to arrive at work by 8:00 AM"
     ],
-    "num_conditions_extracted": 5,
+    "num_conditions_extracted": 4,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "1_remove_0",
@@ -33,10 +33,9 @@
         "remaining_conditions": [
           "to arrive at work by 8:00 AM",
           "If he drives at an average speed of 30 miles per hour, he is late by 5 minutes",
-          "if he drives at an average speed of 70 miles per hour, he is early by 4 minutes",
-          "Find the speed he needs to maintain to arrive exactly at 8:00 AM"
+          "if he drives at an average speed of 70 miles per hour, he is early by 4 minutes"
         ],
-        "incomplete_question": "To arrive at work by 8:00 AM, if he drives at an average speed of 30 miles per hour, he is late by 5 minutes, and if he drives at an average speed of 70 miles per hour, he is early by 4 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM."
+        "incomplete_question": "To arrive at work by 8:00 AM, if he drives at an average speed of 30 miles per hour, he is late by 5 minutes, and if he drives at an average speed of 70 miles per hour, he is early by 4 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM?"
       },
       {
         "variant_id": "1_remove_1",
@@ -45,10 +44,9 @@
         "remaining_conditions": [
           "Mr. Lee V. Soon starts his morning commute at 7:00 AM",
           "If he drives at an average speed of 30 miles per hour, he is late by 5 minutes",
-          "if he drives at an average speed of 70 miles per hour, he is early by 4 minutes",
-          "Find the speed he needs to maintain to arrive exactly at 8:00 AM"
+          "if he drives at an average speed of 70 miles per hour, he is early by 4 minutes"
         ],
-        "incomplete_question": "Mr. Lee V. Soon starts his morning commute at 7:00 AM. If he drives at an average speed of 30 miles per hour, he is late by 5 minutes, and if he drives at an average speed of 70 miles per hour, he is early by 4 minutes. Find the speed he needs to maintain."
+        "incomplete_question": "Mr. Lee V. Soon starts his morning commute at 7:00 AM. If he drives at an average speed of 30 miles per hour, he is late by 5 minutes, and if he drives at an average speed of 70 miles per hour, he is early by 4 minutes. Find the speed he needs to maintain?"
       },
       {
         "variant_id": "1_remove_2",
@@ -57,10 +55,9 @@
         "remaining_conditions": [
           "Mr. Lee V. Soon starts his morning commute at 7:00 AM",
           "to arrive at work by 8:00 AM",
-          "if he drives at an average speed of 70 miles per hour, he is early by 4 minutes",
-          "Find the speed he needs to maintain to arrive exactly at 8:00 AM"
+          "if he drives at an average speed of 70 miles per hour, he is early by 4 minutes"
         ],
-        "incomplete_question": "Mr. Lee V. Soon starts his morning commute at 7:00 AM to arrive at work by 8:00 AM. If he drives at an average speed of 70 miles per hour, he is early by 4 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM."
+        "incomplete_question": "Mr. Lee V. Soon starts his morning commute at 7:00 AM to arrive at work by 8:00 AM. If he drives at an average speed of 70 miles per hour, he is early by 4 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM?"
       },
       {
         "variant_id": "1_remove_3",
@@ -69,10 +66,9 @@
         "remaining_conditions": [
           "Mr. Lee V. Soon starts his morning commute at 7:00 AM",
           "to arrive at work by 8:00 AM",
-          "If he drives at an average speed of 30 miles per hour, he is late by 5 minutes",
-          "Find the speed he needs to maintain to arrive exactly at 8:00 AM"
+          "If he drives at an average speed of 30 miles per hour, he is late by 5 minutes"
         ],
-        "incomplete_question": "Mr. Lee V. Soon starts his morning commute at 7:00 AM to arrive at work by 8:00 AM. If he drives at an average speed of 30 miles per hour, he is late by 5 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM."
+        "incomplete_question": "Mr. Lee V. Soon starts his morning commute at 7:00 AM to arrive at work by 8:00 AM. If he drives at an average speed of 30 miles per hour, he is late by 5 minutes. Find the speed he needs to maintain to arrive exactly at 8:00 AM?"
       }
     ]
   },
@@ -86,29 +82,31 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      880
+      1042
     ],
     "gpt4o_mini_completion_lengths": [
-      244
+      220
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
+      "HEXAGN has 120°-rotational symmetry about a point P, find the area of triangle ∆GHX.",
+      "HEXAGN has 120°-rotational symmetry about a point P, PX=1",
       "HEXAGN has 120°-rotational symmetry about a point P",
+      "If PX=1, find the area of triangle ∆GHX.",
       "find the area of triangle ∆GHX",
-      "If PX=1",
       "PX=1"
     ],
-    "num_conditions_extracted": 4,
+    "num_conditions_extracted": 6,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "2_remove_0",
         "removed_condition_index": 0,
         "removed_condition": "HEXAGN has 120°-rotational symmetry about a point P",
         "remaining_conditions": [
-          "If PX=1",
-          "find the area of triangle ∆GHX"
+          "If PX=1, find the area of triangle ∆GHX."
         ],
         "incomplete_question": "If PX=1, find the area of triangle ∆GHX."
       },
@@ -117,20 +115,18 @@
         "removed_condition_index": 1,
         "removed_condition": "PX=1",
         "remaining_conditions": [
-          "HEXAGN has 120°-rotational symmetry about a point P",
-          "find the area of triangle ∆GHX"
+          "HEXAGN has 120°-rotational symmetry about a point P, find the area of triangle ∆GHX."
         ],
-        "incomplete_question": "Suppose convex hexagon HEXAGN has 120°-rotational symmetry about a point P, find the area of triangle ∆GHX."
+        "incomplete_question": "HEXAGN has 120°-rotational symmetry about a point P, find the area of triangle ∆GHX."
       },
       {
         "variant_id": "2_remove_2",
         "removed_condition_index": 2,
         "removed_condition": "find the area of triangle ∆GHX",
         "remaining_conditions": [
-          "HEXAGN has 120°-rotational symmetry about a point P",
-          "If PX=1"
+          "HEXAGN has 120°-rotational symmetry about a point P, PX=1"
         ],
-        "incomplete_question": "Suppose convex hexagon HEXAGN has 120°-rotational symmetry about a point P. If PX=1, what can be said about triangle ∆GHX?"
+        "incomplete_question": "HEXAGN has 120°-rotational symmetry about a point P, PX=1."
       }
     ]
   },
@@ -144,17 +140,75 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      901
+      1063
     ],
     "gpt4o_mini_completion_lengths": [
-      953
+      975
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
-    "all_extracted_conditions": [],
-    "num_conditions_extracted": 0,
-    "removal_variants": []
+    "all_extracted_conditions": [
+      "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$. One second after the flight began, it exploded into two unequal parts. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$. Assume the acceleration due to gravity is $10 \\, \\mathrm{m/s}^2$.",
+      "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$. It exploded into two unequal parts, with their mass ratio being $1:2$. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$. Assume the acceleration due to gravity is $10 \\, \\mathrm{m/s}^2$.",
+      "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$. One second after the flight began, it exploded into two unequal parts, with their mass ratio being $1:2$. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$. ",
+      "One second after the flight began, it exploded into two unequal parts, with their mass ratio being $1:2$. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$. Assume the acceleration due to gravity is $10 \\, \\mathrm{m/s}^2$.",
+      "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$. One second after the flight began, it exploded into two unequal parts, with their mass ratio being $1:2$. Assume the acceleration due to gravity is $10 \\, \\mathrm{m/s}^2$.",
+      "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$",
+      "the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$",
+      "Assume the acceleration due to gravity is $10 \\, \\mathrm{m/s}^2$",
+      "One second after the flight began",
+      "the mass ratio being $1:2$"
+    ],
+    "num_conditions_extracted": 10,
+    "is_multiple_choice": false,
+    "removal_variants": [
+      {
+        "variant_id": "3_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$",
+        "remaining_conditions": [
+          "One second after the flight began, it exploded into two unequal parts, with their mass ratio being $1:2$. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$. Assume the acceleration due to gravity is $10 \\, \\mathrm{m/s}^2$."
+        ],
+        "incomplete_question": "One second after the flight began, it exploded into two unequal parts, with their mass ratio being $1:2$. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$. Find the speed (in m/s) of the second fragment immediately after the explosion."
+      },
+      {
+        "variant_id": "3_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "One second after the flight began",
+        "remaining_conditions": [
+          "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$. It exploded into two unequal parts, with their mass ratio being $1:2$. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$. Assume the acceleration due to gravity is $10 \\, \\mathrm{m/s}^2$."
+        ],
+        "incomplete_question": "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$. It exploded into two unequal parts, with their mass ratio being $1:2$. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$. Find the speed (in m/s) of the second fragment immediately after the explosion."
+      },
+      {
+        "variant_id": "3_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "the mass ratio being $1:2$",
+        "remaining_conditions": [
+          "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$. One second after the flight began, it exploded into two unequal parts. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$. Assume the acceleration due to gravity is $10 \\, \\mathrm{m/s}^2$."
+        ],
+        "incomplete_question": "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$. One second after the flight began, it exploded into two unequal parts. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$. Find the speed (in m/s) of the second fragment immediately after the explosion."
+      },
+      {
+        "variant_id": "3_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$",
+        "remaining_conditions": [
+          "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$. One second after the flight began, it exploded into two unequal parts, with their mass ratio being $1:2$. Assume the acceleration due to gravity is $10 \\, \\mathrm{m/s}^2$."
+        ],
+        "incomplete_question": "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$. One second after the flight began, it exploded into two unequal parts, with their mass ratio being $1:2$. Assume the acceleration due to gravity is $10 \\, \\mathrm{m/s}^2$. Find the speed (in m/s) of the second fragment immediately after the explosion."
+      },
+      {
+        "variant_id": "3_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "Assume the acceleration due to gravity is $10 \\, \\mathrm{m/s}^2$",
+        "remaining_conditions": [
+          "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$. One second after the flight began, it exploded into two unequal parts, with their mass ratio being $1:2$. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$. "
+        ],
+        "incomplete_question": "A firecracker was thrown vertically upward with a speed of $20 \\, \\mathrm{m/s}$. One second after the flight began, it exploded into two unequal parts, with their mass ratio being $1:2$. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \\, \\mathrm{m/s}$. Find the speed (in m/s) of the second fragment immediately after the explosion."
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -166,17 +220,85 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      940
+      1102
     ],
     "gpt4o_mini_completion_lengths": [
-      662
+      1068
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
-    "all_extracted_conditions": [],
-    "num_conditions_extracted": 0,
-    "removal_variants": []
+    "all_extracted_conditions": [
+      "f(4n+3) = 3f(2n+1) - 2f(n)",
+      "f(4n+1) = 2f(2n+1) - f(n)",
+      "f(2n) = f(n)",
+      "f(1) = 1",
+      "f(3) = 3"
+    ],
+    "num_conditions_extracted": 5,
+    "is_multiple_choice": false,
+    "removal_variants": [
+      {
+        "variant_id": "4_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "f(1) = 1",
+        "remaining_conditions": [
+          "f(3) = 3",
+          "f(2n) = f(n)",
+          "f(4n+1) = 2f(2n+1) - f(n)",
+          "f(4n+3) = 3f(2n+1) - 2f(n)"
+        ],
+        "incomplete_question": "Define the function \\( f \\) on positive integers such that \\( f(3) = 3 \\) and \\( f(2n) = f(n), f(4n+1) = 2f(2n+1) - f(n), f(4n+3) = 3f(2n+1) - 2f(n) \\) for every positive integer \\( n \\). Determine the number of integers \\( n \\) satisfying \\( 1 \\leq n \\leq 1988 \\) for which \\( f(n) = n \\)."
+      },
+      {
+        "variant_id": "4_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "f(3) = 3",
+        "remaining_conditions": [
+          "f(1) = 1",
+          "f(2n) = f(n)",
+          "f(4n+1) = 2f(2n+1) - f(n)",
+          "f(4n+3) = 3f(2n+1) - 2f(n)"
+        ],
+        "incomplete_question": "Define the function \\( f \\) on positive integers such that \\( f(1) = 1 \\) and \\( f(2n) = f(n), f(4n+1) = 2f(2n+1) - f(n), f(4n+3) = 3f(2n+1) - 2f(n) \\) for every positive integer \\( n \\). Determine the number of integers \\( n \\) satisfying \\( 1 \\leq n \\leq 1988 \\) for which \\( f(n) = n \\)."
+      },
+      {
+        "variant_id": "4_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "f(2n) = f(n)",
+        "remaining_conditions": [
+          "f(1) = 1",
+          "f(3) = 3",
+          "f(4n+1) = 2f(2n+1) - f(n)",
+          "f(4n+3) = 3f(2n+1) - 2f(n)"
+        ],
+        "incomplete_question": "Define the function \\( f \\) on positive integers such that \\( f(1) = 1, f(3) = 3 \\) and \\( f(4n+1) = 2f(2n+1) - f(n), f(4n+3) = 3f(2n+1) - 2f(n) \\) for every positive integer \\( n \\). Determine the number of integers \\( n \\) satisfying \\( 1 \\leq n \\leq 1988 \\) for which \\( f(n) = n \\)."
+      },
+      {
+        "variant_id": "4_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "f(4n+1) = 2f(2n+1) - f(n)",
+        "remaining_conditions": [
+          "f(1) = 1",
+          "f(3) = 3",
+          "f(2n) = f(n)",
+          "f(4n+3) = 3f(2n+1) - 2f(n)"
+        ],
+        "incomplete_question": "Define the function \\( f \\) on positive integers such that \\( f(1) = 1, f(3) = 3 \\) and \\( f(2n) = f(n), f(4n+3) = 3f(2n+1) - 2f(n) \\) for every positive integer \\( n \\). Determine the number of integers \\( n \\) satisfying \\( 1 \\leq n \\leq 1988 \\) for which \\( f(n) = n \\)."
+      },
+      {
+        "variant_id": "4_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "f(4n+3) = 3f(2n+1) - 2f(n)",
+        "remaining_conditions": [
+          "f(1) = 1",
+          "f(3) = 3",
+          "f(2n) = f(n)",
+          "f(4n+1) = 2f(2n+1) - f(n)"
+        ],
+        "incomplete_question": "Define the function \\( f \\) on positive integers such that \\( f(1) = 1, f(3) = 3 \\) and \\( f(2n) = f(n), f(4n+1) = 2f(2n+1) - f(n) \\) for every positive integer \\( n \\). Determine the number of integers \\( n \\) satisfying \\( 1 \\leq n \\leq 1988 \\) for which \\( f(n) = n \\)."
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -188,7 +310,7 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      883
+      1045
     ],
     "gpt4o_mini_completion_lengths": [
       402
@@ -204,6 +326,7 @@
       "North will win"
     ],
     "num_conditions_extracted": 5,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "5_remove_0",
@@ -277,7 +400,7 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      868
+      1030
     ],
     "gpt4o_mini_completion_lengths": [
       343
@@ -285,9 +408,45 @@
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
-    "all_extracted_conditions": [],
-    "num_conditions_extracted": 0,
-    "removal_variants": []
+    "all_extracted_conditions": [
+      "the number (f(m))^2 + 2mf(n) + f(n^2) is the square of an integer",
+      "for any positive integers m, n",
+      "f : \\mathbb{N} \\to \\mathbb{N}"
+    ],
+    "num_conditions_extracted": 3,
+    "is_multiple_choice": false,
+    "removal_variants": [
+      {
+        "variant_id": "6_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "f : \\mathbb{N} \\to \\mathbb{N}",
+        "remaining_conditions": [
+          "for any positive integers m, n",
+          "the number (f(m))^2 + 2mf(n) + f(n^2) is the square of an integer"
+        ],
+        "incomplete_question": "Find all functions such that for any positive integers m, n the number (f(m))^2 + 2mf(n) + f(n^2) is the square of an integer."
+      },
+      {
+        "variant_id": "6_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "for any positive integers m, n",
+        "remaining_conditions": [
+          "f : \\mathbb{N} \\to \\mathbb{N}",
+          "the number (f(m))^2 + 2mf(n) + f(n^2) is the square of an integer"
+        ],
+        "incomplete_question": "Find all functions f : \\mathbb{N} \\to \\mathbb{N} such that the number (f(m))^2 + 2mf(n) + f(n^2) is the square of an integer."
+      },
+      {
+        "variant_id": "6_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "the number (f(m))^2 + 2mf(n) + f(n^2) is the square of an integer",
+        "remaining_conditions": [
+          "f : \\mathbb{N} \\to \\mathbb{N}",
+          "for any positive integers m, n"
+        ],
+        "incomplete_question": "Find all functions f : \\mathbb{N} \\to \\mathbb{N} such that for any positive integers m, n."
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -299,21 +458,22 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      871
+      1033
     ],
     "gpt4o_mini_completion_lengths": [
-      425
+      522
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
       "It is known that the areas of 2019 of these squares are 1",
-      "while the area of the 2020th square is not equal to 1",
+      "the area of the 2020th square is not equal to 1",
       "A square with an integer side length",
       "was cut into 2020 smaller squares"
     ],
     "num_conditions_extracted": 4,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "7_remove_0",
@@ -322,9 +482,9 @@
         "remaining_conditions": [
           "was cut into 2020 smaller squares",
           "It is known that the areas of 2019 of these squares are 1",
-          "while the area of the 2020th square is not equal to 1"
+          "the area of the 2020th square is not equal to 1"
         ],
-        "incomplete_question": "A square was cut into 2020 smaller squares. Find all possible values that the area of the 2020th square can take."
+        "incomplete_question": "A square was cut into 2020 smaller squares. It is known that the areas of 2019 of these squares are 1, while the area of the 2020th square is not equal to 1. Find all possible values that the area of the 2020th square can take."
       },
       {
         "variant_id": "7_remove_1",
@@ -333,9 +493,9 @@
         "remaining_conditions": [
           "A square with an integer side length",
           "It is known that the areas of 2019 of these squares are 1",
-          "while the area of the 2020th square is not equal to 1"
+          "the area of the 2020th square is not equal to 1"
         ],
-        "incomplete_question": "A square with an integer side length. Find all possible values that the area of the 2020th square can take."
+        "incomplete_question": "A square with an integer side length. It is known that the areas of 2019 of these squares are 1, while the area of the 2020th square is not equal to 1. Find all possible values that the area of the 2020th square can take."
       },
       {
         "variant_id": "7_remove_2",
@@ -344,20 +504,20 @@
         "remaining_conditions": [
           "A square with an integer side length",
           "was cut into 2020 smaller squares",
-          "while the area of the 2020th square is not equal to 1"
+          "the area of the 2020th square is not equal to 1"
         ],
-        "incomplete_question": "A square with an integer side length was cut into 2020 smaller squares. Find all possible values that the area of the 2020th square can take."
+        "incomplete_question": "A square with an integer side length was cut into 2020 smaller squares. The area of the 2020th square is not equal to 1. Find all possible values that the area of the 2020th square can take."
       },
       {
         "variant_id": "7_remove_3",
         "removed_condition_index": 3,
-        "removed_condition": "while the area of the 2020th square is not equal to 1",
+        "removed_condition": "the area of the 2020th square is not equal to 1",
         "remaining_conditions": [
           "A square with an integer side length",
           "was cut into 2020 smaller squares",
           "It is known that the areas of 2019 of these squares are 1"
         ],
-        "incomplete_question": "A square with an integer side length was cut into 2020 smaller squares. Find all possible values that the area of the 2020th square can take."
+        "incomplete_question": "A square with an integer side length was cut into 2020 smaller squares. It is known that the areas of 2019 of these squares are 1. Find all possible values that the area of the 2020th square can take."
       }
     ]
   },
@@ -371,17 +531,53 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      831
+      993
     ],
     "gpt4o_mini_completion_lengths": [
-      243
+      228
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
-    "all_extracted_conditions": [],
-    "num_conditions_extracted": 0,
-    "removal_variants": []
+    "all_extracted_conditions": [
+      "the sequence 3, ~9, ~15, \\ldots, ~x, ~y, ~39 is an arithmetic sequence",
+      "the sequence 3, ~9, ~15, \\ldots, ~x, ~y, ~39",
+      "the sequence 3, ~9, ~15, \\ldots, ~x, ~y",
+      "What is the value of $x + y$",
+      "is an arithmetic sequence",
+      "39"
+    ],
+    "num_conditions_extracted": 6,
+    "is_multiple_choice": false,
+    "removal_variants": [
+      {
+        "variant_id": "8_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "the sequence 3, ~9, ~15, \\ldots, ~x, ~y, ~39 is an arithmetic sequence",
+        "remaining_conditions": [
+          "What is the value of $x + y$"
+        ],
+        "incomplete_question": "What is the value of $x + y$?"
+      },
+      {
+        "variant_id": "8_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "the sequence 3, ~9, ~15, \\ldots, ~x, ~y, ~39",
+        "remaining_conditions": [
+          "is an arithmetic sequence"
+        ],
+        "incomplete_question": "What is the value of $x + y$ if the sequence is an arithmetic sequence?"
+      },
+      {
+        "variant_id": "8_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "39",
+        "remaining_conditions": [
+          "the sequence 3, ~9, ~15, \\ldots, ~x, ~y"
+        ],
+        "incomplete_question": "What is the value of $x + y$ if the sequence 3, ~9, ~15, \\ldots, ~x, ~y$ is an arithmetic sequence?"
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -393,50 +589,51 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      885
+      1047
     ],
     "gpt4o_mini_completion_lengths": [
-      358
+      486
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
-      "if the inequality f(x+a) >= 2 f(x) holds for any x in [a, a+2]",
-      "Let f(x) be an odd function defined on R",
-      "for x >= 0, f(x) = x^2"
+      "the inequality \\( f(x+a) \\geq 2 f(x) \\) holds for any \\( x \\in [a, a+2] \\)",
+      "Let \\( f(x) \\) be an odd function defined on \\( \\mathbf{R} \\)",
+      "for \\( x \\geq 0 \\), \\( f(x) = x^2 \\)"
     ],
     "num_conditions_extracted": 3,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "9_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "Let f(x) be an odd function defined on R",
+        "removed_condition": "Let \\( f(x) \\) be an odd function defined on \\( \\mathbf{R} \\)",
         "remaining_conditions": [
-          "for x >= 0, f(x) = x^2",
-          "if the inequality f(x+a) >= 2 f(x) holds for any x in [a, a+2]"
+          "for \\( x \\geq 0 \\), \\( f(x) = x^2 \\)",
+          "the inequality \\( f(x+a) \\geq 2 f(x) \\) holds for any \\( x \\in [a, a+2] \\)"
         ],
-        "incomplete_question": "For x >= 0, f(x) = x^2. If the inequality f(x+a) >= 2 f(x) holds for any x in [a, a+2], determine the range of the real number a."
+        "incomplete_question": "For \\( x \\geq 0 \\), \\( f(x) = x^2 \\) and the inequality \\( f(x+a) \\geq 2 f(x) \\) holds for any \\( x \\in [a, a+2] \\), determine the range of the real number \\( a \\)."
       },
       {
         "variant_id": "9_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "for x >= 0, f(x) = x^2",
+        "removed_condition": "for \\( x \\geq 0 \\), \\( f(x) = x^2 \\)",
         "remaining_conditions": [
-          "Let f(x) be an odd function defined on R",
-          "if the inequality f(x+a) >= 2 f(x) holds for any x in [a, a+2]"
+          "Let \\( f(x) \\) be an odd function defined on \\( \\mathbf{R} \\)",
+          "the inequality \\( f(x+a) \\geq 2 f(x) \\) holds for any \\( x \\in [a, a+2] \\)"
         ],
-        "incomplete_question": "Let f(x) be an odd function defined on R. If the inequality f(x+a) >= 2 f(x) holds for any x in [a, a+2], determine the range of the real number a."
+        "incomplete_question": "Let \\( f(x) \\) be an odd function defined on \\( \\mathbf{R} \\) and the inequality \\( f(x+a) \\geq 2 f(x) \\) holds for any \\( x \\in [a, a+2] \\), determine the range of the real number \\( a \\)."
       },
       {
         "variant_id": "9_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "if the inequality f(x+a) >= 2 f(x) holds for any x in [a, a+2]",
+        "removed_condition": "the inequality \\( f(x+a) \\geq 2 f(x) \\) holds for any \\( x \\in [a, a+2] \\)",
         "remaining_conditions": [
-          "Let f(x) be an odd function defined on R",
-          "for x >= 0, f(x) = x^2"
+          "Let \\( f(x) \\) be an odd function defined on \\( \\mathbf{R} \\)",
+          "for \\( x \\geq 0 \\), \\( f(x) = x^2 \\)"
         ],
-        "incomplete_question": "Let f(x) be an odd function defined on R. For x >= 0, f(x) = x^2, determine the range of the real number a."
+        "incomplete_question": "Let \\( f(x) \\) be an odd function defined on \\( \\mathbf{R} \\) and for \\( x \\geq 0 \\), \\( f(x) = x^2 \\), determine the range of the real number \\( a \\)."
       }
     ]
   },
@@ -450,76 +647,66 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      863
+      1025
     ],
     "gpt4o_mini_completion_lengths": [
-      403
+      347
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
+      "In the subtraction shown, $6 K 0 L - M 9 N 4 = 2011$",
+      "The result of the subtraction is 2011",
+      "The specific numbers 6, 0, 9, and 4",
+      "The subtraction results in 2011",
+      "$K, L, M$, and $N$ are digits",
+      "$6 K 0 L - M 9 N 4 = 2011$",
       "K, L, M, and N are digits",
-      "6 K 0 L - M 9 N 4 = 2011",
       "The subtraction shown",
-      "M 9 N 4",
-      "6 K 0 L",
-      "2011"
+      "$6 K 0 L - M 9 N 4$"
     ],
-    "num_conditions_extracted": 6,
+    "num_conditions_extracted": 9,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "10_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "The subtraction shown",
+        "removed_condition": "K, L, M, and N are digits",
         "remaining_conditions": [
-          "K, L, M, and N are digits",
-          "6 K 0 L - M 9 N 4 = 2011"
+          "In the subtraction shown, $6 K 0 L - M 9 N 4 = 2011$"
         ],
-        "incomplete_question": "In the subtraction, K, L, M, and N are digits. What is the value of K+L+M+N?"
+        "incomplete_question": "In the subtraction shown, what is the value of $K+L+M+N$?"
       },
       {
         "variant_id": "10_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "K, L, M, and N are digits",
+        "removed_condition": "The subtraction shown",
         "remaining_conditions": [
-          "The subtraction shown",
-          "6 K 0 L - M 9 N 4 = 2011"
+          "$K, L, M$, and $N$ are digits",
+          "$6 K 0 L - M 9 N 4 = 2011$"
         ],
-        "incomplete_question": "In the subtraction shown, what is the value of K+L+M+N?"
+        "incomplete_question": "What is the value of $K+L+M+N$?"
       },
       {
         "variant_id": "10_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "6 K 0 L",
+        "removed_condition": "The result of the subtraction is 2011",
         "remaining_conditions": [
-          "K, L, M, and N are digits",
-          "M 9 N 4",
-          "2011"
+          "$K, L, M$, and $N$ are digits",
+          "$6 K 0 L - M 9 N 4$"
         ],
-        "incomplete_question": "In the subtraction shown, K, L, M, and N are digits. What is the value of K+L+M+N?"
+        "incomplete_question": "In the subtraction shown, $K, L, M$, and $N$ are digits. What is the value of $K+L+M+N$?"
       },
       {
         "variant_id": "10_remove_3",
         "removed_condition_index": 3,
-        "removed_condition": "M 9 N 4",
+        "removed_condition": "The specific numbers 6, 0, 9, and 4",
         "remaining_conditions": [
-          "K, L, M, and N are digits",
-          "6 K 0 L",
-          "2011"
+          "$K, L, M$, and $N$ are digits",
+          "The subtraction results in 2011"
         ],
-        "incomplete_question": "In the subtraction shown, K, L, M, and N are digits. What is the value of K+L+M+N?"
-      },
-      {
-        "variant_id": "10_remove_4",
-        "removed_condition_index": 4,
-        "removed_condition": "2011",
-        "remaining_conditions": [
-          "K, L, M, and N are digits",
-          "6 K 0 L",
-          "M 9 N 4"
-        ],
-        "incomplete_question": "In the subtraction shown, K, L, M, and N are digits. What is the value of K+L+M+N?"
+        "incomplete_question": "In the subtraction shown, $K, L, M$, and $N$ are digits. What is the value of $K+L+M+N$?"
       }
     ]
   },
@@ -533,25 +720,26 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      957
+      1119
     ],
     "gpt4o_mini_completion_lengths": [
-      1506
+      1256
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
       "The convex octagon ABCDEFGH is equilateral",
-      "Points G and H lie on \\overline{SP}",
-      "Points C and D lie on \\overline{QR}",
-      "Points E and F lie on \\overline{RS}",
-      "Points A and B lie on \\overline{PQ}",
+      "Points A and B lie on PQ",
+      "Points C and D lie on QR",
+      "Points E and F lie on RS",
+      "Points G and H lie on SP",
       "AP=BQ<4",
       "PQ=8",
       "QR=6"
     ],
     "num_conditions_extracted": 8,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "11_remove_0",
@@ -559,14 +747,14 @@
         "removed_condition": "PQ=8",
         "remaining_conditions": [
           "QR=6",
-          "Points A and B lie on \\overline{PQ}",
-          "Points C and D lie on \\overline{QR}",
-          "Points E and F lie on \\overline{RS}",
-          "Points G and H lie on \\overline{SP}",
+          "Points A and B lie on PQ",
+          "Points C and D lie on QR",
+          "Points E and F lie on RS",
+          "Points G and H lie on SP",
           "AP=BQ<4",
           "The convex octagon ABCDEFGH is equilateral"
         ],
-        "incomplete_question": "In rectangle PQRS with QR=6, points A and B lie on \\overline{PQ}, points C and D lie on \\overline{QR}, points E and F lie on \\overline{RS}, and points G and H lie on \\overline{SP} such that AP=BQ<4. The convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
+        "incomplete_question": "In rectangle PQRS, QR=6. Points A and B lie on PQ, points C and D lie on QR, points E and F lie on RS, and points G and H lie on SP such that AP=BQ<4 and the convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
       },
       {
         "variant_id": "11_remove_1",
@@ -574,74 +762,74 @@
         "removed_condition": "QR=6",
         "remaining_conditions": [
           "PQ=8",
-          "Points A and B lie on \\overline{PQ}",
-          "Points C and D lie on \\overline{QR}",
-          "Points E and F lie on \\overline{RS}",
-          "Points G and H lie on \\overline{SP}",
+          "Points A and B lie on PQ",
+          "Points C and D lie on QR",
+          "Points E and F lie on RS",
+          "Points G and H lie on SP",
           "AP=BQ<4",
           "The convex octagon ABCDEFGH is equilateral"
         ],
-        "incomplete_question": "In rectangle PQRS with PQ=8, points A and B lie on \\overline{PQ}, points C and D lie on \\overline{QR}, points E and F lie on \\overline{RS}, and points G and H lie on \\overline{SP} such that AP=BQ<4. The convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
+        "incomplete_question": "In rectangle PQRS, PQ=8. Points A and B lie on PQ, points C and D lie on QR, points E and F lie on RS, and points G and H lie on SP such that AP=BQ<4 and the convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
       },
       {
         "variant_id": "11_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "Points A and B lie on \\overline{PQ}",
+        "removed_condition": "Points A and B lie on PQ",
         "remaining_conditions": [
           "PQ=8",
           "QR=6",
-          "Points C and D lie on \\overline{QR}",
-          "Points E and F lie on \\overline{RS}",
-          "Points G and H lie on \\overline{SP}",
+          "Points C and D lie on QR",
+          "Points E and F lie on RS",
+          "Points G and H lie on SP",
           "AP=BQ<4",
           "The convex octagon ABCDEFGH is equilateral"
         ],
-        "incomplete_question": "In rectangle PQRS with PQ=8 and QR=6, points C and D lie on \\overline{QR}, points E and F lie on \\overline{RS}, and points G and H lie on \\overline{SP} such that AP=BQ<4. The convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
+        "incomplete_question": "In rectangle PQRS, PQ=8 and QR=6. Points C and D lie on QR, points E and F lie on RS, and points G and H lie on SP such that AP=BQ<4 and the convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
       },
       {
         "variant_id": "11_remove_3",
         "removed_condition_index": 3,
-        "removed_condition": "Points C and D lie on \\overline{QR}",
+        "removed_condition": "Points C and D lie on QR",
         "remaining_conditions": [
           "PQ=8",
           "QR=6",
-          "Points A and B lie on \\overline{PQ}",
-          "Points E and F lie on \\overline{RS}",
-          "Points G and H lie on \\overline{SP}",
+          "Points A and B lie on PQ",
+          "Points E and F lie on RS",
+          "Points G and H lie on SP",
           "AP=BQ<4",
           "The convex octagon ABCDEFGH is equilateral"
         ],
-        "incomplete_question": "In rectangle PQRS with PQ=8 and QR=6, points A and B lie on \\overline{PQ}, points E and F lie on \\overline{RS}, and points G and H lie on \\overline{SP} such that AP=BQ<4. The convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
+        "incomplete_question": "In rectangle PQRS, PQ=8 and QR=6. Points A and B lie on PQ, points E and F lie on RS, and points G and H lie on SP such that AP=BQ<4 and the convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
       },
       {
         "variant_id": "11_remove_4",
         "removed_condition_index": 4,
-        "removed_condition": "Points E and F lie on \\overline{RS}",
+        "removed_condition": "Points E and F lie on RS",
         "remaining_conditions": [
           "PQ=8",
           "QR=6",
-          "Points A and B lie on \\overline{PQ}",
-          "Points C and D lie on \\overline{QR}",
-          "Points G and H lie on \\overline{SP}",
+          "Points A and B lie on PQ",
+          "Points C and D lie on QR",
+          "Points G and H lie on SP",
           "AP=BQ<4",
           "The convex octagon ABCDEFGH is equilateral"
         ],
-        "incomplete_question": "In rectangle PQRS with PQ=8 and QR=6, points A and B lie on \\overline{PQ}, points C and D lie on \\overline{QR}, and points G and H lie on \\overline{SP} such that AP=BQ<4. The convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
+        "incomplete_question": "In rectangle PQRS, PQ=8 and QR=6. Points A and B lie on PQ, points C and D lie on QR, and points G and H lie on SP such that AP=BQ<4 and the convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
       },
       {
         "variant_id": "11_remove_5",
         "removed_condition_index": 5,
-        "removed_condition": "Points G and H lie on \\overline{SP}",
+        "removed_condition": "Points G and H lie on SP",
         "remaining_conditions": [
           "PQ=8",
           "QR=6",
-          "Points A and B lie on \\overline{PQ}",
-          "Points C and D lie on \\overline{QR}",
-          "Points E and F lie on \\overline{RS}",
+          "Points A and B lie on PQ",
+          "Points C and D lie on QR",
+          "Points E and F lie on RS",
           "AP=BQ<4",
           "The convex octagon ABCDEFGH is equilateral"
         ],
-        "incomplete_question": "In rectangle PQRS with PQ=8 and QR=6, points A and B lie on \\overline{PQ}, points C and D lie on \\overline{QR}, and points E and F lie on \\overline{RS} such that AP=BQ<4. The convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
+        "incomplete_question": "In rectangle PQRS, PQ=8 and QR=6. Points A and B lie on PQ, points C and D lie on QR, and points E and F lie on RS such that AP=BQ<4 and the convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
       },
       {
         "variant_id": "11_remove_6",
@@ -650,13 +838,13 @@
         "remaining_conditions": [
           "PQ=8",
           "QR=6",
-          "Points A and B lie on \\overline{PQ}",
-          "Points C and D lie on \\overline{QR}",
-          "Points E and F lie on \\overline{RS}",
-          "Points G and H lie on \\overline{SP}",
+          "Points A and B lie on PQ",
+          "Points C and D lie on QR",
+          "Points E and F lie on RS",
+          "Points G and H lie on SP",
           "The convex octagon ABCDEFGH is equilateral"
         ],
-        "incomplete_question": "In rectangle PQRS with PQ=8 and QR=6, points A and B lie on \\overline{PQ}, points C and D lie on \\overline{QR}, points E and F lie on \\overline{RS}, and points G and H lie on \\overline{SP}. The convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
+        "incomplete_question": "In rectangle PQRS, PQ=8 and QR=6. Points A and B lie on PQ, points C and D lie on QR, points E and F lie on RS, and points G and H lie on SP such that the convex octagon ABCDEFGH is equilateral. What is the length of a side of this octagon?"
       },
       {
         "variant_id": "11_remove_7",
@@ -665,13 +853,13 @@
         "remaining_conditions": [
           "PQ=8",
           "QR=6",
-          "Points A and B lie on \\overline{PQ}",
-          "Points C and D lie on \\overline{QR}",
-          "Points E and F lie on \\overline{RS}",
-          "Points G and H lie on \\overline{SP}",
+          "Points A and B lie on PQ",
+          "Points C and D lie on QR",
+          "Points E and F lie on RS",
+          "Points G and H lie on SP",
           "AP=BQ<4"
         ],
-        "incomplete_question": "In rectangle PQRS with PQ=8 and QR=6, points A and B lie on \\overline{PQ}, points C and D lie on \\overline{QR}, points E and F lie on \\overline{RS}, and points G and H lie on \\overline{SP} such that AP=BQ<4. What is the length of a side of the octagon ABCDEFGH?"
+        "incomplete_question": "In rectangle PQRS, PQ=8 and QR=6. Points A and B lie on PQ, points C and D lie on QR, points E and F lie on RS, and points G and H lie on SP such that AP=BQ<4. What is the length of a side of this octagon?"
       }
     ]
   },
@@ -685,10 +873,10 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      904
+      1066
     ],
     "gpt4o_mini_completion_lengths": [
-      558
+      586
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -696,54 +884,55 @@
     "all_extracted_conditions": [
       "A is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two",
       "B = {1, 2, ..., 2^n}",
-      "n > 1",
-      "n ∈ ℤ"
+      "A is a subset of B",
+      "n > 1, n ∈ ℤ"
     ],
     "num_conditions_extracted": 4,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "12_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "n > 1",
+        "removed_condition": "n > 1, n ∈ ℤ",
         "remaining_conditions": [
-          "n ∈ ℤ",
           "B = {1, 2, ..., 2^n}",
+          "A is a subset of B",
           "A is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two"
         ],
-        "incomplete_question": "Let n ∈ ℤ and B = {1, 2, ..., 2^n}. A subset A of B is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two. How many weird subsets does B have?"
+        "incomplete_question": "Let B = {1, 2, ..., 2^n}. A subset A of B is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two. How many weird subsets does B have?"
       },
       {
         "variant_id": "12_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "n ∈ ℤ",
+        "removed_condition": "B = {1, 2, ..., 2^n}",
         "remaining_conditions": [
-          "n > 1",
-          "B = {1, 2, ..., 2^n}",
+          "n > 1, n ∈ ℤ",
+          "A is a subset of B",
           "A is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two"
         ],
-        "incomplete_question": "Let n > 1 and B = {1, 2, ..., 2^n}. A subset A of B is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two. How many weird subsets does B have?"
+        "incomplete_question": "Let n > 1, n ∈ ℤ. A subset A of B is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two. How many weird subsets does B have?"
       },
       {
         "variant_id": "12_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "B = {1, 2, ..., 2^n}",
+        "removed_condition": "A is a subset of B",
         "remaining_conditions": [
-          "n > 1",
-          "n ∈ ℤ",
+          "n > 1, n ∈ ℤ",
+          "B = {1, 2, ..., 2^n}",
           "A is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two"
         ],
-        "incomplete_question": "Let n > 1, n ∈ ℤ. A subset A of B is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two. How many weird subsets does B have?"
+        "incomplete_question": "Let n > 1, n ∈ ℤ and B = {1, 2, ..., 2^n}. A is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two. How many weird subsets does B have?"
       },
       {
         "variant_id": "12_remove_3",
         "removed_condition_index": 3,
         "removed_condition": "A is called weird if it contains exactly one of the distinct elements x, y ∈ B such that the sum of x and y is a power of two",
         "remaining_conditions": [
-          "n > 1",
-          "n ∈ ℤ",
-          "B = {1, 2, ..., 2^n}"
+          "n > 1, n ∈ ℤ",
+          "B = {1, 2, ..., 2^n}",
+          "A is a subset of B"
         ],
-        "incomplete_question": "Let n > 1, n ∈ ℤ, and B = {1, 2, ..., 2^n}. How many weird subsets does B have?"
+        "incomplete_question": "Let n > 1, n ∈ ℤ and B = {1, 2, ..., 2^n}. A subset A of B. How many weird subsets does B have?"
       }
     ]
   },
@@ -757,7 +946,7 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      856
+      1018
     ],
     "gpt4o_mini_completion_lengths": [
       176
@@ -765,9 +954,32 @@
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
-    "all_extracted_conditions": [],
-    "num_conditions_extracted": 0,
-    "removal_variants": []
+    "all_extracted_conditions": [
+      "The limits of integration are from 0 to sqrt(2)/2",
+      "The integrand is x^4 / sqrt((1-x^2)^3)"
+    ],
+    "num_conditions_extracted": 2,
+    "is_multiple_choice": false,
+    "removal_variants": [
+      {
+        "variant_id": "13_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The limits of integration are from 0 to sqrt(2)/2",
+        "remaining_conditions": [
+          "The integrand is x^4 / sqrt((1-x^2)^3)"
+        ],
+        "incomplete_question": "Calculate the definite integral: $$\\int \\frac{x^{4} \\cdot d x}{\\sqrt{\\left(1-x^{2}\\right)^{3}}}$$"
+      },
+      {
+        "variant_id": "13_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "The integrand is x^4 / sqrt((1-x^2)^3)",
+        "remaining_conditions": [
+          "The limits of integration are from 0 to sqrt(2)/2"
+        ],
+        "incomplete_question": "Calculate the definite integral: $$\\int_{0}^{\\sqrt{2} / 2} d x$$"
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -779,51 +991,52 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      864
+      1026
     ],
     "gpt4o_mini_completion_lengths": [
-      410
+      389
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
+      "five consecutive natural numbers designated by the letters a, b, c, d, e in some order",
       "the equality (a+b)(b+c)(c+d)(d+e)(e+a) = (a+c)(c+e)(e+b)(b+d)(d+a) holds",
-      "if they are designated by the letters a, b, c, d, e in some order",
       "designated by the letters a, b, c, d, e in some order",
-      "There are five consecutive natural numbers"
+      "the letters a, b, c, d, e in some order",
+      "five consecutive natural numbers"
     ],
-    "num_conditions_extracted": 4,
+    "num_conditions_extracted": 5,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "14_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "There are five consecutive natural numbers",
+        "removed_condition": "the equality (a+b)(b+c)(c+d)(d+e)(e+a) = (a+c)(c+e)(e+b)(b+d)(d+a) holds",
         "remaining_conditions": [
-          "if they are designated by the letters a, b, c, d, e in some order",
-          "the equality (a+b)(b+c)(c+d)(d+e)(e+a) = (a+c)(c+e)(e+b)(b+d)(d+a) holds"
+          "five consecutive natural numbers designated by the letters a, b, c, d, e in some order"
         ],
-        "incomplete_question": "Are there five numbers such that if they are designated by the letters a, b, c, d, e in some order, the equality (a+b)(b+c)(c+d)(d+e)(e+a) = (a+c)(c+e)(e+b)(b+d)(d+a) holds?"
+        "incomplete_question": "Are there five consecutive natural numbers such that they are designated by the letters a, b, c, d, e in some order?"
       },
       {
         "variant_id": "14_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "designated by the letters a, b, c, d, e in some order",
+        "removed_condition": "five consecutive natural numbers",
         "remaining_conditions": [
-          "There are five consecutive natural numbers",
+          "the letters a, b, c, d, e in some order",
           "the equality (a+b)(b+c)(c+d)(d+e)(e+a) = (a+c)(c+e)(e+b)(b+d)(d+a) holds"
         ],
-        "incomplete_question": "Are there five consecutive natural numbers such that the equality (a+b)(b+c)(c+d)(d+e)(e+a) = (a+c)(c+e)(e+b)(b+d)(d+a) holds?"
+        "incomplete_question": "Are there natural numbers designated by the letters a, b, c, d, e in some order such that the equality (a+b)(b+c)(c+d)(d+e)(e+a) = (a+c)(c+e)(e+b)(b+d)(d+a) holds?"
       },
       {
         "variant_id": "14_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "the equality (a+b)(b+c)(c+d)(d+e)(e+a) = (a+c)(c+e)(e+b)(b+d)(d+a) holds",
+        "removed_condition": "designated by the letters a, b, c, d, e in some order",
         "remaining_conditions": [
-          "There are five consecutive natural numbers",
-          "if they are designated by the letters a, b, c, d, e in some order"
+          "five consecutive natural numbers",
+          "the equality (a+b)(b+c)(c+d)(d+e)(e+a) = (a+c)(c+e)(e+b)(b+d)(d+a) holds"
         ],
-        "incomplete_question": "Are there five consecutive natural numbers such that if they are designated by the letters a, b, c, d, e in some order?"
+        "incomplete_question": "Are there five consecutive natural numbers such that the equality (a+b)(b+c)(c+d)(d+e)(e+a) = (a+c)(c+e)(e+b)(b+d)(d+a) holds?"
       }
     ]
   },
@@ -837,28 +1050,27 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      1023
+      1185
     ],
     "gpt4o_mini_completion_lengths": [
-      480
+      428
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
+      "The upper edge is parallel to the base and has length 2s",
       "The solid shown has a square base of side length s",
-      "The upper edge is parallel to the base",
       "All other edges have length s",
-      "The upper edge has length 2s",
-      "Given that s=6√2",
-      "s=6√2"
+      "Given that s=6√2"
     ],
-    "num_conditions_extracted": 6,
+    "num_conditions_extracted": 4,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "15_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "The upper edge is parallel to the base",
+        "removed_condition": "The upper edge is parallel to the base and has length 2s",
         "remaining_conditions": [
           "The solid shown has a square base of side length s",
           "All other edges have length s",
@@ -869,46 +1081,35 @@
       {
         "variant_id": "15_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "All other edges have length s",
+        "removed_condition": "Given that s=6√2",
         "remaining_conditions": [
           "The solid shown has a square base of side length s",
-          "The upper edge is parallel to the base",
-          "Given that s=6√2"
+          "The upper edge is parallel to the base and has length 2s",
+          "All other edges have length s"
         ],
-        "incomplete_question": "The solid shown has a square base of side length s. The upper edge is parallel to the base. Given that s=6√2, what is the volume of the solid?"
+        "incomplete_question": "The solid shown has a square base of side length s. The upper edge is parallel to the base and has length 2s. All other edges have length s. What is the volume of the solid?"
       },
       {
         "variant_id": "15_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "s=6√2",
+        "removed_condition": "The solid shown has a square base of side length s",
         "remaining_conditions": [
-          "The solid shown has a square base of side length s",
-          "The upper edge is parallel to the base",
-          "All other edges have length s"
+          "The upper edge is parallel to the base and has length 2s",
+          "All other edges have length s",
+          "Given that s=6√2"
         ],
-        "incomplete_question": "The solid shown has a square base of side length s. The upper edge is parallel to the base. All other edges have length s. What is the volume of the solid?"
+        "incomplete_question": "The upper edge is parallel to the base and has length 2s. All other edges have length s. Given that s=6√2, what is the volume of the solid?"
       },
       {
         "variant_id": "15_remove_3",
         "removed_condition_index": 3,
-        "removed_condition": "The solid shown has a square base of side length s",
-        "remaining_conditions": [
-          "The upper edge is parallel to the base",
-          "All other edges have length s",
-          "Given that s=6√2"
-        ],
-        "incomplete_question": "The upper edge is parallel to the base. All other edges have length s. Given that s=6√2, what is the volume of the solid?"
-      },
-      {
-        "variant_id": "15_remove_4",
-        "removed_condition_index": 4,
-        "removed_condition": "The upper edge has length 2s",
+        "removed_condition": "All other edges have length s",
         "remaining_conditions": [
           "The solid shown has a square base of side length s",
-          "All other edges have length s",
+          "The upper edge is parallel to the base and has length 2s",
           "Given that s=6√2"
         ],
-        "incomplete_question": "The solid shown has a square base of side length s. All other edges have length s. Given that s=6√2, what is the volume of the solid?"
+        "incomplete_question": "The solid shown has a square base of side length s. The upper edge is parallel to the base and has length 2s. Given that s=6√2, what is the volume of the solid?"
       }
     ]
   },
@@ -922,51 +1123,36 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      802
+      964
     ],
     "gpt4o_mini_completion_lengths": [
-      138
+      78
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
-      "is a multiple of which number?",
       "is a multiple of",
-      "The integer 119",
-      "which number?",
-      "which number"
+      "The integer 119"
     ],
-    "num_conditions_extracted": 5,
+    "num_conditions_extracted": 2,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "16_remove_0",
         "removed_condition_index": 0,
         "removed_condition": "The integer 119",
-        "remaining_conditions": [
-          "is a multiple of which number?"
-        ],
-        "incomplete_question": "Which number is a multiple of which number?"
+        "remaining_conditions": [],
+        "incomplete_question": "Which number is a multiple of?"
       },
       {
         "variant_id": "16_remove_1",
         "removed_condition_index": 1,
         "removed_condition": "is a multiple of",
         "remaining_conditions": [
-          "The integer 119",
-          "which number?"
+          "The integer 119"
         ],
-        "incomplete_question": "The integer 119 which number?"
-      },
-      {
-        "variant_id": "16_remove_2",
-        "removed_condition_index": 2,
-        "removed_condition": "which number",
-        "remaining_conditions": [
-          "The integer 119",
-          "is a multiple of"
-        ],
-        "incomplete_question": "The integer 119 is a multiple of?"
+        "incomplete_question": "The integer 119. Which number?"
       }
     ]
   },
@@ -980,42 +1166,39 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      858
+      1020
     ],
     "gpt4o_mini_completion_lengths": [
-      144
+      148
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
+      "A convex pentagon P=ABCDE is inscribed in a circle of radius 1",
       "The pentagon is inscribed in a circle of radius 1",
-      "The chords AC and BD are perpendicular",
-      "Chords AC and BD are perpendicular",
-      "Inscribed in a circle of radius 1",
-      "A convex pentagon P=ABCDE"
+      "The chords AC and BD are perpendicular"
     ],
-    "num_conditions_extracted": 5,
+    "num_conditions_extracted": 3,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "17_remove_0",
         "removed_condition_index": 0,
         "removed_condition": "The pentagon is inscribed in a circle of radius 1",
         "remaining_conditions": [
-          "A convex pentagon P=ABCDE",
-          "Chords AC and BD are perpendicular"
+          "The chords AC and BD are perpendicular"
         ],
-        "incomplete_question": "Find the maximum area of a convex pentagon P=ABCDE subject to the condition that the chords AC and BD are perpendicular."
+        "incomplete_question": "A convex pentagon P=ABCDE. Find the maximum area of P subject to the condition that the chords AC and BD are perpendicular."
       },
       {
         "variant_id": "17_remove_1",
         "removed_condition_index": 1,
         "removed_condition": "The chords AC and BD are perpendicular",
         "remaining_conditions": [
-          "A convex pentagon P=ABCDE",
-          "Inscribed in a circle of radius 1"
+          "A convex pentagon P=ABCDE is inscribed in a circle of radius 1"
         ],
-        "incomplete_question": "Find the maximum area of a convex pentagon P=ABCDE."
+        "incomplete_question": "A convex pentagon P=ABCDE is inscribed in a circle of radius 1. Find the maximum area of P."
       }
     ]
   },
@@ -1029,37 +1212,40 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      836
+      998
     ],
     "gpt4o_mini_completion_lengths": [
-      342
+      349
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
       "there always exists a monochromatic triangle or a monochromatic quadrilateral",
+      "the number of vertices is 10",
+      "the number of edges is n",
       "the graph is 2-colored",
       "10 vertices",
       "n edges"
     ],
-    "num_conditions_extracted": 4,
+    "num_conditions_extracted": 6,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "18_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "10 vertices",
+        "removed_condition": "the number of vertices is 10",
         "remaining_conditions": [
           "n edges",
           "the graph is 2-colored",
           "there always exists a monochromatic triangle or a monochromatic quadrilateral"
         ],
-        "incomplete_question": "Find the smallest natural number n such that in a simple graph with vertices and n edges that is 2-colored, there always exists a monochromatic triangle or a monochromatic quadrilateral."
+        "incomplete_question": "Find the smallest natural number n such that in a simple graph with n edges that is 2-colored, there always exists a monochromatic triangle or a monochromatic quadrilateral."
       },
       {
         "variant_id": "18_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "n edges",
+        "removed_condition": "the number of edges is n",
         "remaining_conditions": [
           "10 vertices",
           "the graph is 2-colored",
@@ -1101,7 +1287,7 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      874
+      1036
     ],
     "gpt4o_mini_completion_lengths": [
       358
@@ -1109,9 +1295,45 @@
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
-    "all_extracted_conditions": [],
-    "num_conditions_extracted": 0,
-    "removal_variants": []
+    "all_extracted_conditions": [
+      "|\\overrightarrow{a}+ \\overrightarrow{b}|= \\sqrt {3}",
+      "\\overrightarrow{a}=(1, \\sqrt {3})",
+      "|\\overrightarrow{b}|=1"
+    ],
+    "num_conditions_extracted": 3,
+    "is_multiple_choice": false,
+    "removal_variants": [
+      {
+        "variant_id": "19_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "|\\overrightarrow{b}|=1",
+        "remaining_conditions": [
+          "\\overrightarrow{a}=(1, \\sqrt {3})",
+          "|\\overrightarrow{a}+ \\overrightarrow{b}|= \\sqrt {3}"
+        ],
+        "incomplete_question": "Given vectors \\overrightarrow{a}=(1, \\sqrt {3}) and |\\overrightarrow{a}+ \\overrightarrow{b}|= \\sqrt {3}, then the angle between \\overrightarrow{a} and \\overrightarrow{b} is ______."
+      },
+      {
+        "variant_id": "19_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "|\\overrightarrow{a}+ \\overrightarrow{b}|= \\sqrt {3}",
+        "remaining_conditions": [
+          "\\overrightarrow{a}=(1, \\sqrt {3})",
+          "|\\overrightarrow{b}|=1"
+        ],
+        "incomplete_question": "Given vectors \\overrightarrow{a}=(1, \\sqrt {3}) and |\\overrightarrow{b}|=1, then the angle between \\overrightarrow{a} and \\overrightarrow{b} is ______."
+      },
+      {
+        "variant_id": "19_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "\\overrightarrow{a}=(1, \\sqrt {3})",
+        "remaining_conditions": [
+          "|\\overrightarrow{b}|=1",
+          "|\\overrightarrow{a}+ \\overrightarrow{b}|= \\sqrt {3}"
+        ],
+        "incomplete_question": "Given vectors \\overrightarrow{b} with |\\overrightarrow{b}|=1 and |\\overrightarrow{a}+ \\overrightarrow{b}|= \\sqrt {3}, then the angle between \\overrightarrow{a} and \\overrightarrow{b} is ______."
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -1123,17 +1345,68 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      888
+      1050
     ],
     "gpt4o_mini_completion_lengths": [
-      430
+      820
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
-    "all_extracted_conditions": [],
-    "num_conditions_extracted": 0,
-    "removal_variants": []
+    "all_extracted_conditions": [
+      "| \\overrightarrow {a} + \\overrightarrow {b} | = | \\overrightarrow {a} - \\overrightarrow {b} |",
+      "| \\overrightarrow {a} + \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |",
+      "| \\overrightarrow {a} | \\neq 0",
+      "| \\overrightarrow {b} | \\neq 0"
+    ],
+    "num_conditions_extracted": 4,
+    "is_multiple_choice": false,
+    "removal_variants": [
+      {
+        "variant_id": "20_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "| \\overrightarrow {a} + \\overrightarrow {b} | = | \\overrightarrow {a} - \\overrightarrow {b} |",
+        "remaining_conditions": [
+          "| \\overrightarrow {a} + \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |",
+          "| \\overrightarrow {a} | \\neq 0",
+          "| \\overrightarrow {b} | \\neq 0"
+        ],
+        "incomplete_question": "Given two non-zero vectors $\\overrightarrow {a}$ and $\\overrightarrow {b}$ that satisfy $| \\overrightarrow {a} + \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |$, find the angle between vector $\\overrightarrow {b}$ and $\\overrightarrow {a} + \\overrightarrow {b}$."
+      },
+      {
+        "variant_id": "20_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "| \\overrightarrow {a} + \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |",
+        "remaining_conditions": [
+          "| \\overrightarrow {a} + \\overrightarrow {b} | = | \\overrightarrow {a} - \\overrightarrow {b} |",
+          "| \\overrightarrow {a} | \\neq 0",
+          "| \\overrightarrow {b} | \\neq 0"
+        ],
+        "incomplete_question": "Given two non-zero vectors $\\overrightarrow {a}$ and $\\overrightarrow {b}$ that satisfy $| \\overrightarrow {a} + \\overrightarrow {b} | = | \\overrightarrow {a} - \\overrightarrow {b} |$, find the angle between vector $\\overrightarrow {b}$ and $\\overrightarrow {a} + \\overrightarrow {b}$."
+      },
+      {
+        "variant_id": "20_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "| \\overrightarrow {a} | \\neq 0",
+        "remaining_conditions": [
+          "| \\overrightarrow {a} + \\overrightarrow {b} | = | \\overrightarrow {a} - \\overrightarrow {b} |",
+          "| \\overrightarrow {a} + \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |",
+          "| \\overrightarrow {b} | \\neq 0"
+        ],
+        "incomplete_question": "Given two non-zero vectors $\\overrightarrow {a}$ and $\\overrightarrow {b}$ that satisfy $| \\overrightarrow {a} + \\overrightarrow {b} | = | \\overrightarrow {a} - \\overrightarrow {b} |$ and $| \\overrightarrow {a} + \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |$, find the angle between vector $\\overrightarrow {b}$ and $\\overrightarrow {a} + \\overrightarrow {b}$."
+      },
+      {
+        "variant_id": "20_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "| \\overrightarrow {b} | \\neq 0",
+        "remaining_conditions": [
+          "| \\overrightarrow {a} + \\overrightarrow {b} | = | \\overrightarrow {a} - \\overrightarrow {b} |",
+          "| \\overrightarrow {a} + \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |",
+          "| \\overrightarrow {a} | \\neq 0"
+        ],
+        "incomplete_question": "Given two non-zero vectors $\\overrightarrow {a}$ and $\\overrightarrow {b}$ that satisfy $| \\overrightarrow {a} + \\overrightarrow {b} | = | \\overrightarrow {a} - \\overrightarrow {b} |$ and $| \\overrightarrow {a} + \\overrightarrow {b} | = \\sqrt {2} | \\overrightarrow {a} |$, find the angle between vector $\\overrightarrow {b}$ and $\\overrightarrow {a} + \\overrightarrow {b}$."
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -1145,7 +1418,7 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      953
+      1115
     ],
     "gpt4o_mini_completion_lengths": [
       1007
@@ -1153,9 +1426,96 @@
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
-    "all_extracted_conditions": [],
-    "num_conditions_extracted": 0,
-    "removal_variants": []
+    "all_extracted_conditions": [
+      "DB=b_{1}",
+      "DA=a_{1}",
+      "DC=c_{1}",
+      "AB=c",
+      "CA=b",
+      "BC=a"
+    ],
+    "num_conditions_extracted": 6,
+    "is_multiple_choice": false,
+    "removal_variants": [
+      {
+        "variant_id": "21_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "AB=c",
+        "remaining_conditions": [
+          "BC=a",
+          "CA=b",
+          "DA=a_{1}",
+          "DB=b_{1}",
+          "DC=c_{1}"
+        ],
+        "incomplete_question": "The edges of tetrahedron $ABCD$ are given as $BC=a$, $CA=b$, $DA=a_{1}$, $DB=b_{1}$, and $DC=c_{1}$. Let $h$ be the length of the median line from vertex $D$. Prove that $h^{2}=\\frac{1}{3}\\left(a_{1}^{2}+b_{1}^{2}+c_{1}^{2}\\right)-\\frac{1}{9}\\left(a^{2}+b^{2}+c^{2}\\right)$"
+      },
+      {
+        "variant_id": "21_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "BC=a",
+        "remaining_conditions": [
+          "AB=c",
+          "CA=b",
+          "DA=a_{1}",
+          "DB=b_{1}",
+          "DC=c_{1}"
+        ],
+        "incomplete_question": "The edges of tetrahedron $ABCD$ are given as $AB=c$, $CA=b$, $DA=a_{1}$, $DB=b_{1}$, and $DC=c_{1}$. Let $h$ be the length of the median line from vertex $D$. Prove that $h^{2}=\\frac{1}{3}\\left(a_{1}^{2}+b_{1}^{2}+c_{1}^{2}\\right)-\\frac{1}{9}\\left(a^{2}+b^{2}+c^{2}\\right)$"
+      },
+      {
+        "variant_id": "21_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "CA=b",
+        "remaining_conditions": [
+          "AB=c",
+          "BC=a",
+          "DA=a_{1}",
+          "DB=b_{1}",
+          "DC=c_{1}"
+        ],
+        "incomplete_question": "The edges of tetrahedron $ABCD$ are given as $AB=c$, $BC=a$, $DA=a_{1}$, $DB=b_{1}$, and $DC=c_{1}$. Let $h$ be the length of the median line from vertex $D$. Prove that $h^{2}=\\frac{1}{3}\\left(a_{1}^{2}+b_{1}^{2}+c_{1}^{2}\\right)-\\frac{1}{9}\\left(a^{2}+b^{2}+c^{2}\\right)$"
+      },
+      {
+        "variant_id": "21_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "DA=a_{1}",
+        "remaining_conditions": [
+          "AB=c",
+          "BC=a",
+          "CA=b",
+          "DB=b_{1}",
+          "DC=c_{1}"
+        ],
+        "incomplete_question": "The edges of tetrahedron $ABCD$ are given as $AB=c$, $BC=a$, $CA=b$, $DB=b_{1}$, and $DC=c_{1}$. Let $h$ be the length of the median line from vertex $D$. Prove that $h^{2}=\\frac{1}{3}\\left(a_{1}^{2}+b_{1}^{2}+c_{1}^{2}\\right)-\\frac{1}{9}\\left(a^{2}+b^{2}+c^{2}\\right)$"
+      },
+      {
+        "variant_id": "21_remove_4",
+        "removed_condition_index": 4,
+        "removed_condition": "DB=b_{1}",
+        "remaining_conditions": [
+          "AB=c",
+          "BC=a",
+          "CA=b",
+          "DA=a_{1}",
+          "DC=c_{1}"
+        ],
+        "incomplete_question": "The edges of tetrahedron $ABCD$ are given as $AB=c$, $BC=a$, $CA=b$, $DA=a_{1}$, and $DC=c_{1}$. Let $h$ be the length of the median line from vertex $D$. Prove that $h^{2}=\\frac{1}{3}\\left(a_{1}^{2}+b_{1}^{2}+c_{1}^{2}\\right)-\\frac{1}{9}\\left(a^{2}+b^{2}+c^{2}\\right)$"
+      },
+      {
+        "variant_id": "21_remove_5",
+        "removed_condition_index": 5,
+        "removed_condition": "DC=c_{1}",
+        "remaining_conditions": [
+          "AB=c",
+          "BC=a",
+          "CA=b",
+          "DA=a_{1}",
+          "DB=b_{1}"
+        ],
+        "incomplete_question": "The edges of tetrahedron $ABCD$ are given as $AB=c$, $BC=a$, $CA=b$, $DA=a_{1}$, and $DB=b_{1}$. Let $h$ be the length of the median line from vertex $D$. Prove that $h^{2}=\\frac{1}{3}\\left(a_{1}^{2}+b_{1}^{2}+c_{1}^{2}\\right)-\\frac{1}{9}\\left(a^{2}+b^{2}+c^{2}\\right)$"
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -1167,52 +1527,60 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      880
+      1042
     ],
     "gpt4o_mini_completion_lengths": [
-      318
+      611
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
-      "Consider the region A in the complex plane that consists of all points z such that both \\frac{z}{40} and \\frac{40}{\\overline{z}} have real and imaginary parts between 0 and 1, inclusive.",
-      "The region A consists of all points z such that both \\frac{z}{40} and \\frac{40}{\\overline{z}} have real and imaginary parts between 0 and 1, inclusive.",
-      "Both \\frac{z}{40} and \\frac{40}{\\overline{z}} have real and imaginary parts between 0 and 1, inclusive.",
-      "Consider the region A in the complex plane.",
-      "The numerical value 40.",
-      "Find the area of A."
+      "the region $A^{}_{}$ in the complex plane that consists of all points $z^{}_{}$ such that both \\frac{z^{}_{}}{40} and \\frac{40^{}_{}}{\\overline{z}} have real and imaginary parts between 0^{}_{} and 1^{}_{}",
+      "both \\frac{z^{}_{}}{40} and \\frac{40^{}_{}}{\\overline{z}} have real and imaginary parts between 0^{}_{} and 1^{}_{}",
+      "the region $A^{}_{}$ in the complex plane that consists of all points $z^{}_{}$",
+      "the region $A^{}_{}$ in the complex plane",
+      "the area of $A$ is 1200 - 200 \\pi",
+      "the value 40"
     ],
     "num_conditions_extracted": 6,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "22_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "The region A consists of all points z such that both \\frac{z}{40} and \\frac{40}{\\overline{z}} have real and imaginary parts between 0 and 1, inclusive.",
+        "removed_condition": "both \\frac{z^{}_{}}{40} and \\frac{40^{}_{}}{\\overline{z}} have real and imaginary parts between 0^{}_{} and 1^{}_{}",
         "remaining_conditions": [
-          "Find the area of A."
+          "the region $A^{}_{}$ in the complex plane that consists of all points $z^{}_{}$"
         ],
-        "incomplete_question": "Find the area of a region in the complex plane."
+        "incomplete_question": "Consider the region $A^{}_{}$ in the complex plane that consists of all points $z^{}_{}$. Find the area of $A.$"
       },
       {
         "variant_id": "22_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "Both \\frac{z}{40} and \\frac{40}{\\overline{z}} have real and imaginary parts between 0 and 1, inclusive.",
+        "removed_condition": "the region $A^{}_{}$ in the complex plane",
         "remaining_conditions": [
-          "Consider the region A in the complex plane.",
-          "Find the area of A."
+          "both \\frac{z^{}_{}}{40} and \\frac{40^{}_{}}{\\overline{z}} have real and imaginary parts between 0^{}_{} and 1^{}_{}"
         ],
-        "incomplete_question": "Consider the region A in the complex plane. Find the area of A."
+        "incomplete_question": "Find the area of $A$ such that both \\frac{z^{}_{}}{40} and \\frac{40^{}_{}}{\\overline{z}} have real and imaginary parts between 0^{}_{} and 1^{}_{}."
       },
       {
         "variant_id": "22_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "The numerical value 40.",
+        "removed_condition": "the value 40",
         "remaining_conditions": [
-          "Consider the region A in the complex plane that consists of all points z such that both \\frac{z}{40} and \\frac{40}{\\overline{z}} have real and imaginary parts between 0 and 1, inclusive.",
-          "Find the area of A."
+          "both \\frac{z^{}_{}}{40} and \\frac{40^{}_{}}{\\overline{z}} have real and imaginary parts between 0^{}_{} and 1^{}_{}"
         ],
-        "incomplete_question": "Consider the region A in the complex plane that consists of all points z such that both \\frac{z}{x} and \\frac{x}{\\overline{z}} have real and imaginary parts between 0 and 1, inclusive. Find the area of A."
+        "incomplete_question": "Consider the region $A^{}_{}$ in the complex plane that consists of all points $z^{}_{}$ such that both \\frac{z^{}_{}}{x} and \\frac{x^{}_{}}{\\overline{z}} have real and imaginary parts between 0^{}_{} and 1^{}_{} for some $x$. Find the area of $A.$"
+      },
+      {
+        "variant_id": "22_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "the area of $A$ is 1200 - 200 \\pi",
+        "remaining_conditions": [
+          "the region $A^{}_{}$ in the complex plane that consists of all points $z^{}_{}$ such that both \\frac{z^{}_{}}{40} and \\frac{40^{}_{}}{\\overline{z}} have real and imaginary parts between 0^{}_{} and 1^{}_{}"
+        ],
+        "incomplete_question": "Consider the region $A^{}_{}$ in the complex plane that consists of all points $z^{}_{}$ such that both \\frac{z^{}_{}}{40} and \\frac{40^{}_{}}{\\overline{z}} have real and imaginary parts between 0^{}_{} and 1^{}_{}. What is the area of $A$?"
       }
     ]
   },
@@ -1226,48 +1594,52 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      1059
+      1221
     ],
     "gpt4o_mini_completion_lengths": [
-      329
+      337
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
-      "A ray of light passing through the point A = (-3,9,11)",
-      "reflects off the plane x + y + z = 12 at B",
-      "then passes through the point C = (3,5,9)"
+      "A ray of light passing through the point A = (-3,9,11) reflects off the plane x + y + z = 12 at B",
+      "A ray of light passing through the point A = (-3,9,11) reflects off the plane at B",
+      "The ray of light reflects off the plane x + y + z = 12 at B",
+      "The ray then passes through the point C = (3,5,9)",
+      "The equation of the plane is x + y + z = 12",
+      "The point A = (-3,9,11)",
+      "The point C = (3,5,9)"
     ],
-    "num_conditions_extracted": 3,
+    "num_conditions_extracted": 7,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "23_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "A ray of light passing through the point A = (-3,9,11)",
+        "removed_condition": "The point A = (-3,9,11)",
         "remaining_conditions": [
-          "reflects off the plane x + y + z = 12 at B",
-          "then passes through the point C = (3,5,9)"
+          "The ray of light reflects off the plane x + y + z = 12 at B",
+          "The ray then passes through the point C = (3,5,9)"
         ],
-        "incomplete_question": "A ray of light reflects off the plane x + y + z = 12 at B, and then passes through the point C = (3,5,9). Find the point B."
+        "incomplete_question": "A ray of light reflects off the plane x + y + z = 12 at B and then passes through the point C = (3,5,9). Find the point B."
       },
       {
         "variant_id": "23_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "reflects off the plane x + y + z = 12 at B",
+        "removed_condition": "The equation of the plane is x + y + z = 12",
         "remaining_conditions": [
-          "A ray of light passing through the point A = (-3,9,11)",
-          "then passes through the point C = (3,5,9)"
+          "A ray of light passing through the point A = (-3,9,11) reflects off the plane at B",
+          "The ray then passes through the point C = (3,5,9)"
         ],
-        "incomplete_question": "A ray of light passing through the point A = (-3,9,11) then passes through the point C = (3,5,9). Find the point B."
+        "incomplete_question": "A ray of light passing through the point A = (-3,9,11) reflects off the plane at B and then passes through the point C = (3,5,9). Find the point B."
       },
       {
         "variant_id": "23_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "then passes through the point C = (3,5,9)",
+        "removed_condition": "The point C = (3,5,9)",
         "remaining_conditions": [
-          "A ray of light passing through the point A = (-3,9,11)",
-          "reflects off the plane x + y + z = 12 at B"
+          "A ray of light passing through the point A = (-3,9,11) reflects off the plane x + y + z = 12 at B"
         ],
         "incomplete_question": "A ray of light passing through the point A = (-3,9,11) reflects off the plane x + y + z = 12 at B. Find the point B."
       }
@@ -1283,52 +1655,56 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      847
+      1009
     ],
     "gpt4o_mini_completion_lengths": [
-      303
+      309
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
-      "Find the radius of the sphere inscribed in the cone",
-      "When the volume of the cone is maximized",
-      "A cone is inscribed in the sphere O",
-      "The radius of the sphere is 2"
+      "find the radius of the sphere inscribed in the cone",
+      "when the volume of the cone is maximized",
+      "a cone is inscribed in the sphere O",
+      "given a sphere O with a radius of 2",
+      "the radius of 2",
+      "a sphere O"
     ],
-    "num_conditions_extracted": 4,
+    "num_conditions_extracted": 6,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "24_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "The radius of the sphere is 2",
+        "removed_condition": "the radius of 2",
         "remaining_conditions": [
-          "A cone is inscribed in the sphere O",
-          "When the volume of the cone is maximized",
-          "Find the radius of the sphere inscribed in the cone"
+          "a sphere O",
+          "a cone is inscribed in the sphere O",
+          "when the volume of the cone is maximized",
+          "find the radius of the sphere inscribed in the cone"
         ],
         "incomplete_question": "Given a sphere O, a cone is inscribed in the sphere O. When the volume of the cone is maximized, find the radius of the sphere inscribed in the cone."
       },
       {
         "variant_id": "24_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "A cone is inscribed in the sphere O",
+        "removed_condition": "a cone is inscribed in the sphere O",
         "remaining_conditions": [
-          "The radius of the sphere is 2",
-          "When the volume of the cone is maximized",
-          "Find the radius of the sphere inscribed in the cone"
+          "given a sphere O with a radius of 2",
+          "when the volume of the cone is maximized",
+          "find the radius of the sphere inscribed in the cone"
         ],
         "incomplete_question": "Given a sphere O with a radius of 2, when the volume of the cone is maximized, find the radius of the sphere inscribed in the cone."
       },
       {
         "variant_id": "24_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "When the volume of the cone is maximized",
+        "removed_condition": "when the volume of the cone is maximized",
         "remaining_conditions": [
-          "The radius of the sphere is 2",
-          "A cone is inscribed in the sphere O",
-          "Find the radius of the sphere inscribed in the cone"
+          "given a sphere O with a radius of 2",
+          "a cone is inscribed in the sphere O",
+          "find the radius of the sphere inscribed in the cone"
         ],
         "incomplete_question": "Given a sphere O with a radius of 2, a cone is inscribed in the sphere O. Find the radius of the sphere inscribed in the cone."
       }
@@ -1344,24 +1720,22 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      898
+      1060
     ],
     "gpt4o_mini_completion_lengths": [
-      755
+      512
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
-      "let θ be the measure of the dihedral angle formed by faces OAB and OBC",
-      "given that cos θ=m+√n, where m and n are integers, find m+n",
-      "given that cos θ=m+√n, where m and n are integers",
-      "pyramid OABCD has square base ABCD",
-      "congruent edges OA, OB, OC, and OD",
+      "cos θ=m+√n, where m and n are integers",
       "Pyramid OABCD has square base ABCD",
+      "congruent edges OA, OB, OC, and OD",
       "angle AOB=45°"
     ],
-    "num_conditions_extracted": 7,
+    "num_conditions_extracted": 4,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "25_remove_0",
@@ -1370,58 +1744,42 @@
         "remaining_conditions": [
           "congruent edges OA, OB, OC, and OD",
           "angle AOB=45°",
-          "let θ be the measure of the dihedral angle formed by faces OAB and OBC",
-          "given that cos θ=m+√n, where m and n are integers, find m+n"
+          "cos θ=m+√n, where m and n are integers"
         ],
-        "incomplete_question": "Congruent edges OA, OB, OC, and OD, angle AOB=45°. Let θ be the measure of the dihedral angle formed by faces OAB and OBC. Given that cos θ=m+√n, where m and n are integers, find m+n."
+        "incomplete_question": "Given congruent edges OA, OB, OC, and OD, and angle AOB=45°, let θ be the measure of the dihedral angle formed by faces OAB and OBC. Given that cos θ=m+√n, where m and n are integers, find m+n."
       },
       {
         "variant_id": "25_remove_1",
         "removed_condition_index": 1,
         "removed_condition": "congruent edges OA, OB, OC, and OD",
         "remaining_conditions": [
-          "pyramid OABCD has square base ABCD",
+          "Pyramid OABCD has square base ABCD",
           "angle AOB=45°",
-          "let θ be the measure of the dihedral angle formed by faces OAB and OBC",
-          "given that cos θ=m+√n, where m and n are integers, find m+n"
+          "cos θ=m+√n, where m and n are integers"
         ],
-        "incomplete_question": "Pyramid OABCD has square base ABCD, angle AOB=45°. Let θ be the measure of the dihedral angle formed by faces OAB and OBC. Given that cos θ=m+√n, where m and n are integers, find m+n."
+        "incomplete_question": "Pyramid OABCD has square base ABCD and angle AOB=45°. Let θ be the measure of the dihedral angle formed by faces OAB and OBC. Given that cos θ=m+√n, where m and n are integers, find m+n."
       },
       {
         "variant_id": "25_remove_2",
         "removed_condition_index": 2,
         "removed_condition": "angle AOB=45°",
         "remaining_conditions": [
-          "pyramid OABCD has square base ABCD",
+          "Pyramid OABCD has square base ABCD",
           "congruent edges OA, OB, OC, and OD",
-          "let θ be the measure of the dihedral angle formed by faces OAB and OBC",
-          "given that cos θ=m+√n, where m and n are integers, find m+n"
+          "cos θ=m+√n, where m and n are integers"
         ],
-        "incomplete_question": "Pyramid OABCD has square base ABCD, congruent edges OA, OB, OC, and OD. Let θ be the measure of the dihedral angle formed by faces OAB and OBC. Given that cos θ=m+√n, where m and n are integers, find m+n."
+        "incomplete_question": "Pyramid OABCD has square base ABCD with congruent edges OA, OB, OC, and OD. Let θ be the measure of the dihedral angle formed by faces OAB and OBC. Given that cos θ=m+√n, where m and n are integers, find m+n."
       },
       {
         "variant_id": "25_remove_3",
         "removed_condition_index": 3,
-        "removed_condition": "let θ be the measure of the dihedral angle formed by faces OAB and OBC",
+        "removed_condition": "cos θ=m+√n, where m and n are integers",
         "remaining_conditions": [
-          "pyramid OABCD has square base ABCD",
+          "Pyramid OABCD has square base ABCD",
           "congruent edges OA, OB, OC, and OD",
-          "angle AOB=45°",
-          "given that cos θ=m+√n, where m and n are integers, find m+n"
+          "angle AOB=45°"
         ],
-        "incomplete_question": "Pyramid OABCD has square base ABCD, congruent edges OA, OB, OC, and OD, angle AOB=45°. Given that cos θ=m+√n, where m and n are integers, find m+n."
-      },
-      {
-        "variant_id": "25_remove_4",
-        "removed_condition_index": 4,
-        "removed_condition": "given that cos θ=m+√n, where m and n are integers",
-        "remaining_conditions": [
-          "pyramid OABCD has square base ABCD",
-          "congruent edges OA, OB, OC, and OD",
-          "angle AOB=45°",
-          "let θ be the measure of the dihedral angle formed by faces OAB and OBC"
-        ],
-        "incomplete_question": "Pyramid OABCD has square base ABCD, congruent edges OA, OB, OC, and OD, angle AOB=45°. Let θ be the measure of the dihedral angle formed by faces OAB and OBC. Find m+n."
+        "incomplete_question": "Pyramid OABCD has square base ABCD with congruent edges OA, OB, OC, and OD, and angle AOB=45°. Let θ be the measure of the dihedral angle formed by faces OAB and OBC. Find m+n."
       }
     ]
   },
@@ -1435,10 +1793,10 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      822
+      984
     ],
     "gpt4o_mini_completion_lengths": [
-      333
+      332
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
@@ -1450,6 +1808,7 @@
       "divided by an integer"
     ],
     "num_conditions_extracted": 4,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "26_remove_0",
@@ -1460,7 +1819,7 @@
           "with the quotient rounded to one decimal place being 2.5",
           "will have the smallest divisor as"
         ],
-        "incomplete_question": "An integer divided by another integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as?"
+        "incomplete_question": "An integer divided by another integer, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:"
       },
       {
         "variant_id": "26_remove_1",
@@ -1471,7 +1830,7 @@
           "with the quotient rounded to one decimal place being 2.5",
           "will have the smallest divisor as"
         ],
-        "incomplete_question": "The largest three-digit number, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as?"
+        "incomplete_question": "The largest three-digit number, with the quotient rounded to one decimal place being 2.5, will have the smallest divisor as:"
       },
       {
         "variant_id": "26_remove_2",
@@ -1482,7 +1841,7 @@
           "divided by an integer",
           "will have the smallest divisor as"
         ],
-        "incomplete_question": "The largest three-digit number divided by an integer will have the smallest divisor as?"
+        "incomplete_question": "The largest three-digit number divided by an integer will have the smallest divisor as:"
       },
       {
         "variant_id": "26_remove_3",
@@ -1493,7 +1852,7 @@
           "divided by an integer",
           "with the quotient rounded to one decimal place being 2.5"
         ],
-        "incomplete_question": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, will have what?"
+        "incomplete_question": "The largest three-digit number divided by an integer, with the quotient rounded to one decimal place being 2.5, is what?"
       }
     ]
   },
@@ -1507,43 +1866,53 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      869
+      1031
     ],
     "gpt4o_mini_completion_lengths": [
-      163
+      334
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
-      "Investigate the stability of the equilibrium point for the system",
-      "Investigate the stability of the equilibrium point x=0, y=0",
-      "The system is given by dx/dt=y^3+x^5, dy/dt=x^3+y^5",
-      "The equilibrium point is x=0, y=0",
-      "dx/dt=y^3+x^5",
-      "dy/dt=x^3+y^5"
+      "the equilibrium point x=0, y=0",
+      "\\frac{d x}{d t}=y^{3}+x^{5}",
+      "\\frac{d y}{d t}=x^{3}+y^{5}",
+      "the system"
     ],
-    "num_conditions_extracted": 6,
+    "num_conditions_extracted": 4,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "27_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "The equilibrium point is x=0, y=0",
+        "removed_condition": "the equilibrium point x=0, y=0",
         "remaining_conditions": [
-          "Investigate the stability of the equilibrium point for the system",
-          "dx/dt=y^3+x^5",
-          "dy/dt=x^3+y^5"
+          "the system",
+          "\\frac{d x}{d t}=y^{3}+x^{5}",
+          "\\frac{d y}{d t}=x^{3}+y^{5}"
         ],
-        "incomplete_question": "Investigate the stability of the equilibrium point for the system"
+        "incomplete_question": "Investigate the stability of the equilibrium point for the system \\{\\frac{d x}{d t}=y^{3}+x^{5}, \\frac{d y}{d t}=x^{3}+y^{5}\\}"
       },
       {
         "variant_id": "27_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "The system is given by dx/dt=y^3+x^5, dy/dt=x^3+y^5",
+        "removed_condition": "\\frac{d x}{d t}=y^{3}+x^{5}",
         "remaining_conditions": [
-          "Investigate the stability of the equilibrium point x=0, y=0"
+          "the equilibrium point x=0, y=0",
+          "\\frac{d y}{d t}=x^{3}+y^{5}"
         ],
-        "incomplete_question": "Investigate the stability of the equilibrium point x=0, y=0"
+        "incomplete_question": "Investigate the stability of the equilibrium point x=0, y=0 for the system \\{\\frac{d y}{d t}=x^{3}+y^{5}\\}"
+      },
+      {
+        "variant_id": "27_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "\\frac{d y}{d t}=x^{3}+y^{5}",
+        "remaining_conditions": [
+          "the equilibrium point x=0, y=0",
+          "\\frac{d x}{d t}=y^{3}+x^{5}"
+        ],
+        "incomplete_question": "Investigate the stability of the equilibrium point x=0, y=0 for the system \\{\\frac{d x}{d t}=y^{3}+x^{5}\\}"
       }
     ]
   },
@@ -1557,59 +1926,42 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      1131
+      1293
     ],
     "gpt4o_mini_completion_lengths": [
-      532
+      171
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
-      "(E) \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}",
-      "(D) \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}",
-      "(C) \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}",
-      "(B) \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}",
-      "(A) \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}",
-      "The line y = \\frac{5}{3} x - \\frac{17}{3} is to be parameterized using vectors",
-      "The line y = \\frac{5}{3} x - \\frac{17}{3} is to be parameterized",
-      "Which of the following options are valid parameterizations?",
-      "The line y = \\frac{5}{3} x - \\frac{17}{3}",
-      "is to be parameterized using vectors"
+      "The line y = 5/3 x - 17/3 is to be parameterized using vectors.",
+      "The line y = 5/3 x - 17/3",
+      "y = 5/3 x - 17/3"
     ],
-    "num_conditions_extracted": 10,
+    "num_conditions_extracted": 3,
+    "is_multiple_choice": true,
     "removal_variants": [
       {
         "variant_id": "28_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "The line y = \\frac{5}{3} x - \\frac{17}{3} is to be parameterized",
-        "remaining_conditions": [
-          "Which of the following options are valid parameterizations?"
-        ],
-        "incomplete_question": "Which of the following options are valid parameterizations?"
+        "removed_condition": "The line y = 5/3 x - 17/3",
+        "remaining_conditions": [],
+        "incomplete_question": "A line is to be parameterized using vectors. Which of the following options are valid parameterizations?\n\n(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$\n\n(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$\n\n(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$\n\n(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$\n\n(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$\n\nEnter the letters of the correct options, separated by commas."
       },
       {
         "variant_id": "28_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "The line y = \\frac{5}{3} x - \\frac{17}{3}",
-        "remaining_conditions": [
-          "is to be parameterized using vectors",
-          "Which of the following options are valid parameterizations?"
-        ],
-        "incomplete_question": "A line is to be parameterized using vectors. Which of the following options are valid parameterizations?"
+        "removed_condition": "y = 5/3 x - 17/3",
+        "remaining_conditions": [],
+        "incomplete_question": "The line is to be parameterized using vectors. Which of the following options are valid parameterizations?\n\n(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$\n\n(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$\n\n(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$\n\n(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$\n\n(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$\n\nEnter the letters of the correct options, separated by commas."
       },
       {
         "variant_id": "28_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "The line y = \\frac{5}{3} x - \\frac{17}{3} is to be parameterized using vectors",
-        "remaining_conditions": [
-          "(A) \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}",
-          "(B) \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}",
-          "(C) \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}",
-          "(D) \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}",
-          "(E) \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}"
-        ],
-        "incomplete_question": "Which of the following options are valid parameterizations?"
+        "removed_condition": "The line y = 5/3 x - 17/3 is to be parameterized using vectors.",
+        "remaining_conditions": [],
+        "incomplete_question": "Which of the following options are valid parameterizations?\n\n(A) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}$\n\n(B) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$\n\n(C) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -7/3 \\end{pmatrix} + t \\begin{pmatrix} 3/5 \\\\ 1 \\end{pmatrix}$\n\n(D) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 14/5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 1 \\\\ 3/5 \\end{pmatrix}$\n\n(E) $\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -17/3 \\end{pmatrix} + t \\begin{pmatrix} 15 \\\\ -25 \\end{pmatrix}$\n\nEnter the letters of the correct options, separated by commas."
       }
     ]
   },
@@ -1623,7 +1975,7 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      845
+      1007
     ],
     "gpt4o_mini_completion_lengths": [
       279
@@ -1632,12 +1984,13 @@
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
-      "In the 2013 Zhejiang College Entrance Examination",
       "arrange the six letters A, B, C, D, E, F in a row",
+      "In the 2013 Zhejiang College Entrance Examination",
       "both A and B on the same side of C",
       "the six letters A, B, C, D, E, F"
     ],
     "num_conditions_extracted": 4,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "29_remove_0",
@@ -1679,50 +2032,51 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      861
+      1023
     ],
     "gpt4o_mini_completion_lengths": [
-      252
+      245
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
-      "Sasha tried to type an 8-digit number, but only 202020 was printed.",
-      "The key for the digit 1 is not working.",
-      "Sasha tried to type an 8-digit number.",
-      "Only 202020 was printed."
+      "the key for the digit 1 is not working",
+      "Sasha tried to type an 8-digit number",
+      "only 202020 was printed"
     ],
-    "num_conditions_extracted": 4,
+    "num_conditions_extracted": 3,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "30_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "The key for the digit 1 is not working.",
+        "removed_condition": "Sasha tried to type an 8-digit number",
         "remaining_conditions": [
-          "Sasha tried to type an 8-digit number, but only 202020 was printed."
+          "the key for the digit 1 is not working",
+          "only 202020 was printed"
         ],
-        "incomplete_question": "Sasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?"
+        "incomplete_question": "On a computer keyboard, the key for the digit 1 is not working and only 202020 was printed. How many 8-digit numbers satisfy this condition?"
       },
       {
         "variant_id": "30_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "Sasha tried to type an 8-digit number.",
+        "removed_condition": "only 202020 was printed",
         "remaining_conditions": [
-          "The key for the digit 1 is not working.",
-          "Only 202020 was printed."
+          "Sasha tried to type an 8-digit number",
+          "the key for the digit 1 is not working"
         ],
-        "incomplete_question": "The key for the digit 1 is not working. Only 202020 was printed. How many 8-digit numbers satisfy this condition?"
+        "incomplete_question": "Sasha tried to type an 8-digit number, but how many 8-digit numbers satisfy this condition?"
       },
       {
         "variant_id": "30_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "Only 202020 was printed.",
+        "removed_condition": "the key for the digit 1 is not working",
         "remaining_conditions": [
-          "The key for the digit 1 is not working.",
-          "Sasha tried to type an 8-digit number."
+          "Sasha tried to type an 8-digit number",
+          "only 202020 was printed"
         ],
-        "incomplete_question": "The key for the digit 1 is not working. Sasha tried to type an 8-digit number. How many 8-digit numbers satisfy this condition?"
+        "incomplete_question": "Sasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?"
       }
     ]
   },
@@ -1736,7 +2090,7 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      836
+      998
     ],
     "gpt4o_mini_completion_lengths": [
       249
@@ -1745,14 +2099,15 @@
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
-      "the front tires of a car wear out after 25,000 km",
       "The front tires of a car wear out after 25,000 km",
+      "the front tires of a car wear out after 25,000 km",
       "The rear tires wear out after 15,000 km",
       "the rear tires wear out after 15,000 km",
-      "15,000 km",
-      "25,000 km"
+      "25,000 km",
+      "15,000 km"
     ],
     "num_conditions_extracted": 6,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "31_remove_0",
@@ -1802,17 +2157,54 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      867
+      1029
     ],
     "gpt4o_mini_completion_lengths": [
-      330
+      327
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
-    "all_extracted_conditions": [],
-    "num_conditions_extracted": 0,
-    "removal_variants": []
+    "all_extracted_conditions": [
+      "the minimum value of f(x) on the interval [0, \\frac{\\pi}{2}] is -1",
+      "The minimum value of f(x) on the interval [0, \\frac{\\pi}{2}] is -1",
+      "The function f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a",
+      "f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a",
+      "the minimum value of f(x) is -1",
+      "The interval [0, \\frac{\\pi}{2}]"
+    ],
+    "num_conditions_extracted": 6,
+    "is_multiple_choice": false,
+    "removal_variants": [
+      {
+        "variant_id": "32_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The function f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a",
+        "remaining_conditions": [
+          "the minimum value of f(x) on the interval [0, \\frac{\\pi}{2}] is -1"
+        ],
+        "incomplete_question": "If the minimum value of f(x) on the interval [0, \\frac{\\pi}{2}] is -1, find the value of a."
+      },
+      {
+        "variant_id": "32_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "The minimum value of f(x) on the interval [0, \\frac{\\pi}{2}] is -1",
+        "remaining_conditions": [
+          "f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a"
+        ],
+        "incomplete_question": "Given the function f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a, find the value of a."
+      },
+      {
+        "variant_id": "32_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "The interval [0, \\frac{\\pi}{2}]",
+        "remaining_conditions": [
+          "f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a",
+          "the minimum value of f(x) is -1"
+        ],
+        "incomplete_question": "Given the function f(x)=\\sqrt{3} \\sin 2x + 2 \\cos^2 x + a, if the minimum value of f(x) is -1, find the value of a."
+      }
+    ]
   },
   {
     "data_source": "polaris",
@@ -1824,41 +2216,54 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      839
+      1001
     ],
     "gpt4o_mini_completion_lengths": [
-      170
+      254
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
-      "From the vertex of the right angle of triangle ABC, the median CM is drawn",
-      "The median CM is drawn from the vertex of the right angle of triangle ABC",
+      "the circle inscribed in triangle CAM touches CM at its midpoint",
       "The circle inscribed in triangle CAM touches CM at its midpoint",
-      "Find the angle BAC"
+      "From the vertex of the right angle of triangle ABC",
+      "the median CM is drawn",
+      "triangle CAM"
     ],
-    "num_conditions_extracted": 4,
+    "num_conditions_extracted": 5,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "33_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "The median CM is drawn from the vertex of the right angle of triangle ABC",
+        "removed_condition": "the median CM is drawn",
         "remaining_conditions": [
-          "The circle inscribed in triangle CAM touches CM at its midpoint",
-          "Find the angle BAC"
+          "From the vertex of the right angle of triangle ABC",
+          "The circle inscribed in triangle CAM touches CM at its midpoint"
         ],
         "incomplete_question": "From the vertex of the right angle of triangle ABC, the circle inscribed in triangle CAM touches CM at its midpoint. Find the angle BAC."
       },
       {
         "variant_id": "33_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "The circle inscribed in triangle CAM touches CM at its midpoint",
+        "removed_condition": "the circle inscribed in triangle CAM touches CM at its midpoint",
         "remaining_conditions": [
-          "From the vertex of the right angle of triangle ABC, the median CM is drawn",
-          "Find the angle BAC"
+          "From the vertex of the right angle of triangle ABC",
+          "the median CM is drawn"
         ],
         "incomplete_question": "From the vertex of the right angle of triangle ABC, the median CM is drawn. Find the angle BAC."
+      },
+      {
+        "variant_id": "33_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "triangle CAM",
+        "remaining_conditions": [
+          "From the vertex of the right angle of triangle ABC",
+          "the median CM is drawn",
+          "The circle inscribed in triangle CAM touches CM at its midpoint"
+        ],
+        "incomplete_question": "From the vertex of the right angle of triangle ABC, the median CM is drawn. The circle inscribed in a triangle touches CM at its midpoint. Find the angle BAC."
       }
     ]
   },
@@ -1872,49 +2277,49 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      841
+      1003
     ],
     "gpt4o_mini_completion_lengths": [
-      328
+      318
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
     "all_extracted_conditions": [
-      "how many such numbers are there where the unit digit is less than the ten's digit",
       "to form a six-digit number without repeating any digit",
-      "the unit digit is less than the ten's digit",
-      "Using the six digits 0, 1, 2, 3, 4, 5",
-      "without repeating any digit"
+      "where the unit digit is less than the ten's digit",
+      "using the six digits 0, 1, 2, 3, 4, 5",
+      "the six digits 0, 1, 2, 3, 4, 5"
     ],
-    "num_conditions_extracted": 5,
+    "num_conditions_extracted": 4,
+    "is_multiple_choice": false,
     "removal_variants": [
       {
         "variant_id": "34_remove_0",
         "removed_condition_index": 0,
-        "removed_condition": "Using the six digits 0, 1, 2, 3, 4, 5",
+        "removed_condition": "the six digits 0, 1, 2, 3, 4, 5",
         "remaining_conditions": [
           "to form a six-digit number without repeating any digit",
-          "how many such numbers are there where the unit digit is less than the ten's digit"
+          "where the unit digit is less than the ten's digit"
         ],
-        "incomplete_question": "To form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?"
+        "incomplete_question": "Using digits to form a six-digit number without repeating any digit, how many such numbers are there where the unit digit is less than the ten's digit?"
       },
       {
         "variant_id": "34_remove_1",
         "removed_condition_index": 1,
-        "removed_condition": "without repeating any digit",
+        "removed_condition": "to form a six-digit number without repeating any digit",
         "remaining_conditions": [
-          "Using the six digits 0, 1, 2, 3, 4, 5",
-          "how many such numbers are there where the unit digit is less than the ten's digit"
+          "using the six digits 0, 1, 2, 3, 4, 5",
+          "where the unit digit is less than the ten's digit"
         ],
-        "incomplete_question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number, how many such numbers are there where the unit digit is less than the ten's digit?"
+        "incomplete_question": "Using the six digits 0, 1, 2, 3, 4, 5, how many such numbers are there where the unit digit is less than the ten's digit?"
       },
       {
         "variant_id": "34_remove_2",
         "removed_condition_index": 2,
-        "removed_condition": "the unit digit is less than the ten's digit",
+        "removed_condition": "where the unit digit is less than the ten's digit",
         "remaining_conditions": [
-          "Using the six digits 0, 1, 2, 3, 4, 5",
+          "using the six digits 0, 1, 2, 3, 4, 5",
           "to form a six-digit number without repeating any digit"
         ],
         "incomplete_question": "Using the six digits 0, 1, 2, 3, 4, 5 to form a six-digit number without repeating any digit, how many such numbers are there?"
@@ -1931,16 +2336,70 @@
     "gpt4o_prompt_lengths": [],
     "gpt4o_completion_lengths": [],
     "gpt4o_mini_prompt_lengths": [
-      873
+      1035
     ],
     "gpt4o_mini_completion_lengths": [
-      550
+      462
     ],
     "local_prompt_lengths": [],
     "local_completion_lengths": [],
     "heuristic_count": 0,
-    "all_extracted_conditions": [],
-    "num_conditions_extracted": 0,
-    "removal_variants": []
+    "all_extracted_conditions": [
+      "An electronic clock always displays the date as an eight-digit number.",
+      "What is the last day of 2011 that can be evenly divided by 101?",
+      "The date is displayed as \\overline{2011 \\mathrm{ABCD}}",
+      "What can be evenly divided by 101?",
+      "What is the last day of 2011?",
+      "evenly divided by 101",
+      "The last day of 2011",
+      "2011"
+    ],
+    "num_conditions_extracted": 8,
+    "is_multiple_choice": false,
+    "removal_variants": [
+      {
+        "variant_id": "35_remove_0",
+        "removed_condition_index": 0,
+        "removed_condition": "The date is displayed as \\overline{2011 \\mathrm{ABCD}}",
+        "remaining_conditions": [
+          "An electronic clock always displays the date as an eight-digit number.",
+          "What is the last day of 2011 that can be evenly divided by 101?"
+        ],
+        "incomplete_question": "An electronic clock always displays the date as an eight-digit number. What is the last day of 2011 that can be evenly divided by 101?"
+      },
+      {
+        "variant_id": "35_remove_1",
+        "removed_condition_index": 1,
+        "removed_condition": "2011",
+        "remaining_conditions": [
+          "An electronic clock always displays the date as an eight-digit number.",
+          "The date is displayed as \\overline{2011 \\mathrm{ABCD}}",
+          "What is the last day of 2011 that can be evenly divided by 101?"
+        ],
+        "incomplete_question": "An electronic clock always displays the date as an eight-digit number. The date is displayed as \\overline{\\mathrm{ABCD}}. What is the last day that can be evenly divided by 101?"
+      },
+      {
+        "variant_id": "35_remove_2",
+        "removed_condition_index": 2,
+        "removed_condition": "The last day of 2011",
+        "remaining_conditions": [
+          "An electronic clock always displays the date as an eight-digit number.",
+          "The date is displayed as \\overline{2011 \\mathrm{ABCD}}",
+          "What can be evenly divided by 101?"
+        ],
+        "incomplete_question": "An electronic clock always displays the date as an eight-digit number. The date is displayed as \\overline{2011 \\mathrm{ABCD}}. What is the last day that can be evenly divided by 101?"
+      },
+      {
+        "variant_id": "35_remove_3",
+        "removed_condition_index": 3,
+        "removed_condition": "evenly divided by 101",
+        "remaining_conditions": [
+          "An electronic clock always displays the date as an eight-digit number.",
+          "The date is displayed as \\overline{2011 \\mathrm{ABCD}}",
+          "What is the last day of 2011?"
+        ],
+        "incomplete_question": "An electronic clock always displays the date as an eight-digit number. The date is displayed as \\overline{2011 \\mathrm{ABCD}}. What is the last day of 2011?"
+      }
+    ]
   }
 ]
