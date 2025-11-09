@@ -1,18 +1,3 @@
-[
-  {
-    "data_source": "polaris",
-    "id": 0,
-    "question": "The front tires of a car wear out after 25,000 km, and the rear tires wear out after 15,000 km. When should the tires be swapped so that they wear out at the same time?",
-    "ground_truth": "9375",
-    "solution": "",
-    "difficulty": "7/8"
-  },
-  {
-    "data_source": "polaris",
-    "id": 1,
-    "question": "The edges of tetrahedron $ABCD$ are given as $AB=c$, $BC=a$, $CA=b$, $DA=a_{1}$, $DB=b_{1}$, and $DC=c_{1}$. Let $h$ be the length of the median line from vertex $D$. Prove that\n\n$$\nh^{2}=\\frac{1}{3}\\left(a_{1}^{2}+b_{1}^{2}+c_{1}^{2}\\right)-\\frac{1}{9}\\left(a^{2}+b^{2}+c^{2}\\right)\n$$",
-    "ground_truth": "^2=\\frac{1}{3}(a_1^2+b_1^2+c_1^2)-\\frac{1}{9}(^2+b^2+^2)",
-    "solution": "",
-    "difficulty": "5/8"
-  }
-]
+version https://git-lfs.github.com/spec/v1
+oid sha256:3166cd752104e026d319dafc95744544f77a6751117c6e3892e6c6bf4b082231
+size 808

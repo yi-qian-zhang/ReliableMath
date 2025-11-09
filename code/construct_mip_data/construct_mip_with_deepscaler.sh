@@ -1,12 +1,14 @@
 # tmux新建会话并后台运行
 tmux new -s vllm
 tmux attach -t vllm
+tmux attach -t s1k
 Ctrl + b，然后松开，再按 d
 即可“detach”会话，返回到普通终端。
 
 tmux new -s run_construct
 tmux attach -t run_construct
 
+tmux list-sessions
 #启动DeepSeek-R1-Distill-Qwen-7B 单卡
 CUDA_VISIBLE_DEVICES=7 vllm serve /shared/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
     --served-model-name DeepSeek-R1-Distill-Qwen-7B \
@@ -102,11 +104,55 @@ python code/construct_mip_data/construct_mip_with_deepscaler.py \
     --force
 
 python code/construct_mip_data/construct_mip_with_deepscaler.py \
-    --dataset polaris_normal_5_times_8 \
+    --dataset polaris_diff_6_150 \
     --model gpt-4o-mini \
     --verify_model DeepSeek-R1-Distill-Qwen-7B \
     --temperature 1.0 \
     --max_attempts 8 \
-    --threads 16 \
-    --output_dir /home/zhangyiqian/ReliableMath/data/construct_mip_qwen_7B_16384/11-04/polaris_normal_5_times_8/deepscaler_extract \
+    --threads 32 \
+    --output_dir /home/zhangyiqian/ReliableMath/data/construct_mip_qwen_7B_16384/11-04/polaris_normal_600_times_8/deepscaler_extract \
     --force
+
+# 使用方法
+# 场景 1：直接使用 JSONL，不限制数量
+python code/construct_mip_data/construct_mip_with_deepscaler.py \
+    --jsonl_input data/solve/polaris-data-53K.jsonl \
+    --verify_model deepseek-r1-distill-qwen-7b \
+    --threads 8
+# 场景 2：从 JSONL 每个难度采样 50 条原始题
+python code/construct_mip_data/construct_mip_with_deepscaler.py \
+    --jsonl_input data/solve/polaris-data-53K.jsonl \
+    --verify_model DeepSeek-R1-Distill-Qwen-7B-8717-8717 \
+    --sample_per_difficulty 5 \
+    --threads 32
+
+# 场景 3：输入采样 + 输出采样（双重控制）
+python code/construct_mip_data/construct_mip_with_deepscaler.py \
+    --jsonl_input data/solve/polaris-data-53K.jsonl \
+    --input_sample_per_difficulty 100 \  
+    --sample_per_difficulty 80 \          
+    --verify_model deepseek-r1-distill-qwen-7b \
+    --threads 8
+    
+python code/construct_mip_data/construct_mip_with_deepscaler.py \
+    --jsonl_input data/solve/polaris-data-53K.jsonl \
+    --verify_model deepseek-r1-distill-qwen-7b \
+    --sample_per_difficulty 80  \         
+    --threads 32    
+
+# 场景 4：迭代式增量构建
+# 第1轮：每个难度 50 条
+python code/construct_mip_data/construct_mip_with_deepscaler.py \
+    --jsonl_input data/solve/polaris-data-53K.jsonl \
+    --input_sample_per_difficulty 50 \
+    --sample_per_difficulty 100 \
+    --verify_model deepseek-r1-distill-qwen-7b \
+    --threads 8
+
+# 检查输出，如果某些难度不够，第2轮增加到 100 条
+python code/construct_mip_data/construct_mip_with_deepscaler.py \
+    --jsonl_input data/solve/polaris-data-53K.jsonl \
+    --input_sample_per_difficulty 100 \
+    --sample_per_difficulty 100 \
+    --verify_model deepseek-r1-distill-qwen-7b \
+    --threads 8
