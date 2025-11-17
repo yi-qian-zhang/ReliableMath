@@ -3,9 +3,6 @@ tmux new -s vllm-8715
 tmux attach -t vllm-8715
 tmux attach -t vllm-8717
 tmux attach -t s1k
-tmux attach -t run
-conda activate Interactive_R1
-
 Ctrl + b，然后松开，再按 d
 即可“detach”会话，返回到普通终端。
 
@@ -110,13 +107,13 @@ python code/construct_mip_data/construct_mip_with_deepscaler.py \
     --force
 
 python code/construct_mip_data/construct_mip_with_deepscaler.py \
-    --dataset polaris_normal_800_times_8 \
+    --dataset polaris_diff_6_150 \
     --model gpt-4o-mini \
     --verify_model DeepSeek-R1-Distill-Qwen-7B \
     --temperature 1.0 \
     --max_attempts 8 \
     --threads 32 \
-    --output_dir /home/zhangyiqian/ReliableMath/data/construct_mip_qwen_7B_16384/11-12/polaris_normal_800_times_8 \
+    --output_dir /home/zhangyiqian/ReliableMath/data/construct_mip_qwen_7B_16384/11-04/polaris_normal_600_times_8/deepscaler_extract \
     --force
 
 # A100
@@ -151,13 +148,3 @@ CUDA_VISIBLE_DEVICES=0,5 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Dis
     --tensor_parallel_size 2 \
     --gpu_memory_utilization 0.9 \
     --port 8717
-
-python code/construct_mip_data/construct_mip_with_deepscaler.py \
-    --dataset polaris_normal_800_times_8 \
-    --model gpt-4o-mini \
-    --verify_model DeepSeek-R1-Distill-Qwen-7B \
-    --temperature 1.0 \
-    --max_attempts 8 \
-    --threads 32 \
-    --output_dir /home/zhangyiqian/ReliableMath/data/construct_mip_qwen_7B_16384/11-12/polaris_normal_800_times_8 \
-    --force
