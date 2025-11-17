@@ -15,7 +15,6 @@ Your task is to rewrite the original problem by REMOVING specified conditions wh
 {remaining_conditions}
 
 ### Instructions ###
-
 1. Rewrite the problem WITHOUT the conditions marked for removal
 2. Keep ALL other conditions that are marked to keep
 3. The rewritten problem MUST still be a valid question (asking for something)
@@ -56,7 +55,6 @@ Keep: []
 (Notice: options are PRESERVED)
 
 ### Output Format ###
-
 Output ONLY the rewritten question text, with NO additional explanation, NO markdown formatting.
 
 Just output the plain rewritten question.
