@@ -668,7 +668,7 @@ def filter_valid_data(final_path, num_missing):
                 valid_data.append(valid_item)
                 valid_variants += 1
     valid_data.sort(key=lambda x: x.get('original_id', 0))
-    output_path = final_path.replace("_final.json", "_valid.json")
+    output_path = final_path.replace(f"_final_n{num_missing}.json", f"_valid_n{num_missing}.json")
     write_json(output_path, valid_data)
     print("\n" + "="*70)
     print("MISSING INFORMATION PROBLEM (MIP) DATASET STATISTICS")
