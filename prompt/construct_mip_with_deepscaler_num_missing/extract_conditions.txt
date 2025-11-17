@@ -1,96 +1,35 @@
-Analyze the following mathematical problem and generate removal variants.
+You are an expert at analyzing mathematical problems and extracting key conditions.
 
-Original Problem: {original_question}
-Ground Truth Answer: {ground_truth}
+Your task is to identify and extract ALL mathematical conditions, constraints, premises, or pieces of information from the given problem that are necessary to solve it.
 
-Task:
-1. Identify ALL conditions in the problem
-2. For EACH condition, create a variant where that condition is removed
-3. Rewrite the problem without that specific condition
+Guidelines
+What IS a condition:
 
-Instructions:
-- A condition is any piece of information that could help solve the problem
-- A condition includes: numerical values, equations, constraints, relationships, or background facts
-- A condition does NOT include: the question itself (e.g., "Find...", "Calculate...", "Which option...","Prove...")
-- Each variant should remove exactly ONE condition
-- The rewritten problem should be natural and grammatically correct
-- The rewritten problem MUST still be a question (asking something)
-- Keep all other conditions unchanged in each variant
+Numerical values (e.g., "x = 5", "the price is $10")
+Equations or formulas (e.g., "y = 2x + 1", "area = πr²")
+Constraints or inequalities (e.g., "x > 0", "the sum must be even")
+Relationships between variables (e.g., "John is twice as old as Mary")
+Given facts or premises (e.g., "the triangle is isosceles", "the function is continuous")
+Initial conditions (e.g., "at time t=0, position is 0")
+What is NOT a condition:
 
-CRITICAL RULE:
-- DO NOT remove the core question/request from the problem
-- Only remove supporting information (numbers, equations, constraints)
-- If the problem is a multiple-choice question with options (A), (B), (C), (D), (E), you MUST keep ALL the options in the incomplete_question.
-- The options themselves are NOT conditions - they are part of the question structure.
-- Only remove mathematical conditions that affect which options are correct,such as equations, constraints, or given values.
+The question itself (e.g., "Find...", "Calculate...", "Which option...", "Prove that...")
+Instructions or requests (e.g., "Show your work", "Round to 2 decimal places")
+Multiple choice options (e.g., "(A) x=1 (B) x=2") - these are part of the question structure
+Instructions
+Read the mathematical question carefully
+Identify each distinct condition, premise, or piece of information
+Extract them as separate items
+Each condition should be clear and self-contained
+The number of extracted conditions should match the actual complexity of the problem
+Output Format
+Output ONLY a JSON array of strings, with NO markdown formatting or code blocks.
 
-
-Example 1:
-
-Original Problem: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
-
-Conditions identified:
-1. Jason bought 1 pencil
-2. Mike bought 2 pencils
-
-Variants to generate:
-
-Variant 1 (remove condition 1):
-- Removed: "Jason bought 1 pencil"
-- Remaining: ["Mike bought 2 pencils"]
-- Incomplete Question: "Mike bought 2 pencils. How many pencils did Jason buy?"
-
-Variant 2 (remove condition 2):
-- Removed: "Mike bought 2 pencils"  
-- Remaining: ["Jason bought 1 pencil"]
-- Incomplete Question: "Jason bought 1 pencil. How many pencils did Jason buy?"
-
-Example 2 (What NOT to do):
-
-Original Problem: "Find the distance between the foci of the ellipse 36x²+16y²=8"
-
-WRONG - Do NOT do this:
-- Removed: "Find the distance between the foci"  ← This is the QUESTION, not a condition!
-- Incomplete Question: "The ellipse 36x²+16y²=8"  ← This is NOT a question anymore!
-
-CORRECT - Do this instead:
-- Removed: "The equation of the ellipse is 36x²+16y²=8"  ← This is a condition
-- Incomplete Question: "Find the distance between the foci of an ellipse"  ← Still a question!
-
-Example 3 (What NOT to do):
-
-Original Problem: "The line y=3/5x−17/3 is to be parameterized. Which of the following options are valid?"
-
-WRONG - Do NOT do this:
-- Removed: "Which of the following options are valid"  ← This is the QUESTION!
-- Incomplete Question: "The line y=3/5x−17/3 is to be parameterized"  ← NOT asking anything!
-
-CORRECT - Do this instead:
-- Removed: "The equation of the line is y=3/5x−17/3"  ← This is a condition
-- Incomplete Question: "A line is to be parameterized. Which of the following options are valid?"  ← Still asking!
-
-Example 3 (Multiple Choice):
-Original: "Which circle passes through (1,2)? (A) x^2+y^2=5 (B) x^2+y^2=10"
-Removed condition: "passes through (1,2)"
-Incomplete question: "Which circle? (A) x^2+y^2=5 (B) x^2+y^2=10" ← Keep options!
-
-OUTPUT FORMAT:
-
-CRITICAL: Output ONLY a raw JSON array. DO NOT use markdown code blocks, backticks, or any formatting.
-
-Required format - output this EXACTLY:
-[
-  {{
-    "removed_condition": "condition text",
-    "remaining_conditions": ["other conditions"],
-    "incomplete_question": "rewritten question without the removed condition"
-  }},
-  {{
-    "removed_condition": "another condition",
-    "remaining_conditions": ["remaining conditions"],
-    "incomplete_question": "another rewritten question"
-  }}
-]
+Required format: [ "condition 1", "condition 2", "condition 3" ]
 
 Start your response directly with [ and end with ]
-Generate all variants now:
+
+Mathematical Question
+{original_question}
+
+Extracted Conditions
