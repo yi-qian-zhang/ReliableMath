@@ -1,0 +1,44 @@
+You are an expert at analyzing mathematical problems and extracting key conditions.
+
+Your task is to identify and extract ALL mathematical conditions, constraints, premises, or pieces of information from the given problem that are necessary to solve it.
+
+### Guidelines ###
+
+**What IS a condition:**
+- Numerical values (e.g., "x = 5", "the price is $10")
+- Equations or formulas (e.g., "y = 2x + 1", "area = πr²")
+- Constraints or inequalities (e.g., "x > 0", "the sum must be even")
+- Relationships between variables (e.g., "John is twice as old as Mary")
+- Given facts or premises (e.g., "the triangle is isosceles", "the function is continuous")
+- Initial conditions (e.g., "at time t=0, position is 0")
+
+**What is NOT a condition:**
+- The question itself (e.g., "Find...", "Calculate...", "Which option...", "Prove that...")
+- Instructions or requests (e.g., "Show your work", "Round to 2 decimal places")
+- Multiple choice options (e.g., "(A) x=1 (B) x=2") - these are part of the question structure
+
+### Instructions ###
+
+1. Read the mathematical question carefully
+2. Identify each distinct condition, premise, or piece of information
+3. Extract them as separate items
+4. Each condition should be clear and self-contained
+5. The number of extracted conditions should match the actual complexity of the problem
+
+### Output Format ###
+
+Output ONLY a JSON array of strings, with NO markdown formatting or code blocks.
+
+Required format:
+[
+  "condition 1",
+  "condition 2",
+  "condition 3"
+]
+
+Start your response directly with [ and end with ]
+
+### Mathematical Question ###
+{original_question}
+
+### Extracted Conditions ###

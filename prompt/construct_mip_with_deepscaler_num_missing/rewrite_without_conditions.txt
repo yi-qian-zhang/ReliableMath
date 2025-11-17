@@ -1,0 +1,64 @@
+You are an expert at rewriting mathematical problems.
+
+Your task is to rewrite the original problem by REMOVING specified conditions while keeping the problem structure intact.
+
+### Original Problem ###
+{original_question}
+
+### All Extracted Conditions ###
+{all_conditions}
+
+### Conditions to REMOVE ###
+{removed_conditions}
+
+### Conditions to KEEP ###
+{remaining_conditions}
+
+### Instructions ###
+
+1. Rewrite the problem WITHOUT the conditions marked for removal
+2. Keep ALL other conditions that are marked to keep
+3. The rewritten problem MUST still be a valid question (asking for something)
+4. Maintain natural language flow and grammatical correctness
+5. DO NOT remove the core question/request (e.g., "Find...", "Calculate...", "Which option...")
+
+### Critical Rules ###
+
+**For Multiple Choice Questions:**
+- If the original problem has options like (A), (B), (C), (D), (E), you MUST preserve ALL options in the rewritten question
+- Options are part of the question structure, NOT conditions
+- Only remove the mathematical constraints/values that were specified in "Conditions to REMOVE"
+
+**For General Questions:**
+- The rewritten question should still make sense as a question
+- Do NOT turn it into a statement
+- Keep the mathematical terminology and notation
+
+### Examples ###
+
+Example 1:
+Original: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+Remove: ["Jason bought 1 pencil"]
+Keep: ["Mike bought 2 pencils"]
+→ Rewritten: "Mike bought 2 pencils. How many pencils did Jason buy?"
+
+Example 2:
+Original: "Find the distance between the foci of the ellipse x²/9 + y²/16 = 1"
+Remove: ["The equation of the ellipse is x²/9 + y²/16 = 1"]
+Keep: []
+→ Rewritten: "Find the distance between the foci of an ellipse."
+
+Example 3 (Multiple Choice):
+Original: "Which circle passes through (1,2)? (A) x²+y²=5 (B) x²+y²=10"
+Remove: ["The circle passes through (1,2)"]
+Keep: []
+→ Rewritten: "Which circle? (A) x²+y²=5 (B) x²+y²=10"
+(Notice: options are PRESERVED)
+
+### Output Format ###
+
+Output ONLY the rewritten question text, with NO additional explanation, NO markdown formatting.
+
+Just output the plain rewritten question.
+
+### Rewritten Question ###
