@@ -676,6 +676,13 @@ def filter_valid_data(final_path, num_missing):
     print(f"Configuration: num_missing = {num_missing}")
     print(f"Original problems: {total_original}")
     print(f"\nTotal removal variants generated: {total_variants}")
+
+    if total_variants == 0:
+        print(f"\n⚠️  WARNING: No variants found in final data!")
+        print(f"   This usually means the final_n{num_missing}.json file is corrupted.")
+        print(f"   Please rerun with --force to regenerate all data.")
+        return
+
     print(f"\n📊 Two-Round Verification Results:")
     print(f"  Round A passed (without conditions → can't solve): {round_a_pass_count} ({round_a_pass_count/total_variants*100:.1f}%)")
     print(f"  Round B passed (with conditions → can solve): {round_b_pass_count} ({round_b_pass_count/total_variants*100:.1f}%)")
