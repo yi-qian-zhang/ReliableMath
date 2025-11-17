@@ -1,20 +1,10 @@
-# Figures
-./figs/data/*
-./figs/length/*
-./figs/prec/*
-./figs/prud/*
+# ！！！ 永远忽略 API 密钥 ！！！
+data/api_keys.json
 
-# Experiment Files
-./exp/*
+# 忽略 >1GB 的大文件 (LFS 无法处理)
+data/construct_mip_qwen_7B_16384/11-04/polaris_normal_600_times_8/deepscaler_extract/polaris_normal_600_times_8_final.json
+data/construct_mip_qwen_7B_16384/11-12/polaris_normal_800_times_8/polaris_normal_800_times_8_final.json
 
-# Data
-./data/__pycache__/*
-./data/test/*
-./data/train/*
-./data/solve/train*
-./data/unsol/v*
-./data/unsol/train*
-./data/api_keys.json
-
-# Code
-./code/__pycache__/*
+# 顺便忽略 Python 缓存
+__pycache__/
+*.pyc

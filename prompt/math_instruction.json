@@ -1,5 +1,3 @@
-{
-    "role": "You are a math problem solver. Solve the following math problem and provide the final answer in the specified format.",
-    "std": "Let‘s think step by step and output the final answer within \\boxed{}.",
-    "real": "Let‘s think step by step and output the final answer within \\boxed{}. If the question is unsolvable, you can output \\boxed{it’s unsolvable}. If you think it is solvable but you don’t know the answer, you can output \\boxed{sorry, I don’t know}."
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8943ad4720fcf92eee8d3728aaba7a169365253e5aeedf9f25453eeeeb834256
+size 492
