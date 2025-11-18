@@ -1,0 +1,98 @@
+You are an expert at rewriting mathematical problems to create Missing Information Problems (MIP).
+
+Your task is to rewrite the original problem by REMOVING specified conditions, making the problem UNSOLVABLE while maintaining natural language flow.
+
+### Original Problem ###
+{original_question}
+
+### All Extracted Conditions ###
+{all_conditions}
+
+### Conditions to REMOVE ###
+{removed_conditions}
+
+### Conditions to KEEP ###
+{remaining_conditions}
+
+### Core Objective ###
+After removing the specified conditions, the rewritten problem should become UNSOLVABLE because critical information is missing. However, the problem should still:
+1. Read naturally as a well-formed question
+2. Preserve the core question structure (e.g., "Find...", "Calculate...", "Determine...")
+3. Keep all remaining conditions intact
+4. Maintain grammatical correctness
+
+### Step-by-Step Instructions ###
+
+**Step 1: Understand Why Removal Causes Unsolvability**
+Think about how the removed conditions are essential for solving:
+- Do they provide necessary numerical values?
+- Do they define critical relationships?
+- Do they constrain the solution space?
+
+**Step 2: Rewrite While Preserving Structure**
+- Remove ONLY the specified conditions from the problem text
+- Keep ALL other conditions exactly as they appear
+- Ensure the question remains grammatically correct
+- For multiple-choice questions, PRESERVE ALL OPTIONS (A), (B), (C), (D), (E)
+
+**Step 3: Verify Natural Flow**
+- The rewritten question should NOT feel incomplete or awkward
+- It should be a valid mathematical question, just unsolvable due to missing information
+- Avoid phrases like "with unknown..." or "without knowing..." - just omit the removed conditions naturally
+
+### Critical Rules ###
+
+**Multiple Choice Questions:**
+- Options (A), (B), (C), (D), (E) are NEVER conditions - they are part of the answer structure
+- ALWAYS preserve all options in their entirety
+- Only remove the constraint/condition text, not the options
+
+**Numerical/Geometric Problems:**
+- If removing a value, don't replace with "unknown x" - just omit it
+- Maintain variable names and relationships from kept conditions
+
+**Question Integrity:**
+- The core question MUST remain (e.g., "Find the area" should stay "Find the area", not become "There is an area")
+- Keep mathematical terminology precise
+
+### Examples ###
+
+**Example 1 (Single Condition Removal):**
+Original: "A triangle ABC has sides AB=5, BC=12, and angle B=90°. Find the length of AC."
+Remove: ["AB=5"]
+Keep: ["BC=12", "angle B=90°"]
+→ Rewritten: "A triangle ABC has side BC=12 and angle B=90°. Find the length of AC."
+(Why unsolvable: Missing one leg of right triangle)
+
+**Example 2 (Multiple Conditions Removal):**
+Original: "A rectangle has length 8 cm and width 5 cm. Find its perimeter."
+Remove: ["length 8 cm", "width 5 cm"]
+Keep: []
+→ Rewritten: "A rectangle. Find its perimeter."
+(Why unsolvable: No dimensions provided)
+
+**Example 3 (Multiple Choice with Condition Removal):**
+Original: "Which of the following circles passes through point (3,4)? (A) x²+y²=25 (B) x²+y²=16 (C) x²+y²=9"
+Remove: ["passes through point (3,4)"]
+Keep: []
+→ Rewritten: "Which of the following circles? (A) x²+y²=25 (B) x²+y²=16 (C) x²+y²=9"
+(Why unsolvable: No criterion to select among circles)
+(Notice: All options PRESERVED)
+
+**Example 4 (Chinese Language):**
+Original: "一辆汽车的前轮胎在行驶25,000公里后会磨损，后轮胎在行驶15,000公里后会磨损。应该在什么时候交换轮胎，才能使它们同时磨损？"
+Remove: ["前轮胎在行驶25,000公里后会磨损"]
+Keep: ["后轮胎在行驶15,000公里后会磨损"]
+→ Rewritten: "一辆汽车的后轮胎在行驶15,000公里后会磨损。应该在什么时候交换轮胎，才能使它们同时磨损？"
+(Why unsolvable: Only one tire's wear rate is known)
+
+### Output Format ###
+Output ONLY the rewritten question in plain text.
+- NO explanations
+- NO analysis text
+- NO markdown formatting (no ###, **, etc.)
+- NO phrases like "Rewritten Question:" or "Answer:"
+
+Just the clean mathematical question.
+
+### Rewritten Question ###
