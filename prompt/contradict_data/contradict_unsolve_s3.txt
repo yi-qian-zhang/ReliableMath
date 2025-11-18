@@ -1,0 +1,45 @@
+
+### Task ###:
+
+ 
+
+Extract a concise reason why the rewritten question is unsolvable.
+
+ 
+
+### Original Question ###:
+
+{original_question}
+
+ 
+
+### Rewritten Question (with contradiction) ###:
+
+{rewritten_question}
+
+ 
+
+### Full Analysis ###:
+
+{unsolvability_analysis}
+
+ 
+
+### Instructions ###:
+
+Based on the analysis, extract a SHORT, CLEAR reason (1-2 sentences) explaining why this problem is unsolvable.
+
+ 
+
+This should be suitable for storing in a dataset as the "unsolvable_reason" field.
+
+ 
+
+### Output Format ###:
+
+Provide ONLY the concise reason, without headers or extra explanation.
+
+ 
+
+### Unsolvable Reason ###:
+

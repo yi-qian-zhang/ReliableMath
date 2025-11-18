@@ -33,12 +33,12 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 parser = argparse.ArgumentParser(description="MIP Dataset Construction - Variable Missing Conditions")
 parser.add_argument("--model", default="gpt-4o-mini", help="Model for extraction/rewrite")
-parser.add_argument("--verify_model", default="deepseek-r1-distill-qwen-7b", help="Model for verification")
+parser.add_argument("--verify_model", default="DeepSeek-R1-Distill-Qwen-7B", help="Model for verification")
 parser.add_argument("--judge_model", default="gpt-4o-mini", help="Model for LLM-as-Judge (ORM fallback)")
 parser.add_argument("--data_dir", default="data/solve", help="Input directory")
 parser.add_argument("--output_dir", default="data/construct_mip_data", help="Output directory")
 parser.add_argument("--prompt_dir", default="prompt/construct_mip_with_deepscaler_num_missing", help="Prompt directory")
-parser.add_argument("--dataset", default="polaris_easy_20", help="Dataset name")
+parser.add_argument("--dataset", default="polaris_20", help="Dataset name")
 parser.add_argument("--temperature", default=1.0, type=float, help="Temperature for verification")
 parser.add_argument("--max_attempts", default=8, type=int, help="Max attempts for verification")
 parser.add_argument("--threads", default=8, type=int, help="Number of parallel threads")
@@ -668,7 +668,10 @@ def filter_valid_data(final_path, num_missing):
                 valid_data.append(valid_item)
                 valid_variants += 1
     valid_data.sort(key=lambda x: x.get('original_id', 0))
-    output_path = final_path.replace("_final.json", "_valid.json")
+    
+    # 🔧 修复1: 使用正确的文件名模式匹配
+    output_path = final_path.replace(f"_final_n{num_missing}.json", f"_valid_n{num_missing}.json")
+    
     write_json(output_path, valid_data)
     print("\n" + "="*70)
     print("MISSING INFORMATION PROBLEM (MIP) DATASET STATISTICS")
@@ -676,6 +679,14 @@ def filter_valid_data(final_path, num_missing):
     print(f"Configuration: num_missing = {num_missing}")
     print(f"Original problems: {total_original}")
     print(f"\nTotal removal variants generated: {total_variants}")
+    
+    # 🔧 修复2: 防止除零错误
+    if total_variants == 0:
+        print(f"\n⚠️  WARNING: No variants found in final data!")
+        print(f"   This usually means the final_n{num_missing}.json file is corrupted.")
+        print(f"   Please rerun with --force to regenerate all data.")
+        return
+    
     print(f"\n📊 Two-Round Verification Results:")
     print(f"  Round A passed (without conditions → can't solve): {round_a_pass_count} ({round_a_pass_count/total_variants*100:.1f}%)")
     print(f"  Round B passed (with conditions → can solve): {round_b_pass_count} ({round_b_pass_count/total_variants*100:.1f}%)")

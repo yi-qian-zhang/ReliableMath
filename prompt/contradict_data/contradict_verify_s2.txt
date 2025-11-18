@@ -1,0 +1,51 @@
+
+### Task ###:
+
+ 
+
+Extract the CONTRADICTED condition from the rewritten mathematical question.
+
+ 
+
+### Original Question ###:
+
+{original_question}
+
+ 
+
+### Original Condition (that should be contradicted) ###:
+
+{original_condition}
+
+ 
+
+### Rewritten Question (with contradiction) ###:
+
+{rewritten_question}
+
+ 
+
+### Instructions ###:
+
+Compare the original and rewritten questions. Extract a clear description of how the condition was contradicted. This should be a concise statement describing the new contradictory condition.
+
+ 
+
+Examples:
+
+- Original: "|z| = 4"  →  Contradicted: "Delete |z| = 4 constraint"
+
+- Original: "ABCD on hyperbola x²/20 - y²/24 = 1"  →  Contradicted: "B, C, D on hyperbola x²/20 - y²/24 = 2"
+
+- Original: "x > 0"  →  Contradicted: "x < 0"
+
+ 
+
+### Output Format ###:
+
+Provide ONLY the contradicted condition description, without any additional explanation.
+
+ 
+
+### Contradicted Condition ###:
+

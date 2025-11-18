@@ -1,5 +1,6 @@
 # tmux新建会话并后台运行
 tmux new -s vllm-8715
+tmux new -s vllm-8719
 tmux attach -t vllm-8715
 tmux attach -t vllm-8717
 tmux attach -t s1k
@@ -27,6 +28,13 @@ CUDA_VISIBLE_DEVICES=1,2 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Dis
     --tensor_parallel_size 2 \
     --gpu_memory_utilization 0.9 \
     --port 8715
+
+CUDA_VISIBLE_DEVICES=6,7 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
+    --served-model-name DeepSeek-R1-Distill-Qwen-7B \
+    --max-model-len 8192 \
+    --tensor_parallel_size 2 \
+    --gpu_memory_utilization 0.9 \
+    --port 8719
 
 CUDA_VISIBLE_DEVICES=1,2 vllm serve \
     --model /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
@@ -93,33 +101,45 @@ cd /data2/yiqianzhang/ReliableMath
 
 # 2. 测试模式（只处理前5个样本，缺省1个条件）
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
-  --dataset polaris_easy_20 \
+  --dataset polaris_20 \
+  --verify_model DeepSeek-R1-Distill-Qwen-7B-8717 \
   --num_missing 1 \
   --test_mode \
-  --output_dir data/construct_mip_qwen_7B_16384/11-17 \
+  --output_dir data/construct_mip_qwen_7B_16384/11-17/num_missing_one \
+  --threads 32
+# 2. 测试模式（只处理前5个样本，缺省2个条件）
+python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
+  --dataset polaris_easy_20 \
+  --num_missing 2 \
+  --test_mode \
+  --output_dir data/construct_mip_qwen_7B_16384/11-17/num_missing_two \
   --threads 32
 
 # 3. 查看输出
 ls -lh data/construct_mip_data/polaris_easy_20_*
 
-# 正式运行
+# 正式运行 8715
 # 缺省 1 个条件（低难度）
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
-  --dataset polaris_easy_20 \
+  --dataset polaris_20 \
   --num_missing 1 \
-  --threads 8
+  --output_dir data/construct_mip_qwen_7B_16384/11-17/num_missing_one \
+  --threads 32
 
 # 缺省 2 个条件（中难度）
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
   --dataset polaris_easy_20 \
   --num_missing 2 \
-  --threads 8
+  --output_dir data/construct_mip_qwen_7B_16384/11-17/num_missing_two \
+  --threads 32
 
 # 缺省 3 个条件（高难度）
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
-  --dataset polaris_easy_20 \
+  --dataset polaris_20 \
+  --verify_model DeepSeek-R1-Distill-Qwen-7B-8719 \
   --num_missing 3 \
-  --threads 8
+  --output_dir data/construct_mip_qwen_7B_16384/11-17/num_missing_three \
+  --threads 32
 
 # 批量生成
 # 一次生成多个难度级别
@@ -129,3 +149,20 @@ for n in 1 2 3; do
     --num_missing $n \
     --threads 8
 done
+
+
+# 正式运行 8717
+# 缺省 1 个条件（低难度）
+python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
+  --dataset polaris_20 \
+  --num_missing 1 \
+  --verify_model DeepSeek-R1-Distill-Qwen-7B-8717 \
+  --output_dir data/construct_mip_qwen_7B_16384/11-17/num_missing_one \
+  --threads 32
+
+# 缺省 2 个条件（中难度）
+python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
+  --dataset polaris_easy_20 \
+  --num_missing 2 \
+  --output_dir data/construct_mip_qwen_7B_16384/11-17/num_missing_two \
+  --threads 32

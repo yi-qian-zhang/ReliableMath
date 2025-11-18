@@ -1,0 +1,39 @@
+
+Please identify and extract all the key conditions from the following mathematical problem. Return the conditions as a JSON array.
+
+ 
+
+**Original Mathematical Question:**
+
+{original_math_question}
+
+ 
+
+**Instructions:**
+
+1. Identify all essential conditions, constraints, and given information
+
+2. Each condition should be a complete, standalone statement
+
+3. Number the conditions if there are multiple ones
+
+4. Return as a JSON array of strings
+
+ 
+
+**Output Format:**
+
+[
+
+  "condition 1",
+
+  "condition 2",
+
+  "condition 3"
+
+]
+
+ 
+
+**Extracted Conditions:**
+

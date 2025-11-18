@@ -1,0 +1,21 @@
+
+### Rewritten Mathematical Question ###:
+
+ 
+
+Using the analysis above, produce a rewritten version of the original math question where the extracted condition "{extracted_condition}" is contradicted (i.e., replaced by a logically opposing statement). The rewritten question should be a coherent standalone math problem and explicitly show the contradicted condition.
+
+ 
+
+Original question:
+
+{original_math_question}
+
+Original answer:
+
+{original_answer}
+
+ 
+
+### Rewritten Mathematical Question ###:
+
