@@ -393,20 +393,44 @@ def generate_removal_variants(data, num_missing):
             model=args.rewrite_model, temperature=0.0
         )
         record_tokens(data, model_type, prompt_tokens, completion_tokens)
-        incomplete_question = response.strip()
+        response_text = response.strip()
 
-        for prefix in ["Rewritten Question:", "Rewritten Problem:", "Answer:", "###", "**", '"', "'"]:
+        # 🔧 解析 Analysis 和 Rewritten Mathematical Question
+        analysis = ""
+        incomplete_question = ""
+
+        if "### Analysis ###" in response_text and "### Rewritten Mathematical Question ###" in response_text:
+            # 按标记分割
+            parts = response_text.split("### Rewritten Mathematical Question ###")
+            if len(parts) == 2:
+                # 提取 analysis 部分
+                analysis_part = parts[0].split("### Analysis ###")
+                if len(analysis_part) == 2:
+                    analysis = analysis_part[1].strip()
+                # 提取问题部分
+                incomplete_question = parts[1].strip()
+        else:
+            # Fallback: 如果没有标记，使用整个 response
+            logging.warning(f"ID {data['id']}_remove_{combo_idx}: No Analysis/Question markers found, using raw response")
+            incomplete_question = response_text
+
+        # 清理常见前缀
+        for prefix in ["Rewritten Question:", "Rewritten Problem:", "Answer:", "**", '"', "'"]:
             incomplete_question = incomplete_question.replace(prefix, "").strip()
+            analysis = analysis.replace(prefix, "").strip()
+
         if data.get("is_multiple_choice"):
             original_incomplete = incomplete_question
             incomplete_question = ensure_options_in_question(incomplete_question, data["question"])
             if original_incomplete != incomplete_question:
                 logging.debug(f"ID {data['id']}_remove_{combo_idx}: ✓ Restored multiple-choice options")
+
         variant = {
             "variant_id": f"{data['id']}_remove_{combo_idx}",
             "removed_conditions": removed_conditions,
             "remaining_conditions": remaining_conditions,
             "incomplete_question": incomplete_question,
+            "analysis": analysis,  # 🔧 新增字段
             "num_missing": num_missing
         }
         variants.append(variant)

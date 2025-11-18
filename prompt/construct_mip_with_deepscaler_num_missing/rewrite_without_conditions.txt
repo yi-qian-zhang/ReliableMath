@@ -55,8 +55,17 @@ Keep: []
 (Notice: options are PRESERVED)
 
 ### Output Format ###
-Output ONLY the rewritten question text, with NO additional explanation, NO markdown formatting.
+You need to output TWO parts:
 
-Just output the plain rewritten question.
+**Part 1: Analysis**
+Think step by step to explain how you make the problem unsolvable after removing the condition(s).
+Output your analysis after ### Analysis ###. Keep it concise (1-3 sentences).
 
-### Rewritten Question ###
+**Part 2: Rewritten Question**
+Given your analysis, output the rewritten mathematical question after ### Rewritten Mathematical Question ###.
+
+### Analysis ###
+[Your analysis of why the problem becomes unsolvable]
+
+### Rewritten Mathematical Question ###
+[The rewritten question text only, no additional formatting]
