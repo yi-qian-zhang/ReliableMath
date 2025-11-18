@@ -13,15 +13,29 @@ Given facts or premises (e.g., "the triangle is isosceles", "the function is con
 Initial conditions (e.g., "at time t=0, position is 0")
 What is NOT a condition:
 
-The question itself (e.g., "Find...", "Calculate...", "Which option...", "Prove that...")
+The question itself (e.g., "Find...", "Calculate...", "Which option...", "Prove that...", "What is...", "How to...")
+Goal or objective statements (e.g., "to maximize profit", "使它们同时磨损", "目标是...", "为了...")
+Questions or interrogatives (e.g., "应该在什么时候...", "求...", "When should...", "How can...")
 Instructions or requests (e.g., "Show your work", "Round to 2 decimal places")
 Multiple choice options (e.g., "(A) x=1 (B) x=2") - these are part of the question structure
+Result-oriented phrases (e.g., "才能使...", "so that...", "in order to...")
 Instructions
 Read the mathematical question carefully
 Identify each distinct condition, premise, or piece of information
 Extract them as separate items
 Each condition should be clear and self-contained
 The number of extracted conditions should match the actual complexity of the problem
+
+CRITICAL: Separate GIVEN FACTS from GOALS/QUESTIONS
+✓ EXTRACT: "Front tires wear out after 25,000 km" (GIVEN FACT)
+✓ EXTRACT: "Rear tires wear out after 15,000 km" (GIVEN FACT)
+✗ DO NOT EXTRACT: "When should the tires be swapped?" (QUESTION)
+✗ DO NOT EXTRACT: "To make them wear out simultaneously" (GOAL/OBJECTIVE)
+
+Example:
+Question: "一辆汽车的前轮胎在行驶25,000公里后会磨损，后轮胎在行驶15,000公里后会磨损。应该在什么时候交换轮胎，才能使它们同时磨损？"
+Correct extraction: ["前轮胎在行驶25,000公里后会磨损", "后轮胎在行驶15,000公里后会磨损"]
+Incorrect: ["前轮胎在行驶25,000公里后会磨损", "后轮胎在行驶15,000公里后会磨损", "目标是交换轮胎，使它们同时磨损"] ← WRONG! This is the goal, not a condition!
 Output Format
 Output ONLY a JSON array of strings, with NO markdown formatting or code blocks.
 
