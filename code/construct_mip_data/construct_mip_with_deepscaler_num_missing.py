@@ -395,12 +395,6 @@ def generate_removal_variants(data, num_missing):
         record_tokens(data, model_type, prompt_tokens, completion_tokens)
         incomplete_question = response.strip()
 
-        # 🔧 清理 DeepSeek-R1 的 <think> 标签
-        if "</think>" in incomplete_question:
-            incomplete_question = incomplete_question.split("</think>", 1)[1].strip()
-        if "<think>" in incomplete_question:
-            incomplete_question = incomplete_question.split("<think>", 1)[0].strip()
-
         for prefix in ["Rewritten Question:", "Rewritten Problem:", "Answer:", "###", "**", '"', "'"]:
             incomplete_question = incomplete_question.replace(prefix, "").strip()
         if data.get("is_multiple_choice"):
