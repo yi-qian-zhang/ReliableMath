@@ -1,49 +1,53 @@
-You are an expert at analyzing mathematical problems and extracting key conditions.
+You are an expert at analyzing mathematical problems and identifying key conditions.
+Your objective is to extract CRITICAL mathematical conditions or premises from the given question. A critical condition is defined as: any condition whose removal or modification would cause the problem to lose its unique solution. Focus on conditions that are NECESSARY for solving, not merely helpful.
 
-Your task is to identify and extract ALL mathematical conditions, constraints, premises, or pieces of information from the given problem that are necessary to solve it.
+Definition of Critical Condition:
+- For a problem with k necessary conditions {{condition1, condition2, ..., conditionk}}, each condition is critical if removing it makes the problem unsolvable or changes the answer
+- These are NOT optional background information - they are ESSENTIAL to reach the unique solution
+- Removing any single critical condition should break the problem's solvability
 
-Guidelines
-What IS a condition:
+What IS a critical condition:
+- Numerical values that determine the answer (e.g., "ABCD is a rhombus")
+- Equations or constraints that limit the solution space (e.g., "x²/20 - y²/24 = 1")
+- Geometric or algebraic properties that are necessary (e.g., "diagonals intersect at the origin")
+- Relationships that define the problem structure (e.g., "passes through point (1,2)")
 
-Numerical values (e.g., "x = 5", "the price is $10")
-Equations or formulas (e.g., "y = 2x + 1", "area = πr²")
-Constraints or inequalities (e.g., "x > 0", "the sum must be even")
-Relationships between variables (e.g., "John is twice as old as Mary")
-Given facts or premises (e.g., "the triangle is isosceles", "the function is continuous")
-Initial conditions (e.g., "at time t=0, position is 0")
 What is NOT a condition:
+- The question itself (e.g., "Find...", "Calculate...", "Which option...")
+- Multiple choice options (A), (B), (C), (D) - these are part of the answer structure
+- Contextual information that doesn't affect the solution
 
-The question itself (e.g., "Find...", "Calculate...", "Which option...", "Prove that...", "What is...", "How to...")
-Goal or objective statements (e.g., "to maximize profit", "使它们同时磨损", "目标是...", "为了...")
-Questions or interrogatives (e.g., "应该在什么时候...", "求...", "When should...", "How can...")
-Instructions or requests (e.g., "Show your work", "Round to 2 decimal places")
-Multiple choice options (e.g., "(A) x=1 (B) x=2") - these are part of the question structure
-Result-oriented phrases (e.g., "才能使...", "so that...", "in order to...")
-Instructions
-Read the mathematical question carefully
-Identify each distinct condition, premise, or piece of information
-Extract them as separate items
-Each condition should be clear and self-contained
-The number of extracted conditions should match the actual complexity of the problem
+Guidelines for Extraction:
+- The number of conditions should be adjusted by the problem's complexity
+- Typical range: 1-5 critical conditions
+- Short/simple problems: 1-2 conditions
+- Complex/multi-step problems: 3-5 conditions
+- Extract ALL critical conditions, but avoid over-segmentation
+- Keep related information as ONE condition (e.g., "A, B, C, D are on x²/20 - y²/24 = 1" is ONE condition, not separate pieces)
 
-CRITICAL: Separate GIVEN FACTS from GOALS/QUESTIONS
-✓ EXTRACT: "Front tires wear out after 25,000 km" (GIVEN FACT)
-✓ EXTRACT: "Rear tires wear out after 15,000 km" (GIVEN FACT)
-✗ DO NOT EXTRACT: "When should the tires be swapped?" (QUESTION)
-✗ DO NOT EXTRACT: "To make them wear out simultaneously" (GOAL/OBJECTIVE)
+Examples:
 
-Example:
-Question: "一辆汽车的前轮胎在行驶25,000公里后会磨损，后轮胎在行驶15,000公里后会磨损。应该在什么时候交换轮胎，才能使它们同时磨损？"
-Correct extraction: ["前轮胎在行驶25,000公里后会磨损", "后轮胎在行驶15,000公里后会磨损"]
-Incorrect: ["前轮胎在行驶25,000公里后会磨损", "后轮胎在行驶15,000公里后会磨损", "目标是交换轮胎，使它们同时磨损"] ← WRONG! This is the goal, not a condition!
-Output Format
+Example 1:
+Original Problem: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+Extracted Conditions:
+["Jason bought 1 pencil", "Mike bought 2 pencils"]
+
+Example 2:
+Original Problem: "Let A, B, C, and D be points on the hyperbola x²/20 - y²/24 = 1 such that ABCD is a rhombus whose diagonals intersect at the origin. Find the greatest real number that is less than BD² for all such rhombi."
+Extracted Conditions:
+["A, B, C, and D are points on the hyperbola x²/20 - y²/24 = 1", "ABCD is a rhombus", "The diagonals of ABCD intersect at the origin"]
+
+Example 3 (What NOT to do):
+Original Problem: "The line y=3/5x−17/3 is to be parameterized. Which of the following options are valid?"
+WRONG: ["Which of the following options are valid"] ← This is the QUESTION, not a condition!
+CORRECT: ["The line has equation y=3/5x−17/3"]
+
+Output Format:
 Output ONLY a JSON array of strings, with NO markdown formatting or code blocks.
+Format: ["condition 1", "condition 2", ...]
+Start directly with [ and end with ]
 
-Required format: [ "condition 1", "condition 2", "condition 3" ]
-
-Start your response directly with [ and end with ]
-
-Mathematical Question
+Mathematical Question:
 {original_question}
 
-Extracted Conditions
+Extracted Critical Conditions:
