@@ -13,10 +13,44 @@ Step 3. 验证矛盾条件 (verify_contradiction_validity):
     - 3.2 提取矛盾描述 (DeepSeek-R1-Distill-Qwen-7B)
     - 3.3 vLLM采样验证不可解性 (DeepSeek-R1-Distill-Qwen-7B, n=8)
     - 3.4 提取不可解原因 (DeepSeek-V3)
+
+Deployment Locations:
+- Development: /home/user/ReliableMath/code/contradiction_construction.py
+- Production: /data2/yiqianzhang/ReliableMath/code/contradiction_construction/contradiction_construction.py
 """
 import sys
 import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Smart path detection for different deployment scenarios
+script_dir = os.path.dirname(os.path.abspath(__file__))
+script_name = os.path.basename(__file__)
+
+# Case 1: /data2/yiqianzhang/ReliableMath/code/contradiction_construction/contradiction_construction.py
+# Case 2: /home/user/ReliableMath/code/contradiction_construction.py
+if script_name == 'contradiction_construction.py':
+    parent_dir = os.path.dirname(script_dir)
+    parent_name = os.path.basename(parent_dir)
+
+    # If parent is 'contradiction_construction', we're in Case 1
+    if parent_name == 'contradiction_construction':
+        # Add /data2/yiqianzhang/ReliableMath/code to path
+        code_dir = os.path.dirname(parent_dir)
+        if code_dir not in sys.path:
+            sys.path.insert(0, code_dir)
+    # If parent is 'code', we're in Case 2
+    elif parent_name == 'code':
+        # Add /home/user/ReliableMath to path
+        repo_root = os.path.dirname(parent_dir)
+        if repo_root not in sys.path:
+            sys.path.insert(0, repo_root)
+        # Also add code directory
+        if parent_dir not in sys.path:
+            sys.path.insert(0, parent_dir)
+    else:
+        # Fallback: add parent directory
+        if parent_dir not in sys.path:
+            sys.path.insert(0, parent_dir)
+
 import json
 import time
 import logging
@@ -31,8 +65,18 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 
 # Import from removal module for answer verification
-from deepscaler.rewards.math_utils.utils import grade_answer_mathd, grade_answer_sympy, extract_answer
-from deepscaler.system_prompts import ORM_PROMPT
+# This will work in both deployment scenarios after path setup above
+try:
+    from deepscaler.rewards.math_utils.utils import grade_answer_mathd, grade_answer_sympy, extract_answer
+    from deepscaler.system_prompts import ORM_PROMPT
+except ImportError as e:
+    logging.error(f"Failed to import from deepscaler: {e}")
+    logging.error(f"sys.path: {sys.path}")
+    logging.error(f"script_dir: {script_dir}")
+    logging.error(f"Please ensure deepscaler is in the correct location:")
+    logging.error(f"  - Case 1: /data2/yiqianzhang/ReliableMath/code/deepscaler")
+    logging.error(f"  - Case 2: /home/user/ReliableMath/code/deepscaler")
+    raise
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
