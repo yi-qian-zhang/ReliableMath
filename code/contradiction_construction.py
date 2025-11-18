@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """
-Contradiction Dataset Construction - 矛盾条件生成
-输入数据: 原始数学问题 (question) + 标准答案 (ground_truth) + 提取的条件 (extracted_conditions)
+Contradiction Dataset Construction - 矛盾条件生成（与Removal模块深度整合）
+输入数据: 原始数学问题 (question) + 标准答案 (ground_truth)
 
 新架构 (3步流程):
-Step 1. 提取条件 (extract_conditions_only): 使用 GPT-4o 提取问题中的所有关键条件
-Step 2. 生成矛盾变体 (generate_contradiction_variants): 为每个条件生成对应的矛盾版本
+Step 1. 提取条件 (extract_conditions): 使用 GPT-4o-mini 提取问题中的所有关键条件
+Step 2. 生成矛盾变体 (generate_contradiction_variants):
+    - 2.1 分析如何添加矛盾 (DeepSeek-R1-Distill-Qwen-7B)
+    - 2.2 生成矛盾问题 (DeepSeek-R1-Distill-Qwen-7B)
 Step 3. 验证矛盾条件 (verify_contradiction_validity):
-    - 3.1 验证单条件修改
-    - 3.2 提取矛盾描述
-    - 3.3 分析不可解性
-    - 3.4 判断是否真的不可解
-    - 3.5 提取不可解原因
+    - 3.1 验证单条件修改 (GPT-4o-mini)
+    - 3.2 提取矛盾描述 (DeepSeek-R1-Distill-Qwen-7B)
+    - 3.3 vLLM采样验证不可解性 (DeepSeek-R1-Distill-Qwen-7B, n=8)
+    - 3.4 提取不可解原因 (DeepSeek-V3)
 """
 import sys
 import os
@@ -29,21 +30,28 @@ import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 
+# Import from removal module for answer verification
+from deepscaler.rewards.math_utils.utils import grade_answer_mathd, grade_answer_sympy, extract_answer
+from deepscaler.system_prompts import ORM_PROMPT
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 parser = argparse.ArgumentParser(description="Contradiction Dataset Construction")
-parser.add_argument("--model", default="gpt-4o-mini", help="Model for extraction/rewrite")
-parser.add_argument("--analysis_model", default="deepseek-r1", help="Model for analysis (DeepSeek-R1)")
-parser.add_argument("--verify_model", default="gpt-4o", help="Model for verification")
+parser.add_argument("--model", default="gpt-4o-mini", help="Model for condition extraction")
+parser.add_argument("--analysis_model", default="DeepSeek-R1-Distill-Qwen-7B", help="Model for analysis and rewrite")
+parser.add_argument("--verify_model", default="DeepSeek-R1-Distill-Qwen-7B", help="Model for vLLM sampling verification")
 parser.add_argument("--extract_model", default="deepseek-v3", help="Model for extraction (DeepSeek-V3)")
+parser.add_argument("--judge_model", default="gpt-4o-mini", help="Model for LLM-as-Judge (ORM fallback)")
 parser.add_argument("--data_dir", default="data/solve", help="Input directory")
 parser.add_argument("--output_dir", default="data/construct_contradiction", help="Output directory")
 parser.add_argument("--prompt_dir", default="prompt/v4-comp/rewrite", help="Prompt directory")
 parser.add_argument("--dataset", default="aime", help="Dataset name")
-parser.add_argument("--temperature", default=0.0, type=float, help="Temperature for generation")
+parser.add_argument("--temperature", default=1.0, type=float, help="Temperature for vLLM sampling")
+parser.add_argument("--max_attempts", default=8, type=int, help="Max sampling attempts for verification")
 parser.add_argument("--threads", default=8, type=int, help="Number of parallel threads")
 parser.add_argument("--test_mode", action='store_true', help="Test mode - process only first 5 items")
 parser.add_argument("--force", action='store_true', help="Force reprocess all items")
+parser.add_argument("--use_math_orm", action='store_true', help="Enable LLM ORM for answer verification")
 args = parser.parse_args()
 
 try:
@@ -104,12 +112,14 @@ def record_tokens(data, model_type, prompt_tokens, completion_tokens):
     if "gpt4o_mini_prompt_lengths" not in data:
         data["gpt4o_mini_prompt_lengths"] = []
         data["gpt4o_mini_completion_lengths"] = []
-    if "deepseek_r1_prompt_lengths" not in data:
-        data["deepseek_r1_prompt_lengths"] = []
-        data["deepseek_r1_completion_lengths"] = []
+    if "local_prompt_lengths" not in data:
+        data["local_prompt_lengths"] = []
+        data["local_completion_lengths"] = []
     if "deepseek_v3_prompt_lengths" not in data:
         data["deepseek_v3_prompt_lengths"] = []
         data["deepseek_v3_completion_lengths"] = []
+    if "heuristic_count" not in data:
+        data["heuristic_count"] = 0
 
     if model_type == "gpt-4o":
         data["gpt4o_prompt_lengths"].append(prompt_tokens)
@@ -117,12 +127,14 @@ def record_tokens(data, model_type, prompt_tokens, completion_tokens):
     elif model_type == "gpt-4o-mini":
         data["gpt4o_mini_prompt_lengths"].append(prompt_tokens)
         data["gpt4o_mini_completion_lengths"].append(completion_tokens)
-    elif model_type == "deepseek-r1":
-        data["deepseek_r1_prompt_lengths"].append(prompt_tokens)
-        data["deepseek_r1_completion_lengths"].append(completion_tokens)
+    elif model_type == "local":
+        data["local_prompt_lengths"].append(prompt_tokens)
+        data["local_completion_lengths"].append(completion_tokens)
     elif model_type == "deepseek-v3":
         data["deepseek_v3_prompt_lengths"].append(prompt_tokens)
         data["deepseek_v3_completion_lengths"].append(completion_tokens)
+    elif model_type == "heuristic":
+        data["heuristic_count"] += 1
 
 def get_response_openai(input_prompt, persona="", model=None, temperature=0.0):
     if model is None:
@@ -143,8 +155,9 @@ def get_response_openai(input_prompt, persona="", model=None, temperature=0.0):
     prompt_tokens = count_tokens(prompt_text, model_name)
 
     # Determine model type for token tracking
-    if "deepseek" in model.lower() and "r1" in model.lower():
-        model_type = "deepseek-r1"
+    is_local_model = "localhost" in url or "127.0.0.1" in url
+    if is_local_model:
+        model_type = "local"
     elif "deepseek" in model.lower() and ("v3" in model.lower() or "chat" in model.lower()):
         model_type = "deepseek-v3"
     elif "gpt-4o-mini" in model_name.lower():
@@ -176,9 +189,72 @@ def get_response_openai(input_prompt, persona="", model=None, temperature=0.0):
         except Exception as e:
             logging.warning(f'API call failed (attempt {attempt+1}/{max_retries}): {e}')
             if attempt < max_retries - 1:
-                time.sleep(10 * (attempt + 1))
+                wait_time = 3 if is_local_model else 10
+                time.sleep(wait_time * (attempt + 1))
 
     return "", 0, 0, model_type
+
+def get_response_openai_with_sampling(input_prompt, persona="", model=None, temperature=0.0, n=1):
+    """vLLM sampling - returns n candidates"""
+    if model is None:
+        model = args.model
+    if model not in model_options:
+        logging.error(f"Model {model} not found")
+        return None
+
+    model_name, key, url = random.choice(model_options[model])
+    client = OpenAI(api_key=key, base_url=url)
+
+    messages = []
+    if persona:
+        messages.append({"role": "system", "content": persona})
+    messages.append({"role": "user", "content": input_prompt})
+
+    prompt_text = (persona + "\n" if persona else "") + input_prompt
+    prompt_tokens = count_tokens(prompt_text, model_name)
+
+    is_local_model = "localhost" in url or "127.0.0.1" in url
+    if is_local_model:
+        model_type = "local"
+    elif "gpt-4o-mini" in model_name.lower():
+        model_type = "gpt-4o-mini"
+    elif "gpt-4o" in model_name.lower():
+        model_type = "gpt-4o"
+    else:
+        model_type = "local"
+
+    max_retries = 5
+    for attempt in range(max_retries):
+        try:
+            completion = client.chat.completions.create(
+                model=model_name,
+                messages=messages,
+                temperature=temperature,
+                n=n,
+                max_tokens=4096,
+                stream=False
+            )
+            candidates = [choice.message.content for choice in completion.choices]
+
+            try:
+                prompt_tokens = completion.usage.prompt_tokens
+                completion_tokens = completion.usage.completion_tokens
+            except:
+                completion_tokens = sum(count_tokens(text, model_name) for text in candidates)
+
+            return {
+                "candidates": candidates,
+                "prompt_tokens": prompt_tokens,
+                "completion_tokens": completion_tokens,
+                "model_type": model_type
+            }
+        except Exception as e:
+            logging.warning(f'API call failed (attempt {attempt+1}/{max_retries}): {e}')
+            if attempt < max_retries - 1:
+                wait_time = 3 if is_local_model else 10
+                time.sleep(wait_time * (attempt + 1))
+
+    return None
 
 def parse_json_response(response, fallback=None):
     """解析JSON响应"""
@@ -206,7 +282,48 @@ def parse_json_response(response, fallback=None):
 
     return fallback if fallback is not None else {}
 
-def extract_conditions_only(data):
+def extract_answer_from_response(response_text):
+    """Extract answer from model response (handles <think> tags)"""
+    if "</think>" not in response_text:
+        return None
+    response_text = response_text.split("</think>", 1)[1].strip()
+    return extract_answer(response_text)
+
+def judge_answer_equivalence(question, model_answer, ground_truth):
+    """Judge if model answer equals ground truth (reused from removal module)"""
+    is_correct = grade_answer_mathd(model_answer, ground_truth) or grade_answer_sympy(model_answer, ground_truth)
+    if is_correct:
+        logging.debug(f"✓ Heuristic match: {model_answer} ≈ {ground_truth}")
+        return True, 0, 0, "heuristic"
+
+    if args.use_math_orm:
+        logging.debug(f"Heuristic failed, trying ORM: {model_answer} vs {ground_truth}")
+        ORM_USER_TEMPLATE = """
+Problem: {problem}
+Answer 1: {answer_1}
+Answer 2: {answer_2}
+"""
+        input_prompt = ORM_USER_TEMPLATE.format(
+            problem=question, answer_1=model_answer, answer_2=ground_truth
+        )
+        try:
+            response, prompt_tokens, completion_tokens, model_type = get_response_openai(
+                input_prompt, persona=ORM_PROMPT, model=args.judge_model, temperature=0.0
+            )
+            if "[[YES]]" in response:
+                logging.debug(f"✓ ORM confirmed: {model_answer} ≈ {ground_truth}")
+                return True, prompt_tokens, completion_tokens, model_type
+            else:
+                logging.debug(f"✗ ORM rejected: {model_answer} ≠ {ground_truth}")
+                return False, prompt_tokens, completion_tokens, model_type
+        except Exception as e:
+            logging.error(f"ORM call failed: {e}")
+            return False, 0, 0, "unknown"
+
+    logging.debug(f"✗ No match: {model_answer} ≠ {ground_truth}")
+    return False, 0, 0, "heuristic"
+
+def extract_conditions(data):
     """Step 1: 提取问题中的所有关键条件"""
     prompt_path = os.path.join(args.prompt_dir, "extract.txt")
     if not os.path.exists(prompt_path):
@@ -351,7 +468,7 @@ def generate_contradiction_variants(data):
     return data
 
 def verify_contradiction_validity(data):
-    """Step 3: 验证矛盾条件的有效性"""
+    """Step 3: 验证矛盾条件的有效性（使用vLLM sampling）"""
     variants = data.get("contradiction_variants", [])
 
     if not variants:
@@ -360,12 +477,10 @@ def verify_contradiction_validity(data):
     # Load verification prompts
     verify_s1_path = os.path.join(args.prompt_dir, "contradict_verify_s1.txt")
     verify_s2_path = os.path.join(args.prompt_dir, "contradict_verify_s2.txt")
-    unsolve_s1_path = os.path.join(args.prompt_dir, "contradict_unsolve_s1.txt")
-    unsolve_s2_path = os.path.join(args.prompt_dir, "contradict_unsolve_s2.txt")
     unsolve_s3_path = os.path.join(args.prompt_dir, "contradict_unsolve_s3.txt")
 
     # Check if all prompt files exist
-    prompt_files = [verify_s1_path, verify_s2_path, unsolve_s1_path, unsolve_s2_path, unsolve_s3_path]
+    prompt_files = [verify_s1_path, verify_s2_path, unsolve_s3_path]
     for path in prompt_files:
         if not os.path.exists(path):
             logging.error(f"Prompt file not found: {path}")
@@ -376,10 +491,6 @@ def verify_contradiction_validity(data):
         verify_s1_template = f.read()
     with open(verify_s2_path, 'r', encoding='utf-8') as f:
         verify_s2_template = f.read()
-    with open(unsolve_s1_path, 'r', encoding='utf-8') as f:
-        unsolve_s1_template = f.read()
-    with open(unsolve_s2_path, 'r', encoding='utf-8') as f:
-        unsolve_s2_template = f.read()
     with open(unsolve_s3_path, 'r', encoding='utf-8') as f:
         unsolve_s3_template = f.read()
 
@@ -398,7 +509,7 @@ def verify_contradiction_validity(data):
         verify_s1_response, p_tokens, c_tokens, m_type = get_response_openai(
             verify_s1_prompt,
             persona="You are an expert at comparing mathematical problems.",
-            model=args.verify_model,
+            model=args.model,  # gpt-4o-mini
             temperature=0.0
         )
         record_tokens(data, m_type, p_tokens, c_tokens)
@@ -427,7 +538,7 @@ def verify_contradiction_validity(data):
         contradicted_condition, p_tokens, c_tokens, m_type = get_response_openai(
             verify_s2_prompt,
             persona="You are an expert at extracting information from mathematical problems.",
-            model=args.extract_model,
+            model=args.analysis_model,  # DeepSeek-R1-Distill-Qwen-7B
             temperature=0.0
         )
         record_tokens(data, m_type, p_tokens, c_tokens)
@@ -449,60 +560,98 @@ def verify_contradiction_validity(data):
 
         logging.info(f"ID {variant_id}: ✓ Contradicted condition extracted")
 
-        # Step 3.3: Analyze unsolvability
-        unsolve_s1_prompt = unsolve_s1_template.format(
-            original_question=data["question"],
-            original_answer=ground_truth,
-            rewritten_question=variant["contradicted_question"]
+        # Step 3.3: vLLM Sampling Verification (reuse from removal module)
+        logging.info(f"ID {variant_id}: Starting vLLM sampling verification (n={args.max_attempts})...")
+
+        # Create verification prompt (same format as removal module)
+        verification_prompt = f"""Solve the following mathematical problem:
+
+{variant["contradicted_question"]}
+
+Provide your answer in the format: The answer is <answer>.
+"""
+
+        response_data = get_response_openai_with_sampling(
+            verification_prompt,
+            persona="You are an expert mathematical problem solver.",
+            model=args.verify_model,  # DeepSeek-R1-Distill-Qwen-7B
+            temperature=args.temperature,
+            n=args.max_attempts
         )
 
-        unsolvability_analysis, p_tokens, c_tokens, m_type = get_response_openai(
-            unsolve_s1_prompt,
-            persona="You are an expert mathematical problem analyzer.",
-            model=args.analysis_model,
-            temperature=0.0
-        )
-        record_tokens(data, m_type, p_tokens, c_tokens)
-
-        # Clean up
-        if "### Analysis ###" in unsolvability_analysis:
-            unsolvability_analysis = unsolvability_analysis.split("### Analysis ###")[-1].strip()
-
-        # Step 3.4: Judge if truly unsolvable
-        unsolve_s2_prompt = unsolve_s2_template.format(
-            original_question=data["question"],
-            original_answer=ground_truth,
-            rewritten_question=variant["contradicted_question"],
-            unsolvability_analysis=unsolvability_analysis
-        )
-
-        judgment, p_tokens, c_tokens, m_type = get_response_openai(
-            unsolve_s2_prompt,
-            persona="You are an expert mathematical problem judge.",
-            model=args.analysis_model,
-            temperature=0.0
-        )
-        record_tokens(data, m_type, p_tokens, c_tokens)
-
-        # Parse True/False
-        is_truly_unsolvable = "True" in judgment or "true" in judgment
-
-        if not is_truly_unsolvable:
-            logging.warning(f"ID {variant_id}: ✗ Not truly unsolvable")
+        if not response_data:
+            logging.error(f"ID {variant_id}: vLLM sampling failed")
             variant["verification"] = {
                 "single_condition_verified": True,
                 "contradicted_condition_extracted": True,
                 "contradicted_condition": contradicted_condition,
-                "unsolvability_analysis": unsolvability_analysis,
-                "is_truly_unsolvable": False,
+                "vllm_sampling_passed": False,
+                "is_valid": False,
+                "failure_reason": "vllm_sampling_failed"
+            }
+            continue
+
+        record_tokens(data, response_data["model_type"],
+                      response_data["prompt_tokens"], response_data["completion_tokens"])
+
+        # Check all candidates - they should ALL be wrong
+        sampling_attempts = []
+        has_correct_answer = False
+
+        for attempt_num, candidate_text in enumerate(response_data["candidates"], start=1):
+            model_answer = extract_answer_from_response(candidate_text)
+
+            if model_answer is None:
+                is_correct = False
+                judge_result = "no_answer_tag"
+                judge_method = "none"
+            else:
+                is_correct, judge_prompt_tokens, judge_completion_tokens, judge_model_type = judge_answer_equivalence(
+                    variant["contradicted_question"], model_answer, ground_truth
+                )
+                if judge_model_type == "heuristic":
+                    judge_result = "heuristic_match" if is_correct else "heuristic_fail"
+                    judge_method = "heuristic"
+                else:
+                    judge_result = "orm_match" if is_correct else "orm_fail"
+                    judge_method = "orm"
+                record_tokens(data, judge_model_type, judge_prompt_tokens, judge_completion_tokens)
+
+            attempt_record = {
+                "attempt": attempt_num,
+                "full_response": candidate_text,
+                "model_answer": model_answer if model_answer else "N/A",
+                "judge_result": judge_result,
+                "judge_method": judge_method,
+                "is_correct": is_correct
+            }
+            sampling_attempts.append(attempt_record)
+
+            if is_correct:
+                has_correct_answer = True
+
+        # Validation logic: ALL attempts should be WRONG (can't solve)
+        vllm_sampling_passed = not has_correct_answer
+
+        if vllm_sampling_passed:
+            logging.info(f"ID {variant_id}: ✓ vLLM sampling passed - All {args.max_attempts} answers ≠ ground_truth")
+        else:
+            logging.warning(f"ID {variant_id}: ✗ vLLM sampling failed - At least 1 answer = ground_truth")
+            variant["verification"] = {
+                "single_condition_verified": True,
+                "contradicted_condition_extracted": True,
+                "contradicted_condition": contradicted_condition,
+                "vllm_sampling_passed": False,
+                "sampling_attempts": sampling_attempts,
                 "is_valid": False,
                 "failure_reason": "still_solvable"
             }
             continue
 
-        logging.info(f"ID {variant_id}: ✓ Confirmed unsolvable")
+        # Step 3.4: Extract concise unsolvable reason
+        # Build analysis from sampling results
+        unsolvability_analysis = f"The model was unable to produce the correct answer '{ground_truth}' across {args.max_attempts} attempts when given the contradicted question."
 
-        # Step 3.5: Extract concise unsolvable reason
         unsolve_s3_prompt = unsolve_s3_template.format(
             original_question=data["question"],
             rewritten_question=variant["contradicted_question"],
@@ -512,7 +661,7 @@ def verify_contradiction_validity(data):
         unsolvable_reason, p_tokens, c_tokens, m_type = get_response_openai(
             unsolve_s3_prompt,
             persona="You are an expert at summarizing mathematical concepts.",
-            model=args.extract_model,
+            model=args.extract_model,  # deepseek-v3
             temperature=0.0
         )
         record_tokens(data, m_type, p_tokens, c_tokens)
@@ -527,8 +676,8 @@ def verify_contradiction_validity(data):
             "single_condition_verified": True,
             "contradicted_condition_extracted": True,
             "contradicted_condition": contradicted_condition,
-            "unsolvability_analysis": unsolvability_analysis,
-            "is_truly_unsolvable": True,
+            "vllm_sampling_passed": True,
+            "sampling_attempts": sampling_attempts,
             "unsolvable_reason": unsolvable_reason,
             "is_valid": True
         }
@@ -602,10 +751,11 @@ def filter_valid_data(final_path):
     total_gpt4o_completion = sum(sum(d.get("gpt4o_completion_lengths", [])) for d in dataset)
     total_gpt4o_mini_prompt = sum(sum(d.get("gpt4o_mini_prompt_lengths", [])) for d in dataset)
     total_gpt4o_mini_completion = sum(sum(d.get("gpt4o_mini_completion_lengths", [])) for d in dataset)
-    total_deepseek_r1_prompt = sum(sum(d.get("deepseek_r1_prompt_lengths", [])) for d in dataset)
-    total_deepseek_r1_completion = sum(sum(d.get("deepseek_r1_completion_lengths", [])) for d in dataset)
+    total_local_prompt = sum(sum(d.get("local_prompt_lengths", [])) for d in dataset)
+    total_local_completion = sum(sum(d.get("local_completion_lengths", [])) for d in dataset)
     total_deepseek_v3_prompt = sum(sum(d.get("deepseek_v3_prompt_lengths", [])) for d in dataset)
     total_deepseek_v3_completion = sum(sum(d.get("deepseek_v3_completion_lengths", [])) for d in dataset)
+    total_heuristic_count = sum(d.get("heuristic_count", 0) for d in dataset)
 
     total_original = len(dataset)
     total_variants = 0
@@ -676,13 +826,16 @@ def filter_valid_data(final_path):
     print(f"  Completion: {total_gpt4o_mini_completion:,}")
     print(f"  Cost ≈ ${total_gpt4o_mini_prompt/1e6*gpt4o_mini_prompt_rate + total_gpt4o_mini_completion/1e6*gpt4o_mini_completion_rate:.4f}")
 
-    print(f"\n🤖 DeepSeek-R1 Token Usage:")
-    print(f"  Prompt: {total_deepseek_r1_prompt:,}")
-    print(f"  Completion: {total_deepseek_r1_completion:,}")
+    print(f"\n🖥️  Local Model (DeepSeek-R1-Distill-Qwen-7B) Token Usage:")
+    print(f"  Prompt: {total_local_prompt:,}")
+    print(f"  Completion: {total_local_completion:,}")
 
     print(f"\n🤖 DeepSeek-V3 Token Usage:")
     print(f"  Prompt: {total_deepseek_v3_prompt:,}")
     print(f"  Completion: {total_deepseek_v3_completion:,}")
+
+    print(f"\n🎯 Heuristic Checks (free):")
+    print(f"  Total heuristic validations: {total_heuristic_count:,}")
 
     print(f"\nOutput: {output_path}")
     print("="*70)
@@ -718,17 +871,19 @@ def construction_workflow():
         logging.info("Cleanup completed.")
 
     print("="*70)
-    print("CONTRADICTION DATASET CONSTRUCTION")
+    print("CONTRADICTION DATASET CONSTRUCTION (with vLLM Sampling)")
     print("="*70)
     print(f"Working directory: {os.getcwd()}")
     print(f"Input: {input_path}")
     print(f"Output: {output_dir}")
     print(f"Prompt: {args.prompt_dir}")
     print(f"Model (extract): {args.model}")
-    print(f"Model (analysis): {args.analysis_model}")
-    print(f"Model (verify): {args.verify_model}")
-    print(f"Model (extract info): {args.extract_model}")
+    print(f"Model (analysis/rewrite): {args.analysis_model}")
+    print(f"Model (vLLM sampling): {args.verify_model}")
+    print(f"Model (extract reason): {args.extract_model}")
+    print(f"Use Math ORM: {'✓ Enabled' if args.use_math_orm else '✗ Disabled (heuristic only)'}")
     print(f"Temperature: {args.temperature}")
+    print(f"Sampling n: {args.max_attempts}")
     print(f"Parallel threads: {args.threads}")
     print(f"Items: {len(dataset)}")
     if args.force:
@@ -745,11 +900,11 @@ def construction_workflow():
             dataset = existing_conditions
         else:
             print(f"\n[1/3] Extracting conditions (continuing from {len(existing_conditions)}/{len(dataset)})")
-            process_with_jsonl_parallel(dataset, extract_path, extract_conditions_only, "Extracting conditions")
+            process_with_jsonl_parallel(dataset, extract_path, extract_conditions, "Extracting conditions")
             dataset = read_json(extract_path)
     else:
         print("\n[1/3] Extracting conditions (parallel)")
-        process_with_jsonl_parallel(dataset, extract_path, extract_conditions_only, "Extracting conditions")
+        process_with_jsonl_parallel(dataset, extract_path, extract_conditions, "Extracting conditions")
         dataset = read_json(extract_path)
 
     # Step 2: Generate contradiction variants
@@ -769,7 +924,7 @@ def construction_workflow():
         process_with_jsonl_parallel(dataset, variants_path, generate_contradiction_variants, "Generating contradictions")
         dataset = read_json(variants_path)
 
-    # Step 3: Verify contradictions
+    # Step 3: Verify contradictions with vLLM sampling
     final_path = os.path.join(output_dir, f"{args.dataset}_final.json")
 
     if os.path.exists(final_path) and not args.force:
@@ -777,16 +932,18 @@ def construction_workflow():
         if len(existing_final) == len(dataset):
             print(f"\n[3/3] ✓ Verification already complete ({len(existing_final)} items), skipping...")
         else:
-            print(f"\n[3/3] Verifying contradictions (continuing from {len(existing_final)}/{len(dataset)})")
+            print(f"\n[3/3] Verifying contradictions with vLLM sampling (continuing from {len(existing_final)}/{len(dataset)})")
             print(f"  - Verify single condition change")
             print(f"  - Extract contradicted condition")
-            print(f"  - Analyze unsolvability")
+            print(f"  - vLLM sampling (n={args.max_attempts}) - all should fail")
+            print(f"  - Extract unsolvable reason")
             process_with_jsonl_parallel(dataset, final_path, verify_contradiction_validity, "Verifying contradictions")
     else:
-        print(f"\n[3/3] Verifying contradictions (parallel)")
+        print(f"\n[3/3] Verifying contradictions with vLLM sampling (parallel)")
         print(f"  - Verify single condition change")
         print(f"  - Extract contradicted condition")
-        print(f"  - Analyze unsolvability")
+        print(f"  - vLLM sampling (n={args.max_attempts}) - all should fail")
+        print(f"  - Extract unsolvable reason")
         process_with_jsonl_parallel(dataset, final_path, verify_contradiction_validity, "Verifying contradictions")
 
     print("\n[4/3] Filtering valid data")
