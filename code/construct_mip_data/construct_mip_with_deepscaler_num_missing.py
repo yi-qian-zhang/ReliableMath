@@ -32,7 +32,8 @@ from deepscaler.system_prompts import ORM_PROMPT
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 parser = argparse.ArgumentParser(description="MIP Dataset Construction - Variable Missing Conditions")
-parser.add_argument("--model", default="gpt-4o-mini", help="Model for extraction/rewrite")
+parser.add_argument("--model", default="gpt-4o-mini", help="Model for condition extraction")
+parser.add_argument("--rewrite_model", default=None, help="Model for question rewriting (defaults to --model if not specified)")
 parser.add_argument("--verify_model", default="deepseek-r1-distill-qwen-7b", help="Model for verification")
 parser.add_argument("--judge_model", default="gpt-4o-mini", help="Model for LLM-as-Judge (ORM fallback)")
 parser.add_argument("--data_dir", default="data/solve", help="Input directory")
@@ -47,6 +48,10 @@ parser.add_argument("--test_mode", action='store_true', help="Test mode - proces
 parser.add_argument("--force", action='store_true', help="Force reprocess all items")
 parser.add_argument("--use_math_orm", action='store_true', help="Enable LLM ORM for answer verification")
 args = parser.parse_args()
+
+# 🔧 如果未指定 rewrite_model，默认使用 model
+if args.rewrite_model is None:
+    args.rewrite_model = args.model
 
 try:
     api_config_path = "data/api_keys.json"
@@ -385,10 +390,17 @@ def generate_removal_variants(data, num_missing):
         )
         response, prompt_tokens, completion_tokens, model_type = get_response_openai(
             input_prompt, persona="You are an expert at rewriting mathematical problems.",
-            model=args.model, temperature=0.0
+            model=args.rewrite_model, temperature=0.0
         )
         record_tokens(data, model_type, prompt_tokens, completion_tokens)
         incomplete_question = response.strip()
+
+        # 🔧 清理 DeepSeek-R1 的 <think> 标签
+        if "</think>" in incomplete_question:
+            incomplete_question = incomplete_question.split("</think>", 1)[1].strip()
+        if "<think>" in incomplete_question:
+            incomplete_question = incomplete_question.split("<think>", 1)[0].strip()
+
         for prefix in ["Rewritten Question:", "Rewritten Problem:", "Answer:", "###", "**", '"', "'"]:
             incomplete_question = incomplete_question.replace(prefix, "").strip()
         if data.get("is_multiple_choice"):
@@ -746,7 +758,8 @@ def construction_workflow():
     print(f"Input: {input_path}")
     print(f"Output: {output_dir}")
     print(f"Prompt: {args.prompt_dir}")
-    print(f"Model (extract/rewrite): {args.model}")
+    print(f"Model (extract): {args.model}")
+    print(f"Model (rewrite): {args.rewrite_model}")
     print(f"Model (verify): {args.verify_model}")
     print(f"Model (judge ORM fallback): {args.judge_model}")
     print(f"Use Math ORM: {'✓ Enabled' if args.use_math_orm else '✗ Disabled (heuristic only)'}")
