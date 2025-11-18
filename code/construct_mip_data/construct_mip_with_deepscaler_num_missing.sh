@@ -44,29 +44,6 @@ CUDA_VISIBLE_DEVICES=0,5 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Dis
     --gpu_memory_utilization 0.9 \
     --port 8717
 
-# A800
-#启动DeepSeek-R1-Distill-Qwen-7B 单卡
-CUDA_VISIBLE_DEVICES=7 vllm serve /shared/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
-    --served-model-name DeepSeek-R1-Distill-Qwen-7B \
-    --max-model-len 16384 \
-    --tensor_parallel_size 1 \
-    --gpu_memory_utilization 0.9 \
-    --port 8715
-
-CUDA_VISIBLE_DEVICES=055 vllm serve /shared/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
-    --served-model-name DeepSeek-R1-Distill-Qwen-7B \
-    --max-model-len 8192 \
-    --tensor_parallel_size 2 \
-    --gpu_memory_utilization 0.9 \
-    --port 8717
-
-# DeepSeek-R1-Distill-Qwen-7B 双卡
-CUDA_VISIBLE_DEVICES=6,7 vllm serve /shared/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
-    --served-model-name DeepSeek-R1-Distill-Qwen-7B \
-    --max-model-len 8192 \
-    --tensor_parallel_size 2 \
-    --gpu_memory_utilization 0.9 \
-    --port 8715
 
 # DeepSeek-R1-Distill-Qwen-7B 4卡
 # 1. 设置环境变量，禁用P2P
@@ -91,13 +68,29 @@ echo $NCCL_P2P_DISABLE
 conda activate Interactive_R1
 cd /data2/yiqianzhang/ReliableMath
 
-# 2. 测试模式（只处理前5个样本，缺省1个条件）
+# 2. 测试模式（只处理前5个样本，缺省2个条件）
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
-  --dataset polaris_easy_20 \
+  --dataset polaris_20 \
   --num_missing 1 \
-  --test_mode \
-  --output_dir data/construct_mip_qwen_7B_16384/11-17 \
-  --threads 32
+  --extract_model gpt-4o-mini \
+  --rewrite_model DeepSeek-R1-Distill-Qwen-7B \
+  --verify_model DeepSeek-R1-Distill-Qwen-7B \
+  --output_dir data/construct_mip_qwen_7B_16384/11-18/test_mode/missing_one \
+  --threads 32 \
+  --test_mode  \
+  --force
+
+# 2. 测试模式（只处理前5个样本，缺省2个条件）
+python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
+  --dataset polaris_20 \
+  --num_missing 2 \
+  --extract_model gpt-4o-mini \
+  --rewrite_model DeepSeek-R1-Distill-Qwen-7B \
+  --verify_model DeepSeek-R1-Distill-Qwen-7B \
+  --output_dir data/construct_mip_qwen_7B_16384/11-18/test_mode/missing_two \
+  --threads 32 \
+  --test_mode  \
+  --force
 
 # 3. 查看输出
 ls -lh data/construct_mip_data/polaris_easy_20_*
