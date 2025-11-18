@@ -47,6 +47,7 @@ parser.add_argument("--num_missing", default=1, type=int, help="Number of condit
 parser.add_argument("--test_mode", action='store_true', help="Test mode - process only first 5 items")
 parser.add_argument("--force", action='store_true', help="Force reprocess all items")
 parser.add_argument("--use_math_orm", action='store_true', help="Enable LLM ORM for answer verification")
+parser.add_argument("--use_llm_verification", action='store_true', help="Enable LLM pre-verification before Round A/B (checks rewrite correctness and problem validity)")
 args = parser.parse_args()
 
 # 🔧 如果未指定 rewrite_model，默认使用 extract_model
@@ -353,6 +354,96 @@ def extract_conditions_only(data):
                  (" (multiple-choice)" if is_multiple_choice else ""))
     return data
 
+def verify_rewrite_with_llm(data, rewritten_question, removed_conditions, remaining_conditions, combo_idx):
+    """
+    Round 0: LLM Pre-verification
+    Verify 1: 改写是否只改了指定条件
+    Verify 2: 问题是否有效（没有删除question stem，不是无穷多解）
+    """
+    original_question = data["question"]
+    removed_conditions_text = "\n".join(f"- {c}" for c in removed_conditions)
+    remaining_conditions_text = "\n".join(f"- {c}" for c in remaining_conditions) if remaining_conditions else "(None)"
+
+    # Verification 1: 改写正确性
+    correctness_prompt_path = os.path.join(args.prompt_dir, "verify_rewrite_correctness.txt")
+    if not os.path.exists(correctness_prompt_path):
+        logging.warning(f"Correctness prompt not found: {correctness_prompt_path}")
+        return {"correctness_passed": None, "validity_passed": None}
+
+    with open(correctness_prompt_path, 'r', encoding='utf-8') as f:
+        correctness_template = f.read()
+
+    correctness_prompt = correctness_template.format(
+        original_question=original_question,
+        rewritten_question=rewritten_question,
+        removed_conditions=removed_conditions_text,
+        remaining_conditions=remaining_conditions_text
+    )
+
+    correctness_response, prompt_tokens, completion_tokens, model_type = get_response_openai(
+        correctness_prompt,
+        persona="You are an expert verifier.",
+        model=args.judge_model,
+        temperature=0.0
+    )
+    record_tokens(data, model_type, prompt_tokens, completion_tokens)
+
+    # 解析判断结果
+    correctness_passed = "True" in correctness_response or "true" in correctness_response.lower()
+    correctness_analysis = correctness_response.strip()
+
+    # Verification 2: 问题有效性
+    validity_prompt_path = os.path.join(args.prompt_dir, "verify_problem_validity.txt")
+    if not os.path.exists(validity_prompt_path):
+        logging.warning(f"Validity prompt not found: {validity_prompt_path}")
+        return {
+            "correctness_passed": correctness_passed,
+            "correctness_analysis": correctness_analysis,
+            "validity_passed": None
+        }
+
+    with open(validity_prompt_path, 'r', encoding='utf-8') as f:
+        validity_template = f.read()
+
+    validity_prompt = validity_template.format(
+        original_question=original_question,
+        rewritten_question=rewritten_question,
+        removed_conditions=removed_conditions_text
+    )
+
+    validity_response, prompt_tokens, completion_tokens, model_type = get_response_openai(
+        validity_prompt,
+        persona="You are an expert verifier.",
+        model=args.judge_model,
+        temperature=0.0
+    )
+    record_tokens(data, model_type, prompt_tokens, completion_tokens)
+
+    # 解析判断结果
+    validity_passed = "Valid" in validity_response and "Invalid" not in validity_response
+    validity_analysis = validity_response.strip()
+
+    # 综合结果
+    overall_passed = correctness_passed and validity_passed
+
+    if overall_passed:
+        logging.info(f"ID {data['id']}_remove_{combo_idx}: ✓ LLM verification PASSED")
+    else:
+        reason = []
+        if not correctness_passed:
+            reason.append("改写不正确")
+        if not validity_passed:
+            reason.append("问题无效")
+        logging.warning(f"ID {data['id']}_remove_{combo_idx}: ✗ LLM verification FAILED ({', '.join(reason)})")
+
+    return {
+        "overall_passed": overall_passed,
+        "correctness_passed": correctness_passed,
+        "correctness_analysis": correctness_analysis,
+        "validity_passed": validity_passed,
+        "validity_analysis": validity_analysis
+    }
+
 def generate_removal_variants(data, num_missing):
     conditions = data.get("extracted_conditions", [])
     N = len(conditions)
@@ -425,12 +516,21 @@ def generate_removal_variants(data, num_missing):
             if original_incomplete != incomplete_question:
                 logging.debug(f"ID {data['id']}_remove_{combo_idx}: ✓ Restored multiple-choice options")
 
+        # 🔧 Round 0: LLM Pre-verification (可选)
+        llm_verification = None
+        if hasattr(args, 'use_llm_verification') and args.use_llm_verification:
+            llm_verification = verify_rewrite_with_llm(
+                data, incomplete_question, removed_conditions,
+                remaining_conditions, combo_idx
+            )
+
         variant = {
             "variant_id": f"{data['id']}_remove_{combo_idx}",
             "removed_conditions": removed_conditions,
             "remaining_conditions": remaining_conditions,
             "incomplete_question": incomplete_question,
-            "analysis": analysis,  # 🔧 新增字段
+            "analysis": analysis,
+            "llm_verification": llm_verification,  # 🔧 新增字段
             "num_missing": num_missing
         }
         variants.append(variant)

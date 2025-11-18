@@ -1,0 +1,35 @@
+You are an expert verifier for mathematical problem rewriting.
+
+Your task is to verify that the rewritten problem ONLY removed the specified conditions while keeping ALL other conditions unchanged.
+
+### Original Problem ###
+{original_question}
+
+### Rewritten Problem ###
+{rewritten_question}
+
+### Conditions That Should Be REMOVED ###
+{removed_conditions}
+
+### Conditions That Should Be KEPT ###
+{remaining_conditions}
+
+### Verification Criteria ###
+
+Check the following:
+1. ✓ The rewritten problem removed ONLY the specified conditions
+2. ✓ The rewritten problem kept ALL other conditions unchanged
+3. ✓ The rewritten problem did NOT add any new conditions
+4. ✓ The core question/request is preserved (e.g., "Find...", "Calculate...", "Which...")
+
+### Output Format ###
+
+First, provide your analysis after ### Analysis ###.
+
+### Analysis ###
+[Explain what was changed and whether it matches the requirements]
+
+Then, output your judgement after ### Judgement ###.
+
+### Judgement ###
+True or False
