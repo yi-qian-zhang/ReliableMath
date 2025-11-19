@@ -36,26 +36,26 @@ Your task is to rewrite the original problem by REMOVING specified conditions wh
 ### Examples ###
 
 Example 1:
-Original: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+original_question: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
 Remove: ["Jason bought 1 pencil"]
 Keep: ["Mike bought 2 pencils"]
 → Rewritten: "Mike bought 2 pencils. How many pencils did Jason buy?"
 
 Example 2:
-Original: "Find the distance between the foci of the ellipse x²/9 + y²/16 = 1"
+original_question: "Find the distance between the foci of the ellipse x²/9 + y²/16 = 1"
 Remove: ["The equation of the ellipse is x²/9 + y²/16 = 1"]
 Keep: []
 → Rewritten: "Find the distance between the foci of an ellipse."
 
 Example 3 (Multiple Choice):
-Original: "Which circle passes through (1,2)? (A) x²+y²=5 (B) x²+y²=10"
+original_question: "Which circle passes through (1,2)? (A) x²+y²=5 (B) x²+y²=10"
 Remove: ["The circle passes through (1,2)"]
 Keep: []
 → Rewritten: "Which circle? (A) x²+y²=5 (B) x²+y²=10"
 (Notice: options are PRESERVED)
 
 NOT DO THIS:
-Original Problem: "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print.\n\nSasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?",
+original_question: "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print.\n\nSasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?",
 Remove: ["The key for the digit 1 is not working","Sasha tried to type an 8-digit number"]
 Keep: ["Only 202020 was printed"]
 Rewritten: "Only 202020 was printed. How many 8-digit numbers satisfy this condition?"  ❌

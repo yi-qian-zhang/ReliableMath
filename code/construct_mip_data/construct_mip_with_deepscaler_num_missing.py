@@ -986,7 +986,7 @@ def filter_valid_data(final_path, num_missing):
     else:
         print(f"    Passed: 0/0 (N/A - all variants failed Round A)")
 
-    print(f"\n  Final Result (Round B + C both passed):")
+    print(f"\n  Final Result (Round A + B + C both passed):")
     print(f"    VALID variants: {both_pass_count}/{total_variants} ({both_pass_count/total_variants*100:.1f}%)")
     print(f"\nValid removal variants: {valid_variants}")
     if valid_variants > 0:

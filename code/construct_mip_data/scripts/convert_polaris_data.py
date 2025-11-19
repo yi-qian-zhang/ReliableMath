@@ -98,7 +98,7 @@ def convert_polaris_data(input_file: str, output_file: str, difficulty_counts: d
             "data_source": "polaris",
             # 使用原始 ID，如果不存在则使用序号（纯数字）
             "id": item.get("id", i),
-            "question": item.get("problem", ""),
+            "original_question": item.get("problem", ""),
             "ground_truth": item.get("answer", ""),
             "solution": "",
             "difficulty": item.get("difficulty", "")
@@ -133,8 +133,8 @@ def convert_polaris_data(input_file: str, output_file: str, difficulty_counts: d
     print("\n前3条数据预览:")
     for i, item in enumerate(converted_data[:3]):
         print(f"\n[{i}] ID: {item['id']}, 难度: {item['difficulty']}")
-        question_preview = item['question'][:80].replace('\n', ' ') + "..." if len(item['question']) > 80 else item['question'].replace('\n', ' ')
-        print(f"    问题: {question_preview}")
+        question_preview = item['original_question'][:80].replace('\n', ' ') + "..." if len(item['original_question']) > 80 else item['original_question'].replace('\n', ' ')
+        print(f"    问题: {original_question_preview}")
         print(f"    答案: {item['ground_truth']}")
 
 if __name__ == "__main__":

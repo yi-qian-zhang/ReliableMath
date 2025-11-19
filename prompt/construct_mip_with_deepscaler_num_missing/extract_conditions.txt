@@ -32,22 +32,22 @@ Guidelines for Extraction:
 Examples:
 
 Example 1:
-Original Problem: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+original_question: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
 Extracted Conditions:
 ["Jason bought 1 pencil", "Mike bought 2 pencils"]
 
 Example 2:
-Original Problem: "Let A, B, C, and D be points on the hyperbola x²/20 - y²/24 = 1 such that ABCD is a rhombus whose diagonals intersect at the origin. Find the greatest real number that is less than BD² for all such rhombi."
+original_question: "Let A, B, C, and D be points on the hyperbola x²/20 - y²/24 = 1 such that ABCD is a rhombus whose diagonals intersect at the origin. Find the greatest real number that is less than BD² for all such rhombi."
 Extracted Conditions:
 ["A, B, C, and D are points on the hyperbola x²/20 - y²/24 = 1", "ABCD is a rhombus", "The diagonals of ABCD intersect at the origin"]
 
 Example 3 (What NOT to do):
-Original Problem: "The line y=3/5x−17/3 is to be parameterized. Which of the following options are valid?"
+original_question: "The line y=3/5x−17/3 is to be parameterized. Which of the following options are valid?"
 WRONG: ["Which of the following options are valid"] ← This is the QUESTION, not a condition!
 CORRECT: ["The line has equation y=3/5x−17/3"]
 
 Example 4
-Original Problem: "The largest three-digit number divided by..."
+original_question: "The largest three-digit number divided by..."
 WRONG: "The largest three-digit number is 999" ← Added calculation!
 CORRECT: "The largest three-digit number" ← Exact extraction
 

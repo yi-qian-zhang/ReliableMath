@@ -13,12 +13,12 @@ tmux list-sessions
 
 # A100
 #启动DeepSeek-R1-Distill-Qwen-7B 单卡
-CUDA_VISIBLE_DEVICES=7 vllm /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
-    --served-model-name DeepSeek-R1-Distill-Qwen-7B \
+CUDA_VISIBLE_DEVICES=5 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B \
+    --served-model-name DeepSeek-R1-Distill-Qwen-32B \
     --max-model-len 16384 \
-    --tensor_parallel_size 1 \
-    --gpu_memory_utilization 0.9 \
-    --port 8715
+    --tensor-parallel-size 1 \
+    --gpu-memory-utilization 0.9 \
+    --port 8716
 
 
 #启动DeepSeek-R1-Distill-Qwen-7B 双卡

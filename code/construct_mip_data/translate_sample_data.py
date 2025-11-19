@@ -17,7 +17,7 @@ parser.add_argument("--input", required=True, help="Input sample_valid.json file
 parser.add_argument("--output", required=True, help="Output translated json file path")
 parser.add_argument("--model_url", default="http://localhost:8716/v1", help="Local vLLM model URL")
 parser.add_argument("--model_name", default="Qwen3-32B", help="Model name")
-parser.add_argument("--threads", default=8, type=int, help="Number of parallel threads for translation")
+parser.add_argument("--threads", default=16, type=int, help="Number of parallel threads for translation")
 args = parser.parse_args()
 
 # 初始化 OpenAI 客户端
@@ -58,7 +58,7 @@ def translate_text(text):
             # 处理 DeepSeek 模型的 <think> 标签
             # 提取 </think> 之后的内容才是真正的翻译
             if "</think>" in translation:
-                translation = translation.split("</think>", 1)[1].strip()
+                translation = translation.split("</think>\n\n", 1)[1].strip()
 
             return translation
         except Exception as e:
