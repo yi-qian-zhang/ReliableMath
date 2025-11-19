@@ -552,6 +552,21 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
     round_A_passed = llm_verification.get("overall_passed", None) if llm_verification else None
     round_A_info = llm_verification if llm_verification else {}
 
+    # 🔧 Early exit: 如果 Round A 失败，直接跳过 Round B 和 C
+    if round_A_passed is False:
+        logging.info(f"ID {variant['variant_id']}: ✗ Round A FAILED - Skipping Round B and C")
+        variant["verification"] = {
+            "round_A_passed": False,
+            "round_B_passed": False,
+            "round_C_passed": False,
+            "is_valid": False,
+            "round_A": round_A_info,
+            "round_B": {"total_attempts": 0, "all_attempts": []},
+            "round_C": {"total_attempts": 0, "all_attempts": []},
+            "ground_truth": ground_truth
+        }
+        return variant
+
     logging.info(f"ID {variant['variant_id']}: Starting Round B - Testing incomplete question...")
     input_prompt_incomplete = prompt_template_incomplete.format(incomplete_question=incomplete_question)
     response_data_b = get_response_openai_with_sampling(
@@ -819,6 +834,7 @@ def filter_valid_data(final_path, num_missing):
                             judge_method_distribution.get(judge_method, 0) + 1
                 valid_item = {
                     "id": variant["variant_id"],
+                    "original_id": data.get("id"),
                     "data_source": data.get("data_source", ""),
                     "difficulty": data.get("difficulty", ""),
                     "transformation_type": "condition_removal",
@@ -834,13 +850,8 @@ def filter_valid_data(final_path, num_missing):
                 }
                 valid_data.append(valid_item)
                 valid_variants += 1
-    # 按照原始ID排序（从variant_id中提取原始ID，格式为 "{original_id}_remove_{combo_idx}"）
-    def extract_original_id(variant_id):
-        try:
-            return int(variant_id.split('_remove_')[0])
-        except:
-            return 0
-    valid_data.sort(key=lambda x: extract_original_id(x.get('id', '')))
+    # 按照原始ID排序
+    valid_data.sort(key=lambda x: x.get('original_id', 0))
     output_path = final_path.replace(f"_final_n{num_missing}.json", f"_valid_n{num_missing}.json")
     write_json(output_path, valid_data)
     print("\n" + "="*70)
