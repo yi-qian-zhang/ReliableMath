@@ -28,22 +28,6 @@ CUDA_VISIBLE_DEVICES=1,2 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Dis
     --gpu_memory_utilization 0.9 \
     --port 8715
 
-CUDA_VISIBLE_DEVICES=1,2 vllm serve \
-    --model /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
-    --served-model-name DeepSeek-R1-Distill-Qwen-7B \
-    --max-model-len 8192 \
-    --tensor_parallel_size 2 \
-    --gpu_memory_utilization 0.9 \
-    --port 8715
-    
-# DeepSeek-R1-Distill-Qwen-7B 双卡
-CUDA_VISIBLE_DEVICES=0,5 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
-    --served-model-name DeepSeek-R1-Distill-Qwen-7B \
-    --max-model-len 8192 \
-    --tensor_parallel_size 2 \
-    --gpu_memory_utilization 0.9 \
-    --port 8717
-
 
 # DeepSeek-R1-Distill-Qwen-7B 4卡
 # 1. 设置环境变量，禁用P2P
@@ -62,63 +46,60 @@ echo $NCCL_P2P_DISABLE
 # (此时会输出一个空行)
 
 
+🚀 运行命令
+1️⃣ 测试模式（推荐先跑这个）
 
-# 基础测试（推荐先运行这个）
-# 1. 进入工作目录
-conda activate Interactive_R1
 cd /data2/yiqianzhang/ReliableMath
+conda activate Interactive_R1
 
-# 2. 测试模式（只处理前5个样本，缺省2个条件）
+#8715端口 DeepSeek-R1-Distill-Qwen-7B
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
-  --dataset polaris_20 \
+  --dataset polaris_easy_20 \
   --num_missing 1 \
   --extract_model gpt-4o-mini \
   --rewrite_model DeepSeek-R1-Distill-Qwen-7B \
   --verify_model DeepSeek-R1-Distill-Qwen-7B \
-  --output_dir data/construct_mip_qwen_7B_16384/11-18/test_mode/missing_one \
-  --threads 32 \
-  --test_mode  \
+  --judge_model gpt-4o-mini \
+  --use_llm_verification \
+  --output_dir data/construct_mip_qwen_7B_16384/11-18/test_mode/missing_one/19-19 \
+  --test_mode \
   --force
 
-# 2. 测试模式（只处理前5个样本，缺省2个条件）
-python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
-  --dataset polaris_20 \
-  --num_missing 2 \
-  --extract_model gpt-4o-mini \
-  --rewrite_model DeepSeek-R1-Distill-Qwen-7B \
-  --verify_model DeepSeek-R1-Distill-Qwen-7B \
-  --output_dir data/construct_mip_qwen_7B_16384/11-18/test_mode/missing_two \
-  --threads 32 \
-  --test_mode  \
-  --force
+2️⃣ 完整运行（测试通过后）
+去掉 --test_mode 和 --force 运行完整数据集：
 
-# 3. 查看输出
-ls -lh data/construct_mip_data/polaris_easy_20_*
-
-# 正式运行
-# 缺省 1 个条件（低难度）
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
   --dataset polaris_easy_20 \
   --num_missing 1 \
-  --threads 8
+  --extract_model gpt-4o-mini \
+  --rewrite_model DeepSeek-R1-Distill-Qwen-7B \
+  --verify_model DeepSeek-R1-Distill-Qwen-7B \
+  --judge_model gpt-4o-mini \
+  --use_llm_verification   \
+  --output_dir data/construct_mip_qwen_7B_16384/11-18/official_mode/missing_one/19-19 \
+  --force
 
-# 缺省 2 个条件（中难度）
+
+#8717端口 DeepSeek-R1-Distill-Qwen-7B
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
   --dataset polaris_easy_20 \
   --num_missing 2 \
-  --threads 8
+  --extract_model gpt-4o-mini \
+  --rewrite_model DeepSeek-R1-Distill-Qwen-7B-8717 \
+  --verify_model DeepSeek-R1-Distill-Qwen-7B-8717 \
+  --judge_model gpt-4o-mini \
+  --use_llm_verification \
+  --output_dir data/construct_mip_qwen_7B_16384/11-18/official_mode/missing_two/19-19 \
+  --force
 
-# 缺省 3 个条件（高难度）
+#8719端口 DeepSeek-R1-Distill-Qwen-7B
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
   --dataset polaris_easy_20 \
   --num_missing 3 \
-  --threads 8
-
-# 批量生成
-# 一次生成多个难度级别
-for n in 1 2 3; do
-  python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
-    --dataset polaris_easy_20 \
-    --num_missing $n \
-    --threads 8
-done
+  --extract_model gpt-4o-mini \
+  --rewrite_model DeepSeek-R1-Distill-Qwen-7B-8719 \
+  --verify_model DeepSeek-R1-Distill-Qwen-7B-8719 \
+  --judge_model gpt-4o-mini \
+  --use_llm_verification \
+  --output_dir data/construct_mip_qwen_7B_16384/11-18/official_mode/missing_three/19-19 \
+  --force

@@ -34,8 +34,8 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 parser = argparse.ArgumentParser(description="MIP Dataset Construction - Variable Missing Conditions")
 parser.add_argument("--extract_model", default="gpt-4o-mini", help="Model for condition extraction")
-parser.add_argument("--rewrite_model", default=None, help="Model for question rewriting (defaults to --extract_model if not specified)")
-parser.add_argument("--verify_model", default="deepseek-r1-distill-qwen-7b", help="Model for verification")
+parser.add_argument("--rewrite_model", default="DeepSeek-R1-Distill-Qwen-7B", help="Model for question rewriting (defaults to --extract_model if not specified)")
+parser.add_argument("--verify_model", default="DeepSeek-R1-Distill-Qwen-7B", help="Model for verification")
 parser.add_argument("--judge_model", default="gpt-4o-mini", help="Model for LLM-as-Judge (ORM fallback)")
 parser.add_argument("--data_dir", default="data/solve", help="Input directory")
 parser.add_argument("--output_dir", default="data/construct_mip_data", help="Output directory")
