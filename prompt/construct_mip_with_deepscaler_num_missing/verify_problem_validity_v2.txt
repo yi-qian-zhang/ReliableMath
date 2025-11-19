@@ -1,0 +1,75 @@
+You are an expert verifier for mathematical problem quality.
+
+Your task is to verify that the rewritten problem is still a VALID mathematical question that is unsolvable (not solvable with infinite solutions).
+
+### Original Problem ###
+{original_question}
+
+### Rewritten Problem ###
+{rewritten_question}
+
+### Removed Conditions ###
+{removed_conditions}
+
+### Verification Criteria ###
+
+Check if the rewritten problem has any of these ISSUES:
+
+**Issue 1: Question Stem Deleted**
+- The core question itself was removed (e.g., "Find...", "Calculate...", "Determine...")
+- The rewritten text is no longer asking a mathematical question
+- Example BAD: "A triangle ABC" (not a question!)
+- Example GOOD: "A triangle ABC. Find the area." (still a question)
+
+**Issue 2: Dangling References (NEW - CRITICAL)**
+- The rewritten problem contains pronouns or references without clear antecedents
+- Examples: "this condition", "this value", "it", "these numbers", "the above"
+- If removed conditions were referenced by such terms, those terms now point to nothing
+- Example BAD: "Only 202020 was printed. How many 8-digit numbers satisfy this condition?"
+  - "this condition" refers to removed information!
+- Example GOOD: "Only 202020 was printed. How many 8-digit numbers, when certain digits are removed, result in 202020?"
+  - Self-contained, no dangling references
+
+**Issue 3: Missing Essential Context**
+- The rewritten problem lacks essential background/scenario needed to understand the question
+- Example BAD: "202020 was printed. How many numbers satisfy this?"
+  - What's the context? Keyboard? Printer? Mathematical operation?
+- Example GOOD: Even with missing conditions, the core scenario should be understandable
+
+**Issue 4: Infinite Solutions (Not Unsolvable)**
+- After removing conditions, the problem has infinitely many valid answers
+- This is DIFFERENT from unsolvable (where we can't determine a specific answer)
+- Example: "Find a number x" (infinite solutions: any number works)
+- We want: UNSOLVABLE (missing info to solve)
+- We DON'T want: INFINITE SOLUTIONS (too many valid answers)
+
+**Issue 5: Trivially Solvable**
+- The problem became too easy and can be solved without the removed conditions
+- Example: Removed a red herring that wasn't actually needed
+
+### Analysis Instructions ###
+
+Think step by step:
+1. Can someone who ONLY sees the rewritten problem (without the original) understand what is being asked?
+2. Are there any pronouns (this, that, it, these) that refer to removed information?
+3. Is the core scenario/context still clear?
+4. After removing the conditions, is the problem unsolvable OR does it have infinite solutions?
+5. Can the problem still be answered without the removed conditions?
+
+### Output Format ###
+
+First, provide your analysis after ### Analysis ###.
+
+### Analysis ###
+[Analyze whether the rewritten problem has any of the issues above. Pay special attention to Issues 2 and 3.]
+
+Then, output your judgement after ### Judgement ###.
+
+### Judgement ###
+Valid or Invalid
+
+(Output "Valid" ONLY if the rewritten problem is:
+ - Self-contained and understandable without the original
+ - Has no dangling references
+ - Is a proper unsolvable question)
+(Output "Invalid" if it has Issue 1, 2, 3, 4, or 5)

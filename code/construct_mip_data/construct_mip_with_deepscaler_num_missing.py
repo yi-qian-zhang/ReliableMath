@@ -388,9 +388,17 @@ def verify_rewrite_with_llm(data, rewritten_question, removed_conditions, remain
     )
     record_tokens(data, model_type, prompt_tokens, completion_tokens)
 
-    # 解析判断结果
-    correctness_passed = "True" in correctness_response or "true" in correctness_response.lower()
+    # 解析判断结果 - 更严格的判断
     correctness_analysis = correctness_response.strip()
+
+    # 提取 ### Judgement ### 部分
+    if "### Judgement ###" in correctness_response:
+        judgement_part = correctness_response.split("### Judgement ###")[1].strip()
+        # 只有明确是 "True" 才通过
+        correctness_passed = judgement_part.lower().startswith("true")
+    else:
+        # Fallback to simple check
+        correctness_passed = "True" in correctness_response or "true" in correctness_response.lower()
 
     # Verification 2: 问题有效性
     validity_prompt_path = os.path.join(args.prompt_dir, "verify_problem_validity.txt")
@@ -419,9 +427,17 @@ def verify_rewrite_with_llm(data, rewritten_question, removed_conditions, remain
     )
     record_tokens(data, model_type, prompt_tokens, completion_tokens)
 
-    # 解析判断结果
-    validity_passed = "Valid" in validity_response and "Invalid" not in validity_response
+    # 解析判断结果 - 更严格的判断
     validity_analysis = validity_response.strip()
+
+    # 提取 ### Judgement ### 部分
+    if "### Judgement ###" in validity_response:
+        judgement_part = validity_response.split("### Judgement ###")[1].strip()
+        # 只有明确包含 "Valid" 且不包含 "Invalid" 才通过
+        validity_passed = judgement_part.lower().startswith("valid") and "invalid" not in judgement_part.lower()
+    else:
+        # Fallback to simple check
+        validity_passed = "Valid" in validity_response and "Invalid" not in validity_response
 
     # 综合结果
     overall_passed = correctness_passed and validity_passed
