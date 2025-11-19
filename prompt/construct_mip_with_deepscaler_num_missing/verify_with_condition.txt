@@ -1,9 +1,9 @@
-You are given an incomplete mathematical problem and a missing condition.
+You are given an incomplete mathematical problem and missing condition(s).
 
 **Incomplete Problem**:
 {incomplete_question}
 
-**Missing Condition** (use this to complete the problem):
-{removed_condition}
+**Missing Condition(s)** (use these to complete the problem):
+{removed_conditions}
 
 Let's think step by step and output the final answer within \\boxed{{}}.
