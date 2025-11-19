@@ -39,13 +39,14 @@ Check if the rewritten problem has any of these ISSUES:
 **Issue 4: Infinite Solutions (Not Unsolvable)**
 - After removing conditions, the problem has infinitely many valid answers
 - This is DIFFERENT from unsolvable (where we can't determine a specific answer)
-- Example: "Find a number x" (infinite solutions: any number works)
+- Example: "xy=1, Find a number x" (infinite solutions: any number works)
 - We want: UNSOLVABLE (missing info to solve)
 - We DON'T want: INFINITE SOLUTIONS (too many valid answers)
 
 **Issue 5: Trivially Solvable**
 - The problem became too easy and can be solved without the removed conditions
-- Example: Removed a red herring that wasn't actually needed
+- Example: "In the college entrance examination in Zhejiang Province, three people scored 100 points each. How much is the total score of the three individuals?" was rewritten to "three people scored 100 points each. How much is the total score of the three individuals?" 
+- Removed a red herring that wasn't actually needed
 
 ### Analysis Instructions ###
 

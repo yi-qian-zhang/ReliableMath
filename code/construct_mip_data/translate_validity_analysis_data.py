@@ -99,14 +99,14 @@ def translate_item(item):
     # 需要翻译的单个文本字段
     fields_to_translate = [
         "original_question",
-        "incomplete_question"
+        "incomplete_question",
+        "validity_analysis"
     ]
 
     # 需要翻译的列表字段
     list_fields_to_translate = [
         "all_extracted_conditions",
         "removed_conditions",
-        "remaining_conditions"
     ]
 
     # 翻译单个字段

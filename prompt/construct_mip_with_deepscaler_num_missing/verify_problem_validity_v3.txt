@@ -1,0 +1,197 @@
+You are an expert verifier for mathematical problem quality.
+
+ 
+
+Your task is to verify that the rewritten problem is still a VALID missing information problem (MIP).
+
+ 
+
+### Original Problem ###
+
+{original_question}
+
+ 
+
+### Rewritten Problem ###
+
+{rewritten_question}
+
+ 
+
+### Removed Conditions ###
+
+{removed_conditions}
+
+ 
+
+### Verification Criteria ###
+
+ 
+
+Check if the rewritten problem has any of these **THREE CRITICAL ISSUES**:
+
+ 
+
+**Issue 1: Unique Solution → Infinite Solutions**
+
+The original problem has a unique answer, but after removing conditions, it now has infinitely many valid answers.
+
+ 
+
+**Common cases:**
+
+- Removed domain constraints (e.g., "0 < x < 180" from trigonometric equations)
+
+  Example: "tan(53°)tan(81°)tan(x°) = ..." with constraint "0 < x < 180"
+
+  → After removing constraint: infinite solutions due to periodicity ❌
+
+ 
+
+- Removed degree/type specifications (e.g., "monic polynomial of degree 3" → "polynomial")
+
+  Example: "Let P(x) be a monic polynomial of degree 3"
+
+  → After removing "degree 3": infinitely many polynomials possible ❌
+
+ 
+
+- Removed uniqueness conditions (e.g., "the largest", "positive", "integer")
+
+  Example: "Find the largest prime divisor" → "Find a prime divisor"
+
+  → Multiple divisors exist ❌
+
+ 
+
+**How to detect:**
+
+- Ask: "Does the original problem have ONE specific answer?"
+
+- Ask: "After removing these conditions, are there MANY valid answers?"
+
+- If answer changes from "one" to "many/infinite" → Invalid
+
+ 
+
+**Issue 2: Mathematical Errors Introduced**
+
+The rewriting process introduced mathematically illegal operations.
+
+ 
+
+**Common errors:**
+
+- Logarithm of negative numbers: log(-0.25), ln(-x) where x > 0
+
+- Division by zero: 1/0, tan(90°)
+
+- Even roots of negative real numbers: √(-4) in real domain
+
+- Out-of-domain operations: arcsin(2), arccos(-1.5)
+
+- Negative numbers raised to non-integer powers in real domain
+
+ 
+
+**Examples:**
+
+- Changed "log(0.25)" to "log(-0.25)" ❌ (negative logarithm)
+
+- Changed "x > 0" to "x < 0" in context of √x ❌ (negative square root)
+
+ 
+
+**How to detect:**
+
+- Check if any numbers in mathematical expressions were changed (should NOT happen)
+
+- Check if domain constraints were removed, making operations invalid
+
+ 
+
+**Issue 3: Examples Deleted**
+
+The original problem contains illustrative examples (using phrases like "For example", "For instance", "e.g."), but the rewritten problem removed them.
+
+ 
+
+**Examples are PART OF THE PROBLEM CONTEXT and should NEVER be removed.**
+
+ 
+
+**Example of Issue 3:**
+
+Original: "On a computer keyboard, the key for the digit 1 is not working. **For example, if you try to type the number 1231234, only the number 23234 will actually print.**\n\nSasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?"
+
+ 
+
+Invalid Rewrite: "On a computer keyboard, a certain key is not working. Sasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?"
+
+→ The example "1231234 → 23234" was deleted ❌
+
+ 
+
+**How to detect:**
+
+- Check if original problem contains phrases: "For example", "For instance", "e.g.", "such as", "Example:"
+
+- Check if these example sections are preserved in the rewritten problem
+
+- Examples should NOT be in the removed_conditions list (they are context, not conditions)
+
+ 
+
+### Analysis Instructions ###
+
+ 
+
+Analyze step by step:
+
+ 
+
+**Step 1: Check Issue 1 (Unique → Infinite)**
+
+- Does removing these conditions change a unique-answer problem into an infinite-answer problem?
+
+- Consider: domain constraints, degree specifications, uniqueness keywords
+
+ 
+
+**Step 2: Check Issue 2 (Mathematical Errors)**
+
+- Were any mathematical expressions altered (numbers changed, signs flipped)?
+
+- Do any operations become mathematically illegal after removing domain constraints?
+
+ 
+
+**Step 3: Check Issue 3 (Examples Deleted)**
+
+- Does the original problem contain examples (look for "For example", "e.g.", etc.)?
+
+- Are these examples preserved in the rewritten problem?
+
+ 
+
+### Output Format ###
+
+ 
+
+First, provide your analysis after ### Analysis ###.
+
+
+### Analysis ###
+
+[Analyze each of the three issues systematically]
+
+Then, output your judgement after ### Judgement ###.
+
+
+### Judgement ###
+
+Valid or Invalid
+
+(Output "Valid" ONLY if ALL three checks pass: no infinite solutions, no math errors, examples preserved)
+
+(Output "Invalid" if ANY of Issue 1, Issue 2, or Issue 3 occurs)
