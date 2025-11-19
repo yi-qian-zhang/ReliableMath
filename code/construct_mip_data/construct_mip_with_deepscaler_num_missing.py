@@ -6,9 +6,10 @@ Missing Information Problem (MIP) Dataset Construction - 支持可变缺省条�
 新架构 (4步流程):
 Step 1. 提取条件 (extract_conditions_only): 使用 GPT-4o 提取问题中的所有关键条件
 Step 2. 生成移除变体 (generate_removal_variants): 根据参数 --num_missing=n，生成所有 C(N,n) 种组合
-Step 3. 验证 A - 条件必要性: 给模型缺省问题，vLLM sampling 8次，全都 ≠ ground_truth → 通过
-Step 4. 验证 B - 条件充分性: 给模型缺省问题 + 被移除的条件们，至少1个 = ground_truth → 通过
-最终数据集: 只包含两轮验证都通过的有效缺省问题
+Step 3. 验证 A - 改写质量检查: LLM 快速验证改写正确性和问题有效性
+Step 4. 验证 B - 条件必要性: 给模型缺省问题，vLLM sampling 8次，全都 ≠ ground_truth → 通过
+Step 5. 验证 C - 条件充分性: 给模型缺省问题 + 被移除的条件们，至少1个 = ground_truth → 通过
+最终数据集: 只包含三轮验证都通过的有效缺省问题
 """
 import sys
 import os
@@ -47,7 +48,7 @@ parser.add_argument("--num_missing", default=1, type=int, help="Number of condit
 parser.add_argument("--test_mode", action='store_true', help="Test mode - process only first 5 items")
 parser.add_argument("--force", action='store_true', help="Force reprocess all items")
 parser.add_argument("--use_math_orm", action='store_true', help="Enable LLM ORM for answer verification")
-parser.add_argument("--use_llm_verification", action='store_true', help="Enable LLM pre-verification before Round A/B (checks rewrite correctness and problem validity)")
+parser.add_argument("--use_llm_verification", action='store_true', help="Enable Round A LLM pre-verification before Round B/C (checks rewrite correctness and problem validity)")
 args = parser.parse_args()
 
 # 🔧 如果未指定 rewrite_model，默认使用 extract_model
@@ -356,7 +357,7 @@ def extract_conditions_only(data):
 
 def verify_rewrite_with_llm(data, rewritten_question, removed_conditions, remaining_conditions, combo_idx):
     """
-    Round 0: LLM Pre-verification
+    Round A: LLM Pre-verification - 改写质量检查
     Verify 1: 改写是否只改了指定条件
     Verify 2: 问题是否有效（没有删除question stem，不是无穷多解）
     """
@@ -516,7 +517,7 @@ def generate_removal_variants(data, num_missing):
             if original_incomplete != incomplete_question:
                 logging.debug(f"ID {data['id']}_remove_{combo_idx}: ✓ Restored multiple-choice options")
 
-        # 🔧 Round 0: LLM Pre-verification (可选)
+        # 🔧 Round A: LLM Pre-verification (可选)
         llm_verification = None
         if hasattr(args, 'use_llm_verification') and args.use_llm_verification:
             llm_verification = verify_rewrite_with_llm(
@@ -541,26 +542,26 @@ def generate_removal_variants(data, num_missing):
 def verify_single_variant(data, variant, prompt_template_incomplete, prompt_template_complete, ground_truth):
     incomplete_question = variant["incomplete_question"]
     removed_conditions = variant["removed_conditions"]
-    logging.info(f"ID {variant['variant_id']}: Starting Round A - Testing incomplete question...")
+    logging.info(f"ID {variant['variant_id']}: Starting Round B - Testing incomplete question...")
     input_prompt_incomplete = prompt_template_incomplete.format(incomplete_question=incomplete_question)
-    response_data_a = get_response_openai_with_sampling(
+    response_data_b = get_response_openai_with_sampling(
         input_prompt_incomplete, persona="You are an expert mathematical problem solver.",
         model=args.verify_model, temperature=args.temperature, n=args.max_attempts
     )
-    if not response_data_a:
-        logging.error(f"ID {variant['variant_id']}: Round A generation failed")
+    if not response_data_b:
+        logging.error(f"ID {variant['variant_id']}: Round B generation failed")
         variant["verification"] = {
-            "round_a_passed": False, "round_b_passed": False, "is_valid": False,
-            "round_a": {"total_attempts": 0, "all_attempts": []},
+            "round_b_passed": False, "round_c_passed": False, "is_valid": False,
             "round_b": {"total_attempts": 0, "all_attempts": []},
+            "round_c": {"total_attempts": 0, "all_attempts": []},
             "ground_truth": ground_truth
         }
         return variant
-    record_tokens(data, response_data_a["model_type"],
-                  response_data_a["prompt_tokens"], response_data_a["completion_tokens"])
-    round_a_attempts = []
-    round_a_has_correct = False
-    for attempt_num, candidate_text in enumerate(response_data_a["candidates"], start=1):
+    record_tokens(data, response_data_b["model_type"],
+                  response_data_b["prompt_tokens"], response_data_b["completion_tokens"])
+    round_b_attempts = []
+    round_b_has_correct = False
+    for attempt_num, candidate_text in enumerate(response_data_b["candidates"], start=1):
         model_answer = extract_answer_from_response(candidate_text)
         if model_answer is None:
             is_correct = False
@@ -582,45 +583,45 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
             "model_answer": model_answer if model_answer else "N/A",
             "judge_result": judge_result, "judge_method": judge_method, "is_correct": is_correct
         }
-        round_a_attempts.append(attempt_record)
+        round_b_attempts.append(attempt_record)
         if is_correct:
-            round_a_has_correct = True
-    round_a_passed = not round_a_has_correct
-    if round_a_passed:
-        logging.info(f"ID {variant['variant_id']}: ✓ Round A PASSED - All {args.max_attempts} answers ≠ ground_truth")
+            round_b_has_correct = True
+    round_b_passed = not round_b_has_correct
+    if round_b_passed:
+        logging.info(f"ID {variant['variant_id']}: ✓ Round B PASSED - All {args.max_attempts} answers ≠ ground_truth")
     else:
-        logging.info(f"ID {variant['variant_id']}: ✗ Round A FAILED - At least 1 answer = ground_truth")
+        logging.info(f"ID {variant['variant_id']}: ✗ Round B FAILED - At least 1 answer = ground_truth")
         variant["verification"] = {
-            "round_a_passed": False, "round_b_passed": False, "is_valid": False,
-            "round_a": {"total_attempts": len(round_a_attempts), "all_attempts": round_a_attempts},
-            "round_b": {"total_attempts": 0, "all_attempts": []},
+            "round_b_passed": False, "round_c_passed": False, "is_valid": False,
+            "round_b": {"total_attempts": len(round_b_attempts), "all_attempts": round_b_attempts},
+            "round_c": {"total_attempts": 0, "all_attempts": []},
             "ground_truth": ground_truth
         }
         return variant
-    logging.info(f"ID {variant['variant_id']}: Starting Round B - Testing WITH removed conditions...")
+    logging.info(f"ID {variant['variant_id']}: Starting Round C - Testing WITH removed conditions...")
     removed_conditions_text = "\n".join(f"- {c}" for c in removed_conditions)
     input_prompt_complete = prompt_template_complete.format(
         incomplete_question=incomplete_question, removed_conditions=removed_conditions_text
     )
-    response_data_b = get_response_openai_with_sampling(
+    response_data_c = get_response_openai_with_sampling(
         input_prompt_complete, persona="You are an expert mathematical problem solver.",
         model=args.verify_model, temperature=args.temperature, n=args.max_attempts
     )
-    if not response_data_b:
-        logging.error(f"ID {variant['variant_id']}: Round B generation failed")
+    if not response_data_c:
+        logging.error(f"ID {variant['variant_id']}: Round C generation failed")
         variant["verification"] = {
-            "round_a_passed": True, "round_b_passed": False, "is_valid": False,
-            "round_a": {"total_attempts": len(round_a_attempts), "all_attempts": round_a_attempts},
-            "round_b": {"total_attempts": 0, "all_attempts": []},
+            "round_b_passed": True, "round_c_passed": False, "is_valid": False,
+            "round_b": {"total_attempts": len(round_b_attempts), "all_attempts": round_b_attempts},
+            "round_c": {"total_attempts": 0, "all_attempts": []},
             "ground_truth": ground_truth
         }
         return variant
-    record_tokens(data, response_data_b["model_type"],
-                  response_data_b["prompt_tokens"], response_data_b["completion_tokens"])
-    round_b_attempts = []
-    round_b_has_correct = False
+    record_tokens(data, response_data_c["model_type"],
+                  response_data_c["prompt_tokens"], response_data_c["completion_tokens"])
+    round_c_attempts = []
+    round_c_has_correct = False
     success_at_attempt = None
-    for attempt_num, candidate_text in enumerate(response_data_b["candidates"], start=1):
+    for attempt_num, candidate_text in enumerate(response_data_c["candidates"], start=1):
         model_answer = extract_answer_from_response(candidate_text)
         if model_answer is None:
             is_correct = False
@@ -643,29 +644,29 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
             "model_answer": model_answer if model_answer else "N/A",
             "judge_result": judge_result, "judge_method": judge_method, "is_correct": is_correct
         }
-        round_b_attempts.append(attempt_record)
-        if is_correct and not round_b_has_correct:
-            round_b_has_correct = True
+        round_c_attempts.append(attempt_record)
+        if is_correct and not round_c_has_correct:
+            round_c_has_correct = True
             success_at_attempt = attempt_num
-    round_b_passed = round_b_has_correct
-    if round_b_passed:
-        logging.info(f"ID {variant['variant_id']}: ✓ Round B PASSED - Answer {success_at_attempt}/{args.max_attempts} = ground_truth")
+    round_c_passed = round_c_has_correct
+    if round_c_passed:
+        logging.info(f"ID {variant['variant_id']}: ✓ Round C PASSED - Answer {success_at_attempt}/{args.max_attempts} = ground_truth")
     else:
-        logging.info(f"ID {variant['variant_id']}: ✗ Round B FAILED - All {args.max_attempts} answers ≠ ground_truth")
-    is_valid = round_a_passed and round_b_passed
+        logging.info(f"ID {variant['variant_id']}: ✗ Round C FAILED - All {args.max_attempts} answers ≠ ground_truth")
+    is_valid = round_b_passed and round_c_passed
     if is_valid:
         logging.info(f"ID {variant['variant_id']}: 🎉 VALID - Both rounds passed!")
     else:
         logging.info(f"ID {variant['variant_id']}: ✗ INVALID")
     variant["verification"] = {
-        "round_a_passed": round_a_passed, "round_b_passed": round_b_passed, "is_valid": is_valid,
-        "round_a": {"total_attempts": len(round_a_attempts), "all_attempts": round_a_attempts},
-        "round_b": {"total_attempts": len(round_b_attempts), "success_at_attempt": success_at_attempt, "all_attempts": round_b_attempts},
+        "round_b_passed": round_b_passed, "round_c_passed": round_c_passed, "is_valid": is_valid,
+        "round_b": {"total_attempts": len(round_b_attempts), "all_attempts": round_b_attempts},
+        "round_c": {"total_attempts": len(round_c_attempts), "success_at_attempt": success_at_attempt, "all_attempts": round_c_attempts},
         "ground_truth": ground_truth
     }
     return variant
 
-def verify_incomplete_questions_with_two_rounds(data):
+def verify_incomplete_questions_with_three_rounds(data):
     prompt_path_incomplete = os.path.join(args.prompt_dir, "verify_without_condition.txt")
     prompt_path_complete = os.path.join(args.prompt_dir, "verify_with_condition.txt")
     if not os.path.exists(prompt_path_incomplete):
@@ -754,30 +755,30 @@ def filter_valid_data(final_path, num_missing):
     total_original = len(dataset)
     total_variants = 0
     valid_variants = 0
-    round_a_pass_count = 0
     round_b_pass_count = 0
+    round_c_pass_count = 0
     both_pass_count = 0
-    round_b_attempt_distribution = {}
+    round_c_attempt_distribution = {}
     judge_method_distribution = {"heuristic": 0, "orm": 0}
     for data in dataset:
         for variant in data.get("removal_variants", []):
             total_variants += 1
             verification = variant.get("verification", {})
-            round_a_passed = verification.get("round_a_passed", False)
             round_b_passed = verification.get("round_b_passed", False)
-            if round_a_passed:
-                round_a_pass_count += 1
+            round_c_passed = verification.get("round_c_passed", False)
             if round_b_passed:
                 round_b_pass_count += 1
-            if round_a_passed and round_b_passed:
+            if round_c_passed:
+                round_c_pass_count += 1
+            if round_b_passed and round_c_passed:
                 both_pass_count += 1
             if verification.get("is_valid", False):
-                round_b_info = verification.get("round_b", {})
-                success_at_attempt = round_b_info.get("success_at_attempt")
+                round_c_info = verification.get("round_c", {})
+                success_at_attempt = round_c_info.get("success_at_attempt")
                 if success_at_attempt:
-                    round_b_attempt_distribution[success_at_attempt] = \
-                        round_b_attempt_distribution.get(success_at_attempt, 0) + 1
-                    all_attempts = round_b_info.get("all_attempts", [])
+                    round_c_attempt_distribution[success_at_attempt] = \
+                        round_c_attempt_distribution.get(success_at_attempt, 0) + 1
+                    all_attempts = round_c_info.get("all_attempts", [])
                     if success_at_attempt <= len(all_attempts):
                         success_attempt_record = all_attempts[success_at_attempt - 1]
                         judge_method = success_attempt_record.get("judge_method", "orm")
@@ -813,17 +814,17 @@ def filter_valid_data(final_path, num_missing):
         print(f"   Please rerun with --force to regenerate all data.")
         return
 
-    print(f"\n📊 Two-Round Verification Results:")
-    print(f"  Round A passed (without conditions → can't solve): {round_a_pass_count} ({round_a_pass_count/total_variants*100:.1f}%)")
-    print(f"  Round B passed (with conditions → can solve): {round_b_pass_count} ({round_b_pass_count/total_variants*100:.1f}%)")
+    print(f"\n📊 Three-Round Verification Results:")
+    print(f"  Round B passed (without conditions → can't solve): {round_b_pass_count} ({round_b_pass_count/total_variants*100:.1f}%)")
+    print(f"  Round C passed (with conditions → can solve): {round_c_pass_count} ({round_c_pass_count/total_variants*100:.1f}%)")
     print(f"  Both rounds passed (VALID): {both_pass_count} ({both_pass_count/total_variants*100:.1f}%)")
     print(f"\nValid removal variants: {valid_variants}")
     if valid_variants > 0:
-        print(f"\nRound B Success Distribution (when valid):")
-        for attempt in sorted(round_b_attempt_distribution.keys()):
-            count = round_b_attempt_distribution[attempt]
+        print(f"\nRound C Success Distribution (when valid):")
+        for attempt in sorted(round_c_attempt_distribution.keys()):
+            count = round_c_attempt_distribution[attempt]
             print(f"  Candidate {attempt}: {count} variants ({count/valid_variants*100:.1f}%)")
-        print(f"\nJudge Method Distribution (Round B success):")
+        print(f"\nJudge Method Distribution (Round C success):")
         for method, count in judge_method_distribution.items():
             print(f"  {method.capitalize()}: {count} ({count/valid_variants*100:.1f}%)")
     gpt4o_prompt_rate = 2.5
@@ -924,15 +925,17 @@ def construction_workflow():
         if len(existing_final) == len(dataset):
             print(f"\n[3/4] ✓ Verification already complete ({len(existing_final)} items), skipping...")
         else:
-            print(f"\n[3/4] Two-round verification (n={args.max_attempts}, continuing from {len(existing_final)}/{len(dataset)})")
-            print(f"  Round A: WITHOUT conditions (must all fail)")
-            print(f"  Round B: WITH conditions (at least one succeeds)")
-            process_with_jsonl_parallel(dataset, final_path, verify_incomplete_questions_with_two_rounds, "Two-round verification")
+            print(f"\n[3/4] Three-round verification (n={args.max_attempts}, continuing from {len(existing_final)}/{len(dataset)})")
+            print(f"  Round A: LLM pre-verification (rewrite quality)")
+            print(f"  Round B: WITHOUT conditions (must all fail)")
+            print(f"  Round C: WITH conditions (at least one succeeds)")
+            process_with_jsonl_parallel(dataset, final_path, verify_incomplete_questions_with_three_rounds, "Three-round verification")
     else:
-        print(f"\n[3/4] Two-round verification (n={args.max_attempts}, parallel)")
-        print(f"  Round A: WITHOUT conditions (must all fail)")
-        print(f"  Round B: WITH conditions (at least one succeeds)")
-        process_with_jsonl_parallel(dataset, final_path, verify_incomplete_questions_with_two_rounds, "Two-round verification")
+        print(f"\n[3/4] Three-round verification (n={args.max_attempts}, parallel)")
+        print(f"  Round A: LLM pre-verification (rewrite quality)")
+        print(f"  Round B: WITHOUT conditions (must all fail)")
+        print(f"  Round C: WITH conditions (at least one succeeds)")
+        process_with_jsonl_parallel(dataset, final_path, verify_incomplete_questions_with_three_rounds, "Three-round verification")
     print("\n[4/4] Filtering valid data")
     filter_valid_data(final_path, args.num_missing)
     print("\n✓ Pipeline completed!")
