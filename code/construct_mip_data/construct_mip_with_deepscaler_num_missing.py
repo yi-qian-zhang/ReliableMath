@@ -854,6 +854,27 @@ def filter_valid_data(final_path, num_missing):
     valid_data.sort(key=lambda x: x.get('original_id', 0))
     output_path = final_path.replace(f"_final_n{num_missing}.json", f"_valid_n{num_missing}.json")
     write_json(output_path, valid_data)
+
+    # 生成简略版 sample_valid.json
+    sample_valid_data = []
+    for item in valid_data:
+        sample_item = {
+            "id": item.get("id"),
+            "difficulty": item.get("difficulty"),
+            "num_missing": item.get("num_missing"),
+            "original_question": item.get("original_question"),
+            "ground_truth": item.get("ground_truth"),
+            "incomplete_question": item.get("incomplete_question"),
+            "all_extracted_conditions": item.get("all_extracted_conditions"),
+            "num_conditions_extracted": item.get("num_conditions_extracted"),
+            "removed_conditions": item.get("removed_conditions"),
+            "remaining_conditions": item.get("remaining_conditions")
+        }
+        sample_valid_data.append(sample_item)
+
+    sample_output_path = final_path.replace(f"_final_n{num_missing}.json", f"_sample_valid_n{num_missing}.json")
+    write_json(sample_output_path, sample_valid_data)
+    logging.info(f"Sample valid data saved to: {sample_output_path}")
     print("\n" + "="*70)
     print("MISSING INFORMATION PROBLEM (MIP) DATASET STATISTICS")
     print("="*70)
@@ -922,7 +943,8 @@ def filter_valid_data(final_path, num_missing):
     print(f"  Completion: {total_local_completion:,}")
     print(f"\n🎯 Heuristic Checks (free):")
     print(f"  Total heuristic validations: {total_heuristic_count:,}")
-    print(f"\nOutput: {output_path}")
+    print(f"\nOutput (full): {output_path}")
+    print(f"Output (sample): {sample_output_path}")
     print("="*70)
 
 def construction_workflow():
