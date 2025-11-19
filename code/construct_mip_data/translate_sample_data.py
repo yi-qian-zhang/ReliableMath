@@ -75,14 +75,23 @@ def translate_list(text_list):
     return translated
 
 def translate_item(item):
-    """翻译单个数据项（英文->中文）"""
+    """翻译单个数据项（英文->中文）
+
+    翻译字段：
+    - original_question
+    - incomplete_question
+    - all_extracted_conditions (列表)
+    - removed_conditions (列表)
+    - remaining_conditions (列表)
+
+    其他字段（如 ground_truth, id, difficulty 等）保持不变
+    """
     translated_item = item.copy()
 
-    # 需要翻译的字段
+    # 需要翻译的单个文本字段
     fields_to_translate = [
         "original_question",
-        "incomplete_question",
-        "ground_truth"
+        "incomplete_question"
     ]
 
     # 需要翻译的列表字段
