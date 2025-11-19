@@ -1,0 +1,5 @@
+Solve the following mathematical problem:
+
+{question}
+
+Provide your answer in the format: The answer is <answer>.

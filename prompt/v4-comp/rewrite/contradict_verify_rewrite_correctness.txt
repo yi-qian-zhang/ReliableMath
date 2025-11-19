@@ -1,0 +1,27 @@
+### Task ###:
+You are given an ORIGINAL mathematical question and a REWRITTEN version with a contradicted condition.
+
+Your task is to verify that the rewrite is CORRECT:
+1. ONLY the specified condition was modified (contradicted)
+2. All other conditions remain EXACTLY the same
+3. The question structure and stem are preserved
+
+### Input ###:
+**Original Question**:
+{original_question}
+
+**Rewritten Question (with contradiction)**:
+{rewritten_question}
+
+**Contradicted Condition** (this ONE condition should be modified):
+{contradicted_condition}
+
+**Other Conditions** (should be preserved EXACTLY):
+{other_conditions}
+
+### Output Format ###:
+Answer with ONLY one word:
+- "True" if the rewrite is correct (only the specified condition was contradicted, everything else is identical)
+- "False" if the rewrite is incorrect (multiple conditions changed, or question structure modified)
+
+After your answer, you may provide a brief explanation.

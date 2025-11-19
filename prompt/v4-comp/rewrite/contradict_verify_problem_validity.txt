@@ -1,0 +1,24 @@
+### Task ###:
+You are given a REWRITTEN mathematical question with a contradicted condition.
+
+Your task is to verify that the rewritten question is VALID:
+1. The question stem (what is being asked) is preserved
+2. The problem is not trivially invalid (e.g., empty, nonsensical)
+3. The problem is not asking for infinitely many solutions
+
+### Input ###:
+**Original Question**:
+{original_question}
+
+**Rewritten Question (with contradiction)**:
+{rewritten_question}
+
+**Contradicted Condition**:
+{contradicted_condition}
+
+### Output Format ###:
+Answer with one of the following:
+- "Valid" if the rewritten question is a valid mathematical problem (even if unsolvable due to contradiction)
+- "Invalid" if the rewritten question is malformed, trivial, or asking for infinitely many solutions
+
+After your answer, you may provide a brief explanation.
