@@ -54,6 +54,12 @@ def translate_text(text):
                 max_tokens=2048
             )
             translation = completion.choices[0].message.content.strip()
+
+            # 处理 DeepSeek 模型的 <think> 标签
+            # 提取 </think> 之后的内容才是真正的翻译
+            if "</think>" in translation:
+                translation = translation.split("</think>", 1)[1].strip()
+
             return translation
         except Exception as e:
             logging.warning(f"Translation failed (attempt {attempt+1}/{max_retries}): {e}")
