@@ -8,6 +8,7 @@ import logging
 from openai import OpenAI
 from tqdm import tqdm
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -16,6 +17,7 @@ parser.add_argument("--input", required=True, help="Input sample_valid.json file
 parser.add_argument("--output", required=True, help="Output translated json file path")
 parser.add_argument("--model_url", default="http://localhost:8716/v1", help="Local vLLM model URL")
 parser.add_argument("--model_name", default="Qwen3-32B", help="Model name")
+parser.add_argument("--threads", default=8, type=int, help="Number of parallel threads for translation")
 args = parser.parse_args()
 
 # 初始化 OpenAI 客户端
@@ -135,6 +137,7 @@ def main():
     logging.info(f"Loaded {len(data)} items")
     logging.info(f"Target language: Chinese (中文)")
     logging.info(f"Model: {args.model_name} at {args.model_url}")
+    logging.info(f"Threads: {args.threads}")
 
     # 测试连接
     try:
@@ -144,11 +147,43 @@ def main():
         logging.error(f"Failed to connect to model: {e}")
         return
 
-    # 翻译所有数据
-    translated_data = []
-    for item in tqdm(data, desc="Translating to Chinese"):
-        translated_item = translate_item(item)
-        translated_data.append(translated_item)
+    # 多线程翻译所有数据
+    logging.info(f"Starting parallel translation with {args.threads} threads...")
+
+    def translate_with_index(idx_item):
+        """翻译单个item并返回索引，保持顺序"""
+        idx, item = idx_item
+        try:
+            translated_item = translate_item(item)
+            return idx, translated_item
+        except Exception as e:
+            logging.error(f"Failed to translate item {idx}: {e}")
+            return idx, item  # 失败时返回原数据
+
+    # 创建 (index, item) 对
+    indexed_data = list(enumerate(data))
+
+    # 使用线程池并行翻译
+    translated_results = [None] * len(data)  # 预分配列表保持顺序
+
+    with ThreadPoolExecutor(max_workers=args.threads) as executor:
+        # 提交所有任务
+        futures = {executor.submit(translate_with_index, idx_item): idx_item[0]
+                   for idx_item in indexed_data}
+
+        # 使用 tqdm 显示进度
+        with tqdm(total=len(data), desc="Translating to Chinese") as pbar:
+            for future in as_completed(futures):
+                try:
+                    idx, translated_item = future.result()
+                    translated_results[idx] = translated_item
+                    pbar.update(1)
+                except Exception as e:
+                    logging.error(f"Translation task failed: {e}")
+                    pbar.update(1)
+
+    # 过滤掉 None（如果有的话）
+    translated_data = [item for item in translated_results if item is not None]
 
     # 保存结果
     logging.info(f"Saving translated data to: {args.output}")
