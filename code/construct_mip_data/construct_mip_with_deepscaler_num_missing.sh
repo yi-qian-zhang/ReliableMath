@@ -20,6 +20,7 @@ CUDA_VISIBLE_DEVICES=7 vllm /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwe
     --gpu_memory_utilization 0.9 \
     --port 8715
 
+
 #启动DeepSeek-R1-Distill-Qwen-7B 双卡
 CUDA_VISIBLE_DEVICES=1,2 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
     --served-model-name DeepSeek-R1-Distill-Qwen-7B \
@@ -28,22 +29,6 @@ CUDA_VISIBLE_DEVICES=1,2 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Dis
     --gpu_memory_utilization 0.9 \
     --port 8715
 
-
-# DeepSeek-R1-Distill-Qwen-7B 4卡
-# 1. 设置环境变量，禁用P2P
-export NCCL_P2P_DISABLE=1
-# 2. 运行你修正后的vLLM命令
-CUDA_VISIBLE_DEVICES=4,5,6,7 vllm serve /shared/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
-    --served-model-name DeepSeek-R1-Distill-Qwen-7B \
-    --max-model-len 8192 \
-    --tensor-parallel-size 4 \
-    --gpu-memory-utilization 0.9 \
-    --port 8715
-# 1. 这会立即删除该变量
-unset NCCL_P2P_DISABLE
-# 2. （可选）验证它是否已消失
-echo $NCCL_P2P_DISABLE
-# (此时会输出一个空行)
 
 
 🚀 运行命令
