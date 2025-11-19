@@ -755,6 +755,12 @@ def filter_valid_data(final_path, num_missing):
     total_original = len(dataset)
     total_variants = 0
     valid_variants = 0
+    # Round A (LLM pre-verification) 统计
+    round_a_enabled_count = 0
+    round_a_pass_count = 0
+    round_a_correctness_pass = 0
+    round_a_validity_pass = 0
+    # Round B/C 统计
     round_b_pass_count = 0
     round_c_pass_count = 0
     both_pass_count = 0
@@ -763,6 +769,19 @@ def filter_valid_data(final_path, num_missing):
     for data in dataset:
         for variant in data.get("removal_variants", []):
             total_variants += 1
+
+            # Round A 统计
+            llm_verification = variant.get("llm_verification")
+            if llm_verification is not None:
+                round_a_enabled_count += 1
+                if llm_verification.get("overall_passed", False):
+                    round_a_pass_count += 1
+                if llm_verification.get("correctness_passed", False):
+                    round_a_correctness_pass += 1
+                if llm_verification.get("validity_passed", False):
+                    round_a_validity_pass += 1
+
+            # Round B/C 统计
             verification = variant.get("verification", {})
             round_b_passed = verification.get("round_b_passed", False)
             round_c_passed = verification.get("round_c_passed", False)
@@ -815,9 +834,25 @@ def filter_valid_data(final_path, num_missing):
         return
 
     print(f"\n📊 Three-Round Verification Results:")
-    print(f"  Round B passed (without conditions → can't solve): {round_b_pass_count} ({round_b_pass_count/total_variants*100:.1f}%)")
-    print(f"  Round C passed (with conditions → can solve): {round_c_pass_count} ({round_c_pass_count/total_variants*100:.1f}%)")
-    print(f"  Both rounds passed (VALID): {both_pass_count} ({both_pass_count/total_variants*100:.1f}%)")
+
+    # Round A 统计（如果启用）
+    if round_a_enabled_count > 0:
+        print(f"\n  Round A (LLM Pre-verification - Rewrite Quality):")
+        print(f"    Enabled for: {round_a_enabled_count}/{total_variants} variants ({round_a_enabled_count/total_variants*100:.1f}%)")
+        print(f"    Overall passed: {round_a_pass_count}/{round_a_enabled_count} ({round_a_pass_count/round_a_enabled_count*100:.1f}%)")
+        print(f"    ├─ Correctness passed: {round_a_correctness_pass}/{round_a_enabled_count} ({round_a_correctness_pass/round_a_enabled_count*100:.1f}%)")
+        print(f"    └─ Validity passed: {round_a_validity_pass}/{round_a_enabled_count} ({round_a_validity_pass/round_a_enabled_count*100:.1f}%)")
+    else:
+        print(f"\n  Round A (LLM Pre-verification): ✗ Disabled (use --use_llm_verification to enable)")
+
+    print(f"\n  Round B (Necessity - without conditions → can't solve):")
+    print(f"    Passed: {round_b_pass_count}/{total_variants} ({round_b_pass_count/total_variants*100:.1f}%)")
+
+    print(f"\n  Round C (Sufficiency - with conditions → can solve):")
+    print(f"    Passed: {round_c_pass_count}/{total_variants} ({round_c_pass_count/total_variants*100:.1f}%)")
+
+    print(f"\n  Final Result (Round B + C both passed):")
+    print(f"    VALID variants: {both_pass_count}/{total_variants} ({both_pass_count/total_variants*100:.1f}%)")
     print(f"\nValid removal variants: {valid_variants}")
     if valid_variants > 0:
         print(f"\nRound C Success Distribution (when valid):")
