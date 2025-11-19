@@ -879,11 +879,20 @@ def filter_valid_data(final_path, num_missing):
     else:
         print(f"\n  Round A (LLM Pre-verification): ✗ Disabled (use --use_llm_verification to enable)")
 
+    # 🔧 修复：Round B 和 C 的分母应该是通过 Round A 的变体数（如果启用了 Round A）
+    round_b_c_denominator = round_a_pass_count if round_a_enabled_count > 0 else total_variants
+
     print(f"\n  Round B (Necessity - without conditions → can't solve):")
-    print(f"    Passed: {round_b_pass_count}/{total_variants} ({round_b_pass_count/total_variants*100:.1f}%)")
+    if round_b_c_denominator > 0:
+        print(f"    Passed: {round_b_pass_count}/{round_b_c_denominator} ({round_b_pass_count/round_b_c_denominator*100:.1f}%)")
+    else:
+        print(f"    Passed: 0/0 (N/A - all variants failed Round A)")
 
     print(f"\n  Round C (Sufficiency - with conditions → can solve):")
-    print(f"    Passed: {round_c_pass_count}/{total_variants} ({round_c_pass_count/total_variants*100:.1f}%)")
+    if round_b_c_denominator > 0:
+        print(f"    Passed: {round_c_pass_count}/{round_b_c_denominator} ({round_c_pass_count/round_b_c_denominator*100:.1f}%)")
+    else:
+        print(f"    Passed: 0/0 (N/A - all variants failed Round A)")
 
     print(f"\n  Final Result (Round B + C both passed):")
     print(f"    VALID variants: {both_pass_count}/{total_variants} ({both_pass_count/total_variants*100:.1f}%)")
