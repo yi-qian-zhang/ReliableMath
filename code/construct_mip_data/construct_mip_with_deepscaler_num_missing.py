@@ -43,7 +43,7 @@ parser.add_argument("--prompt_dir", default="prompt/construct_mip_with_deepscale
 parser.add_argument("--dataset", default="polaris_20", help="Dataset name")
 parser.add_argument("--temperature", default=1.0, type=float, help="Temperature for verification")
 parser.add_argument("--max_attempts", default=8, type=int, help="Max attempts for verification")
-parser.add_argument("--threads", default=32, type=int, help="Number of parallel threads")
+parser.add_argument("--threads", default=8, type=int, help="Number of parallel threads")
 parser.add_argument("--num_missing", default=1, type=int, help="Number of conditions to remove (n in C(N,n))")
 parser.add_argument("--test_mode", action='store_true', help="Test mode - process only first 5 items")
 parser.add_argument("--force", action='store_true', help="Force reprocess all items")

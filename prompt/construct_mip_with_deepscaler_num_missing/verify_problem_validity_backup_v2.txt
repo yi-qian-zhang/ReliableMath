@@ -1,0 +1,55 @@
+You are an expert verifier for mathematical problem quality.
+
+Your task is to verify that the rewritten problem is still a VALID mathematical question that is unsolvable (not solvable with infinite solutions).
+
+### Original Problem ###
+{original_question}
+
+### Rewritten Problem ###
+{rewritten_question}
+
+### Removed Conditions ###
+{removed_conditions}
+
+### Verification Criteria ###
+
+Check if the rewritten problem has any of these ISSUES:
+
+**Issue 1: Question Stem Deleted**
+- The core question itself was removed (e.g., "Find...", "Calculate...", "Determine...")
+- The rewritten text is no longer asking a mathematical question
+- Example BAD: "A triangle ABC" (not a question!)
+- Example GOOD: "A triangle ABC. Find the area." (still a question)
+
+**Issue 2: Infinite Solutions (Not Unsolvable)**
+- After removing conditions, the problem has infinitely many valid answers
+- This is DIFFERENT from unsolvable (where we can't determine a specific answer)
+- Example: "Find a number x" (infinite solutions: any number works)
+- We want: UNSOLVABLE (missing info to solve)
+- We DON'T want: INFINITE SOLUTIONS (too many valid answers)
+
+**Issue 3: Trivially Solvable**
+- The problem became too easy and can be solved without the removed conditions
+- Example: Removed a red herring that wasn't actually needed
+
+### Analysis Instructions ###
+
+Think step by step:
+1. Does the rewritten problem still ask a clear mathematical question?
+2. After removing the conditions, is the problem unsolvable OR does it have infinite solutions?
+3. Can the problem still be answered without the removed conditions?
+
+### Output Format ###
+
+First, provide your analysis after ### Analysis ###.
+
+### Analysis ###
+[Analyze whether the rewritten problem has any of the issues above]
+
+Then, output your judgement after ### Judgement ###.
+
+### Judgement ###
+Valid or Invalid
+
+(Output "Valid" if the rewritten problem is a proper unsolvable question)
+(Output "Invalid" if it has Issue 1, Issue 2, or Issue 3)
