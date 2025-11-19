@@ -48,7 +48,6 @@ parser.add_argument("--num_missing", default=1, type=int, help="Number of condit
 parser.add_argument("--test_mode", action='store_true', help="Test mode - process only first 5 items")
 parser.add_argument("--force", action='store_true', help="Force reprocess all items")
 parser.add_argument("--use_math_orm", action='store_true', help="Enable LLM ORM for answer verification")
-parser.add_argument("--use_llm_verification", action='store_true', help="Enable Round A LLM pre-verification before Round B/C (checks rewrite correctness and problem validity)")
 args = parser.parse_args()
 
 # 🔧 如果未指定 rewrite_model，默认使用 extract_model
@@ -521,13 +520,11 @@ def generate_removal_variants(data, num_missing):
             if original_incomplete != incomplete_question:
                 logging.debug(f"ID {data['id']}_remove_{combo_idx}: ✓ Restored multiple-choice options")
 
-        # 🔧 Round A: LLM Pre-verification (可选)
-        llm_verification = None
-        if hasattr(args, 'use_llm_verification') and args.use_llm_verification:
-            llm_verification = verify_rewrite_with_llm(
-                data, incomplete_question, removed_conditions,
-                remaining_conditions, combo_idx
-            )
+        # 🔧 Round A: LLM Pre-verification (必须执行)
+        llm_verification = verify_rewrite_with_llm(
+            data, incomplete_question, removed_conditions,
+            remaining_conditions, combo_idx
+        )
 
         variant = {
             "variant_id": f"{data['id']}_remove_{combo_idx}",
@@ -772,7 +769,20 @@ def process_with_jsonl_parallel(dataset, output_path, process_func, desc):
     return len(all_data) == total_len
 
 def filter_valid_data(final_path, num_missing):
-    dataset = read_json(final_path)
+    try:
+        dataset = read_json(final_path)
+    except FileNotFoundError:
+        logging.error(f"Final data file not found: {final_path}")
+        logging.error(f"Please run the verification step first.")
+        return
+    except Exception as e:
+        logging.error(f"Failed to read {final_path}: {e}")
+        return
+
+    if not dataset:
+        logging.error(f"Dataset is empty in {final_path}")
+        return
+
     valid_data = []
     total_gpt4o_prompt = sum(sum(d.get("gpt4o_prompt_lengths", [])) for d in dataset)
     total_gpt4o_completion = sum(sum(d.get("gpt4o_completion_lengths", [])) for d in dataset)
@@ -795,9 +805,39 @@ def filter_valid_data(final_path, num_missing):
     both_pass_count = 0
     round_c_attempt_distribution = {}
     judge_method_distribution = {"heuristic": 0, "orm": 0}
+
+    # 数据完整性检查
+    seen_variant_ids = set()
+    integrity_errors = []
+
     for data in dataset:
         for variant in data.get("removal_variants", []):
             total_variants += 1
+
+            # 数据完整性检查
+            variant_id = variant.get("variant_id", "")
+
+            # 检查1: variant_id 唯一性
+            if variant_id in seen_variant_ids:
+                integrity_errors.append(f"Duplicate variant_id: {variant_id}")
+            seen_variant_ids.add(variant_id)
+
+            # 检查2: removed + remaining = total conditions
+            removed_conditions = variant.get("removed_conditions", [])
+            remaining_conditions = variant.get("remaining_conditions", [])
+            num_conditions_extracted = data.get("num_conditions", 0)
+            if len(removed_conditions) + len(remaining_conditions) != num_conditions_extracted:
+                integrity_errors.append(
+                    f"{variant_id}: removed({len(removed_conditions)}) + remaining({len(remaining_conditions)}) "
+                    f"!= total({num_conditions_extracted})"
+                )
+
+            # 检查3: num_missing = len(removed_conditions)
+            variant_num_missing = variant.get("num_missing", 0)
+            if variant_num_missing != len(removed_conditions):
+                integrity_errors.append(
+                    f"{variant_id}: num_missing({variant_num_missing}) != len(removed_conditions)({len(removed_conditions)})"
+                )
 
             # Round A 统计
             llm_verification = variant.get("llm_verification")
@@ -875,12 +915,28 @@ def filter_valid_data(final_path, num_missing):
     sample_output_path = final_path.replace(f"_final_n{num_missing}.json", f"_sample_valid_n{num_missing}.json")
     write_json(sample_output_path, sample_valid_data)
     logging.info(f"Sample valid data saved to: {sample_output_path}")
+
+    # 报告完整性检查结果
+    if integrity_errors:
+        logging.warning(f"Found {len(integrity_errors)} data integrity issues:")
+        for error in integrity_errors[:10]:  # 只显示前10个错误
+            logging.warning(f"  - {error}")
+        if len(integrity_errors) > 10:
+            logging.warning(f"  ... and {len(integrity_errors) - 10} more errors")
+
     print("\n" + "="*70)
     print("MISSING INFORMATION PROBLEM (MIP) DATASET STATISTICS")
     print("="*70)
     print(f"Configuration: num_missing = {num_missing}")
     print(f"Original problems: {total_original}")
     print(f"\nTotal removal variants generated: {total_variants}")
+
+    # 数据完整性检查报告
+    if integrity_errors:
+        print(f"\n⚠️  Data Integrity Issues: {len(integrity_errors)} errors found")
+        print(f"   (Check logs for details)")
+    else:
+        print(f"\n✓ Data Integrity Check: All passed")
 
     if total_variants == 0:
         print(f"\n⚠️  WARNING: No variants found in final data!")
@@ -890,18 +946,17 @@ def filter_valid_data(final_path, num_missing):
 
     print(f"\n📊 Three-Round Verification Results:")
 
-    # Round A 统计（如果启用）
+    # Round A 统计（必须执行）
+    print(f"\n  Round A (LLM Pre-verification - Rewrite Quality):")
     if round_a_enabled_count > 0:
-        print(f"\n  Round A (LLM Pre-verification - Rewrite Quality):")
-        print(f"    Enabled for: {round_a_enabled_count}/{total_variants} variants ({round_a_enabled_count/total_variants*100:.1f}%)")
-        print(f"    Overall passed: {round_a_pass_count}/{round_a_enabled_count} ({round_a_pass_count/round_a_enabled_count*100:.1f}%)")
-        print(f"    ├─ Correctness passed: {round_a_correctness_pass}/{round_a_enabled_count} ({round_a_correctness_pass/round_a_enabled_count*100:.1f}%)")
-        print(f"    └─ Validity passed: {round_a_validity_pass}/{round_a_enabled_count} ({round_a_validity_pass/round_a_enabled_count*100:.1f}%)")
+        print(f"    Overall passed: {round_a_pass_count}/{total_variants} ({round_a_pass_count/total_variants*100:.1f}%)")
+        print(f"    ├─ Correctness passed: {round_a_correctness_pass}/{total_variants} ({round_a_correctness_pass/total_variants*100:.1f}%)")
+        print(f"    └─ Validity passed: {round_a_validity_pass}/{total_variants} ({round_a_validity_pass/total_variants*100:.1f}%)")
     else:
-        print(f"\n  Round A (LLM Pre-verification): ✗ Disabled (use --use_llm_verification to enable)")
+        print(f"    ⚠️  Round A data missing - this should not happen!")
 
-    # 🔧 修复：Round B 和 C 的分母应该是通过 Round A 的变体数（如果启用了 Round A）
-    round_b_c_denominator = round_a_pass_count if round_a_enabled_count > 0 else total_variants
+    # Round B 和 C 的分母是通过 Round A 的变体数
+    round_b_c_denominator = round_a_pass_count if round_a_pass_count > 0 else total_variants
 
     print(f"\n  Round B (Necessity - without conditions → can't solve):")
     if round_b_c_denominator > 0:
