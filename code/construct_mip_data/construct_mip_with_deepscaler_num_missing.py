@@ -487,6 +487,10 @@ def generate_removal_variants(data, num_missing):
         record_tokens(data, model_type, prompt_tokens, completion_tokens)
         response_text = response.strip()
 
+        # 🔧 移除 <think> 标签内容（deepseek-r1 等模型会输出思考过程）
+        # 移除 <think>...</think> 之间的所有内容（包括标签本身）
+        response_text = re.sub(r'<think>.*?</think>', '', response_text, flags=re.DOTALL).strip()
+
         # 🔧 解析 Analysis 和 Rewritten Mathematical Question
         analysis = ""
         incomplete_question = ""
