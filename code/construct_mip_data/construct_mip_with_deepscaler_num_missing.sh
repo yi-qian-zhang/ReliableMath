@@ -66,7 +66,6 @@ python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
   --rewrite_model DeepSeek-R1-Distill-Qwen-32B-8715 \
   --verify_model DeepSeek-R1-Distill-Qwen-32B-8715 \
   --judge_model gpt-4o-mini \
-  --use_llm_verification \
   --threads 32 \
   --output_dir data/DeepSeek-R1-Distill-Qwen-32B/11-18/test_mode/missing_one/19-19 \
   --test_mode \
@@ -79,7 +78,6 @@ python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
   --rewrite_model DeepSeek-R1-Distill-Qwen-32B-8717 \
   --verify_model DeepSeek-R1-Distill-Qwen-32B-8717 \
   --judge_model gpt-4o-mini \
-  --use_llm_verification \
   --threads 32 \
   --output_dir data/DeepSeek-R1-Distill-Qwen-32B/11-18/test_mode/missing_two/19-19 \
   --test_mode \
@@ -93,7 +91,6 @@ python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
   --rewrite_model DeepSeek-R1-Distill-Qwen-32B-8719 \
   --verify_model DeepSeek-R1-Distill-Qwen-32B-8719 \
   --judge_model gpt-4o-mini \
-  --use_llm_verification \
   --threads 32 \
   --output_dir data/DeepSeek-R1-Distill-Qwen-32B/11-18/test_mode/missing_three/19-19 \
   --test_mode \
