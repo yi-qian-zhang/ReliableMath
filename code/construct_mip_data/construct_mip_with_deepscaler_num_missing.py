@@ -327,7 +327,7 @@ def extract_conditions_only(data):
         return data
     with open(prompt_path, 'r', encoding='utf-8') as f:
         prompt_template = f.read()
-    input_prompt = prompt_template.format(original_question=data["question"])
+    input_prompt = prompt_template.format(original_question=data["original_question"])
     response, prompt_tokens, completion_tokens, model_type = get_response_openai(
         input_prompt, persona="You are an expert at analyzing mathematical problems.",
         model=args.extract_model, temperature=0.0
@@ -348,7 +348,7 @@ def extract_conditions_only(data):
                 cleaned_conditions.append(cond)
     data["extracted_conditions"] = cleaned_conditions
     data["num_conditions"] = len(cleaned_conditions)
-    is_multiple_choice = extract_multiple_choice_options(data["question"]) is not None
+    is_multiple_choice = extract_multiple_choice_options(data["original_question"]) is not None
     data["is_multiple_choice"] = is_multiple_choice
     logging.info(f"ID {data['id']}: Extracted {len(cleaned_conditions)} conditions" +
                  (" (multiple-choice)" if is_multiple_choice else ""))
@@ -360,7 +360,7 @@ def verify_rewrite_with_llm(data, rewritten_question, removed_conditions, remain
     Verify 1: 改写是否只改了指定条件
     Verify 2: 问题是否有效（没有删除question stem，不是无穷多解）
     """
-    original_question = data["question"]
+    original_question = data["original_question"]
     removed_conditions_text = "\n".join(f"- {c}" for c in removed_conditions)
     remaining_conditions_text = "\n".join(f"- {c}" for c in remaining_conditions) if remaining_conditions else "(None)"
 
@@ -492,7 +492,7 @@ def generate_removal_variants(data, num_missing):
         removed_conditions_text = "\n".join(f"- {c}" for c in removed_conditions)
         remaining_conditions_text = "\n".join(f"- {c}" for c in remaining_conditions) if remaining_conditions else "(None - all conditions removed)"
         input_prompt = prompt_template.format(
-            original_question=data["question"], all_conditions=all_conditions_text,
+            original_question=data["original_question"], all_conditions=all_conditions_text,
             removed_conditions=removed_conditions_text, remaining_conditions=remaining_conditions_text
         )
         response, prompt_tokens, completion_tokens, model_type = get_response_openai(
@@ -532,7 +532,7 @@ def generate_removal_variants(data, num_missing):
 
         if data.get("is_multiple_choice"):
             original_incomplete = incomplete_question
-            incomplete_question = ensure_options_in_question(incomplete_question, data["question"])
+            incomplete_question = ensure_options_in_question(incomplete_question, data["original_question"])
             if original_incomplete != incomplete_question:
                 logging.debug(f"ID {data['id']}_remove_{combo_idx}: ✓ Restored multiple-choice options")
 
@@ -895,7 +895,7 @@ def filter_valid_data(final_path, num_missing):
                     "difficulty": data.get("difficulty", ""),
                     "transformation_type": "condition_removal",
                     "num_missing": num_missing,
-                    "original_question": data["question"],
+                    "original_question": data["original_question"],
                     "ground_truth": data.get("ground_truth", ""),
                     "incomplete_question": variant["incomplete_question"],
                     "all_extracted_conditions": data.get("extracted_conditions", []),
@@ -1027,6 +1027,12 @@ def construction_workflow():
         logging.error(f"Please make sure you run this script from ~/ReliableMath directory")
         return
     dataset = read_json(input_path)
+
+    # 统一字段名：将 question 重命名为 original_question
+    for item in dataset:
+        if "question" in item and "original_question" not in item:
+            item["original_question"] = item.pop("question")
+
     if args.test_mode:
         dataset = dataset[:5]
         logging.info("TEST MODE: First 5 items")
