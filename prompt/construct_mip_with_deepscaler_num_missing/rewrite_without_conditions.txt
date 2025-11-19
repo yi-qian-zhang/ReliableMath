@@ -64,6 +64,8 @@ Output your analysis after ### Analysis ###. Keep it concise (1-3 sentences).
 **Part 2: Rewritten Question**
 Given your analysis, output the rewritten mathematical question after ### Rewritten Mathematical Question ###.
 
+**IMPORTANT: Do NOT include any thinking process or <think> tags. Only output the structured format below:**
+
 ### Analysis ###
 [Your analysis of why the problem becomes unsolvable]
 
