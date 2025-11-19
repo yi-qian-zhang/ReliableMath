@@ -79,12 +79,6 @@ Keep: []
 (Why unsolvable: No criterion to select among circles)
 (Notice: All options PRESERVED)
 
-**Example 4 (Chinese Language):**
-Original: "一辆汽车的前轮胎在行驶25,000公里后会磨损，后轮胎在行驶15,000公里后会磨损。应该在什么时候交换轮胎，才能使它们同时磨损？"
-Remove: ["前轮胎在行驶25,000公里后会磨损"]
-Keep: ["后轮胎在行驶15,000公里后会磨损"]
-→ Rewritten: "一辆汽车的后轮胎在行驶15,000公里后会磨损。应该在什么时候交换轮胎，才能使它们同时磨损？"
-(Why unsolvable: Only one tire's wear rate is known)
 
 ### Output Format ###
 Output ONLY the rewritten question in plain text.
