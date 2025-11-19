@@ -46,17 +46,14 @@ Check the following **STRICT REQUIREMENTS**:
 - If the original problem contains illustrative examples (introduced by "For example", "For instance", "e.g.", "such as"), these examples are PART OF THE PROBLEM CONTEXT
 - Examples should NEVER be removed (even if a condition is removed)
 - Example:
-  ```
   Original: "On a keyboard, key 1 is broken. For example, typing 1231234 prints 23234."
   If removing "key 1 is broken":
   WRONG: "On a keyboard, a key is broken."  ← Example deleted!
   RIGHT: "On a keyboard, a key is broken. For example, typing 1231234 prints 23234."
-  ```
 
 ### Analysis Instructions ###
 
 Analyze step by step:
-
 **Step 1: What was removed?**
 - List everything that was deleted from the original problem
 - Check if ONLY the specified conditions were removed
