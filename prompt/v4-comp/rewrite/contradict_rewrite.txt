@@ -1,10 +1,28 @@
-### Rewritten Mathematical Question ###:
+You are a good mathematical question rewriter.
+Given a mathematical question ### Original Mathematical Question ###, the answer to the question is
+### Original Answer ###, and ### Extracted Condition ### is a key mathematical condition extracted
+from the question.
 
-Using the analysis above, produce a rewritten version of the original math question where the extracted condition "{extracted_condition}" is contradicted (i.e., replaced by a logically opposing statement). The rewritten question should be a coherent standalone math problem and explicitly show the contradicted condition.
+Your objective is to draw inspiration from the ### Original Mathematical Question ### and ###
+Original Answer ### to rewrite a new math question ### Rewritten Mathematical Question ### with
+the following two requirements.
 
-Original question:
-{original_math_question}
-Original answer:
-{original_answer}
+1) The new mathematical question ### Rewritten Mathematical Question ### need to add conditions that contradict to the condition ### Extracted Condition ### from the ### Original Mathematical Question ###. Maintain the rest of the conditions of ### Original
+   Mathematical Question ### unchanged.
+2) After adding conditions that contradict to the condition ### Extracted Condition ###, the new mathematical question ### Rewritten Mathematical Question ### should be unsolvable.
+
+### Original Mathematical Question ###: {original_math_question}
+
+### Original Answer ###: {original_answer}
+
+### Extracted Condition ###: {extracted_condition}
+
+Think step by step to explain how you make the problem unsolvable after adding the contradicted condition. You only need to directly output your analysis after ### Analysis
+###. Simplify your output as much as possible.
+
+### Analysis ###:
+
+Given your analysis in ### Analysis ### about how you make the problem unsolvable after adding the contradicted condition, you only need to directly output your new
+mathematical question after ### Rewritten Mathematical Question ###.
 
 ### Rewritten Mathematical Question ###:
