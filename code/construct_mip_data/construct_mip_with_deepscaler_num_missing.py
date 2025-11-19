@@ -546,6 +546,12 @@ def generate_removal_variants(data, num_missing):
 def verify_single_variant(data, variant, prompt_template_incomplete, prompt_template_complete, ground_truth):
     incomplete_question = variant["incomplete_question"]
     removed_conditions = variant["removed_conditions"]
+
+    # 🔧 获取 Round A (LLM Pre-verification) 的结果
+    llm_verification = variant.get("llm_verification")
+    round_A_passed = llm_verification.get("overall_passed", None) if llm_verification else None
+    round_A_info = llm_verification if llm_verification else {}
+
     logging.info(f"ID {variant['variant_id']}: Starting Round B - Testing incomplete question...")
     input_prompt_incomplete = prompt_template_incomplete.format(incomplete_question=incomplete_question)
     response_data_b = get_response_openai_with_sampling(
@@ -555,9 +561,10 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
     if not response_data_b:
         logging.error(f"ID {variant['variant_id']}: Round B generation failed")
         variant["verification"] = {
-            "round_b_passed": False, "round_c_passed": False, "is_valid": False,
-            "round_b": {"total_attempts": 0, "all_attempts": []},
-            "round_c": {"total_attempts": 0, "all_attempts": []},
+            "round_A_passed": round_A_passed, "round_B_passed": False, "round_C_passed": False, "is_valid": False,
+            "round_A": round_A_info,
+            "round_B": {"total_attempts": 0, "all_attempts": []},
+            "round_C": {"total_attempts": 0, "all_attempts": []},
             "ground_truth": ground_truth
         }
         return variant
@@ -596,9 +603,10 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
     else:
         logging.info(f"ID {variant['variant_id']}: ✗ Round B FAILED - At least 1 answer = ground_truth")
         variant["verification"] = {
-            "round_b_passed": False, "round_c_passed": False, "is_valid": False,
-            "round_b": {"total_attempts": len(round_b_attempts), "all_attempts": round_b_attempts},
-            "round_c": {"total_attempts": 0, "all_attempts": []},
+            "round_A_passed": round_A_passed, "round_B_passed": False, "round_C_passed": False, "is_valid": False,
+            "round_A": round_A_info,
+            "round_B": {"total_attempts": len(round_b_attempts), "all_attempts": round_b_attempts},
+            "round_C": {"total_attempts": 0, "all_attempts": []},
             "ground_truth": ground_truth
         }
         return variant
@@ -614,9 +622,10 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
     if not response_data_c:
         logging.error(f"ID {variant['variant_id']}: Round C generation failed")
         variant["verification"] = {
-            "round_b_passed": True, "round_c_passed": False, "is_valid": False,
-            "round_b": {"total_attempts": len(round_b_attempts), "all_attempts": round_b_attempts},
-            "round_c": {"total_attempts": 0, "all_attempts": []},
+            "round_A_passed": round_A_passed, "round_B_passed": True, "round_C_passed": False, "is_valid": False,
+            "round_A": round_A_info,
+            "round_B": {"total_attempts": len(round_b_attempts), "all_attempts": round_b_attempts},
+            "round_C": {"total_attempts": 0, "all_attempts": []},
             "ground_truth": ground_truth
         }
         return variant
@@ -663,9 +672,10 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
     else:
         logging.info(f"ID {variant['variant_id']}: ✗ INVALID")
     variant["verification"] = {
-        "round_b_passed": round_b_passed, "round_c_passed": round_c_passed, "is_valid": is_valid,
-        "round_b": {"total_attempts": len(round_b_attempts), "all_attempts": round_b_attempts},
-        "round_c": {"total_attempts": len(round_c_attempts), "success_at_attempt": success_at_attempt, "all_attempts": round_c_attempts},
+        "round_A_passed": round_A_passed, "round_B_passed": round_b_passed, "round_C_passed": round_c_passed, "is_valid": is_valid,
+        "round_A": round_A_info,
+        "round_B": {"total_attempts": len(round_b_attempts), "all_attempts": round_b_attempts},
+        "round_C": {"total_attempts": len(round_c_attempts), "success_at_attempt": success_at_attempt, "all_attempts": round_c_attempts},
         "ground_truth": ground_truth
     }
     return variant
@@ -787,8 +797,8 @@ def filter_valid_data(final_path, num_missing):
 
             # Round B/C 统计
             verification = variant.get("verification", {})
-            round_b_passed = verification.get("round_b_passed", False)
-            round_c_passed = verification.get("round_c_passed", False)
+            round_b_passed = verification.get("round_B_passed", False)
+            round_c_passed = verification.get("round_C_passed", False)
             if round_b_passed:
                 round_b_pass_count += 1
             if round_c_passed:
@@ -796,7 +806,7 @@ def filter_valid_data(final_path, num_missing):
             if round_b_passed and round_c_passed:
                 both_pass_count += 1
             if verification.get("is_valid", False):
-                round_c_info = verification.get("round_c", {})
+                round_c_info = verification.get("round_C", {})
                 success_at_attempt = round_c_info.get("success_at_attempt")
                 if success_at_attempt:
                     round_c_attempt_distribution[success_at_attempt] = \
@@ -808,20 +818,29 @@ def filter_valid_data(final_path, num_missing):
                         judge_method_distribution[judge_method] = \
                             judge_method_distribution.get(judge_method, 0) + 1
                 valid_item = {
-                    "id": variant["variant_id"], "data_source": data.get("data_source", ""),
-                    "difficulty": data.get("difficulty", ""), "transformation_type": "condition_removal",
-                    "num_missing": num_missing, "original_question": data["question"],
+                    "id": variant["variant_id"],
+                    "data_source": data.get("data_source", ""),
+                    "difficulty": data.get("difficulty", ""),
+                    "transformation_type": "condition_removal",
+                    "num_missing": num_missing,
+                    "original_question": data["question"],
                     "ground_truth": data.get("ground_truth", ""),
+                    "incomplete_question": variant["incomplete_question"],
+                    "all_extracted_conditions": data.get("extracted_conditions", []),
+                    "num_conditions_extracted": data.get("num_conditions", 0),
                     "removed_conditions": variant["removed_conditions"],
                     "remaining_conditions": variant["remaining_conditions"],
-                    "incomplete_question": variant["incomplete_question"],
-                    "verification": verification, "original_id": data["id"],
-                    "all_extracted_conditions": data.get("extracted_conditions", []),
-                    "num_conditions_extracted": data.get("num_conditions", 0)
+                    "verification": verification
                 }
                 valid_data.append(valid_item)
                 valid_variants += 1
-    valid_data.sort(key=lambda x: x.get('original_id', 0))
+    # 按照原始ID排序（从variant_id中提取原始ID，格式为 "{original_id}_remove_{combo_idx}"）
+    def extract_original_id(variant_id):
+        try:
+            return int(variant_id.split('_remove_')[0])
+        except:
+            return 0
+    valid_data.sort(key=lambda x: extract_original_id(x.get('id', '')))
     output_path = final_path.replace(f"_final_n{num_missing}.json", f"_valid_n{num_missing}.json")
     write_json(output_path, valid_data)
     print("\n" + "="*70)
