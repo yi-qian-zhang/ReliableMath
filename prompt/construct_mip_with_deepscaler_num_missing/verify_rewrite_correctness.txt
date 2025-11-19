@@ -1,6 +1,6 @@
 You are an expert verifier for mathematical problem rewriting.
 
-Your task is to verify that the rewritten problem ONLY removed the specified conditions while keeping ALL other conditions unchanged.
+Your task is to verify that the rewritten problem ONLY removed the specified conditions while keeping ALL other content unchanged.
 
 ### Original Problem ###
 {original_question}
@@ -16,20 +16,77 @@ Your task is to verify that the rewritten problem ONLY removed the specified con
 
 ### Verification Criteria ###
 
-Check the following:
-1. ✓ The rewritten problem removed ONLY the specified conditions
-2. ✓ The rewritten problem kept ALL other conditions unchanged
-3. ✓ The rewritten problem did NOT add any new conditions
-4. ✓ The core question/request is preserved (e.g., "Find...", "Calculate...", "Which...")
+Check the following **STRICT REQUIREMENTS**:
+
+**Requirement 1: Removed ONLY Specified Conditions**
+- The rewritten problem should remove ONLY the conditions listed in "Conditions That Should Be REMOVED"
+- NO other conditions, constraints, or information should be removed
+
+**Requirement 2: Kept ALL Other Conditions Unchanged**
+- All conditions in "Conditions That Should Be KEPT" must appear in the rewritten problem
+- They should be EXACTLY the same (no paraphrasing, no simplification)
+
+**Requirement 3: No New Conditions Added**
+- The rewritten problem should NOT introduce any new constraints or conditions
+- No assumptions or clarifications should be added
+
+**Requirement 4: Core Question Preserved**
+- The question itself (e.g., "Find...", "Calculate...", "Determine...") must remain
+- The rewritten text must still be a valid mathematical question
+
+**Requirement 5: Mathematical Expressions Unchanged** ⭐ CRITICAL
+- ALL numbers, equations, variables, operators must stay EXACTLY the same
+- NO substitutions, simplifications, or alterations allowed
+- Examples of INVALID changes:
+  - 0.25 → -0.25 ❌ (sign changed)
+  - log(0.25) → log(2.5) ❌ (number changed)
+  - x²/9 + y²/16 = 1 → x²/16 + y²/9 = 1 ❌ (coefficients swapped)
+
+**Requirement 6: Examples Must Be Preserved** ⭐ CRITICAL
+- If the original problem contains illustrative examples (introduced by "For example", "For instance", "e.g.", "such as"), these examples are PART OF THE PROBLEM CONTEXT
+- Examples should NEVER be removed (even if a condition is removed)
+- Example:
+  ```
+  Original: "On a keyboard, key 1 is broken. For example, typing 1231234 prints 23234."
+  If removing "key 1 is broken":
+  WRONG: "On a keyboard, a key is broken."  ← Example deleted!
+  RIGHT: "On a keyboard, a key is broken. For example, typing 1231234 prints 23234."
+  ```
+
+### Analysis Instructions ###
+
+Analyze step by step:
+
+**Step 1: What was removed?**
+- List everything that was deleted from the original problem
+- Check if ONLY the specified conditions were removed
+- Check if any examples were accidentally deleted
+
+**Step 2: What was kept?**
+- Verify all "Conditions That Should Be KEPT" appear in the rewritten problem
+- Check if they are exactly the same (no modifications)
+
+**Step 3: Were expressions altered?**
+- Compare all mathematical expressions (numbers, equations, formulas)
+- Check if any numbers were changed, signs flipped, or operations modified
+
+**Step 4: Was anything added?**
+- Check if any new conditions, assumptions, or clarifications were introduced
+
+**Step 5: Is it still a question?**
+- Verify the core question (Find/Calculate/Determine) is preserved
 
 ### Output Format ###
 
 First, provide your analysis after ### Analysis ###.
 
 ### Analysis ###
-[Explain what was changed and whether it matches the requirements]
+[Systematically check Requirements 1-6 and explain what was changed]
 
 Then, output your judgement after ### Judgement ###.
 
 ### Judgement ###
 True or False
+
+(Output "True" ONLY if ALL six requirements are satisfied)
+(Output "False" if ANY requirement is violated)
