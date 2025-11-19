@@ -54,6 +54,14 @@ Keep: []
 → Rewritten: "Which circle? (A) x²+y²=5 (B) x²+y²=10"
 (Notice: options are PRESERVED)
 
+NOT DO THIS:
+Original Problem: "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print.\n\nSasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?",
+Remove: ["The key for the digit 1 is not working","Sasha tried to type an 8-digit number"]
+Keep: ["Only 202020 was printed"]
+Rewritten: "Only 202020 was printed. How many 8-digit numbers satisfy this condition?"  ❌
+(Notice: donnot delete examples in Original Problem)
+
+
 ### Output Format ###
 You need to output TWO parts:
 
