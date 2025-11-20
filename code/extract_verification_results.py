@@ -12,7 +12,7 @@ import sys
 import argparse
 from pathlib import Path
 
-def extract_verification_data(input_file, output_file=None, output_format='csv'):
+def extract_verification_data(input_file, output_file=None, output_format='json'):
     """
     Extract verification data from final.json file
 
@@ -81,13 +81,17 @@ def extract_verification_data(input_file, output_file=None, output_format='csv')
     # Determine output file
     if output_file is None:
         input_path = Path(input_file)
-        if output_format == 'csv':
-            output_file = input_path.parent / f"{input_path.stem}_extracted.csv"
-        else:
+        if output_format == 'json':
             output_file = input_path.parent / f"{input_path.stem}_extracted.json"
+        else:
+            output_file = input_path.parent / f"{input_path.stem}_extracted.csv"
 
     # Write output
-    if output_format == 'csv':
+    if output_format == 'json':
+        print(f"Writing JSON to {output_file}...")
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(extracted_data, f, ensure_ascii=False, indent=2)
+    else:
         print(f"Writing CSV to {output_file}...")
         fieldnames = [
             'id', 'original_id', 'removed_conditions', 'incomplete_question',
@@ -99,10 +103,6 @@ def extract_verification_data(input_file, output_file=None, output_format='csv')
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(extracted_data)
-    else:
-        print(f"Writing JSON to {output_file}...")
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(extracted_data, f, ensure_ascii=False, indent=2)
 
     print(f"✓ Done! Output saved to: {output_file}")
 
@@ -128,20 +128,20 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Extract to CSV (default)
+  # Extract to JSON (default)
   python extract_verification_results.py data/polaris_hard_40_final_n1.json
 
-  # Extract to JSON
-  python extract_verification_results.py data/polaris_hard_40_final_n1.json -f json
+  # Extract to CSV
+  python extract_verification_results.py data/polaris_hard_40_final_n1.json -f csv
 
   # Specify output file
-  python extract_verification_results.py data/polaris_hard_40_final_n1.json -o results.csv
+  python extract_verification_results.py data/polaris_hard_40_final_n1.json -o results.json
         """
     )
     parser.add_argument('input_file', help='Input JSON file path')
     parser.add_argument('-o', '--output', help='Output file path (default: auto-generated)')
-    parser.add_argument('-f', '--format', choices=['csv', 'json'], default='csv',
-                        help='Output format (default: csv)')
+    parser.add_argument('-f', '--format', choices=['csv', 'json'], default='json',
+                        help='Output format (default: json)')
 
     args = parser.parse_args()
 
