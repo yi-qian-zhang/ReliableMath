@@ -1,0 +1,51 @@
+
+### Task ###:
+
+ 
+
+Based on the analysis, judge whether the rewritten question is TRULY UNSOLVABLE (has no unique solution).
+
+ 
+
+### Original Question ###:
+
+{original_question}
+
+ 
+
+### Original Answer ###:
+
+{original_answer}
+
+ 
+
+### Rewritten Question (with contradiction) ###:
+
+{rewritten_question}
+
+ 
+
+### Analysis of Unsolvability ###:
+
+{unsolvability_analysis}
+
+ 
+
+### Instructions ###:
+
+Based on the analysis above, make a final judgment:
+
+- True: The rewritten question is genuinely unsolvable or has no unique solution
+
+- False: The question can still be solved uniquely despite the modification
+
+ 
+
+### Output Format ###:
+
+Answer with ONLY one word: "True" or "False"
+
+ 
+
+### Judgment ###:
+

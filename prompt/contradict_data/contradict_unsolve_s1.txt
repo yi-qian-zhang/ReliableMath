@@ -1,0 +1,55 @@
+
+### Task ###:
+
+ 
+
+Analyze why the rewritten mathematical question (with contradicted condition) is UNSOLVABLE or has no unique solution.
+
+ 
+
+### Original Question ###:
+
+{original_question}
+
+ 
+
+### Original Answer ###:
+
+{original_answer}
+
+ 
+
+### Rewritten Question (with contradiction) ###:
+
+{rewritten_question}
+
+ 
+
+### Instructions ###:
+
+1. Analyze the logical structure of the rewritten question
+
+2. Identify why the contradicted condition makes the problem unsolvable
+
+3. Explain the mathematical reasoning clearly
+
+4. Consider different types of unsolvability:
+
+   - Logical contradiction (impossible conditions)
+
+   - Unbounded solution (no unique answer)
+
+   - Empty solution set (no solutions exist)
+
+   - Insufficient constraints (multiple valid answers)
+
+ 
+
+### Output Format ###:
+
+Provide a detailed analysis (2-5 sentences) explaining why this problem cannot be solved uniquely.
+
+ 
+
+### Analysis ###:
+

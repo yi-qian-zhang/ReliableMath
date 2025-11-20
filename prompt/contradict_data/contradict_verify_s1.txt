@@ -1,0 +1,49 @@
+
+### Task ###:
+
+ 
+
+You are given an ORIGINAL mathematical question and a REWRITTEN version. The rewritten version should have ONLY ONE condition modified (contradicted) compared to the original.
+
+ 
+
+Your task: Verify whether the rewritten question changed ONLY ONE condition, keeping everything else identical.
+
+ 
+
+### Original Question ###:
+
+{original_question}
+
+ 
+
+### Rewritten Question ###:
+
+{rewritten_question}
+
+ 
+
+### Instructions ###:
+
+1. Compare the two questions carefully
+
+2. Identify ALL differences between them
+
+3. Determine if there is EXACTLY ONE condition that was contradicted/modified
+
+4. Return your verdict
+
+ 
+
+### Output Format ###:
+
+Answer with ONLY one word:
+
+- "True" if EXACTLY one condition was modified and everything else is identical
+
+- "False" if multiple conditions were changed, or if the rewrite is invalid
+
+ 
+
+### Answer ###:
+
