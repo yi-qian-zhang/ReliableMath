@@ -80,6 +80,40 @@ except ImportError as e:
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+def safe_format(template, **kwargs):
+    """
+    Safely format a template string, escaping curly braces in both template and arguments.
+
+    This prevents KeyError when mathematical notation like {m/s} or {x, y} appears
+    in questions or arguments.
+
+    Args:
+        template: Template string with placeholders like {placeholder_name}
+        **kwargs: Keyword arguments to fill into the template
+
+    Returns:
+        Formatted string with all curly braces properly escaped
+    """
+    # Step 1: Escape ALL curly braces in the template
+    escaped_template = template.replace('{', '{{').replace('}', '}}')
+
+    # Step 2: Restore ONLY the valid placeholders (kwargs keys)
+    for key in kwargs.keys():
+        # Replace {{key}} back to {key} for actual placeholders
+        escaped_template = escaped_template.replace('{{' + key + '}}', '{' + key + '}')
+
+    # Step 3: Escape curly braces in all argument values
+    escaped_kwargs = {}
+    for key, value in kwargs.items():
+        if isinstance(value, str):
+            # Escape curly braces in string arguments
+            escaped_kwargs[key] = value.replace('{', '{{').replace('}', '}}')
+        else:
+            escaped_kwargs[key] = value
+
+    # Step 4: Format with escaped template and escaped arguments
+    return escaped_template.format(**escaped_kwargs)
+
 parser = argparse.ArgumentParser(description="Contradiction Dataset Construction")
 parser.add_argument("--model", default="gpt-4o-mini", help="Model for condition extraction")
 parser.add_argument("--analysis_model", default="DeepSeek-R1-Distill-Qwen-7B", help="Model for analysis and rewrite")
@@ -316,7 +350,8 @@ Problem: {problem}
 Answer 1: {answer_1}
 Answer 2: {answer_2}
 """
-        input_prompt = ORM_USER_TEMPLATE.format(
+        input_prompt = safe_format(
+            ORM_USER_TEMPLATE,
             problem=question, answer_1=model_answer, answer_2=ground_truth
         )
         try:
@@ -343,7 +378,7 @@ def extract_conditions(data):
         return data
     with open(prompt_path, 'r', encoding='utf-8') as f:
         prompt_template = f.read()
-    input_prompt = prompt_template.format(original_math_question=data["question"])
+    input_prompt = safe_format(prompt_template, original_math_question=data["question"])
     response, prompt_tokens, completion_tokens, model_type = get_response_openai(
         input_prompt,
         persona="You are an expert at analyzing mathematical problems.",
@@ -394,7 +429,8 @@ def generate_contradiction_variants(data):
     variants = []
     for idx, condition in enumerate(conditions):
         # Step 2.1: Analyze how to contradict this condition
-        analysis_prompt = analysis_template.format(
+        analysis_prompt = safe_format(
+            analysis_template,
             original_math_question=data["question"],
             original_answer=data["ground_truth"],
             extracted_condition=condition
@@ -416,7 +452,8 @@ def generate_contradiction_variants(data):
             logging.warning(f"ID {data['id']}_contradict_{idx}: Analysis is empty, skipping")
             continue
         # Step 2.2: Generate contradicted question
-        rewrite_prompt = rewrite_template.format(
+        rewrite_prompt = safe_format(
+            rewrite_template,
             original_math_question=data["question"],
             original_answer=data["ground_truth"],
             extracted_condition=condition
@@ -476,7 +513,8 @@ def verify_contradiction_validity(data):
         variant_id = variant["variant_id"]
         logging.info(f"ID {variant_id}: Starting verification...")
         # Step 3.1: Verify single condition change
-        verify_s1_prompt = verify_s1_template.format(
+        verify_s1_prompt = safe_format(
+            verify_s1_template,
             original_question=data["question"],
             rewritten_question=variant["contradicted_question"]
         )
@@ -499,7 +537,8 @@ def verify_contradiction_validity(data):
             continue
         logging.info(f"ID {variant_id}: ✓ Single condition verified")
         # Step 3.2: Extract contradicted condition
-        verify_s2_prompt = verify_s2_template.format(
+        verify_s2_prompt = safe_format(
+            verify_s2_template,
             original_question=data["question"],
             original_condition=variant["extracted_condition"],
             rewritten_question=variant["contradicted_question"]
@@ -602,7 +641,8 @@ Provide your answer in the format: The answer is <answer>.
         # Step 3.4: Extract concise unsolvable reason
         # Build analysis from sampling results
         unsolvability_analysis = f"The model was unable to produce the correct answer '{ground_truth}' across {args.max_attempts} attempts when given the contradicted question."
-        unsolve_s3_prompt = unsolve_s3_template.format(
+        unsolve_s3_prompt = safe_format(
+            unsolve_s3_template,
             original_question=data["question"],
             rewritten_question=variant["contradicted_question"],
             unsolvability_analysis=unsolvability_analysis
