@@ -32,6 +32,40 @@ from deepscaler.system_prompts import ORM_PROMPT
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+def safe_format(template, **kwargs):
+    """
+    Safely format a template string, escaping curly braces in both template and arguments.
+
+    This prevents KeyError when mathematical notation like {m/s} or {x, y} appears
+    in questions or arguments.
+
+    Args:
+        template: Template string with placeholders like {placeholder_name}
+        **kwargs: Keyword arguments to fill into the template
+
+    Returns:
+        Formatted string with all curly braces properly escaped
+    """
+    # Step 1: Escape ALL curly braces in the template
+    escaped_template = template.replace('{', '{{').replace('}', '}}')
+
+    # Step 2: Restore ONLY the valid placeholders (kwargs keys)
+    for key in kwargs.keys():
+        # Replace {{key}} back to {key} for actual placeholders
+        escaped_template = escaped_template.replace('{{' + key + '}}', '{' + key + '}')
+
+    # Step 3: Escape curly braces in all argument values
+    escaped_kwargs = {}
+    for key, value in kwargs.items():
+        if isinstance(value, str):
+            # Escape curly braces in string arguments
+            escaped_kwargs[key] = value.replace('{', '{{').replace('}', '}}')
+        else:
+            escaped_kwargs[key] = value
+
+    # Step 4: Format with escaped template and escaped arguments
+    return escaped_template.format(**escaped_kwargs)
+
 parser = argparse.ArgumentParser(description="MIP Dataset Construction - Variable Missing Conditions")
 parser.add_argument("--extract_model", default="gpt-4o-mini", help="Model for condition extraction")
 parser.add_argument("--rewrite_model", default="DeepSeek-R1-Distill-Qwen-32B-8715", help="Model for question rewriting (defaults to --extract_model if not specified)")
@@ -260,7 +294,8 @@ Problem: {problem}
 Answer 1: {answer_1}
 Answer 2: {answer_2}
 """
-        input_prompt = ORM_USER_TEMPLATE.format(
+        input_prompt = safe_format(
+            ORM_USER_TEMPLATE,
             problem=question, answer_1=model_answer, answer_2=ground_truth
         )
         try:
@@ -327,7 +362,7 @@ def extract_conditions_only(data):
         return data
     with open(prompt_path, 'r', encoding='utf-8') as f:
         prompt_template = f.read()
-    input_prompt = prompt_template.format(original_question=data["original_question"])
+    input_prompt = safe_format(prompt_template, original_question=data["original_question"])
     response, prompt_tokens, completion_tokens, model_type = get_response_openai(
         input_prompt, persona="You are an expert at analyzing mathematical problems.",
         model=args.extract_model, temperature=0.0
@@ -373,7 +408,8 @@ def verify_rewrite_with_llm(data, rewritten_question, removed_conditions, remain
     with open(correctness_prompt_path, 'r', encoding='utf-8') as f:
         correctness_template = f.read()
 
-    correctness_prompt = correctness_template.format(
+    correctness_prompt = safe_format(
+        correctness_template,
         original_question=original_question,
         rewritten_question=rewritten_question,
         removed_conditions=removed_conditions_text,
@@ -413,7 +449,8 @@ def verify_rewrite_with_llm(data, rewritten_question, removed_conditions, remain
     with open(validity_prompt_path, 'r', encoding='utf-8') as f:
         validity_template = f.read()
 
-    validity_prompt = validity_template.format(
+    validity_prompt = safe_format(
+        validity_template,
         original_question=original_question,
         rewritten_question=rewritten_question,
         removed_conditions=removed_conditions_text
@@ -491,7 +528,8 @@ def generate_removal_variants(data, num_missing):
         all_conditions_text = "\n".join(f"{i+1}. {c}" for i, c in enumerate(conditions))
         removed_conditions_text = "\n".join(f"- {c}" for c in removed_conditions)
         remaining_conditions_text = "\n".join(f"- {c}" for c in remaining_conditions) if remaining_conditions else "(None - all conditions removed)"
-        input_prompt = prompt_template.format(
+        input_prompt = safe_format(
+            prompt_template,
             original_question=data["original_question"], all_conditions=all_conditions_text,
             removed_conditions=removed_conditions_text, remaining_conditions=remaining_conditions_text
         )
@@ -581,7 +619,7 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
         return variant
 
     logging.info(f"ID {variant['variant_id']}: Starting Round B - Testing incomplete question...")
-    input_prompt_incomplete = prompt_template_incomplete.format(incomplete_question=incomplete_question)
+    input_prompt_incomplete = safe_format(prompt_template_incomplete, incomplete_question=incomplete_question)
     response_data_b = get_response_openai_with_sampling(
         input_prompt_incomplete, persona="You are an expert mathematical problem solver.",
         model=args.verify_model, temperature=args.temperature, n=args.max_attempts
@@ -640,7 +678,8 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
         return variant
     logging.info(f"ID {variant['variant_id']}: Starting Round C - Testing WITH removed conditions...")
     removed_conditions_text = "\n".join(f"- {c}" for c in removed_conditions)
-    input_prompt_complete = prompt_template_complete.format(
+    input_prompt_complete = safe_format(
+        prompt_template_complete,
         incomplete_question=incomplete_question, removed_conditions=removed_conditions_text
     )
     response_data_c = get_response_openai_with_sampling(
