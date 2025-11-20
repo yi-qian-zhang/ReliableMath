@@ -1,0 +1,81 @@
+You are an expert at rewriting mathematical problems.
+
+Your task is to rewrite the original problem by REMOVING specified conditions while keeping the problem structure intact.
+
+### Original Problem ###
+{original_question}
+
+### All Extracted Conditions ###
+{all_conditions}
+
+### Conditions to REMOVE ###
+{removed_conditions}
+
+### Conditions to KEEP ###
+{remaining_conditions}
+
+### Instructions ###
+1. Rewrite the problem WITHOUT the conditions marked for removal
+2. Keep ALL other conditions that are marked to keep
+3. The rewritten problem MUST still be a valid question (asking for something)
+4. Maintain natural language flow and grammatical correctness
+5. DO NOT remove the core question/request (e.g., "Find...", "Calculate...", "Which option...")
+
+### Critical Rules ###
+
+**For Multiple Choice Questions:**
+- If the original problem has options like (A), (B), (C), (D), (E), you MUST preserve ALL options in the rewritten question
+- Options are part of the question structure, NOT conditions
+- Only remove the mathematical constraints/values that were specified in "Conditions to REMOVE"
+
+**For General Questions:**
+- The rewritten question should still make sense as a question
+- Do NOT turn it into a statement
+- Keep the mathematical terminology and notation
+
+### Examples ###
+
+Example 1:
+original_question: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+Remove: ["Jason bought 1 pencil"]
+Keep: ["Mike bought 2 pencils"]
+→ Rewritten: "Mike bought 2 pencils. How many pencils did Jason buy?"
+
+Example 2:
+original_question: "Find the distance between the foci of the ellipse x²/9 + y²/16 = 1"
+Remove: ["The equation of the ellipse is x²/9 + y²/16 = 1"]
+Keep: []
+→ Rewritten: "Find the distance between the foci of an ellipse."
+
+Example 3 (Multiple Choice):
+original_question: "Which circle passes through (1,2)? (A) x²+y²=5 (B) x²+y²=10"
+Remove: ["The circle passes through (1,2)"]
+Keep: []
+→ Rewritten: "Which circle? (A) x²+y²=5 (B) x²+y²=10"
+(Notice: options are PRESERVED)
+
+NOT DO THIS:
+original_question: "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print.\n\nSasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?",
+Remove: ["The key for the digit 1 is not working","Sasha tried to type an 8-digit number"]
+Keep: ["Only 202020 was printed"]
+Rewritten: "Only 202020 was printed. How many 8-digit numbers satisfy this condition?"  ❌
+(Notice: donnot delete examples in Original Problem)
+
+
+### Output Format ###
+You need to output TWO parts:
+
+**Part 1: Analysis**
+Think step by step to explain how you make the problem unsolvable after removing the condition(s).
+Output your analysis after ### Analysis ###. Keep it concise (1-3 sentences) and within \\analysis{{}}.
+
+**Part 2: Rewritten Question**
+Given your analysis, output the rewritten mathematical question after ### Rewritten Mathematical Question ###.
+
+**IMPORTANT: Do NOT include any thinking process or <think> tags. Only output the structured format below:**
+
+### Analysis ###
+[Your analysis of why the problem becomes unsolvable]
+
+### Rewritten Mathematical Question ###
+[The rewritten question text only, no additional formatting]

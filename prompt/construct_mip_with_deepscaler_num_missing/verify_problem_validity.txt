@@ -1,6 +1,6 @@
 You are an expert verifier for mathematical problem quality.
 
-Your task is to verify that the rewritten problem is still a VALID missing information problem (MIP).
+Your task is to verify that the rewritten problem is a VALID Missing Information Problem (MIP).
 
 ### Original Problem ###
 {original_question}
@@ -11,165 +11,103 @@ Your task is to verify that the rewritten problem is still a VALID missing infor
 ### Removed Conditions ###
 {removed_conditions}
 
-### Core Understanding of MIP ###
+---
 
-A valid MIP should satisfy:
-✅ The rewritten problem is UNSOLVABLE (no unique answer) due to missing information
-✅ OR the rewritten problem has INFINITE valid solutions due to missing constraints
+### Core Understanding of MIP
 
-The GOAL of MIP is to create problems that:
-- Cannot be uniquely solved without the removed conditions
-- Become solvable when the removed conditions are restored
+A Valid MIP must be UNSOLVABLE (Undeterminable).
+* The Logic: The problem logic breaks because a necessary link is missing. The model should fail to answer or state "insufficient information."
+* The Goal: We want to test if the model can detect dependency (e.g., "I cannot find Y because I don't know X").
 
-### Verification Criteria ###
-
-Check if the rewritten problem has any of these **THREE CRITICAL ISSUES**:
+An Invalid MIP is OPEN-ENDED (Infinite/Arbitrary Solutions).
+* The Error: The problem loses its strict constraints (like "maximum", "unique", "integer"), allowing the model to validly output ANY random number that fits the loose description. This is NOT a valid MIP.
 
 ---
 
-**Issue 1: Unintended Infinite Solutions**
+### Verification Criteria
 
-The original problem asks for a UNIQUE, SPECIFIC answer (e.g., "the largest", "the smallest", "the exact value"), but after removing conditions, it now has infinitely many valid answers WITHOUT changing the nature of the question.
+Check if the rewritten problem has any of these THREE CRITICAL ISSUES.
 
-**Key distinction:**
-- ✅ VALID: Original asks "Find x" (unique answer) → Rewritten becomes unsolvable (no solution) ← This is the GOAL of MIP!
-- ❌ INVALID: Original asks "Find THE largest x" → Rewritten asks "Find x" (many valid answers) ← Question nature changed!
+Issue 1: Unintended Infinite Solutions (Open-Endedness)
 
-**Common Invalid cases:**
+The original problem asks for a UNIQUE, SPECIFIC answer, but the rewritten problem removes the specific constraints, allowing infinitely many valid answers without changing the nature of the question.
 
-1. **Removed uniqueness specifiers:**
-   - Original: "Find THE LARGEST prime divisor"
-   - Invalid rewrite: "Find a prime divisor" ← Now any prime divisor works (infinite choices)
-   
-2. **Removed domain constraints that prevent infinite solutions:**
-   - Original: "tan(53°)tan(81°)tan(x°) = ... where 0 < x < 180"
-   - Invalid rewrite: Removed "0 < x < 180" → Now x = 7°, 187°, 367°, ... all work (periodic function)
-   
-3. **Removed degree/type specifications:**
-   - Original: "Let P(x) be a monic polynomial of degree 3"
-   - Invalid rewrite: "Let P(x) be a polynomial" ← Now degree 1, 2, 3, 4, ... all work
+* Common Invalid Cases:
+  1. Removed uniqueness specifiers:
+     - Original: "Find THE LARGEST prime divisor"
+     - Invalid Rewrite: "Find a prime divisor" (Now any prime divisor works -> Infinite/Many choices)
+     
+  2. Removed domain constraints that prevent infinite solutions:
+     - Original: "tan(53)tan(81)tan(x) = ... where 0 < x < 180"
+     - Invalid Rewrite: Removed "0 < x < 180" (Now x = 7, 187, 367... all work due to periodicity)
+     
+  3. Removed degree/type specifications:
+     - Original: "Let P(x) be a monic polynomial of degree 3"
+     - Invalid Rewrite: "Let P(x) be a polynomial" (Now degree 1, 2, 4... all work)
 
-**IMPORTANT - Valid MIP examples (NOT Issue 1):**
-- Original: "x = 2, xy = 10, find y" → Rewrite: "xy = 10, find y"
-  ✅ VALID! The problem now has infinite solutions (y can be anything if we also change x), which is exactly the goal of MIP.
+* Valid MIP Examples (NOT Issue 1):
+  - Original: "x = 2, xy = 10, find y" -> Rewrite: "xy = 10, find y"
+    (VALID! This is unsolvable logic, distinct from simply removing a "largest" constraint.)
+  - Original: "Circle with center (0,0) and radius 5" -> Rewrite: "Circle with center (0,0)"
+    (VALID! We cannot determine the exact circle.)
 
-- Original: "Circle with center (0,0) and radius 5" → Rewrite: "Circle with center (0,0)"
-  ✅ VALID! Now we can't determine the exact circle, but it's still a valid MIP.
+Detection Rule:
+1. Does the original ask for "The value", "The maximum", "The unique x"?
+2. Does the rewrite lose the condition that locks this answer?
+3. Can I now provide ANY random number and claim it's a valid answer? (If YES -> INVALID)
 
-**How to detect Issue 1:**
-1. Check if original problem uses uniqueness keywords: "the largest", "the smallest", "the unique", "the only"
-2. Check if these keywords are preserved in the rewritten problem
-3. If removed AND this causes infinite valid answers → Invalid
+Issue 2: Mathematical Errors or Value Changes
 
----
+The rewriting process must NEVER change numbers, flip signs, or create illegal operations.
 
-**Issue 2: Mathematical Errors Introduced**
+* Critical Rules:
+  1. Numbers must NEVER be changed: 0.25 cannot become -0.25.
+  2. Signs must NEVER be flipped: log(x) cannot become log(-x).
+  3. No illegal operations should be introduced.
 
-The rewriting process introduced mathematically ILLEGAL operations or CHANGED numerical values.
+* Examples of Errors:
+  - Changed "log(0.25)" to "log(-0.25)" (Number sign flipped)
+  - Changed "x > 0" to "x < 0" where problem contains sqrt(x) (Makes operation illegal)
+  - Changed "sin(30)" to "sin(-30)" (Sign flipped)
 
-**Critical rules:**
-1. **Numbers must NEVER be changed**: 0.25 cannot become -0.25, 10 cannot become -10
-2. **Signs must NEVER be flipped**: log(x) cannot become log(-x), √a cannot become √(-a)
-3. **No illegal operations should be introduced**
+Issue 3: Context, Examples, or Assumptions Deleted
 
-**Common errors:**
+The original problem contains illustrative examples or explicit assumptions (using phrases like "For example", "Assume"), but the rewritten problem removed them. These are CONTEXT, not conditions.
 
-Type A: **Numbers or signs were modified** (This should NEVER happen!)
-- Changed "log(0.25)" to "log(-0.25)" ❌ ← Number sign flipped!
-- Changed "x > 0" to "x < 0" when problem has √x ❌ ← Makes √x illegal!
-- Changed "sin(30°)" to "sin(-30°)" ❌ ← Sign flipped!
+* Example A (Example deleted):
+  - Original: "On a keyboard, the key for digit 1 is broken. For example, typing 123 prints 23. Sasha types..."
+  - Invalid Rewrite: "On a keyboard, a key is broken. Sasha types..."
+  - Why Invalid: The example "123 -> 23" defines WHICH key is broken. Without it, the problem is ambiguous.
 
-Type B: **Domain constraint removed, making operations illegal**
-- Original: "For x > 0, compute log(x)" → Removed "x > 0"
-- Now if we try x = -1, log(-1) is illegal ❌
+* Example B (Assumption deleted):
+  - Original: "A firecracker explodes... Find the speed. Assume g = 10 m/s^2."
+  - Invalid Rewrite: "A firecracker explodes... Find the speed."
+  - Why Invalid: The assumption "g = 10" is a fixed parameter, not a removable condition.
 
-**How to detect Issue 2:**
-1. Check if ANY numbers in the rewritten problem differ from the original (should NOT happen!)
-2. Check if ANY signs are flipped (should NOT happen!)
-3. Check if removing domain constraints makes some operations undefined
-
-**Valid examples (NOT Issue 2):**
-- Original: "x = 5, y = 10" → Removed "x = 5"
-  ✅ VALID! Only removed a condition, didn't change any numbers
-  
-- Original: "For x > 0, compute x²" → Removed "x > 0"
-  ✅ VALID! x² is still legal for x ≤ 0
+Trigger Phrases to Watch:
+- "For example", "For instance", "e.g.", "such as"
+- "Assume", "Suppose", "Let's say"
 
 ---
 
-**Issue 3: Examples or Assumptions Deleted**
+### Analysis Instructions
 
-The original problem contains illustrative examples or explicit assumptions (using phrases like "For example", "For instance", "e.g.", "Assume"), but the rewritten problem removed them.
+Step 1: Check Issue 1 (Open-Endedness)
+- Did the rewrite remove words like "largest", "smallest", "integer", "unique"?
+- Does it create infinite arbitrary answers (Invalid) OR become logically unsolvable (Valid)?
 
-**Key understanding:**
-- Examples are NOT conditions - they are CONTEXT to help understand the problem
-- Assumptions (e.g., "Assume g = 10 m/s²") are NOT removable conditions - they are fixed parameters
-- Removing examples makes the problem ambiguous or unsolvable
+Step 2: Check Issue 2 (Math Errors)
+- Check if ANY numbers or signs differ from the original.
 
-**Example of Issue 3 - Type A (Example deleted):**
-
-Original: "On a computer keyboard, the key for the digit 1 is not working. **For example, if you try to type the number 1231234, only the number 23234 will actually print.**\n\nSasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?"
-
-Invalid Rewrite: "On a computer keyboard, a certain key is not working. Sasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?"
-
-Why Invalid: The example "1231234 → 23234" shows that digit "1" is the non-working key. Without this example, we can't determine which key is broken! ❌
-
-**Example of Issue 3 - Type B (Assumption deleted):**
-
-Original: "A firecracker was thrown vertically upward with a speed of 20 m/s. One second after the flight began, it exploded into two unequal parts. Find the speed of the second fragment. **Assume the acceleration due to gravity is 10 m/s².**"
-
-Invalid Rewrite: "A firecracker was thrown vertically upward with a speed of 20 m/s. One second after the flight began, it exploded into two unequal parts. Find the speed of the second fragment."
-
-Why Invalid: The assumption "g = 10 m/s²" was deleted. Without this, we can't solve the problem! ❌
-
-**Trigger phrases to check:**
-- "For example", "For instance", "e.g.", "such as", "like"
-- "Assume", "Suppose", "Let's say", "Given that"
-- "Illustration:", "Example:", "Consider the case"
-
-**How to detect Issue 3:**
-1. Search for trigger phrases in the original problem
-2. Check if these sections are preserved in the rewritten problem
-3. Check if removed_conditions contains any example text (should NOT!)
+Step 3: Check Issue 3 (Context Loss)
+- Check if "For example", "Assume", "Note that" sections are preserved.
 
 ---
 
-### Analysis Instructions ###
-
-Analyze step by step:
-
-**Step 1: Check Issue 1 (Unintended Infinite Solutions)**
-- Does the original problem ask for a UNIQUE/SPECIFIC answer using words like "the largest", "the smallest", "the exact"?
-- Did the rewriting remove these uniqueness specifiers?
-- If yes → Does this create infinite valid answers? (If yes → Invalid)
-
-**Step 2: Check Issue 2 (Mathematical Errors)**
-- Were any numbers changed? (e.g., 0.25 → -0.25) → If yes, Invalid
-- Were any signs flipped? (e.g., x > 0 → x < 0) → If yes, Invalid  
-- Does removing constraints make operations illegal? (e.g., removed x > 0 but kept log(x)) → If yes, Invalid
-
-**Step 3: Check Issue 3 (Examples or Assumptions Deleted)**
-- Does the original contain "For example", "Assume", or similar phrases?
-- Are these preserved in the rewritten problem?
-- If deleted → Invalid
-
----
-
-### Output Format ###
-
-First, provide your analysis after ### Analysis ###. Keep it concise (2-6 sentences).
+### Output Format
 
 ### Analysis ###
-[Analyze each of the three issues systematically:
-- Issue 1: Does it create unintended infinite solutions?
-- Issue 2: Were numbers/signs changed or illegal operations introduced?
-- Issue 3: Were examples or assumptions deleted?]
-
-Then, output your judgement after ### Judgement ###.
+[Provide a concise 2-4 sentence analysis of why it passes or fails based on the 3 issues above.]
 
 ### Judgement ###
-Valid or Invalid
-
-**Judgement Rules:**
-- Output "Valid" if ALL three checks pass
-- Output "Invalid" if ANY of Issue 1, Issue 2, or Issue 3 occurs
+Valid OR Invalid

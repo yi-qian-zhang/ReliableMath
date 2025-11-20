@@ -109,27 +109,37 @@ python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
 
 #8715端口 DeepSeek-R1-Distill-Qwen-32B
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
-  --dataset polaris_easy_40 \
+  --dataset polaris_easy_50 \
   --num_missing 1 \
   --extract_model gpt-4o-mini \
   --rewrite_model DeepSeek-R1-Distill-Qwen-32B-8715 \
   --verify_model DeepSeek-R1-Distill-Qwen-32B-8715 \
   --judge_model gpt-4o-mini \
   --threads 16 \
-  --output_dir data/DeepSeek-R1-Distill-Qwen-32B-8715/11-20/official_mode/missing_one/polaris_easy_40 \
+  --output_dir data/DeepSeek-R1-Distill-Qwen-32B-8715/11-20/official_mode/missing_one/polaris_easy_50 \
   --force
 
+python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
+  --dataset polaris_easy_50 \
+  --num_missing 2 \
+  --extract_model gpt-4o-mini \
+  --rewrite_model DeepSeek-R1-Distill-Qwen-32B-8715 \
+  --verify_model DeepSeek-R1-Distill-Qwen-32B-8715 \
+  --judge_model gpt-4o-mini \
+  --threads 16 \
+  --output_dir data/DeepSeek-R1-Distill-Qwen-32B-8715/11-20/official_mode/missing_one/polaris_easy_50 \
+  --force
 
 #8717端口 DeepSeek-R1-Distill-Qwen-32B
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
-  --dataset polaris_hard_40 \
+  --dataset polaris_hard_50 \
   --num_missing 1 \
   --extract_model gpt-4o-mini \
   --rewrite_model DeepSeek-R1-Distill-Qwen-32B-8717 \
   --verify_model DeepSeek-R1-Distill-Qwen-32B-8717 \
   --judge_model gpt-4o-mini \
   --threads 16 \
-  --output_dir data/DeepSeek-R1-Distill-Qwen-32B/11-20/official_mode/missing_one/data/solve/polaris_hard_40 \
+  --output_dir data/DeepSeek-R1-Distill-Qwen-32B/11-20/official_mode/missing_one/data/solve/polaris_hard_50 \
   --force
 
 

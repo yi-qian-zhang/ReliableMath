@@ -3,8 +3,9 @@
 Missing Information Problem (MIP) Dataset Construction - 支持可变缺省条件数量
 输入数据: 原始数学问题 (question) + 标准答案 (ground_truth) + 难度标签 (difficulty)
 
-新架构 (4步流程):
+新架构 (5步流程):
 Step 1. 提取条件 (extract_conditions_only): 使用 GPT-4o 提取问题中的所有关键条件
+Step 1.5. 过滤样本 (filter_by_num_conditions): 只保留 num_conditions >= num_missing + 1 的样本
 Step 2. 生成移除变体 (generate_removal_variants): 根据参数 --num_missing=n，生成所有 C(N,n) 种组合
 Step 3. 验证 A - 改写质量检查: LLM 快速验证改写正确性和问题有效性
 Step 4. 验证 B - 条件必要性: 给模型缺省问题，vLLM sampling 8次，全都 ≠ ground_truth → 通过
@@ -388,6 +389,54 @@ def extract_conditions_only(data):
     logging.info(f"ID {data['id']}: Extracted {len(cleaned_conditions)} conditions" +
                  (" (multiple-choice)" if is_multiple_choice else ""))
     return data
+
+def filter_by_num_conditions(conditions_path, num_missing):
+    """
+    在 extract 之后，根据 num_conditions 过滤样本
+    规则: 只保留 num_conditions >= num_missing + 1 的样本
+    
+    Args:
+        conditions_path: _conditions.json 文件路径
+        num_missing: 要移除的条件数
+    
+    Returns:
+        filtered_path: 过滤后的文件路径
+        remaining_count: 剩余样本数量
+    """
+    dataset = read_json(conditions_path)
+    
+    min_conditions_required = num_missing + 1
+    
+    original_count = len(dataset)
+    filtered_dataset = []
+    filtered_out_ids = []
+    
+    for data in dataset:
+        num_conditions = data.get("num_conditions", 0)
+        
+        if num_conditions >= min_conditions_required:
+            filtered_dataset.append(data)
+        else:
+            filtered_out_ids.append(data.get('id', 'unknown'))
+            logging.debug(f"ID {data['id']}: Filtered out (num_conditions={num_conditions} < {min_conditions_required})")
+    
+    # 生成新的文件名，包含 num_missing 信息
+    filtered_path = conditions_path.replace(
+        "_conditions.json",
+        f"_conditions_filtered_n{num_missing}.json"
+    )
+    
+    write_json(filtered_path, filtered_dataset)
+    
+    print(f"\n📊 Filtering by num_conditions >= {min_conditions_required}:")
+    print(f"  Original samples: {original_count}")
+    print(f"  Filtered out: {len(filtered_out_ids)} ({len(filtered_out_ids)/original_count*100:.1f}%)")
+    print(f"  Remaining: {len(filtered_dataset)} ({len(filtered_dataset)/original_count*100:.1f}%)")
+    if len(filtered_out_ids) > 0 and len(filtered_out_ids) <= 10:
+        print(f"  Filtered out IDs: {filtered_out_ids}")
+    print(f"  Output: {filtered_path}")
+    
+    return filtered_path, len(filtered_dataset)
 
 def verify_rewrite_with_llm(data, rewritten_question, removed_conditions, remaining_conditions, combo_idx):
     """
@@ -983,7 +1032,8 @@ def filter_valid_data(final_path, num_missing):
     print("MISSING INFORMATION PROBLEM (MIP) DATASET STATISTICS")
     print("="*70)
     print(f"Configuration: num_missing = {num_missing}")
-    print(f"Original problems: {total_original}")
+    print(f"Minimum conditions required: {num_missing + 1}")
+    print(f"Original problems (after filtering): {total_original}")
     print(f"\nTotal removal variants generated: {total_variants}")
 
     # 数据完整性检查报告
@@ -1025,7 +1075,7 @@ def filter_valid_data(final_path, num_missing):
     else:
         print(f"    Passed: 0/0 (N/A - all variants failed Round A)")
 
-    print(f"\n  Final Result (Round A + B + C both passed):")
+    print(f"\n  Final Result (Round A + B + C all passed):")
     print(f"    VALID variants: {both_pass_count}/{total_variants} ({both_pass_count/total_variants*100:.1f}%)")
     print(f"\nValid removal variants: {valid_variants}")
     if valid_variants > 0:
@@ -1106,53 +1156,102 @@ def construction_workflow():
     if args.force:
         print(f"Mode: FORCE (reprocessing all)")
     print("="*70)
+    
+    # ============================================================
+    # [1/5] Extract Conditions
+    # ============================================================
     extract_path = os.path.join(output_dir, f"{args.dataset}_conditions.json")
     if os.path.exists(extract_path) and not args.force:
         existing_conditions = read_json(extract_path)
         if len(existing_conditions) == len(dataset):
-            print(f"\n[1/4] ✓ Conditions already extracted ({len(existing_conditions)} items), skipping...")
+            print(f"\n[1/5] ✓ Conditions already extracted ({len(existing_conditions)} items), skipping...")
             dataset = existing_conditions
         else:
-            print(f"\n[1/4] Extracting conditions (continuing from {len(existing_conditions)}/{len(dataset)})")
+            print(f"\n[1/5] Extracting conditions (continuing from {len(existing_conditions)}/{len(dataset)})")
             process_with_jsonl_parallel(dataset, extract_path, extract_conditions_only, "Extracting conditions")
             dataset = read_json(extract_path)
     else:
-        print("\n[1/4] Extracting conditions (parallel)")
+        print("\n[1/5] Extracting conditions (parallel)")
         process_with_jsonl_parallel(dataset, extract_path, extract_conditions_only, "Extracting conditions")
         dataset = read_json(extract_path)
+    
+    # ============================================================
+    # [2/5] Filter by num_conditions  ★新增★
+    # ============================================================
+    print(f"\n[2/5] Filtering samples by num_conditions (must be >= {args.num_missing + 1})")
+    
+    filtered_conditions_path = os.path.join(
+        output_dir,
+        f"{args.dataset}_conditions_filtered_n{args.num_missing}.json"
+    )
+    
+    # 检查是否已经过滤过
+    if os.path.exists(filtered_conditions_path) and not args.force:
+        print(f"  ✓ Filtered conditions already exist, loading...")
+        dataset = read_json(filtered_conditions_path)
+        remaining_count = len(dataset)
+        print(f"  Loaded {remaining_count} samples")
+    else:
+        # 执行过滤
+        filtered_conditions_path, remaining_count = filter_by_num_conditions(extract_path, args.num_missing)
+        dataset = read_json(filtered_conditions_path)
+    
+    # 如果过滤后没有数据，终止流程
+    if remaining_count == 0:
+        print(f"\n⚠️  WARNING: No samples remain after filtering!")
+        print(f"   All samples have num_conditions < {args.num_missing + 1}")
+        print(f"   Suggestions:")
+        print(f"   1. Use a smaller --num_missing value")
+        print(f"   2. Use a different dataset with more complex problems")
+        print(f"   3. Check your extraction prompt (maybe conditions are under-extracted)")
+        return
+    
+    print(f"  ✓ Proceeding with {remaining_count} samples for variant generation...")
+    
+    # ============================================================
+    # [3/5] Generate Removal Variants (使用过滤后的数据)
+    # ============================================================
     variants_path = os.path.join(output_dir, f"{args.dataset}_variants_n{args.num_missing}.json")
     generate_func = lambda data: generate_removal_variants(data, args.num_missing)
     if os.path.exists(variants_path) and not args.force:
         existing_variants = read_json(variants_path)
-        if len(existing_variants) == len(dataset):
-            print(f"\n[2/4] ✓ Variants already generated ({len(existing_variants)} items), skipping...")
+        if len(existing_variants) == remaining_count:
+            print(f"\n[3/5] ✓ Variants already generated ({len(existing_variants)} items), skipping...")
             dataset = existing_variants
         else:
-            print(f"\n[2/4] Generating removal variants (n={args.num_missing}, continuing from {len(existing_variants)}/{len(dataset)})")
+            print(f"\n[3/5] Generating removal variants (n={args.num_missing}, continuing from {len(existing_variants)}/{remaining_count})")
             process_with_jsonl_parallel(dataset, variants_path, generate_func, f"Generating variants (n={args.num_missing})")
             dataset = read_json(variants_path)
     else:
-        print(f"\n[2/4] Generating removal variants (n={args.num_missing}, parallel)")
+        print(f"\n[3/5] Generating removal variants (n={args.num_missing}, parallel)")
         process_with_jsonl_parallel(dataset, variants_path, generate_func, f"Generating variants (n={args.num_missing})")
         dataset = read_json(variants_path)
+    
+    # ============================================================
+    # [4/5] Three-Round Verification
+    # ============================================================
     final_path = os.path.join(output_dir, f"{args.dataset}_final_n{args.num_missing}.json")
     if os.path.exists(final_path) and not args.force:
         existing_final = read_json(final_path)
         if len(existing_final) == len(dataset):
-            print(f"\n[3/4] ✓ Verification already complete ({len(existing_final)} items), skipping...")
+            print(f"\n[4/5] ✓ Verification already complete ({len(existing_final)} items), skipping...")
         else:
-            print(f"\n[3/4] Three-round verification (n={args.max_attempts}, continuing from {len(existing_final)}/{len(dataset)})")
+            print(f"\n[4/5] Three-round verification (n={args.max_attempts}, continuing from {len(existing_final)}/{len(dataset)})")
             print(f"  Round A: LLM pre-verification (rewrite quality)")
             print(f"  Round B: WITHOUT conditions (must all fail)")
             print(f"  Round C: WITH conditions (at least one succeeds)")
             process_with_jsonl_parallel(dataset, final_path, verify_incomplete_questions_with_three_rounds, "Three-round verification")
     else:
-        print(f"\n[3/4] Three-round verification (n={args.max_attempts}, parallel)")
+        print(f"\n[4/5] Three-round verification (n={args.max_attempts}, parallel)")
         print(f"  Round A: LLM pre-verification (rewrite quality)")
         print(f"  Round B: WITHOUT conditions (must all fail)")
         print(f"  Round C: WITH conditions (at least one succeeds)")
         process_with_jsonl_parallel(dataset, final_path, verify_incomplete_questions_with_three_rounds, "Three-round verification")
-    print("\n[4/4] Filtering valid data")
+    
+    # ============================================================
+    # [5/5] Filter Valid Data
+    # ============================================================
+    print("\n[5/5] Filtering valid data")
     filter_valid_data(final_path, args.num_missing)
     print("\n✓ Pipeline completed!")
 

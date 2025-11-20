@@ -30,7 +30,8 @@ def extract_verification_data(input_file, output_file=None, output_format='json'
     extracted_data = []
     for item in data:
         original_id = item.get('id', 'unknown')
-        original_question = item.get('question', '')  # Extract original question
+        # 修正：字段名改为 'original_question'
+        original_question = item.get('original_question', '')
 
         # Process each removal variant
         variants = item.get('removal_variants', [])
@@ -50,17 +51,16 @@ def extract_verification_data(input_file, output_file=None, output_format='json'
             # Extract verification results
             verification = variant.get('verification', {})
 
-            # Correctness verification
-            correctness_passed = verification.get('correctness_passed', None)
-            correctness_analysis = verification.get('correctness_analysis', '')
+            # 修正：从 round_A 中获取 correctness 和 validity 信息
+            round_a = verification.get('round_A', {})
+            correctness_passed = round_a.get('correctness_passed', None)
+            correctness_analysis = round_a.get('correctness_analysis', '')
+            validity_passed = round_a.get('validity_passed', None)
+            validity_analysis = round_a.get('validity_analysis', '')
 
-            # Validity verification
-            validity_passed = verification.get('validity_passed', None)
-            validity_analysis = verification.get('validity_analysis', '')
-
-            # Round results (for reference)
-            round_a_passed = verification.get('round_a_passed', None)
-            round_b_passed = verification.get('round_b_passed', None)
+            # 修正：字段名改为大写 A、B
+            round_a_passed = verification.get('round_A_passed', None)
+            round_b_passed = verification.get('round_B_passed', None)
             is_valid = verification.get('is_valid', None)
 
             extracted_data.append({
