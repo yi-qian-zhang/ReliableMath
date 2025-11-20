@@ -54,8 +54,8 @@ The rewriting process introduced mathematically illegal operations.
 - Check if any numbers in mathematical expressions were changed (should NOT happen)
 - Check if domain constraints were removed, making operations invalid
 
-**Issue 3: Examples Deleted**
-The original problem contains illustrative examples (using phrases like "For example", "For instance", "e.g."), but the rewritten problem removed them.
+**Issue 3: Examples or Assumption Deleted**
+The original problem contains illustrative examples or precise (using phrases like "For example","assume", "For instance", "e.g."), but the rewritten problem removed them.
 
 **Examples are PART OF THE PROBLEM CONTEXT and should NEVER be removed.**
 
@@ -64,6 +64,12 @@ Original: "On a computer keyboard, the key for the digit 1 is not working. **For
 
 Invalid Rewrite: "On a computer keyboard, a certain key is not working. Sasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?"
 → The example "1231234 → 23234" was deleted ❌
+
+**Example of Issue 3:**
+Original: "A firecracker was thrown vertically upward with a speed of $20 \, \mathrm{{m/s}}$. One second after the flight began, it exploded into two unequal parts, with their mass ratio being $1:2$. Immediately after the explosion, the smaller fragment flew horizontally with a speed of $16 \, \mathrm{m/s}$. Find the speed (in m/s) of the second fragment immediately after the explosion. Assume the acceleration due to gravity is $10 \, \mathrm{m/s}^2$.",
+Invalid Rewrite: "A firecracker was thrown vertically upward with a speed of $20 \, \mathrm{m/s}$. It exploded into two parts, and the smaller fragment flew horizontally with a speed of $16 \, \mathrm{m/s}$. Find the speed (in m/s) of the second fragment immediately after the explosion.",
+→ The Assumption "Assume the acceleration due to gravity is $10 \, \mathrm{m/s}^2$." was deleted ❌
+
 
 **How to detect:**
 - Check if original problem contains phrases: "For example", "For instance", "e.g.", "such as", "Example:"
@@ -82,13 +88,17 @@ Analyze step by step:
 - Were any mathematical expressions altered (numbers changed, signs flipped)?
 - Do any operations become mathematically illegal after removing domain constraints?
 
-**Step 3: Check Issue 3 (Examples Deleted)**
+**Step 3: Check Issue 3 (Examples or Assumption Deleted)**
 - Does the original problem contain examples (look for "For example", "e.g.", etc.)?
 - Are these examples preserved in the rewritten problem?
 
+
+
+
+
 ### Output Format ###
 
-First, provide your analysis after ### Analysis ###.
+First, provide your analysis after ### Analysis ###. Keep it concise (1-6 sentences)
 
 ### Analysis ###
 [Analyze each of the three issues systematically]
