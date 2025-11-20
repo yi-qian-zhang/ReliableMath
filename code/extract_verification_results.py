@@ -30,6 +30,7 @@ def extract_verification_data(input_file, output_file=None, output_format='json'
     extracted_data = []
     for item in data:
         original_id = item.get('id', 'unknown')
+        original_question = item.get('question', '')  # Extract original question
 
         # Process each removal variant
         variants = item.get('removal_variants', [])
@@ -65,6 +66,7 @@ def extract_verification_data(input_file, output_file=None, output_format='json'
             extracted_data.append({
                 'id': variant_id,
                 'original_id': original_id,
+                'original_question': original_question,
                 'removed_conditions': removed_conditions_str,
                 'incomplete_question': incomplete_question,
                 'correctness_passed': correctness_passed,
@@ -94,7 +96,7 @@ def extract_verification_data(input_file, output_file=None, output_format='json'
     else:
         print(f"Writing CSV to {output_file}...")
         fieldnames = [
-            'id', 'original_id', 'removed_conditions', 'incomplete_question',
+            'id', 'original_id', 'original_question', 'removed_conditions', 'incomplete_question',
             'correctness_passed', 'correctness_analysis',
             'validity_passed', 'validity_analysis',
             'round_a_passed', 'round_b_passed', 'is_valid'
@@ -111,14 +113,12 @@ def extract_verification_data(input_file, output_file=None, output_format='json'
     total = len(extracted_data)
 
     if total > 0:
-        correctness_passed_count = sum(1 for d in extracted_data if d['correctness_passed'] == True)
-        validity_passed_count = sum(1 for d in extracted_data if d['validity_passed'] == True)
-        is_valid_count = sum(1 for d in extracted_data if d['is_valid'] == True)
+        correctness_passed_count = sum(1 for d in extracted_data if d.get('correctness_passed') == True)
+        validity_passed_count = sum(1 for d in extracted_data if d.get('validity_passed') == True)
 
         print(f"Total variants: {total}")
         print(f"Correctness passed: {correctness_passed_count} ({correctness_passed_count/total*100:.1f}%)")
         print(f"Validity passed: {validity_passed_count} ({validity_passed_count/total*100:.1f}%)")
-        print(f"Overall valid: {is_valid_count} ({is_valid_count/total*100:.1f}%)")
 
     return output_file
 
