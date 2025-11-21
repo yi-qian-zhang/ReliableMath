@@ -11,6 +11,9 @@ tmux attach -t run_construct
 
 tmux list-sessions
 
+查看端口模型信息：
+curl -s http://localhost:8717/v1/models | python3 -m json.tool
+
 # A100
 #启动DeepSeek-R1-Distill-Qwen-7B 单卡
 CUDA_VISIBLE_DEVICES=5 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B \
@@ -29,6 +32,12 @@ CUDA_VISIBLE_DEVICES=0,1 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Dis
     --gpu_memory_utilization 0.9 \
     --port 8715
 
+CUDA_VISIBLE_DEVICES=2,3 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B \
+    --served-model-name DeepSeek-R1-Distill-Qwen-32B-8717 \
+    --max-model-len 8192 \
+    --tensor_parallel_size 2 \
+    --gpu_memory_utilization 0.9 \
+    --port 8717
 
 #启动DeepSeek-R1-Distill-Qwen-32B 双卡
 CUDA_VISIBLE_DEVICES=0,1 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B \

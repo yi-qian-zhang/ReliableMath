@@ -1,0 +1,127 @@
+You are an expert verifier for mathematical problem quality.
+
+Your task is to verify that the rewritten problem is a VALID Missing Information Problem (MIP).
+
+### Original Problem ###
+{original_question}
+
+### Rewritten Problem ###
+{rewritten_question}
+
+### Removed Conditions ###
+{removed_conditions}
+
+---
+
+### Core Understanding of MIP
+
+A Valid MIP must be UNSOLVABLE.
+* The Logic: The problem logic breaks because a necessary link is missing. The model should fail to answer or state "insufficient information."
+* The Goal: We want to test if the model can detect dependency (e.g., "I cannot find Y because I don't know X").
+
+An Invalid MIP is OPEN-ENDED (Infinite/Arbitrary Solutions).
+* The Error: The problem loses its strict constraints (like "maximum", "unique", "integer"), allowing the model to validly output ANY random number that fits the loose description. This is NOT a valid MIP.
+
+---
+
+### Verification Criteria
+
+Check if the rewritten problem has any of these THREE CRITICAL ISSUES.
+
+Issue 1: Unintended Infinite Solutions (Open-Endedness)
+
+The original problem asks for a UNIQUE, SPECIFIC answer, but the rewritten problem removes the specific constraints .
+
+* Common Invalid Cases:
+  1. Removed uniqueness specifiers:
+     - Original: "Find THE LARGEST prime divisor"
+     - Invalid Rewrite: "Find a prime divisor" (Now any prime divisor works -> Infinite/Many choices)
+     
+  2. Removed domain constraints that prevent infinite solutions:
+     - Original: "tan(53)tan(81)tan(x) = ... where 0 < x < 180"
+     - Invalid Rewrite: Removed "0 < x < 180" (Now x = 7, 187, 367... all work due to periodicity)
+     
+  3. Removed degree/type specifications:
+     - Original: "Let P(x) be a monic polynomial of degree 3"
+     - Invalid Rewrite: "Let P(x) be a polynomial" (Now degree 1, 2, 4... all work)
+
+* Valid MIP Examples (NOT Issue 1):
+  - Original: "x = 2, xy = 10, find y" -> Rewrite: "xy = 10, find y"
+    (VALID! This is unsolvable logic, distinct from simply removing a "largest" constraint.)
+
+Detection Rule:
+1. Does the original ask for "The value", "The maximum", "The unique x"?
+2. Does the rewrite lose the condition that locks this answer?
+3. Can I now provide ANY random number and claim it's a valid answer? (If YES -> INVALID)
+
+Issue 2: Mathematical Errors or Value Changes
+
+The rewriting process must NEVER change numbers, flip signs, or create illegal operations.
+
+**Critical Rules:**
+- Numbers must NEVER be changed: 0.25 cannot become -0.25
+- Signs must NEVER be flipped: log(x) cannot become log(-x)
+- Operations must remain valid: sqrt(x) requires x ≥ 0
+
+**❌ Examples of Mathematical Errors:**
+1. Changed "log(0.25)" to "log(-0.25)"
+   → INVALID: Introduced undefined operation (log of negative number)
+
+2. Changed "x > 0" to "x < 0" in a problem with sqrt(x)
+   → INVALID: Makes sqrt(x) undefined for the domain
+
+3. Changed "sin(30°)" to "sin(-30°)"
+   → INVALID: Flipped the sign, altering the mathematical value
+
+**Detection Rule:**
+- Compare all numbers, signs, and operations between original and rewrite
+- ANY difference → INVALID
+
+---
+
+**Issue 3: Assumptions or Fixed Parameters Deleted**
+
+Fixed assumptions and parameters (using "Assume", "Let", "Suppose") are NOT removable conditions. They are essential context that defines the problem setup.
+
+**❌ Invalid Example (Assumption Deleted):**
+- Original: "A firecracker explodes into pieces. Find the speed of piece A. Assume g = 10 m/s²."
+- Invalid Rewrite: "A firecracker explodes into pieces. Find the speed of piece A."
+- Why Invalid: "g = 10" is a fixed parameter assumption, not a variable condition
+
+**Trigger Phrases to Watch:**
+- "Assume", "Suppose", "Let's say", "Given that"
+- "For example", "For instance", "e.g.", "such as"
+- "Note that", "It is known that"
+
+**Detection Rule:**
+- If the original contains assumption phrases and they're removed → INVALID
+- These provide essential context and cannot be treated as removable conditions
+
+---
+
+### Verification Steps
+
+**Step 1: Check Issue 1 (Uniquely Solvable → Unsolvable vs. Infinitely Solvable)**
+- Does removing the condition break a dependency (cannot derive answer)? → VALID
+- Or does it remove a uniqueness constraint (infinite answers now valid)? → INVALID
+
+**Step 2: Check Issue 2 (Mathematical Errors)**
+- Are all numbers, signs, and operations identical between original and rewrite?
+- Any difference → INVALID
+
+**Step 3: Check Issue 3 (Assumptions Deleted)**
+- Does the original contain "Assume", "For example", or similar phrases?
+- Are they preserved in the rewrite? If not → INVALID
+
+---
+
+### Output Format
+
+### Analysis ###
+[2-4 sentences analyzing the three issues:
+1. Does removal create unsolvability (VALID) or infinite solutions (INVALID)?
+2. Are there any mathematical errors?
+3. Are assumptions/parameters preserved?]
+
+### Judgement ###
+Valid OR Invalid

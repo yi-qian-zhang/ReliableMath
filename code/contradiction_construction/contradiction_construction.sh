@@ -26,5 +26,5 @@ python code/contradiction_construction/contradiction_construction.py \
   --analysis_model  DeepSeek-R1-Distill-Qwen-32B-8716\
   --verify_model   DeepSeek-R1-Distill-Qwen-32B-8716\
   --judge_model    DeepSeek-R1-Distill-Qwen-32B-8716\
-  --dataset polaris_easy_20 \
-  --test_mode
+  --dataset polaris_easy_100 \
+  --threads 4   \

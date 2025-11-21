@@ -104,7 +104,7 @@ parser.add_argument("--prompt_dir", default="prompt/contradict_data", help="Prom
 parser.add_argument("--dataset", default="polaris", help="Dataset name")
 parser.add_argument("--temperature", default=1.0, type=float, help="Temperature for vLLM sampling")
 parser.add_argument("--max_attempts", default=8, type=int, help="Max sampling attempts for verification")
-parser.add_argument("--threads", default=8, type=int, help="Number of parallel threads")
+parser.add_argument("--threads", default=4, type=int, help="Number of parallel threads")
 parser.add_argument("--test_mode", action='store_true', help="Test mode - process only first 5 items")
 parser.add_argument("--force", action='store_true', help="Force reprocess all items")
 parser.add_argument("--use_math_orm", action='store_true', help="Enable LLM ORM for answer verification")
