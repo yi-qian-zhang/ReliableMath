@@ -58,49 +58,70 @@ Issue 2: Mathematical Errors or Value Changes
 
 The rewriting process must NEVER change numbers, flip signs, or create illegal operations.
 
-* Critical Rules:
-  1. Numbers must NEVER be changed: 0.25 cannot become -0.25.
-  2. Signs must NEVER be flipped: log(x) cannot become log(-x).
-  3. No illegal operations should be introduced.
+**Critical Rules:**
+- Numbers must NEVER be changed: 0.25 cannot become -0.25
+- Signs must NEVER be flipped: log(x) cannot become log(-x)
+- Operations must remain valid: sqrt(x) requires x ≥ 0
 
-* Examples of Errors:
-  - Changed "log(0.25)" to "log(-0.25)" (Number sign flipped)
-  - Changed "x > 0" to "x < 0" where problem contains sqrt(x) (Makes operation illegal)
-  - Changed "sin(30)" to "sin(-30)" (Sign flipped)
+**❌ Examples of Mathematical Errors:**
+1. Changed "log(0.25)" to "log(-0.25)"
+   → INVALID: Introduced undefined operation (log of negative number)
 
-Issue 3: Context, Examples, or Assumptions Deleted
+2. Changed "x > 0" to "x < 0" in a problem with sqrt(x)
+   → INVALID: Makes sqrt(x) undefined for the domain
 
-The original problem contains illustrative examples or explicit assumptions (using phrases like "For example", "Assume"), but the rewritten problem removed them. These are CONTEXT, not conditions.
+3. Changed "sin(30°)" to "sin(-30°)"
+   → INVALID: Flipped the sign, altering the mathematical value
 
-* Example (Assumption deleted):
-  - Original: "A firecracker explodes... Find the speed. Assume g = 10 m/s^2."
-  - Invalid Rewrite: "A firecracker explodes... Find the speed."
-  - Why Invalid: The assumption "g = 10" is a fixed parameter, not a removable condition.
-
-Trigger Phrases to Watch:
-- "For example", "For instance", "e.g.", "such as"
-- "Assume", "Suppose", "Let's say"
+**Detection Rule:**
+- Compare all numbers, signs, and operations between original and rewrite
+- ANY difference → INVALID
 
 ---
 
-### Analysis Instructions
+**Issue 3: Assumptions or Fixed Parameters Deleted**
 
-Step 1: Check Issue 1 (Open-Endedness)
-- Did the rewrite remove words like "largest", "smallest", "integer", "unique"?
-- Does it create infinite arbitrary answers (Invalid) OR become logically unsolvable (Valid)?
+Fixed assumptions and parameters (using "Assume", "Let", "Suppose") are NOT removable conditions. They are essential context that defines the problem setup.
 
-Step 2: Check Issue 2 (Math Errors)
-- Check if ANY numbers or signs differ from the original.
+**❌ Invalid Example (Assumption Deleted):**
+- Original: "A firecracker explodes into pieces. Find the speed of piece A. Assume g = 10 m/s²."
+- Invalid Rewrite: "A firecracker explodes into pieces. Find the speed of piece A."
+- Why Invalid: "g = 10" is a fixed parameter assumption, not a variable condition
 
-Step 3: Check Issue 3 (Context Loss)
-- Check if "For example", "Assume", "Note that" sections are preserved.
+**Trigger Phrases to Watch:**
+- "Assume", "Suppose", "Let's say", "Given that"
+- "For example", "For instance", "e.g.", "such as"
+- "Note that", "It is known that"
+
+**Detection Rule:**
+- If the original contains assumption phrases and they're removed → INVALID
+- These provide essential context and cannot be treated as removable conditions
+
+---
+
+### Verification Steps
+
+**Step 1: Check Issue 1 (Uniquely Solvable → Unsolvable vs. Infinitely Solvable)**
+- Does removing the condition break a dependency (cannot derive answer)? → VALID
+- Or does it remove a uniqueness constraint (infinite answers now valid)? → INVALID
+
+**Step 2: Check Issue 2 (Mathematical Errors)**
+- Are all numbers, signs, and operations identical between original and rewrite?
+- Any difference → INVALID
+
+**Step 3: Check Issue 3 (Assumptions Deleted)**
+- Does the original contain "Assume", "For example", or similar phrases?
+- Are they preserved in the rewrite? If not → INVALID
 
 ---
 
 ### Output Format
 
 ### Analysis ###
-[Provide a concise 2-4 sentence analysis of why it passes or fails based on the 3 issues above.]
+[2-4 sentences analyzing the three issues:
+1. Does removal create unsolvability (VALID) or infinite solutions (INVALID)?
+2. Are there any mathematical errors?
+3. Are assumptions/parameters preserved?]
 
 ### Judgement ###
 Valid OR Invalid
