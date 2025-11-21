@@ -4,9 +4,8 @@ You are given an incomplete mathematical problem and additional information that
 **Incomplete Problem**:
 {incomplete_question}
 
-**Additional Known Information** (use this to solve the problem):
+**Additional Information**:
 {removed_conditions}
 
-Now, using the additional information above, solve the complete problem.
-
+Now, using the Incomplete Problem and Additional Information to solve the complete problem.
 Let's think step by step and output the final answer within \boxed{{}}.

@@ -15,7 +15,7 @@ Your task is to verify that the rewritten problem is a VALID Missing Information
 
 ### Core Understanding of MIP
 
-A Valid MIP must be UNSOLVABLE (Undeterminable).
+A Valid MIP must be UNSOLVABLE.
 * The Logic: The problem logic breaks because a necessary link is missing. The model should fail to answer or state "insufficient information."
 * The Goal: We want to test if the model can detect dependency (e.g., "I cannot find Y because I don't know X").
 
@@ -26,11 +26,11 @@ An Invalid MIP is OPEN-ENDED (Infinite/Arbitrary Solutions).
 
 ### Verification Criteria
 
-Check if the rewritten problem has any of these TWO CRITICAL ISSUES.
+Check if the rewritten problem has any of these THREE CRITICAL ISSUES.
 
 Issue 1: Unintended Infinite Solutions (Open-Endedness)
 
-The original problem asks for a UNIQUE, SPECIFIC answer, but the rewritten problem removes the specific constraints, allowing infinitely many valid answers without changing the nature of the question.
+The original problem asks for a UNIQUE, SPECIFIC answer, but the rewritten problem removes the specific constraints .
 
 * Common Invalid Cases:
   1. Removed uniqueness specifiers:
@@ -48,8 +48,6 @@ The original problem asks for a UNIQUE, SPECIFIC answer, but the rewritten probl
 * Valid MIP Examples (NOT Issue 1):
   - Original: "x = 2, xy = 10, find y" -> Rewrite: "xy = 10, find y"
     (VALID! This is unsolvable logic, distinct from simply removing a "largest" constraint.)
-  - Original: "Circle with center (0,0) and radius 5" -> Rewrite: "Circle with center (0,0)"
-    (VALID! We cannot determine the exact circle.)
 
 Detection Rule:
 1. Does the original ask for "The value", "The maximum", "The unique x"?
