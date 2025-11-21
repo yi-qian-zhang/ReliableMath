@@ -1,124 +1,81 @@
-You are an expert at analyzing mathematical problems and identifying key conditions.
+You are an expert at rewriting mathematical problems.
 
-Your objective is to extract CRITICAL mathematical conditions or premises from the given question. A critical condition is defined as: any condition whose removal or modification would cause the problem to lose its unique solution. Focus on conditions that are NECESSARY for solving, not merely helpful.
+Your task is to rewrite the original problem by REMOVING specified conditions while keeping the problem structure intact.
 
-Definition of Critical Condition:
-- For a problem with k necessary conditions [condition1, condition2, ..., conditionk], each condition is critical if removing it makes the problem unsolvable or changes the answer
-- These are NOT optional background information - they are ESSENTIAL to reach the unique solution
-- Removing any single critical condition should break the problem's solvability
-
-What IS a critical condition:
-- Numerical values that determine the answer (e.g., "ABCD is a rhombus")
-- Equations or constraints that limit the solution space (e.g., "x²/20 - y²/24 = 1")
-- Geometric or algebraic properties that are necessary (e.g., "diagonals intersect at the origin")
-- Relationships that define the problem structure (e.g., "passes through point (1,2)")
-
-What is NOT a condition:
-- The question itself (e.g., "Find...", "Calculate...", "Which option...")
-- Multiple choice options (A), (B), (C), (D) - these are part of the answer structure
-- Contextual information that doesn't affect the solution
-
-**CRITICAL: Do NOT Extract Uniqueness Constraints**
-
-Uniqueness constraints define the RANGE or NATURE of the solution and should NOT be extracted as removable conditions. These constraints are part of the question structure itself.
-
-**Common uniqueness constraints (Do NOT extract):**
-- Superlatives: "the largest", "the smallest", "the maximum", "the minimum", "the greatest", "the least"
-- Sign constraints: "positive", "negative", "non-negative", "non-positive"
-- Type constraints: "integer", "real number", "rational", "irrational", "prime"
-- Domain constraints embedded in questions: "in the interval [0, π]", "between 0 and 180 degrees", "in the first quadrant"
-- Uniqueness keywords: "unique", "only", "exactly one", "the only"
-- Ordering: "the first", "the second", "the nth"
-
-**Why not extract these?**
-Removing these constraints would turn a problem with a unique answer into one with multiple/infinite solutions, which is NOT the goal of MIP. MIP should create UNSOLVABLE problems, not problems with infinite solutions.
-
-**Examples of what NOT to extract:**
-
-Example 1:
-Problem: "Find the largest prime divisor of 100"
-❌ WRONG: ["the largest", "prime divisor", "of 100"]
-✅ CORRECT: ["100"]
-Explanation: "the largest prime divisor" is the question structure, only "100" is a removable condition
-
-Example 2:
-Problem: "Find the positive integer x where x² = 4"
-❌ WRONG: ["positive", "integer", "x² = 4"]
-✅ CORRECT: ["x² = 4"]
-Explanation: "positive integer" defines the solution range, not a removable condition
-
-Example 3:
-Problem: "In triangle ABC with sides a=3, b=4, c=5, find the largest angle"
-❌ WRONG: ["the largest", "a=3", "b=4", "c=5", "triangle ABC"]
-✅ CORRECT: ["a=3", "b=4", "c=5", "triangle ABC"]
-Explanation: "the largest angle" is what we're looking for, not a removable condition
-
-Example 4:
-Problem: "Find tan(x) where 0° < x < 90° and tan(x) = 1"
-❌ WRONG: ["0° < x < 90°", "tan(x) = 1"]
-✅ CORRECT: ["tan(x) = 1"]
-Explanation: "0° < x < 90°" ensures uniqueness (prevents x = 45°, 225°, ...), should not be removed
-
-Example 5:
-Problem: "Find the minimum value of f(x) = x² + 2x + 1 for x ≥ 0"
-❌ WRONG: ["minimum value", "f(x) = x² + 2x + 1", "x ≥ 0"]
-✅ CORRECT: ["f(x) = x² + 2x + 1", "x ≥ 0"]
-Explanation: "minimum value" is what we're finding, not a condition to remove
-
-**How to distinguish:**
-Ask yourself: "If I remove this, will the problem have multiple valid answers instead of becoming unsolvable?"
-- If yes → Don't extract it (it's a uniqueness constraint)
-- If no → Extract it (it's a removable condition)
-
-Guidelines for Extraction:
-- The number of conditions should be adjusted by the problem's complexity
-- Typical range: 1-5 critical conditions
-- Short/simple problems: 1-2 conditions
-- Complex/multi-step problems: 3-5 conditions
-- Extract ALL critical conditions, but avoid over-segmentation
-- Keep related information as ONE condition (e.g., "A, B, C, D are on x²/20 - y²/24 = 1" is ONE condition, not separate pieces)
-- Extract conditions EXACTLY as they appear in the problem
-- Do NOT calculate, infer, or add information not explicitly stated
-- Do NOT evaluate expressions (e.g., if problem says "largest three-digit number", keep it as is, do NOT write "999")
-- Do NOT add explanations or clarifications to the extracted conditions
-- Keep the original wording and phrasing from the problem
-- Your job is EXTRACTION, not INTERPRETATION
-
-Examples:
-
-Example 1:
-Original Problem: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
-Extracted Conditions:
-["Jason bought 1 pencil", "Mike bought 2 pencils"]
-
-Example 2:
-Original Problem: "Let A, B, C, and D be points on the hyperbola x²/20 - y²/24 = 1 such that ABCD is a rhombus whose diagonals intersect at the origin. Find the greatest real number that is less than BD² for all such rhombi."
-Extracted Conditions:
-["A, B, C, and D are points on the hyperbola x²/20 - y²/24 = 1", "ABCD is a rhombus", "The diagonals of ABCD intersect at the origin"]
-Note: "the greatest real number" is what we're finding, not a condition to extract
-
-Example 3 (What NOT to do):
-Original Problem: "The line y=3/5x−17/3 is to be parameterized. Which of the following options are valid?"
-WRONG: ["Which of the following options are valid"] ← This is the QUESTION, not a condition!
-CORRECT: ["The line has equation y=3/5x−17/3"]
-
-Example 4:
-Original Problem: "The largest three-digit number divided by..."
-WRONG: "The largest three-digit number is 999" ← Added calculation!
-CORRECT: "The largest three-digit number" ← Exact extraction
-
-Example 5 (Uniqueness constraints):
-Original Problem: "Find the smallest positive integer n such that n² > 100"
-Extracted Conditions:
-["n² > 100"]
-Note: "smallest", "positive", "integer" are NOT extracted - they define what we're looking for
-
-Output Format:
-Output ONLY a JSON array of strings, with NO markdown formatting or code blocks.
-Format: ["condition 1", "condition 2", ...]
-Start directly with [ and end with ]
-
-Mathematical Question:
+### Original Problem ###
 {original_question}
 
-Extracted Critical Conditions:
+### All Extracted Conditions ###
+{all_conditions}
+
+### Conditions to REMOVE ###
+{removed_conditions}
+
+### Conditions to KEEP ###
+{remaining_conditions}
+
+### Instructions ###
+1. Rewrite the problem WITHOUT the conditions marked for removal
+2. Keep ALL other conditions that are marked to keep
+3. The rewritten problem MUST still be a valid question (asking for something)
+4. Maintain natural language flow and grammatical correctness
+5. DO NOT remove the core question/request (e.g., "Find...", "Calculate...", "Which option...")
+
+### Critical Rules ###
+
+**For Multiple Choice Questions:**
+- If the original problem has options like (A), (B), (C), (D), (E), you MUST preserve ALL options in the rewritten question
+- Options are part of the question structure, NOT conditions
+- Only remove the mathematical constraints/values that were specified in "Conditions to REMOVE"
+
+**For General Questions:**
+- The rewritten question should still make sense as a question
+- Do NOT turn it into a statement
+- Keep the mathematical terminology and notation
+
+### Examples ###
+
+Example 1:
+original_question: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+Remove: ["Jason bought 1 pencil"]
+Keep: ["Mike bought 2 pencils"]
+→ Rewritten: "Mike bought 2 pencils. How many pencils did Jason buy?"
+
+Example 2:
+original_question: "Find the distance between the foci of the ellipse x²/9 + y²/16 = 1"
+Remove: ["The equation of the ellipse is x²/9 + y²/16 = 1"]
+Keep: []
+→ Rewritten: "Find the distance between the foci of an ellipse."
+
+Example 3 (Multiple Choice):
+original_question: "Which circle passes through (1,2)? (A) x²+y²=5 (B) x²+y²=10"
+Remove: ["The circle passes through (1,2)"]
+Keep: []
+→ Rewritten: "Which circle? (A) x²+y²=5 (B) x²+y²=10"
+(Notice: options are PRESERVED)
+
+NOT DO THIS:
+original_question: "On a computer keyboard, the key for the digit 1 is not working. For example, if you try to type the number 1231234, only the number 23234 will actually print.\n\nSasha tried to type an 8-digit number, but only 202020 was printed. How many 8-digit numbers satisfy this condition?",
+Remove: ["The key for the digit 1 is not working","Sasha tried to type an 8-digit number"]
+Keep: ["Only 202020 was printed"]
+Rewritten: "Only 202020 was printed. How many 8-digit numbers satisfy this condition?"  ❌
+(Notice: donnot delete examples in Original Problem)
+
+
+### Output Format ###
+You need to output TWO parts:
+
+**Part 1: Analysis**
+Think step by step to explain how you make the problem unsolvable after removing the condition(s).
+Output your analysis after ### Analysis ###. Keep it concise (1-3 sentences) and within \\analysis{{}}.
+
+**Part 2: Rewritten Question**
+Given your analysis, output the rewritten mathematical question after ### Rewritten Mathematical Question ###.
+
+**IMPORTANT: Do NOT include any thinking process or <think> tags. Only output the structured format below:**
+
+### Analysis ###
+[Your analysis of why the problem becomes unsolvable]
+
+### Rewritten Mathematical Question ###
+[The rewritten question text only, no additional formatting]
