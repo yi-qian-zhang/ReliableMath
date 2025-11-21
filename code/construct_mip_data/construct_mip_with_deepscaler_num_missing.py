@@ -369,6 +369,15 @@ def extract_conditions_only(data):
         model=args.extract_model, temperature=0.0
     )
     record_tokens(data, model_type, prompt_tokens, completion_tokens)
+    
+    # 🔧 移除 <think> 标签内容（如果使用 deepseek 等模型）
+    response = re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL).strip()
+    if '</think>' in response:
+        parts = response.split('</think>', 1)
+        if len(parts) == 2:
+            response = parts[1].strip()
+            logging.debug(f"ID {data['id']}: Removed content before </think> tag in extraction")
+    
     conditions = parse_json_response(response, fallback=[])
     if not isinstance(conditions, list):
         logging.warning(f"ID {data['id']}: Expected list, got {type(conditions)}")
@@ -590,8 +599,16 @@ def generate_removal_variants(data, num_missing):
         response_text = response.strip()
 
         # 🔧 移除 <think> 标签内容（deepseek-r1 等模型会输出思考过程）
-        # 移除 <think>...</think> 之间的所有内容（包括标签本身）
+        # 情况1: 完整的 <think>...</think> 对
         response_text = re.sub(r'<think>.*?</think>', '', response_text, flags=re.DOTALL).strip()
+        
+        # 情况2: 只有 </think> 结束标签（开头被截断或模型没输出开始标签）
+        if '</think>' in response_text:
+            # 移除 </think> 标签及其之前的所有内容
+            parts = response_text.split('</think>', 1)
+            if len(parts) == 2:
+                response_text = parts[1].strip()
+                logging.debug(f"ID {data['id']}_remove_{combo_idx}: Removed content before </think> tag")
 
         # 🔧 解析 Analysis 和 Rewritten Mathematical Question
         analysis = ""

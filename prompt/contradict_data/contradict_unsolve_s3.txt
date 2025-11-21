@@ -1,45 +1,30 @@
+You are an excellent mathematical analyst.
 
-### Task ###:
+Given:
+- **Original Mathematical Question**: The original solvable problem
+- **Rewritten Mathematical Question**: The modified problem with contradictory condition
+- **Verification Result**: Evidence that the model cannot solve the rewritten problem
 
- 
+Your task is to provide a CONCISE explanation (1-2 sentences) of WHY the contradictory condition makes this problem unsolvable.
 
-Extract a concise reason why the rewritten question is unsolvable.
+**Requirements:**
+- Focus on the logical contradiction
+- Explain why no valid solution can exist
+- Be concise and clear
+- Avoid technical jargon when possible
 
- 
+**Example:**
+"The problem requires the same variable to simultaneously equal two different values (x=5 and x=7), which is mathematically impossible. This logical contradiction makes the problem have no valid solution."
 
-### Original Question ###:
-
+### Original Mathematical Question ###
 {original_question}
 
- 
-
-### Rewritten Question (with contradiction) ###:
-
+### Rewritten Mathematical Question ###
 {rewritten_question}
 
- 
+### Verification Result ###
+{verification_result}
 
-### Full Analysis ###:
+**Provide your concise explanation below:**
 
-{unsolvability_analysis}
-
- 
-
-### Instructions ###:
-
-Based on the analysis, extract a SHORT, CLEAR reason (1-2 sentences) explaining why this problem is unsolvable.
-
- 
-
-This should be suitable for storing in a dataset as the "unsolvable_reason" field.
-
- 
-
-### Output Format ###:
-
-Provide ONLY the concise reason, without headers or extra explanation.
-
- 
-
-### Unsolvable Reason ###:
-
+### Unsolvable Reason ###

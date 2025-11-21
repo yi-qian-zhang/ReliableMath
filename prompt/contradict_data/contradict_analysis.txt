@@ -1,25 +1,30 @@
+You are an expert mathematical problem analyzer.
 
-### Analysis ###:
+Given:
+- **Original Mathematical Question**: A solvable math problem
+- **Original Answer**: The correct answer to this problem
+- **Original Condition**: A key condition extracted from the problem
 
- 
+Your task is to explain how to ADD a contradictory condition that will make the problem UNSOLVABLE.
 
-Analyze the extracted condition: "{extracted_condition}" from the original math problem. Explain how this condition constrains the problem and what would happen if this condition were contradicted (i.e., replaced by an opposing statement). Discuss whether a contradicted condition leads to an impossible scenario, a different solution, or a valid but altered problem.
+**Requirements:**
+1. The contradictory condition must directly conflict with the original condition
+2. The contradiction should create a logical impossibility (no valid solution exists)
+3. Keep all other conditions unchanged
 
- 
+**Example:**
+Original Condition: "The train travels at 60 km/h"
+Analysis: "Add the condition 'The train also travels at 80 km/h' which creates a direct contradiction. The same train cannot simultaneously travel at two different constant speeds, making the problem logically unsolvable."
 
-Original question:
-
+### Original Mathematical Question ###
 {original_math_question}
 
-Original answer:
-
+### Original Answer ###
 {original_answer}
 
- 
+### Original Condition ###
+{original_condition}
 
-### Rewritten Mathematical Question ###:
+**Your analysis (2-4 sentences explaining the contradiction strategy):**
 
- 
-
-(Include below a short candidate rewrite if relevant.)
-
+### Analysis ###

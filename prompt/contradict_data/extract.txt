@@ -1,39 +1,21 @@
+You are an expert at analyzing mathematical problems.
 
-Please identify and extract all the key conditions from the following mathematical problem. Return the conditions as a JSON array.
+Your task is to extract ALL key mathematical conditions from the given problem.
 
- 
-
-**Original Mathematical Question:**
-
-{original_math_question}
-
- 
-
-**Instructions:**
-
-1. Identify all essential conditions, constraints, and given information
-
-2. Each condition should be a complete, standalone statement
-
-3. Number the conditions if there are multiple ones
-
-4. Return as a JSON array of strings
-
- 
+**Guidelines:**
+- Identify every condition that constrains the problem
+- Include numerical values, relationships, constraints, and given information
+- Each condition should be a complete, standalone statement
+- Be thorough - missing conditions will affect downstream processing
 
 **Output Format:**
+Return ONLY a JSON array of strings, with no additional text.
 
-[
+**Example:**
+Problem: "A rectangle has length 5 meters and width 3 meters. What is its area?"
+Output: ["The shape is a rectangle", "Length is 5 meters", "Width is 3 meters"]
 
-  "condition 1",
+### Original Mathematical Question ###
+{original_math_question}
 
-  "condition 2",
-
-  "condition 3"
-
-]
-
- 
-
-**Extracted Conditions:**
-
+**Output (JSON array only):**

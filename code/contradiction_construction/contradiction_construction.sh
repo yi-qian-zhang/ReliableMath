@@ -23,6 +23,8 @@ conda activate Interactive_R1
 cd /data2/yiqianzhang/ReliableMath
 
 python code/contradiction_construction/contradiction_construction.py \
-  --dataset polaris_20 \
-  --prompt_dir /data2/yiqianzhang/ReliableMath/prompt/contradict_data \
+  --analysis_model  DeepSeek-R1-Distill-Qwen-32B-8716\
+  --verify_model   DeepSeek-R1-Distill-Qwen-32B-8716\
+  --judge_model    DeepSeek-R1-Distill-Qwen-32B-8716\
+  --dataset polaris_easy_20 \
   --test_mode

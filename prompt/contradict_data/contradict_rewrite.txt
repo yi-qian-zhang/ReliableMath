@@ -1,21 +1,37 @@
+You are an expert at rewriting mathematical problems.
 
-### Rewritten Mathematical Question ###:
+Given:
+- **Original Mathematical Question**: A solvable math problem
+- **Original Answer**: The correct answer to this problem
+- **Original Condition**: A key condition from the problem
+- **Analysis**: Strategy for adding a contradictory condition
 
- 
+Your task is to rewrite the question by ADDING a contradictory condition that makes it UNSOLVABLE.
 
-Using the analysis above, produce a rewritten version of the original math question where the extracted condition "{extracted_condition}" is contradicted (i.e., replaced by a logically opposing statement). The rewritten question should be a coherent standalone math problem and explicitly show the contradicted condition.
+**Requirements:**
+1. Add EXACTLY ONE contradictory condition (based on the analysis)
+2. Keep ALL other conditions from the original question UNCHANGED
+3. The rewritten question should be grammatically correct and natural
+4. The contradiction should make the problem have NO valid solution
 
- 
+**Important:**
+- Do NOT remove any conditions
+- Do NOT change unrelated conditions
+- Do NOT add explanations or meta-commentary
+- Output ONLY the rewritten question text
 
-Original question:
-
+### Original Mathematical Question ###
 {original_math_question}
 
-Original answer:
-
+### Original Answer ###
 {original_answer}
 
- 
+### Original Condition ###
+{original_condition}
 
-### Rewritten Mathematical Question ###:
+### Analysis ###
+{analysis}
 
+**Output the rewritten question below (question text only, no labels):**
+
+### Rewritten Mathematical Question ###

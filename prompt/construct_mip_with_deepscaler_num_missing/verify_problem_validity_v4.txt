@@ -26,7 +26,7 @@ An Invalid MIP is OPEN-ENDED (Infinite/Arbitrary Solutions).
 
 ### Verification Criteria
 
-Check if the rewritten problem has any of these TWO CRITICAL ISSUES.
+Check if the rewritten problem has any of these THREE CRITICAL ISSUES.
 
 Issue 1: Unintended Infinite Solutions (Open-Endedness)
 
@@ -74,7 +74,12 @@ Issue 3: Context, Examples, or Assumptions Deleted
 
 The original problem contains illustrative examples or explicit assumptions (using phrases like "For example", "Assume"), but the rewritten problem removed them. These are CONTEXT, not conditions.
 
-* Example (Assumption deleted):
+* Example A (Example deleted):
+  - Original: "On a keyboard, the key for digit 1 is broken. For example, typing 123 prints 23. Sasha types..."
+  - Invalid Rewrite: "On a keyboard, a key is broken. Sasha types..."
+  - Why Invalid: The example "123 -> 23" defines WHICH key is broken. Without it, the problem is ambiguous.
+
+* Example B (Assumption deleted):
   - Original: "A firecracker explodes... Find the speed. Assume g = 10 m/s^2."
   - Invalid Rewrite: "A firecracker explodes... Find the speed."
   - Why Invalid: The assumption "g = 10" is a fixed parameter, not a removable condition.
