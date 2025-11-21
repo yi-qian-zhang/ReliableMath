@@ -40,16 +40,9 @@ Check the following **STRICT REQUIREMENTS**:
 - Examples of INVALID changes:
   - 0.25 → -0.25 ❌ (sign changed)
   - log(0.25) → log(2.5) ❌ (number changed)
+  - log(0.25) → log(-0.25) ❌ (number changed)
   - x²/9 + y²/16 = 1 → x²/16 + y²/9 = 1 ❌ (coefficients swapped)
 
-**Requirement 6: Examples Must Be Preserved** ⭐ CRITICAL
-- If the original problem contains illustrative examples (introduced by "For example", "For instance", "e.g.", "such as"), these examples are PART OF THE PROBLEM CONTEXT
-- Examples should NEVER be removed (even if a condition is removed)
-- Example:
-  Original: "On a keyboard, key 1 is broken. For example, typing 1231234 prints 23234."
-  If removing "key 1 is broken":
-  WRONG: "On a keyboard, a key is broken."  ← Example deleted!
-  RIGHT: "On a keyboard, a key is broken. For example, typing 1231234 prints 23234."
 
 ### Analysis Instructions ###
 
@@ -70,7 +63,7 @@ Analyze step by step:
 **Step 4: Was anything added?**
 - Check if any new conditions, assumptions, or clarifications were introduced
 
-**Step 5: Is it still a question?**
+**Step 5: Is it still a math question?**
 - Verify the core question (Find/Calculate/Determine) is preserved
 
 ### Output Format ###
