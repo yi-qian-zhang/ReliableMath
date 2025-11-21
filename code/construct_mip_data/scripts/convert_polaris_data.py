@@ -134,7 +134,7 @@ def convert_polaris_data(input_file: str, output_file: str, difficulty_counts: d
     for i, item in enumerate(converted_data[:3]):
         print(f"\n[{i}] ID: {item['id']}, 难度: {item['difficulty']}")
         question_preview = item['original_question'][:80].replace('\n', ' ') + "..." if len(item['original_question']) > 80 else item['original_question'].replace('\n', ' ')
-        print(f"    问题: {original_question}")
+        print(f"    问题: {'original_question'}")
         print(f"    答案: {item['ground_truth']}")
 
 if __name__ == "__main__":

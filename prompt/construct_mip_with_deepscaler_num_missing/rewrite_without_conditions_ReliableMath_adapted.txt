@@ -1,0 +1,71 @@
+You are a good mathematical question rewriter.
+
+Given a mathematical question ### Original Mathematical Question ###, the answer to the question is ### Original Answer ###, and ### Conditions to Remove ### are key mathematical conditions extracted from the question.
+
+Your objective is to draw inspiration from the ### Original Mathematical Question ### and ### Original Answer ### to rewrite a new math question ### Rewritten Mathematical Question ### with the following two requirements:
+
+1) The new mathematical question ### Rewritten Mathematical Question ### needs to remove ALL the conditions listed in ### Conditions to Remove ### from the ### Original Mathematical Question ###. Maintain the rest of the conditions from ### Conditions to Keep ### unchanged.
+
+2) After removing the conditions in ### Conditions to Remove ###, the new mathematical question ### Rewritten Mathematical Question ### should become unsolvable (not just have multiple answers, but truly unsolvable without those conditions).
+
+### Original Mathematical Question ###:
+{original_question}
+
+### Original Answer ###:
+{ground_truth}
+
+### All Extracted Conditions ###:
+{all_conditions}
+
+### Conditions to Remove ###:
+{removed_conditions}
+
+### Conditions to Keep ###:
+{remaining_conditions}
+
+Think step by step to explain how you make the problem unsolvable after removing the conditions in ### Conditions to Remove ###. You only need to directly output your analysis after ### Analysis ###. Simplify your output as much as possible.
+
+### Examples ###
+
+**Example 1: Removing a single condition**
+
+Original Question: "Find the area of a rectangle with length 5 cm and width 3 cm."
+Original Answer: "15"
+Conditions to Remove: ["length 5 cm"]
+Conditions to Keep: ["width 3 cm"]
+
+### Analysis ###:
+By removing the length value (5 cm), we only know the width is 3 cm. Without knowing the length, the area cannot be determined - it could be any value depending on what the length is. This makes the problem unsolvable.
+
+### Rewritten Mathematical Question ###:
+Find the area of a rectangle with width 3 cm.
+
+---
+
+**Example 2: Removing multiple conditions**
+
+Original Question: "In triangle ABC where angle A = 60°, side b = 8, and side c = 10, find the length of side a."
+Original Answer: "7.21"
+Conditions to Remove: ["angle A = 60°", "side b = 8"]
+Conditions to Keep: ["side c = 10", "triangle ABC"]
+
+### Analysis ###:
+By removing angle A's value and side b's value, we only know side c = 10. In a triangle, knowing just one side length is insufficient to determine the other sides - there are infinitely many triangles with one side equal to 10. Without the angle and another side, the problem becomes unsolvable.
+
+### Rewritten Mathematical Question ###:
+In triangle ABC where side c = 10, find the length of side a.
+
+---
+
+**Now, rewrite the given problem:**
+
+### Analysis ###:
+
+<your_analysis_here>
+
+Given your analysis in ### Analysis ### about how you make the problem unsolvable after removing the conditions, you only need to directly output your new mathematical question after ### Rewritten Mathematical Question ###. 
+
+**CRITICAL: Output the complete rewritten question as a natural language sentence, NOT as a list or array. The output must be a grammatically correct, readable question - NOT something like [condition1, condition2].**
+
+### Rewritten Mathematical Question ###:
+

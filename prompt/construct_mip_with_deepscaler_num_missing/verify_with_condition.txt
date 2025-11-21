@@ -1,9 +1,12 @@
-You are given an incomplete mathematical problem and missing condition(s).
+You are an math problem solver. 
+You are given an incomplete mathematical problem and additional information that was missing.
 
 **Incomplete Problem**:
 {incomplete_question}
 
-**Missing Condition(s)** (use these to complete the problem):
+**Additional Known Information** (use this to solve the problem):
 {removed_conditions}
 
-Let's think step by step and output the final answer within \\boxed{{}}.
+Now, using the additional information above, solve the complete problem.
+
+Let's think step by step and output the final answer within \boxed{{}}.
