@@ -333,6 +333,13 @@ def parse_json_response(response, fallback=None):
     
     return fallback if fallback is not None else {}
 
+def remove_think_tags(response_text):
+    """Remove <think>...</think> tags from DeepSeek model response"""
+    if "</think>" in response_text:
+        # Extract content after </think>
+        response_text = response_text.split("</think>", 1)[1].strip()
+    return response_text
+
 def extract_answer_from_response(response_text):
     """Extract answer from model response (handles <think> tags)"""
     if "</think>" not in response_text:
@@ -462,12 +469,15 @@ def generate_contradiction_variants(data):
         )
         
         record_tokens(data, m_type, p_tokens, c_tokens)
-        
+
+        # Remove <think> tags from DeepSeek model response
+        analysis = remove_think_tags(analysis)
+
         if "### Analysis ###" in analysis:
             analysis = analysis.split("### Analysis ###")[-1].strip()
         if "### Rewritten Mathematical Question ###" in analysis:
             analysis = analysis.split("### Rewritten Mathematical Question ###")[0].strip()
-        
+
         if not analysis.strip() or len(analysis.strip()) < 10:
             logging.warning(f"ID {data['id']}_contradict_{idx}: Analysis is empty, skipping")
             continue
@@ -489,11 +499,13 @@ def generate_contradiction_variants(data):
         )
         
         record_tokens(data, m_type, p_tokens, c_tokens)
-        
-        contradicted_question = rewrite_response.strip()
+
+        # Remove <think> tags from DeepSeek model response
+        contradicted_question = remove_think_tags(rewrite_response.strip())
+
         if "### Rewritten Mathematical Question ###" in contradicted_question:
             contradicted_question = contradicted_question.split("### Rewritten Mathematical Question ###")[-1].strip()
-        
+
         for prefix in ["Rewritten Question:", "Answer:", "###", "**", '"', "'"]:
             contradicted_question = contradicted_question.replace(prefix, "").strip()
         
@@ -589,10 +601,13 @@ def verify_contradiction_validity(data):
         )
         
         record_tokens(data, m_type, p_tokens, c_tokens)
-        
+
+        # Remove <think> tags from DeepSeek model response
+        contradicted_condition = remove_think_tags(contradicted_condition)
+
         if "### Contradicted Condition ###" in contradicted_condition:
             contradicted_condition = contradicted_condition.split("### Contradicted Condition ###")[-1].strip()
-        
+
         contradicted_condition = contradicted_condition.strip()
         
         if not contradicted_condition or len(contradicted_condition) < 5:
@@ -712,10 +727,13 @@ Provide your answer in the format: The answer is <answer>.
         )
         
         record_tokens(data, m_type, p_tokens, c_tokens)
-        
+
+        # Remove <think> tags from DeepSeek model response (if using DeepSeek for extract_model)
+        unsolvable_reason = remove_think_tags(unsolvable_reason)
+
         if "### Unsolvable Reason ###" in unsolvable_reason:
             unsolvable_reason = unsolvable_reason.split("### Unsolvable Reason ###")[-1].strip()
-        
+
         unsolvable_reason = unsolvable_reason.strip()
         
         # Mark as valid
