@@ -104,7 +104,7 @@ parser.add_argument("--prompt_dir", default="prompt/contradict_data", help="Prom
 parser.add_argument("--dataset", default="polaris", help="Dataset name")
 parser.add_argument("--temperature", default=1.0, type=float, help="Temperature for vLLM sampling")
 parser.add_argument("--max_attempts", default=8, type=int, help="Max sampling attempts for verification")
-parser.add_argument("--threads", default=4, type=int, help="Number of parallel threads")
+parser.add_argument("--threads", default=8, type=int, help="Number of parallel threads")
 parser.add_argument("--test_mode", action='store_true', help="Test mode - process only first 5 items")
 parser.add_argument("--force", action='store_true', help="Force reprocess all items")
 parser.add_argument("--use_math_orm", action='store_true', help="Enable LLM ORM for answer verification")
@@ -838,30 +838,7 @@ def filter_valid_data(final_path):
     valid_data.sort(key=lambda x: x.get('original_id', 0))
     output_path = final_path.replace("_final.json", "_valid.json")
     write_json(output_path, valid_data)
-
-    # 生成简略版 sample_valid.json (去掉详细的 verification 信息)
-    sample_valid_data = []
-    for item in valid_data:
-        sample_item = {
-            "id": item.get("id"),
-            "data_source": item.get("data_source"),
-            "difficulty": item.get("difficulty"),
-            "transformation_type": item.get("transformation_type"),
-            "original_question": item.get("original_question"),
-            "ground_truth": item.get("ground_truth"),
-            "original_condition": item.get("original_condition"),
-            "contradicted_question": item.get("contradicted_question"),
-            "contradicted_condition": item.get("contradicted_condition"),
-            "unsolvable_reason": item.get("unsolvable_reason"),
-            "all_extracted_conditions": item.get("all_extracted_conditions"),
-            "num_conditions_extracted": item.get("num_conditions_extracted")
-        }
-        sample_valid_data.append(sample_item)
-
-    sample_output_path = final_path.replace("_final.json", "_sample_valid.json")
-    write_json(sample_output_path, sample_valid_data)
-    logging.info(f"Sample valid data saved to: {sample_output_path}")
-
+    
     print("\n" + "="*70)
     print("CONTRADICTION DATASET STATISTICS")
     print("="*70)
@@ -899,9 +876,8 @@ def filter_valid_data(final_path):
     
     print(f"\n🎯 Heuristic Checks (free):")
     print(f"  Total heuristic validations: {total_heuristic_count:,}")
-
-    print(f"\nOutput (full): {output_path}")
-    print(f"Output (sample): {sample_output_path}")
+    
+    print(f"\nOutput: {output_path}")
     print("="*70)
 
 def construction_workflow():

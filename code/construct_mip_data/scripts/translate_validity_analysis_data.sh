@@ -4,8 +4,31 @@ python code/construct_mip_data/translate_sample_data.py \
   --input data/DeepSeek-R1-Distill-Qwen-32B-8715/11-20/official_mode/missing_one/polaris_easy_50/polaris_easy_50_valid_n1.json \
   --output data/DeepSeek-R1-Distill-Qwen-32B-8715/11-20/official_mode/missing_one/polaris_easy_50/polaris_easy_50_缺省一条.json \
   --model_url http://localhost:8715/v1 \
-  --model_name DeepSeek-R1-Distill-Qwen-32B-8715  \
+  --model_name DeepSeek-R1-Distill-Qwen-32B  \
   --threads 32
+
+
+python code/construct_mip_data/translate_sample_data.py \
+  --input data/DeepSeek-R1-Distill-Qwen-32B-8715/11-21/official_mode/missing_one/polaris_easy_100/validity_v6/polaris_easy_100_sample_valid_n1.json \
+  --output data/DeepSeek-R1-Distill-Qwen-32B-8715/11-21/official_mode/missing_one/polaris_easy_100/validity_v6/polaris_easy_100_sample_valid_n1_zh.json \
+  --model_url http://localhost:8715/v1 \
+  --model_name DeepSeek-R1-Distill-Qwen-32B  \
+  --threads 32
+
+python code/construct_mip_data/translate_sample_data.py \
+  --input data/construct_mip_final/missing_one/11-21/polaris_easy_100/polaris_easy_100_sample_valid_n1.json \
+  --output data/construct_mip_final/missing_one/11-21/polaris_easy_100/polaris_easy_100_sample_valid_n1_zh.json \
+  --model_url http://localhost:8717/v1 \
+  --model_name DeepSeek-R1-Distill-Qwen-32B-8717  \
+  --threads 32
+  
+python code/construct_mip_data/translate_sample_data.py \
+  --input data/DeepSeek-R1-Distill-Qwen-32B-8715/11-21/official_mode/missing_one/polaris_easy_100/polaris_easy_100_sample_valid_n1.json \
+  --output data/DeepSeek-R1-Distill-Qwen-32B-8715/11-21/official_mode/missing_one/polaris_easy_100/polaris_easy_100_sample_valid_n1_zh.json \
+  --model_url http://localhost:8716/v1 \
+  --model_name DeepSeek-R1-Distill-Qwen-32B  \
+  --threads 16
+
 
 python code/construct_mip_data/translate_sample_data.py \
   --input data/DeepSeek-R1-Distill-Qwen-32B-8715/11-20/official_mode/missing_one/polaris_easy_50/polaris_easy_50_valid_n2.json \

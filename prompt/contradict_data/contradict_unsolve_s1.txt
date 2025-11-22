@@ -1,29 +1,17 @@
-
 ### Task ###:
 
- 
-
 Analyze why the rewritten mathematical question (with contradicted condition) is UNSOLVABLE or has no unique solution.
-
- 
 
 ### Original Question ###:
 
 {original_question}
 
- 
-
 ### Original Answer ###:
 
 {original_answer}
-
- 
-
 ### Rewritten Question (with contradiction) ###:
 
 {rewritten_question}
-
- 
 
 ### Instructions ###:
 
@@ -43,13 +31,8 @@ Analyze why the rewritten mathematical question (with contradicted condition) is
 
    - Insufficient constraints (multiple valid answers)
 
- 
-
 ### Output Format ###:
-
 Provide a detailed analysis (2-5 sentences) explaining why this problem cannot be solved uniquely.
-
- 
 
 ### Analysis ###:
 

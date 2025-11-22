@@ -2,8 +2,6 @@
 """
 Missing Information Problem (MIP) Dataset Construction - 支持可变缺省条件数量
 输入数据: 原始数学问题 (question) + 标准答案 (ground_truth) + 难度标签 (difficulty)
-
-新架构 (5步流程):
 Step 1. 提取条件 (extract_conditions_only): 使用 GPT-4o 提取问题中的所有关键条件
 Step 1.5. 过滤样本 (filter_by_num_conditions): 只保留 num_conditions >= num_missing + 1 的样本
 Step 2. 生成移除变体 (generate_removal_variants): 根据参数 --num_missing=n，生成所有 C(N,n) 种组合

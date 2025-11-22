@@ -15,64 +15,100 @@ Your task is to verify that the rewritten problem is a VALID Missing Information
 
 ### Core Understanding of MIP
 
-A **Valid MIP** is created when:
-- The original problem has a UNIQUE, DETERMINATE solution
-- By removing specific conditions, it becomes UNSOLVABLE/UNDETERMINABLE (not "infinite solutions")
-- The problem logic breaks because a necessary link is missing
-- The solver cannot derive the answer and must state "insufficient information"
+A Valid MIP must be UNSOLVABLE due to logical dependency failure.
+* The Logic: A necessary piece of information is missing, breaking the computation chain. The model cannot derive the answer and should state "insufficient information."
+* The Goal: Test if the model can detect logical dependencies (e.g., "I cannot find Y because I don't know X").
 
-An **Invalid MIP** occurs when:
-- Removing conditions makes the problem OPEN-ENDED with infinitely many valid answers
-- Or mathematical errors are introduced during rewriting
-- Or essential assumptions/parameters are deleted
+An Invalid MIP becomes OPEN-ENDED (infinite/arbitrary valid answers).
+* The Error: Removing constraints like "maximum", "unique", or "the only" allows ANY number fitting the loose description to be technically correct. This does NOT test logical reasoning.
 
 ---
 
 ### Verification Criteria
 
-Check if the rewritten problem has any of these THREE CRITICAL ISSUES:
+Check if the rewritten problem has any of these THREE CRITICAL ISSUES.
 
 ---
 
-**Issue 1: From Uniquely Solvable to Unsolvable (VALID) vs. To Infinitely Solvable (INVALID)**
+### Issue 1: Logical Break vs. Open-Endedness
 
-The key distinction:
-- ✅ **VALID**: Original is uniquely solvable → Rewrite becomes unsolvable (missing dependency)
-- ❌ **INVALID**: Original is uniquely solvable → Rewrite becomes infinitely solvable (lost constraints)
+**The Core Distinction:**
 
-**✅ Valid MIP Examples (Uniquely Solvable → Unsolvable):**
-1. Original: "Given x = 2 and xy = 10, find y"
-   Rewrite: "Given xy = 10, find y"
-   → VALID: Cannot determine y without knowing x (unsolvable logic)
-
-2. Original: "Circle with center (0,0) and radius 5"
-   Rewrite: "Circle with center (0,0)"
-   → VALID: Cannot determine the specific circle without radius (missing parameter)
-
-3. Original: "If a = 3 and b = 4, find a² + b²"
-   Rewrite: "If a = 3, find a² + b²"
-   → VALID: Cannot compute without knowing b (missing variable)
-
-**❌ Invalid MIP Examples (Uniquely Solvable → Infinitely Solvable):**
-1. Original: "Find THE LARGEST prime divisor of 60"
-   Invalid Rewrite: "Find a prime divisor of 60"
-   → INVALID: Now 2, 3, 5 are all valid answers (lost uniqueness constraint)
-
-2. Original: "Find tan(x) where tan(53)tan(81)tan(x) = tan(53) + tan(81) + tan(x), and 0 < x < 180"
-   Invalid Rewrite: Removed "0 < x < 180"
-   → INVALID: Now x = 7, 187, 367, ... all work due to periodicity (infinite solutions)
-
-3. Original: "Find the integer n where n² < 50 < (n+1)²"
-   Invalid Rewrite: "Find n where n² < 50 < (n+1)²"
-   → INVALID: Now n can be 7, 7.1, 7.5, ... infinitely many real numbers work (lost integer constraint)
-
-**Detection Rule:**
-1. Does removing the condition break a DEPENDENCY (making it unsolvable)? → VALID
-2. Or does it remove a CONSTRAINT (allowing infinite arbitrary answers)? → INVALID
+✅ **Valid MIP** = Removes information → **Computation blocked** → Cannot derive answer
+❌ **Invalid MIP** = Removes constraints → **Lost uniqueness** → Infinite valid answers
 
 ---
 
-**Issue 2: Mathematical Errors Introduced**
+**❌ INVALID: Removes Uniqueness/Specificity Constraints**
+
+The original asks for a UNIQUE, SPECIFIC answer, but removing the condition makes the problem open-ended with infinitely many valid solutions.
+
+**Common Invalid Patterns:**
+
+1. **Removed specificity keywords:**
+   - Original: "Find THE LARGEST prime divisor of 84"
+   - Invalid Rewrite: "Find a prime divisor of 84"
+   - Why Invalid: Now 2, 3, 7 are all "correct" answers → Not testing logical dependency, just removed "largest" constraint
+
+2. **Removed domain/range constraints:**
+   - Original: "Solve tan(53°)tan(81°)tan(x°) = tan(53°) + tan(81°) + tan(x°) where 0° < x < 180°"
+   - Invalid Rewrite: Removed "0° < x < 180°"
+   - Why Invalid: Due to periodicity, x = 7°, 187°, 367°, 547°... all work → Infinite solutions
+
+3. **Removed degree/type specifications:**
+   - Original: "Let P(x) be a monic polynomial of degree 3 such that P(1)=5, P(2)=8, P(3)=13"
+   - Invalid Rewrite: "Let P(x) be a polynomial such that P(1)=5, P(2)=8, P(3)=13"
+   - Why Invalid: Now polynomials of degree 2, 3, 4, 5... all can satisfy these points → Not uniquely determined
+
+4. **Removed integer/type constraints:**
+   - Original: "Find the positive INTEGER n such that n² < 50"
+   - Invalid Rewrite: "Find n such that n² < 50"
+   - Why Invalid: Now n can be 1, 2, 3, 4, 5, 6, 7 OR 1.5, 2.7, π, √10... → Infinite solutions
+
+---
+
+**✅ VALID: Creates Logical Dependency Break**
+
+Removing the condition makes it IMPOSSIBLE to compute the answer, even though the problem still asks for a unique/specific value.
+
+**Valid Examples:**
+
+1. **Dependency chain broken:**
+   - Original: "Given x = 2 and xy = 10, find y"
+   - Valid Rewrite: "Given xy = 10, find y"
+   - Why Valid: Cannot compute y without knowing x → True logical break (not just "find THE y" removed)
+
+2. **Required intermediate value missing:**
+   - Original: "Triangle ABC has area 50 and base 10. Find the height"
+   - Valid Rewrite: "Triangle ABC has base 10. Find the height"
+   - Why Valid: Cannot derive height without area → Computation blocked
+
+3. **Formula parameter missing:**
+   - Original: "A car travels at speed v for time t=5 hours, covering distance d=300 km. Find v"
+   - Valid Rewrite: "A car travels at speed v for time t=5 hours. Find v"
+   - Why Valid: Cannot compute v without distance d → Missing necessary input
+
+---
+
+**Detection Rule for Issue 1:**
+
+Ask these questions in order:
+
+1. **Does the original ask for "THE value", "THE maximum", "THE unique x", "THE integer n"?**
+   - If NO → Likely valid (already asking for derivation, not selection)
+   - If YES → Continue to step 2
+
+2. **What does the removed condition do?**
+   - If it provides a VALUE/FACT needed for calculation → Valid (logical break)
+   - If it specifies WHICH answer to select (largest, smallest, unique, integer) → Invalid (constraint removal)
+
+3. **Test: Can I now provide ANY random number and claim it's valid?**
+   - If YES → **INVALID** (open-ended)
+   - If NO, I genuinely cannot compute the answer → **VALID** (logical dependency failure)
+
+---
+
+### Issue 2: Mathematical Errors or Value Changes
 
 The rewriting process must NEVER change numbers, flip signs, or create illegal operations.
 
@@ -82,53 +118,62 @@ The rewriting process must NEVER change numbers, flip signs, or create illegal o
 - Operations must remain valid: sqrt(x) requires x ≥ 0
 
 **❌ Examples of Mathematical Errors:**
-1. Changed "log(0.25)" to "log(-0.25)"
-   → INVALID: Introduced undefined operation (log of negative number)
 
-2. Changed "x > 0" to "x < 0" in a problem with sqrt(x)
-   → INVALID: Makes sqrt(x) undefined for the domain
+1. **Changed numerical values:**
+   - Original: "log(0.25)"
+   - Invalid Rewrite: "log(-0.25)"
+   - Why Invalid: Introduced undefined operation (log of negative number) + changed the value
 
-3. Changed "sin(30°)" to "sin(-30°)"
-   → INVALID: Flipped the sign, altering the mathematical value
+2. **Flipped inequality direction:**
+   - Original: "x > 0" in a problem with sqrt(x)
+   - Invalid Rewrite: "x < 0"
+   - Why Invalid: Makes sqrt(x) undefined for the new domain
 
-**Detection Rule:**
-- Compare all numbers, signs, and operations between original and rewrite
-- ANY difference → INVALID
+3. **Changed signs:**
+   - Original: "sin(30°)"
+   - Invalid Rewrite: "sin(-30°)"
+   - Why Invalid: Flipped the sign, altering the mathematical value
+
+**Detection Rule for Issue 2:**
+- Compare ALL numbers, signs, operations, and inequality directions
+- ANY difference → **INVALID**
 
 ---
 
-**Issue 3: Assumptions or Fixed Parameters Deleted**
+### Issue 3: Assumptions or Fixed Parameters Deleted
 
-Fixed assumptions and parameters (using "Assume", "Let", "Suppose") are NOT removable conditions. They are essential context that defines the problem setup.
+Fixed assumptions and parameters (marked by "Assume", "Let", "Suppose") are NOT removable conditions. They define the problem's context.
 
-**❌ Invalid Example (Assumption Deleted):**
+**❌ Invalid Example:**
+
 - Original: "A firecracker explodes into pieces. Find the speed of piece A. Assume g = 10 m/s²."
 - Invalid Rewrite: "A firecracker explodes into pieces. Find the speed of piece A."
-- Why Invalid: "g = 10" is a fixed parameter assumption, not a variable condition
+- Why Invalid: "Assume g = 10" is a fixed parameter, not a variable condition to remove
 
-**Trigger Phrases to Watch:**
+**Trigger Phrases (Cannot Be Removed):**
 - "Assume", "Suppose", "Let's say", "Given that"
-- "For example", "For instance", "e.g.", "such as"
+- "For example", "For instance", "e.g.", "such as"  
 - "Note that", "It is known that"
+- "Let [variable] be [definition]"
 
-**Detection Rule:**
-- If the original contains assumption phrases and they're removed → INVALID
-- These provide essential context and cannot be treated as removable conditions
+**Detection Rule for Issue 3:**
+- If the original contains assumption/definition phrases → They must remain in rewrite
+- If removed → **INVALID**
 
 ---
 
 ### Verification Steps
 
-**Step 1: Check Issue 1 (Uniquely Solvable → Unsolvable vs. Infinitely Solvable)**
-- Does removing the condition break a dependency (cannot derive answer)? → VALID
-- Or does it remove a uniqueness constraint (infinite answers now valid)? → INVALID
+**Step 1: Check Issue 1 (Logical Break vs. Open-Endedness)**
+- Does removing the condition break a calculation dependency? → VALID
+- Or does it remove a uniqueness/specificity constraint allowing infinite solutions? → INVALID
 
 **Step 2: Check Issue 2 (Mathematical Errors)**
-- Are all numbers, signs, and operations identical between original and rewrite?
+- Are all numbers, signs, operations, and inequalities identical?
 - Any difference → INVALID
 
-**Step 3: Check Issue 3 (Assumptions Deleted)**
-- Does the original contain "Assume", "For example", or similar phrases?
+**Step 3: Check Issue 3 (Assumptions Preserved)**
+- Does the original contain "Assume", "Let", "For example", etc.?
 - Are they preserved in the rewrite? If not → INVALID
 
 ---
@@ -137,9 +182,9 @@ Fixed assumptions and parameters (using "Assume", "Let", "Suppose") are NOT remo
 
 ### Analysis ###
 [2-4 sentences analyzing the three issues:
-1. Does removal create unsolvability (VALID) or infinite solutions (INVALID)?
-2. Are there any mathematical errors?
-3. Are assumptions/parameters preserved?]
+1. Does removal create logical dependency break (VALID) or open-endedness (INVALID)?
+2. Are there any mathematical errors or value changes?
+3. Are assumptions/fixed parameters preserved?]
 
 ### Judgement ###
 Valid OR Invalid
