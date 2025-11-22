@@ -823,13 +823,26 @@ def filter_valid_data(final_path):
     total_variants = 0
     valid_variants = 0
     failure_reasons = {}
-    
+
+    # 统计每一步的通过情况
+    step1_single_condition_pass = 0  # Step 3.1: 单条件验证
+    step2_contradicted_condition_pass = 0  # Step 3.2: 矛盾条件提取
+    step3_vllm_sampling_pass = 0  # Step 3.3: vLLM 采样验证
+
     for data in dataset:
         for variant in data.get("contradiction_variants", []):
             total_variants += 1
             verification = variant.get("verification", {})
             is_valid = verification.get("is_valid", False)
-            
+
+            # 统计每一步的通过情况
+            if verification.get("single_condition_verified", False):
+                step1_single_condition_pass += 1
+            if verification.get("contradicted_condition_extracted", False):
+                step2_contradicted_condition_pass += 1
+            if verification.get("vllm_sampling_passed", False):
+                step3_vllm_sampling_pass += 1
+
             if is_valid:
                 valid_item = {
                     "id": variant["variant_id"],
@@ -885,8 +898,36 @@ def filter_valid_data(final_path):
     print("="*70)
     print(f"Original problems: {total_original}")
     print(f"Total contradiction variants generated: {total_variants}")
-    print(f"Valid contradiction variants: {valid_variants} ({valid_variants/total_variants*100:.1f}%)" if total_variants > 0 else "Valid: 0")
-    
+
+    if total_variants == 0:
+        print(f"\n⚠️  WARNING: No variants found in final data!")
+        print(f"   Please check if the pipeline ran correctly.")
+        return
+
+    print(f"\n📊 Three-Step Verification Results:")
+
+    print(f"\n  Step 3.1 (Single Condition Verification - Only 1 condition changed):")
+    print(f"    Passed: {step1_single_condition_pass}/{total_variants} ({step1_single_condition_pass/total_variants*100:.1f}%)")
+
+    # Step 3.2 的分母是通过 Step 3.1 的变体数
+    step2_denominator = step1_single_condition_pass if step1_single_condition_pass > 0 else total_variants
+    print(f"\n  Step 3.2 (Contradicted Condition Extraction):")
+    if step2_denominator > 0:
+        print(f"    Passed: {step2_contradicted_condition_pass}/{step2_denominator} ({step2_contradicted_condition_pass/step2_denominator*100:.1f}%)")
+    else:
+        print(f"    Passed: 0/0 (N/A - all variants failed Step 3.1)")
+
+    # Step 3.3 的分母是通过 Step 3.2 的变体数
+    step3_denominator = step2_contradicted_condition_pass if step2_contradicted_condition_pass > 0 else total_variants
+    print(f"\n  Step 3.3 (vLLM Sampling - All {args.max_attempts} attempts must fail):")
+    if step3_denominator > 0:
+        print(f"    Passed: {step3_vllm_sampling_pass}/{step3_denominator} ({step3_vllm_sampling_pass/step3_denominator*100:.1f}%)")
+    else:
+        print(f"    Passed: 0/0 (N/A - all variants failed Step 3.2)")
+
+    print(f"\n  Final Result (All 3 steps passed):")
+    print(f"    VALID variants: {valid_variants}/{total_variants} ({valid_variants/total_variants*100:.1f}%)")
+
     if failure_reasons:
         print(f"\n📊 Failure Reason Distribution:")
         for reason, count in sorted(failure_reasons.items(), key=lambda x: -x[1]):
