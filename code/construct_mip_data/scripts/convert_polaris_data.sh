@@ -40,14 +40,14 @@ python code/construct_mip_data/scripts/convert_polaris_data.py \
 
 python code/construct_mip_data/scripts/convert_polaris_data.py \
   --input /home/zhangyiqian/ReliableMath/data/solve/polaris-data-53K.jsonl \
-  --output /home/zhangyiqian/ReliableMath/data/solve/polaris_easy_50.json \
+  --output /home/zhangyiqian/ReliableMath/data/solve/polaris_easy_200.json \
   --count_1 0 \
   --count_2 0 \
   --count_3 0 \
   --count_4 0 \
   --count_5 0 \
-  --count_6 25 \
-  --count_7 25 \
+  --count_6 100 \
+  --count_7 100 \
 
 python code/construct_mip_data/scripts/convert_polaris_data.py \
   --input /home/zhangyiqian/ReliableMath/data/solve/polaris-data-53K.jsonl \

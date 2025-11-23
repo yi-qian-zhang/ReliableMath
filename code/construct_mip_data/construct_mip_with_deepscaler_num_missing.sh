@@ -1,7 +1,11 @@
 # tmux新建会话并后台运行
 tmux new -s vllm-8715
+tmux new -s run-8715
 tmux attach -t vllm-8715
+tmux new -s vllm-8717
+tmux new -s run-8717
 tmux attach -t vllm-8717
+tmux attach -t run-8717
 tmux attach -t s1k
 Ctrl + b，然后松开，再按 d
 即可“detach”会话，返回到普通终端。
@@ -35,15 +39,15 @@ CUDA_VISIBLE_DEVICES=2 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Disti
 
 #启动DeepSeek-R1-Distill-Qwen-7B 双卡
 CUDA_VISIBLE_DEVICES=0,1 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
-    --served-model-name DeepSeek-R1-Distill-Qwen-7B \
-    --max-model-len 8192 \
+    --served-model-name DeepSeek-R1-Distill-Qwen-7B-8715 \
+    --max-model-len 16384 \
     --tensor_parallel_size 2 \
     --gpu_memory_utilization 0.9 \
     --port 8715
 
-CUDA_VISIBLE_DEVICES=2,3 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B \
-    --served-model-name DeepSeek-R1-Distill-Qwen-32B-8717 \
-    --max-model-len 8192 \
+CUDA_VISIBLE_DEVICES=2,3 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
+    --served-model-name DeepSeek-R1-Distill-Qwen-7B-8717 \
+    --max-model-len 16384 \
     --tensor_parallel_size 2 \
     --gpu_memory_utilization 0.9 \
     --port 8717
@@ -178,14 +182,14 @@ python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
 
 #8715端口 DeepSeek-R1-Distill-Qwen-7B
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing.py \
-  --dataset polaris_easy_100 \
+  --dataset polaris_easy_400 \
   --num_missing 1 \
   --extract_model gpt-4o-mini \
   --rewrite_model DeepSeek-R1-Distill-Qwen-7B-8715 \
   --verify_model DeepSeek-R1-Distill-Qwen-7B-8715 \
   --judge_model gpt-4o-mini \
   --threads 16 \
-  --output_dir data/construct_mip/missiong_one/8715/11-22/polaris_easy_100 \
+  --output_dir data/construct_mip/missing_one/8715/11-23/polaris_easy_400 \
   --force
 
 #8717端口 DeepSeek-R1-Distill-Qwen-7B
@@ -224,11 +228,11 @@ python code/construct_mip_data/construct_mip_with_deepscaler_num_missing_token_c
   --force
 
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing_token_count_12288.py \
-  --dataset polaris_easy_100 \
+  --dataset polaris_easy_400 \
   --num_missing 1 \
   --extract_model gpt-4o-mini \
-  --rewrite_model DeepSeek-R1-Distill-Qwen-7B-8717 \
-  --verify_model DeepSeek-R1-Distill-Qwen-7B-8717 \
+  --rewrite_model DeepSeek-R1-Distill-Qwen-7B-8715 \
+  --verify_model DeepSeek-R1-Distill-Qwen-7B-8715 \
   --judge_model gpt-4o-mini \
   --threads 16 \
   --output_dir data/construct_mip/missiong_one/8715/11-22/polaris_easy_100/token_count_12288 \
