@@ -217,14 +217,14 @@ python code/construct_mip_data/construct_mip_with_deepscaler_num_missing_token_c
   --force
 
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing_token_count_8192.py \
-  --dataset polaris_easy_100 \
+  --dataset polaris_easy_400 \
   --num_missing 1 \
   --extract_model gpt-4o-mini \
-  --rewrite_model DeepSeek-R1-Distill-Qwen-7B-8715 \
-  --verify_model DeepSeek-R1-Distill-Qwen-7B-8715 \
+  --rewrite_model DeepSeek-R1-Distill-Qwen-7B-8717 \
+  --verify_model DeepSeek-R1-Distill-Qwen-7B-8717 \
   --judge_model gpt-4o-mini \
   --threads 16 \
-  --output_dir data/construct_mip/missiong_one/8715/11-22/polaris_easy_100/token_count_8192 \
+  --output_dir data/construct_mip/missing_one/8715/11-23/construct_mip_with_deepscaler_num_missing_token_count_8192/polaris_easy_400  \
   --force
 
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing_token_count_12288.py \
@@ -235,5 +235,16 @@ python code/construct_mip_data/construct_mip_with_deepscaler_num_missing_token_c
   --verify_model DeepSeek-R1-Distill-Qwen-7B-8715 \
   --judge_model gpt-4o-mini \
   --threads 16 \
-  --output_dir data/construct_mip/missiong_one/8715/11-22/polaris_easy_100/token_count_12288 \
+  --output_dir data/construct_mip/missing_one/8715/11-23/polaris_easy_400
+
+
+python code/construct_mip_data/construct_mip_with_deepscaler_num_missing_token_count_4096.py \
+  --dataset polaris_easy_400 \
+  --num_missing 1 \
+  --extract_model gpt-4o-mini \
+  --rewrite_model DeepSeek-R1-Distill-Qwen-7B-8715 \
+  --verify_model DeepSeek-R1-Distill-Qwen-7B-8715 \
+  --judge_model gpt-4o-mini \
+  --threads 16 \
+  --output_dir data/construct_mip/missing_one/8715/11-23/construct_mip_with_deepscaler_num_missing_token_count_4096/polaris_easy_400  \
   --force
