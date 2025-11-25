@@ -1,3 +1,5 @@
+conda activate Interactive_R1
+
 python code/construct_mip_data/scripts/convert_polaris_data.py \
 
 python code/construct_mip_data/scripts/convert_polaris_data.py \
@@ -68,5 +70,16 @@ python code/construct_mip_data/scripts/convert_polaris_data.py \
   --count_3 800 \
   --count_4 800 \
   --count_5 800 \
+  --count_6 800 \
+  --count_7 800 
+
+python code/construct_mip_data/scripts/convert_polaris_data.py \
+  --input  data/solve/polaris-data-53K.jsonl \
+  --output data/solve/polaris_easy_800_times_2.json \
+  --count_1 0 \
+  --count_2 0 \
+  --count_3 0 \
+  --count_4 0 \
+  --count_5 0 \
   --count_6 800 \
   --count_7 800 

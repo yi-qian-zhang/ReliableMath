@@ -2,6 +2,7 @@
 tmux new -s vllm-8715
 tmux new -s run-8715
 tmux attach -t vllm-8715
+tmux attach -t run-8715
 tmux new -s vllm-8717
 tmux new -s run-8717
 tmux attach -t vllm-8717
@@ -42,7 +43,7 @@ CUDA_VISIBLE_DEVICES=0,1 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Dis
     --served-model-name DeepSeek-R1-Distill-Qwen-7B-8715 \
     --max-model-len 16384 \
     --tensor_parallel_size 2 \
-    --gpu_memory_utilization 0.9 \
+    --gpu_memory_utilization 0.95 \
     --port 8715
 
 CUDA_VISIBLE_DEVICES=2,3 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
@@ -79,6 +80,13 @@ CUDA_VISIBLE_DEVICES=6,7 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Dis
     --tensor_parallel_size 2 \
     --gpu_memory_utilization 0.9 \
     --port 8719
+
+CUDA_VISIBLE_DEVICES=0,1,2,3 vllm serve /data1/HF-Models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
+    --served-model-name DeepSeek-R1-Distill-Qwen-7B-8715 \
+    --max-model-len 16384 \
+    --tensor_parallel_size 4 \
+    --gpu_memory_utilization 0.9 \
+    --port 8715
 
 🚀 运行命令
 1️⃣ 测试模式（推荐先跑这个）
@@ -239,6 +247,19 @@ python code/construct_mip_data/construct_mip_with_deepscaler_num_missing_token_c
 
 
 python code/construct_mip_data/construct_mip_with_deepscaler_num_missing_token_count_4096.py \
+  --dataset polaris_easy_800_times_2 \
+  --num_missing 1 \
+  --extract_model gpt-4o-mini \
+  --rewrite_model DeepSeek-R1-Distill-Qwen-7B-8715 \
+  --verify_model DeepSeek-R1-Distill-Qwen-7B-8715 \
+  --judge_model gpt-4o-mini \
+  --threads 16 \
+  --output_dir data/construct_mip/missing_one/8715/11-24/construct_mip_with_deepscaler_num_missing_token_count_4096/polaris_easy_800_times_2  \
+  --force
+
+
+#设置C轮时温度为0.6，n=8试试C轮成功率 限制4096长度
+python code/construct_mip_data/construct_mip_with_deepscaler_num_missing_token_count_4096.py \
   --dataset polaris_easy_400 \
   --num_missing 1 \
   --extract_model gpt-4o-mini \
@@ -246,5 +267,17 @@ python code/construct_mip_data/construct_mip_with_deepscaler_num_missing_token_c
   --verify_model DeepSeek-R1-Distill-Qwen-7B-8715 \
   --judge_model gpt-4o-mini \
   --threads 16 \
-  --output_dir data/construct_mip/missing_one/8715/11-23/construct_mip_with_deepscaler_num_missing_token_count_4096/polaris_easy_400  \
+  --output_dir data/construct_mip/missing_one/8715/11-24/construct_mip_with_deepscaler_num_missing_token_count_4096_RoundB_temp_0.6_n_8/polaris_easy_400  \
+  --force
+
+#设置C轮时温度为0.6，n=8试试C轮成功率 限制8192长度
+python code/construct_mip_data/construct_mip_with_deepscaler_num_missing_token_count_8192.py \
+  --dataset polaris_easy_400 \
+  --num_missing 1 \
+  --extract_model gpt-4o-mini \
+  --rewrite_model DeepSeek-R1-Distill-Qwen-7B-8717 \
+  --verify_model DeepSeek-R1-Distill-Qwen-7B-8717 \
+  --judge_model gpt-4o-mini \
+  --threads 16 \
+  --output_dir data/construct_mip/missing_one/8717/11-24/construct_mip_with_deepscaler_num_missing_token_count_8192_RoundB_temp_0.6_n_8/polaris_easy_400  \
   --force

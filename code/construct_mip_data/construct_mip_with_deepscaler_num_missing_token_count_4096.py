@@ -756,7 +756,10 @@ def verify_single_variant(data, variant, prompt_template_incomplete, prompt_temp
     )
     response_data_c = get_response_openai_with_sampling(
         input_prompt_complete, persona="You are an expert mathematical problem solver.",
-        model=args.verify_model, temperature=args.temperature, n=args.max_attempts
+        model=args.verify_model, 
+        # temperature=args.temperature,
+        temperature=0.6,  # DeepSeek 推荐 0.6 用于数学采样
+        n=args.max_attempts
     )
     if not response_data_c:
         logging.error(f"ID {variant['variant_id']}: Round C generation failed")
