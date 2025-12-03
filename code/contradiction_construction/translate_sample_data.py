@@ -24,18 +24,15 @@ args = parser.parse_args()
 client = OpenAI(api_key="EMPTY", base_url=args.model_url)
 
 # 翻译 prompt（英文 -> 中文）
-TRANSLATION_PROMPT = """你是一位专业的翻译专家。请将下面的数学问题从英文翻译成中文。
+TRANSLATION_PROMPT = """你是一位专业的翻译专家。请将下面的英文翻译成中文。
 
 要求：
 1. 保持数学符号、数字和公式不变
 2. 准确流畅地翻译自然语言
 3. 保留原文的含义和语境
-4. 只输出翻译后的文本，不要有任何解释
+4. 直接输出翻译结果，不要添加"翻译："、"中文："等前缀
 
-待翻译文本：
-{text}
-
-翻译："""
+{text}"""
 
 def translate_text(text):
     """翻译单个文本（英文->中文）"""
@@ -58,7 +55,32 @@ def translate_text(text):
             # 处理 DeepSeek 模型的 <think> 标签
             # 提取 </think> 之后的内容才是真正的翻译
             if "</think>" in translation:
-                translation = translation.split("</think>\n\n", 1)[1].strip()
+                translation = translation.split("</think>", 1)[1].strip()
+
+            # 清理可能残留的提示词标记
+            unwanted_prefixes = [
+                "待翻译文本：", "翻译：", "中文：", "中文翻译：",
+                "英文：", "原文：", "Translation:", "Chinese:"
+            ]
+            for prefix in unwanted_prefixes:
+                if translation.startswith(prefix):
+                    translation = translation[len(prefix):].strip()
+
+            # 如果翻译结果包含 "待翻译文本：...翻译：..." 格式，只提取翻译部分
+            if "待翻译文本：" in translation and "翻译：" in translation:
+                translation = translation.split("翻译：", 1)[1].strip()
+            elif "Translation:" in translation:
+                translation = translation.split("Translation:", 1)[1].strip()
+
+            # 清理可能的尾部标记（如 "**矛盾条件：**"）
+            unwanted_markers = [
+                "**逐步解释：**", "**矛盾条件：**", "**Step-by-Step",
+                "**Contradicted Condition:**", "**分析：**"
+            ]
+            for marker in unwanted_markers:
+                if marker in translation:
+                    # 在标记之前截断
+                    translation = translation.split(marker)[0].strip()
 
             return translation
         except Exception as e:
