@@ -1,21 +1,63 @@
-You are an expert at analyzing mathematical problems.
+You are an expert at analyzing mathematical problems and identifying key conditions.
 
-Your task is to extract ALL key mathematical conditions from the given problem.
+Your objective is to extract CRITICAL mathematical conditions or premises from the given question. A critical condition is defined as: any condition whose removal or modification would cause the problem to lose its unique solution. Focus on conditions that are NECESSARY for solving, not merely helpful.
 
-**Guidelines:**
-- Identify every condition that constrains the problem
-- Include numerical values, relationships, constraints, and given information
-- Each condition should be a complete, standalone statement
-- Be thorough - missing conditions will affect downstream processing
+Definition of Critical Condition:
+- For a problem with k necessary conditions [condition1, condition2, ..., conditionk], each condition is critical if removing it makes the problem unsolvable or changes the answer
+- These are NOT optional background information - they are ESSENTIAL to reach the unique solution
+- Removing any single critical condition should break the problem's solvability
 
-**Output Format:**
-Return ONLY a JSON array of strings, with no additional text.
+What IS a critical condition:
+- Numerical values that determine the answer (e.g., "The train travels at 60 km/h")
+- Equations or constraints that limit the solution space (e.g., "x²/20 - y²/24 = 1")
+- Geometric or algebraic properties that are necessary (e.g., "ABCD is a rhombus")
+- Relationships that define the problem structure (e.g., "diagonals intersect at the origin")
 
-**Example:**
-Problem: "A rectangle has length 5 meters and width 3 meters. What is its area?"
-Output: ["The shape is a rectangle", "Length is 5 meters", "Width is 3 meters"]
+What is NOT a condition:
+- The question itself (e.g., "Find...", "Calculate...", "Which option...")
+- Multiple choice options (A), (B), (C), (D) - these are part of the answer structure
+- Contextual information that doesn't affect the solution
 
-### Original Mathematical Question ###
+Guidelines for Extraction:
+- The number of conditions should be adjusted by the problem's complexity
+- Typical range: 1-5 critical conditions
+- Extract ALL critical conditions, but avoid over-segmentation
+- Keep related information as ONE condition (e.g., "A, B, C, D are on x²/20 - y²/24 = 1" is ONE condition, not separate pieces)
+- Extract conditions EXACTLY as they appear in the problem
+- Do NOT calculate, infer, or add information not explicitly stated
+- Do NOT evaluate expressions (e.g., if problem says "largest three-digit number", keep it as is, do NOT write "999")
+- Do NOT add explanations or clarifications to the extracted conditions
+- Keep the original wording and phrasing from the problem
+- Your job is EXTRACTION, not INTERPRETATION
+
+Examples:
+
+Example 1:
+original_question: "Jason bought 1 pencil, Mike bought 2 pencils. How many pencils did Jason buy?"
+Extracted Conditions:
+["Jason bought 1 pencil", "Mike bought 2 pencils"]
+
+Example 2:
+original_question: "Let A, B, C, and D be points on the hyperbola x²/20 - y²/24 = 1 such that ABCD is a rhombus whose diagonals intersect at the origin. Find the greatest real number that is less than BD² for all such rhombi."
+Extracted Conditions:
+["A, B, C, and D are points on the hyperbola x²/20 - y²/24 = 1", "ABCD is a rhombus", "The diagonals of ABCD intersect at the origin"]
+
+Example 3 (What NOT to do):
+original_question: "The line y=3/5x−17/3 is to be parameterized. Which of the following options are valid?"
+WRONG: ["Which of the following options are valid"] ← This is the QUESTION, not a condition!
+CORRECT: ["The line has equation y=3/5x−17/3"]
+
+Example 4 (What NOT to do):
+original_question: "The largest three-digit number divided by..."
+WRONG: ["The largest three-digit number is 999"] ← Added calculation!
+CORRECT: ["The largest three-digit number"] ← Exact extraction
+
+Output Format:
+Output ONLY a JSON array of strings, with NO markdown formatting or code blocks.
+Format: ["condition 1", "condition 2", ...]
+Start directly with [ and end with ]
+
+Mathematical Question:
 {original_math_question}
 
-**Output (JSON array only):**
+Extracted Critical Conditions:
