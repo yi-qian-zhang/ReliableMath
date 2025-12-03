@@ -427,92 +427,79 @@ def extract_conditions(data):
     return data
 
 def generate_contradiction_variants(data):
-    """Step 2: 为每个条件生成对应的矛盾版本"""
+    """Step 2: 为每个条件生成对应的矛盾版本 (合并 analysis 和 rewrite)"""
     conditions = data.get("extracted_condition", [])
     N = len(conditions)
-    
+
     if N == 0:
         logging.warning(f"ID {data['id']}: No conditions extracted, skipping")
         data["contradiction_variants"] = []
         return data
-    
+
     logging.info(f"ID {data['id']}: Generating contradictions for {N} conditions")
-    
-    analysis_prompt_path = os.path.join(args.prompt_dir, "contradict_analysis.txt")
-    rewrite_prompt_path = os.path.join(args.prompt_dir, "contradict_rewrite.txt")
-    
-    if not os.path.exists(analysis_prompt_path) or not os.path.exists(rewrite_prompt_path):
-        logging.error(f"Prompt files not found")
+
+    # 使用合并的 prompt（一次性生成 analysis + rewritten question）
+    combined_prompt_path = os.path.join(args.prompt_dir, "contradict_analysis_and_rewrite.txt")
+
+    if not os.path.exists(combined_prompt_path):
+        logging.error(f"Prompt file not found: {combined_prompt_path}")
         data["contradiction_variants"] = []
         return data
-    
-    with open(analysis_prompt_path, 'r', encoding='utf-8') as f:
-        analysis_template = f.read()
-    with open(rewrite_prompt_path, 'r', encoding='utf-8') as f:
-        rewrite_template = f.read()
-    
+
+    with open(combined_prompt_path, 'r', encoding='utf-8') as f:
+        combined_template = f.read()
+
     variants = []
     for idx, condition in enumerate(conditions):
-        # Step 2.1: Analyze how to contradict this condition
-        analysis_prompt = safe_format(
-            analysis_template,
+        # Step 2: 一次性生成 analysis + contradicted question
+        combined_prompt = safe_format(
+            combined_template,
             original_math_question=data["original_question"],
             original_answer=data["ground_truth"],
             original_condition=condition
         )
-        
-        analysis, p_tokens, c_tokens, m_type = get_response_openai(
-            analysis_prompt,
-            persona="You are an expert mathematical problem analyzer.",
+
+        combined_response, p_tokens, c_tokens, m_type = get_response_openai(
+            combined_prompt,
+            persona="You are a good mathematical question rewriter.",
             model=args.analysis_model,
             temperature=0.0
         )
-        
+
         record_tokens(data, m_type, p_tokens, c_tokens)
 
         # Remove <think> tags from DeepSeek model response
-        analysis = remove_think_tags(analysis)
+        combined_response = remove_think_tags(combined_response)
 
-        if "### Analysis ###" in analysis:
-            analysis = analysis.split("### Analysis ###")[-1].strip()
-        if "### Rewritten Mathematical Question ###" in analysis:
-            analysis = analysis.split("### Rewritten Mathematical Question ###")[0].strip()
+        # 提取 Analysis 部分
+        analysis = ""
+        if "### Analysis ###" in combined_response:
+            parts = combined_response.split("### Analysis ###")
+            if len(parts) > 1:
+                analysis_part = parts[1]
+                if "### Rewritten Mathematical Question ###" in analysis_part:
+                    analysis = analysis_part.split("### Rewritten Mathematical Question ###")[0].strip()
+                else:
+                    analysis = analysis_part.strip()
 
+        # 提取 Rewritten Question 部分
+        contradicted_question = ""
+        if "### Rewritten Mathematical Question ###" in combined_response:
+            contradicted_question = combined_response.split("### Rewritten Mathematical Question ###")[-1].strip()
+
+        # 清理可能的前缀
+        for prefix in ["Rewritten Question:", "Answer:", "###", "**", '"', "'"]:
+            contradicted_question = contradicted_question.replace(prefix, "").strip()
+
+        # 验证输出
         if not analysis.strip() or len(analysis.strip()) < 10:
             logging.warning(f"ID {data['id']}_contradict_{idx}: Analysis is empty, skipping")
             continue
-        
-        # Step 2.2: Generate contradicted question
-        rewrite_prompt = safe_format(
-            rewrite_template,
-            original_math_question=data["original_question"],
-            original_answer=data["ground_truth"],
-            original_condition=condition,
-            analysis=analysis
-        )
-        
-        rewrite_response, p_tokens, c_tokens, m_type = get_response_openai(
-            rewrite_prompt,
-            persona="You are an expert at rewriting mathematical problems.",
-            model=args.analysis_model,
-            temperature=0.0
-        )
-        
-        record_tokens(data, m_type, p_tokens, c_tokens)
 
-        # Remove <think> tags from DeepSeek model response
-        contradicted_question = remove_think_tags(rewrite_response.strip())
-
-        if "### Rewritten Mathematical Question ###" in contradicted_question:
-            contradicted_question = contradicted_question.split("### Rewritten Mathematical Question ###")[-1].strip()
-
-        for prefix in ["Rewritten Question:", "Answer:", "###", "**", '"', "'"]:
-            contradicted_question = contradicted_question.replace(prefix, "").strip()
-        
         if not contradicted_question or len(contradicted_question) < 20:
             logging.warning(f"ID {data['id']}_contradict_{idx}: Rewritten question is too short, skipping")
             continue
-        
+
         variant = {
             "variant_id": f"{data['id']}_contradict_{idx}",
             "original_condition": condition,

@@ -1,0 +1,36 @@
+You are a good mathematical question rewriter.
+
+Given a mathematical question ### Original Mathematical Question ###, the answer to the question is ### Original Answer ###, and ### Extracted Condition ### is a key mathematical condition extracted from the question.
+
+Your objective is to draw inspiration from the ### Original Mathematical Question ### and ### Original Answer ### to rewrite a new math question ### Rewritten Mathematical Question ### with the following two requirements.
+
+1) The new mathematical question ### Rewritten Mathematical Question ### need to **add conditions that contradict the condition** ### Extracted Condition ### from the ### Original Mathematical Question ###. Maintain the rest of the conditions of ### Original Mathematical Question ### unchanged.
+
+2) After **adding the contradicted condition** ### Extracted Condition ###, the new mathematical question ### Rewritten Mathematical Question ### should be unsolvable.
+
+### Original Mathematical Question ###:
+{original_math_question}
+
+### Original Answer ###:
+{original_answer}
+
+### Extracted Condition ###:
+{original_condition}
+
+Think step by step to explain how you make the problem unsolvable after **adding the contradicted condition**. You only need to directly output your analysis after ### Analysis ###. Simplify your output as much as possible.
+
+### Analysis ###:
+
+Given your analysis in ### Analysis ### about how you make the problem unsolvable after **adding the contradicted condition**, you only need to directly output your new mathematical question after ### Rewritten Mathematical Question ###.
+
+**Important:**
+- Add EXACTLY ONE contradictory condition (that conflicts with the extracted condition)
+- Keep ALL other conditions from the original question UNCHANGED
+- The rewritten question should be grammatically correct and natural
+- The contradiction should make the problem have NO valid solution
+- Do NOT remove any conditions
+- Do NOT change unrelated conditions
+- Do NOT add explanations or meta-commentary
+- Output ONLY the rewritten question text
+
+### Rewritten Mathematical Question ###:
